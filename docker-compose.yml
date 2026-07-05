@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hermezgan_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - FASTAPI_ENV=production
+      - DATABASE_URL=sqlite:///./hermezgan.db
+      - DEBUG=false
+    volumes:
+      - ./backend:/app
+      - backend_logs:/app/logs
+    networks:
+      - hermezgan_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hermezgan_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://backend:8000
+    networks:
+      - hermezgan_network
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: hermezgan_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - hermezgan_network
+    restart: unless-stopped
+
+networks:
+  hermezgan_network:
+    driver: bridge
+
+volumes:
+  backend_logs:
+  redis_data:
