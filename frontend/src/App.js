@@ -1,15 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import ChatPage from './pages/ChatPage';
+
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <h1>🌊 Hermezgan Intelligent</h1>
-        <p>Frontend placeholder - Under development</p>
-      </div>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Navigate to="/chat" replace />} />
+      <Route path="/chat" element={<ChatPage />} />
+    </Routes>
   );
 }
 
