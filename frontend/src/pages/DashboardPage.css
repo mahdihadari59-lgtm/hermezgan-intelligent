@@ -1,0 +1,13 @@
+.dashboard-page {
+  display: flex; justify-content: center; align-items: center;
+  min-height: calc(100vh - 80px); padding: 2rem;
+}
+.dashboard-container {
+  width: 100%; max-width: 1200px;
+  background: white; border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  min-height: 400px;
+}
