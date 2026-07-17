@@ -6,7 +6,7 @@ import './ChatBox.css';
 
 const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
   const messagesEndRef = useRef(null);
-  const { isSidebarOpen } = useSelector(state => state.ui);
+  const { isSidebarOpen } = useSelector((state) => state.ui);
 
   // Auto scroll to bottom
   useEffect(() => {
@@ -25,18 +25,20 @@ const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
           </div>
         </div>
         <div className="header-actions">
-          <button className="header-btn" title="تنظیمات">⚙️</button>
-          <button className="header-btn" title="صدای روشن/خاموش">🔊</button>
-          <button className="header-btn" title="بیشتر">⋯</button>
+          <button type="button" className="header-btn" title="تنظیمات" aria-label="تنظیمات">
+            ⚙️
+          </button>
+          <button type="button" className="header-btn" title="صدای روشن/خاموش" aria-label="صدای روشن/خاموش">
+            🔊
+          </button>
+          <button type="button" className="header-btn" title="بیشتر" aria-label="منوی بیشتر">
+            ⋯
+          </button>
         </div>
       </div>
 
       {/* Messages */}
-      <MessageList
-        messages={messages}
-        isTyping={isTyping}
-        isLoading={isLoading}
-      />
+      <MessageList messages={messages} isTyping={isTyping} isLoading={isLoading} />
       <div ref={messagesEndRef} />
 
       {/* Input */}
