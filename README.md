@@ -1,302 +1,288 @@
-# 🌊 Hermezgan Intelligent - پروژه هوشمند هرمزگان
+🌊 Hermezgan Intelligent (HDP AI Platform)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue)
-![Node.js](https://img.shields.io/badge/node.js-16%2B-green)
-
-## 📋 نمای کلی پروژه
-
-پروژه **Hermezgan Intelligent** یک سیستم یکپارچه برای مدیریت دانش‌گراف شهر بندرعباس است که به کاربران امکان می‌دهد:
-
-✅ **پاسخ به سؤالات فارسی** - موتور NLP هوشمند
-✅ **یافتن نزدیک‌ترین خدمات** - جستجوی مکان‌بنیان
-✅ **مشاهده روی نقشه** - OpenStreetMap Integration
-✅ **تحلیل داده‌ها** - گزارش‌های تفصیلی
-✅ **گفتگوی طبیعی** - چت‌بات هوشمند
+"Version" (https://img.shields.io/badge/version-2.0.0-blue)
+"Status" (https://img.shields.io/badge/status-Active-success)
+"License" (https://img.shields.io/badge/license-MIT-green)
+"Python" (https://img.shields.io/badge/python-3.10+-blue)
+"Node.js" (https://img.shields.io/badge/node.js-18+-green)
 
 ---
 
-## 🏗️ معماری پروژه
+AI Platform for Hormozgan Province
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│                    Frontend (React + Node.js)                  │
-│              Chat │ Map │ Dashboard │ Search                   │
-└────────────────────┬───────────────────────────────────────────┘
-                     │
-        ┌────────────▼───────────────┐
-        │   API Gateway (Express)    │
-        ��� Authentication & Rate Limit│
-        └────────────┬───────────────┘
-                     │
-┌────────────────────▼───────────────────────────────────────────┐
-│              Backend (Python + FastAPI)                        │
-│ ├─ NLP Engine                                                  │
-│ ├─ RAG Pipeline                                                │
-│ ├─ Location Services                                           │
-│ ├─ Analytics Engine                                            │
-│ └─ Meta-Learning System                                        │
-└────────────────────┬───────────────────────────────────────────┘
-                     │
-     ┌───────────────┼───────────────┐
-     │               │               │
-┌────▼────┐   ┌──────▼──────┐  ┌────▼─────┐
-│ SQLite  │   │Vector DB    │  │  Redis   │
-│ (Dev)   │   │(Embeddings) │  │ (Cache)  │
-└─────────┘   └─────────────┘  └──────────┘
-```
+Hermezgan Intelligent (HDP) is an integrated AI platform designed specifically for Hormozgan Province.
+
+The project combines artificial intelligence, geographic information, local knowledge, transportation services, tourism, public services and conversational AI into a unified platform.
+
+The long-term vision is to build an intelligent digital infrastructure capable of understanding local Persian language, geographic context and regional knowledge.
 
 ---
 
-## 🚀 شروع سریع
+What's New in Version 2.0
 
-### پیش‌نیازها
-- Python 3.9+
-- Node.js 16+
-- Git
-- Docker & Docker Compose (اختیاری)
+New Bridge Layer
 
-### نصب و اجرا
+Version 2 introduces a completely modular Bridge architecture.
 
-```bash
-# Clone Repository
-git clone https://github.com/mahdihadari59-lgtm/hermezgan-intelligent.git
-cd hermezgan-intelligent
+bridge/
+├── archive/
+│   └── v0/
+└── v1/
+    ├── api.py
+    ├── bridge_service.py
+    ├── database_bridge.py
+    ├── logger.py
+    ├── utils.py
+    ├── exceptions.py
+    └── service
 
-# Backend Setup
-cd backend
-python -m venv venv
-source venv/bin/activate  # یا: venv\Scripts\activate (Windows)
-pip install -r requirements.txt
+Features:
 
-# Database Setup
-python scripts/seed_database.py
-
-# Run Backend
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# Frontend Setup (در Terminal جدید)
-cd ../frontend
-npm install
-npm start
-```
-
-### Docker Setup
-
-```bash
-docker-compose up -d
-```
+- Database abstraction
+- Unified service layer
+- Logging system
+- Exception handling
+- Modular APIs
+- Future scalability
 
 ---
 
-## 📂 ساختار پروژه
+Geographic Migration System
 
-```
+database/migrations/
+└── 001_normalize_geo.sql
+
+Supports:
+
+- Geographic normalization
+- Cities
+- Districts
+- Roads
+- POIs
+- Administrative hierarchy
+
+---
+
+BND Knowledge Dataset
+
+bnd.json
+
+Persian structured knowledge dataset used by the AI engine.
+
+Importer:
+
+import_bnd.py
+
+---
+
+Improved Chat Interface
+
+The React frontend has been updated with:
+
+- Modern chat layout
+- Better responsive UI
+- Cleaner message rendering
+- CSS improvements
+- Component optimization
+
+---
+
+Project Structure
+
 hermezgan-intelligent/
-├── backend/                      # Python FastAPI Backend
-│   ├── app/
-│   │   ├── main.py              # FastAPI Entry Point
-│   │   ├── api/v1/              # API Routes
-│   │   ├── core/                # Core Modules (NLP, RAG, etc.)
-│   │   ├── models/              # Database Models
-│   │   ├── services/            # Business Logic
-│   │   └── database/            # Database Connection
-│   ├── tests/
-│   ├── scripts/                 # Seed & Migration Scripts
-│   ├── requirements.txt
-│   ├── Dockerfile
-│   └── .env.example
-│
-├── frontend/                     # React + Node.js Frontend
-│   ├── src/
-│   │   ├── components/          # React Components
-│   │   ├── pages/               # Page Components
-│   │   ├── services/            # API Calls
-│   │   ├── hooks/               # Custom Hooks
-│   │   └── store/               # Redux Store
-│   ├── public/
-│   ├── package.json
-│   ├── Dockerfile
-│   └── .env.example
-│
-├── database/                     # SQL & Seeds
-│   ├── migrations/              # Database Migrations
-│   ├── seeds/                   # Initial Data
-│   └── schema.sql
-│
-├── docs/                         # Documentation
-│   ├── ARCHITECTURE.md
-│   ├── API_REFERENCE.md
-│   ├── DEPLOYMENT.md
-│   └── CONTRIBUTING.md
-│
+
+├── backend/
+├── frontend/
+├── bridge/
+├── database/
+├── docs/
+├── scripts/
+
+├── bnd.json
+├── import_bnd.py
 ├── docker-compose.yml
-├── .gitignore
 ├── LICENSE
 └── README.md
-```
 
 ---
 
-## 🔌 API Endpoints
+Main Features
 
-### Chat API
-```
-POST   /api/v1/chat/message      - ارسال پیام
-GET    /api/v1/chat/history      - دریافت تاریخ گفتگو
-```
-
-### Knowledge Graph
-```
-GET    /api/v1/graph/entities    - دریافت موجودیت‌ها
-GET    /api/v1/graph/relations   - دریافت روابط
-POST   /api/v1/graph/entity      - ایجاد موجودیت
-```
-
-### Location Services
-```
-GET    /api/v1/locations/search  - جستجوی مکانی
-GET    /api/v1/locations/nearest - نزدیک‌ترین خدمات
-GET    /api/v1/locations/route   - مسیریابی
-```
-
-### Analytics
-```
-GET    /api/v1/analytics/stats   - آمار کلی
-GET    /api/v1/analytics/report  - گزارش‌های تفصیلی
-```
+- Persian AI Chat
+- Geographic Knowledge Base
+- Interactive Map Support
+- SQLite Database
+- Geographic Search
+- Local Knowledge
+- Bridge API
+- Migration System
+- Modular Backend
+- React Frontend
 
 ---
 
-## 🛠️ فناوری‌های استفاده‌شده
+Technology Stack
 
-### Backend
-- **FastAPI** - Web Framework
-- **SQLAlchemy** - ORM
-- **Pydantic** - Data Validation
-- **Transformers** - NLP Models
-- **Geopy** - Location Services
+Backend
 
-### Frontend
-- **React** - UI Framework
-- **Leaflet** - Interactive Maps
-- **Redux** - State Management
-- **Tailwind CSS** - Styling
+- Python
+- FastAPI
+- SQLite
+- REST API
 
-### Database
-- **SQLite** - Development
-- **PostgreSQL** - Production
-- **Redis** - Caching
+Frontend
 
----
+- React
+- JavaScript
+- CSS
 
-## 📝 مثال استفاده
+AI
 
-### Chat Example
-```bash
-curl -X POST "http://localhost:8000/api/v1/chat/message" \
-  -H "Content-Type: application/json" \
-  -d '{"message": "نزدیک‌ترین بیمارستان کجاست؟"}'
-```
+- Persian NLP
+- Knowledge Base
+- Retrieval Pipeline
+- Bridge Architecture
 
-### Response
-```json
-{
-  "response": "نزدیک‌ترین بیمارستان، بیمارستان فوق‌تخصصی کودکان است...",
-  "location": {
-    "latitude": 27.2158,
-    "longitude": 56.2808,
-    "distance_km": 2.3
-  }
-}
-```
+Database
+
+- SQLite
+- SQL Migration
+- Geographic Data
 
 ---
 
-## 🧪 تست‌ها
+Getting Started
 
-```bash
-# Backend Tests
+Clone repository
+
+git clone https://github.com/mahdihadari59-lgtm/hermezgan-intelligent.git
+
+cd hermezgan-intelligent
+
+Backend
+
 cd backend
-pytest tests/ -v
 
-# Frontend Tests
-cd ../frontend
-npm test
-```
+python -m venv venv
 
----
+source venv/bin/activate
 
-## 📚 مستندات
+pip install -r requirements.txt
 
-- [معماری سیستم](docs/ARCHITECTURE.md)
-- [API Reference](docs/API_REFERENCE.md)
-- [راهنمای استقرار](docs/DEPLOYMENT.md)
-- [راهنمای مشارکت](docs/CONTRIBUTING.md)
+Frontend
 
----
+cd frontend
 
-## 🔧 متغیرهای محیط
+npm install
 
-یک فایل `.env` ایجاد کنید:
-
-```env
-# Backend
-FASTAPI_ENV=development
-DATABASE_URL=sqlite:///./hermezgan.db
-SECRET_KEY=your-secret-key
-
-# Frontend
-REACT_APP_API_URL=http://localhost:8000
-REACT_APP_MAP_TOKEN=your-mapbox-token
-```
+npm start
 
 ---
 
-## 🚀 استقرار
+Development Roadmap
 
-### AWS EC2
-```bash
-# ایجاد Instance
-aws ec2 run-instances --image-id ami-xxxxx
-```
+Version 2.x
 
-### VPS
-```bash
-ssh user@your-vps.com
-cd /app
-git pull origin main
-docker-compose down && docker-compose up -d
-```
+- Voice Assistant
+- Offline AI
+- Vosk Speech Recognition
+- Semantic Search
+- Embedding Search
+- Tourism Services
+- Transportation Module
 
----
+Version 3.x
 
-## 👤 نویسنده
-
-- **Mahdi Haidari Puri** - Project Lead & Full-Stack Developer
-  - GitHub: [@mahdihadari59-lgtm](https://github.com/mahdihadari59-lgtm)
-  - Email: mahdihadari59@gmail.com
+- Knowledge Graph Engine
+- AI Driver Assistant
+- Smart Traffic Prediction
+- Recommendation Engine
+- Multi-Agent AI
+- Advanced Analytics
 
 ---
 
-## 📄 لایسنس
+Repository
 
-این پروژه تحت لایسنس MIT منتشر شده است. جزئیات را در فایل [LICENSE](LICENSE) ببینید.
+Branch:
+main
 
----
+Current Version
 
-## 🤝 مشارکت
-
-ما از مشارکت‌های جدید استقبال می‌کنیم! لطفاً [راهنمای مشارکت](docs/CONTRIBUTING.md) را بخوانید.
-
----
-
-## 📞 تماس
-
-- **Issues**: [GitHub Issues](https://github.com/mahdihadari59-lgtm/hermezgan-intelligent/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/mahdihadari59-lgtm/hermezgan-intelligent/discussions)
+2.0.0
 
 ---
 
-**آخرین به‌روزرسانی**: ۱۴۰۵/۰۳/۲۵
+License
+
+This project is released under the MIT License.
+
+---
+
+Author
+
+Mahdi Haidari Puri
+
+Founder & Lead Developer
+
+Project:
+Hermezgan Intelligent (HDP AI Platform)
+
+---
+
+Vision
+
+Create the first native AI platform dedicated to Hormozgan Province by integrating:
+
+- Artificial Intelligence
+- Geographic Intelligence
+- Transportation
+- Tourism
+- Public Services
+- Local Knowledge
+- Persian Conversational AI
+
+into one scalable, modular and production-ready ecosystem.
+
+---
+
+Current Repository Status
+
+- Modular Bridge Architecture
+- Geographic Migration Framework
+- Improved React Chat UI
+- BND Knowledge Dataset
+- SQLite Knowledge Database
+- OpenStreetMap Ready
+- Production-oriented Project Structure
+
+---
+
+⭐ If you find this project useful, please consider starring the repository and contributing to future development.
+## Release Notes
+
+### v2.0.0 (July 2026)
+
+### Added
+- Bridge v1 architecture
+- Database Bridge layer
+- Geographic normalization migration
+- BND knowledge dataset
+- BND import utility
+- Improved React Chat UI
+- Modular project structure
+
+### Improved
+- Chat interface
+- CSS components
+- Backend modularization
+- Database abstraction
+
+### Planned for v3.0
+- Vosk Speech Recognition
+- Offline AI Assistant
+- Knowledge Graph Engine
+- RAG Pipeline
+- Embedding Search
+- Multi-Agent AI
+- Smart Transportation Services
