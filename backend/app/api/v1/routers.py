@@ -1,14 +1,19 @@
 """API V1 Router Configuration"""
 
 from fastapi import APIRouter
+from app.api.v1.endpoints import chat, locations
 
 router = APIRouter()
+
+# Include endpoint routers
+router.include_router(chat.router)
+router.include_router(locations.router)
 
 # Chat Endpoints
 @router.post("/chat/message")
 async def send_message(message: str):
     """Send a message to the chat bot"""
-    return {"response": "Chat endpoint placeholder"}
+    return {"response": "Chat endpoint - use POST /api/v1/chat/message with ChatMessage schema"}
 
 # Knowledge Graph Endpoints
 @router.get("/graph/entities")
@@ -20,17 +25,6 @@ async def get_entities():
 async def get_relations():
     """Get all relations from knowledge graph"""
     return {"relations": []}
-
-# Location Endpoints
-@router.get("/locations/search")
-async def search_locations(query: str):
-    """Search for locations"""
-    return {"results": []}
-
-@router.get("/locations/nearest")
-async def nearest_services(latitude: float, longitude: float, service_type: str = None):
-    """Get nearest services"""
-    return {"services": []}
 
 # Analytics Endpoints
 @router.get("/analytics/stats")
