@@ -8,7 +8,7 @@ Unlike TourismAPI, this has no `fixed_filters` -- it's intentionally the
 rules (e.g. a `police` resource with a `phone` field), give it its own
 ResourceAPI subclass the same way hospitals/fuel/cameras/traffic did.
 """
-from app.api.base import ResourceAPI
+from api.base import ResourceAPI
 
 
 class PoiAPI(ResourceAPI):

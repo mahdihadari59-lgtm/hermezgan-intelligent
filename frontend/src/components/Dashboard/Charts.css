@@ -1,0 +1,138 @@
+.charts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.chart-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e9ecef;
+}
+
+.chart-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.chart-wrapper {
+  padding: 1rem 0;
+}
+
+.chart-bars {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  gap: 0.5rem;
+}
+
+.chart-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.chart-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 180px;
+  width: 100%;
+}
+
+.bar-users {
+  width: 40%;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.5s ease;
+  min-height: 10px;
+}
+
+.bar-queries {
+  width: 40%;
+  background: linear-gradient(180deg, #ffa502 0%, #ff6348 100%);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.5s ease;
+  min-height: 10px;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+
+.users-dot { background: #667eea; }
+.queries-dot { background: #ffa502; }
+
+/* Pie Chart */
+.pie-chart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pie-slice {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+}
+
+.pie-slice.hospital { background: #ff4757; }
+.pie-slice.restaurant { background: #ffa502; }
+.pie-slice.taxi { background: #2ed573; }
+.pie-slice.pharmacy { background: #1e90ff; }
+.pie-slice.school { background: #9b59b6; }
+
+.pie-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.pie-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+
+.hospital-dot { background: #ff4757; }
+.restaurant-dot { background: #ffa502; }
+.taxi-dot { background: #2ed573; }
+.pharmacy-dot { background: #1e90ff; }
+.school-dot { background: #9b59b6; }
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .pie-chart {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

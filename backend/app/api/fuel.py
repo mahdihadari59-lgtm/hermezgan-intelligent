@@ -1,5 +1,5 @@
 """api/fuel.py — fuel station resource."""
-from app.api.base import ResourceAPI
+from api.base import ResourceAPI
 
 
 class FuelAPI(ResourceAPI):

@@ -1,5 +1,5 @@
 """api/hospitals.py — hospital resource."""
-from app.api.base import ResourceAPI
+from api.base import ResourceAPI
 
 
 class HospitalAPI(ResourceAPI):

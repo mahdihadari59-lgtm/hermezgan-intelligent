@@ -1,26 +1,29 @@
-# Changelog
+# 📝 تاریخچه تغییرات
 
-## v2.1
+## [1.0.0] - 2024-01-01
 
-### Added
+### ✨ اضافه شده
+- سیستم احراز هویت JWT
+- چت‌بات هوشمند با NLP
+- نقشه تعاملی با Leaflet
+- اطلس دوربین‌های نظارتی
+- نقاط حادثه‌خیز
+- داشبورد تحلیلی
+- Docker Compose
+- مستندات کامل API
 
-- SQLiteService
-- Hybrid Graph Search
-- Improved Pipeline
-- Knowledge Join
-- Graph Optimization
+### 🐛 رفع باگ
+- رفع مشکل CORS
+- رفع مشکل زمان پاسخ چت‌بات
 
-### Fixed
+### 🔧 تغییرات
+- به‌روزرسانی FastAPI به 0.104
+- به‌روزرسانی React به 18.2
 
-- DATABASE_PATH
-- Graph Builder
-- SearchManager
-- EngineManager
-- Hybrid Search
-- SQLite Integration
+## [0.9.0] - 2023-12-15
 
-### Performance
-
-- Faster Graph Search
-- Better SQLite Access
-- Reduced Query Time
+### ✨ اضافه شده
+- نسخه اولیه Backend
+- نسخه اولیه Frontend
+- اتصال به PostgreSQL
+- اتصال به Redis

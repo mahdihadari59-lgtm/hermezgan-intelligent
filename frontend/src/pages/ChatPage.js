@@ -1,32 +1,44 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { ChatBox } from '../components/Chat';
-import { addMessage } from '../store/slices/chatSlice';
-import './ChatPage.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ChatBox } from "../components/Chat";
+import { addMessage, clearMessages } from "../store/slices/chatSlice";
+import "./ChatPage.css";
 
 const ChatPage = () => {
   const dispatch = useDispatch();
+  const { messages, isLoading, isTyping } = useSelector((state) => state.chat);
 
   useEffect(() => {
+    dispatch(clearMessages());
     dispatch(
       addMessage({
-        sender: 'bot',
-        text: 'سلام 👋\nبه هرمزگان هوشمند خوش آمدید.\nچطور می‌توانم کمکتان کنم؟',
-        avatar: '🌊',
+        text: "🌊 سلام! من دستیار هوشمند هرمزگان هستم. چگونه می‌تونم کمکتون کنم؟",
+        sender: "bot",
+        timestamp: Date.now(),
+        avatar: "🌊",
         suggestions: [
-          '🏥 نزدیک‌ترین بیمارستان',
-          '🍽️ رستوران‌های نزدیک',
-          '🚕 تاکسی آنلاین',
-          '🗺️ مکان‌های گردشگری'
-        ]
+          "🏥 نزدیک‌ترین بیمارستان",
+          "🍽️ رستوران‌های خوب",
+          "🚗 تاکسی‌های آنلاین",
+          "📍 خدمات نزدیک من",
+        ],
       })
     );
   }, [dispatch]);
 
+  const handleSendMessage = (msg) => {
+    // پیام قبلاً در MessageInput اضافه شده
+  };
+
   return (
     <div className="chat-page">
       <div className="chat-page-container">
-        <ChatBox />
+        <ChatBox
+          messages={messages}
+          isLoading={isLoading}
+          isTyping={isTyping}
+          onSendMessage={handleSendMessage}
+        />
       </div>
     </div>
   );

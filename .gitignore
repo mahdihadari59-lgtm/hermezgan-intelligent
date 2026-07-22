@@ -73,3 +73,36 @@ frontend/build/
 # =========================
 .DS_Store
 Thumbs.db
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Backups
+_archived_backups/
+*.bak
+*.backup
+*.gz
