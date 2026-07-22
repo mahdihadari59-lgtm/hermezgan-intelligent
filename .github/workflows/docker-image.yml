@@ -8,23 +8,29 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-
 jobs:
-  docker:
+  backend:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build Docker image
+      - name: Build Backend
         run: |
           docker build \
-            -t hermezgan-intelligent:latest \
-            -t hermezgan-intelligent:${{ github.sha }} \
-            -f Dockerfile .
+            -f backend/Dockerfile \
+            -t hermezgan-backend:${{ github.sha }} \
+            ./backend
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Frontend
+        run: |
+          docker build \
+            -f frontend/Dockerfile \
+            -t hermezgan-frontend:${{ github.sha }} \
+            ./frontend
