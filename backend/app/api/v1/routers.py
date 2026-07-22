@@ -1,81 +1,39 @@
-from fastapi import APIRouter, Query
-from geo.spatial_api import SpatialDB
-from app.api.tourism import TourismAPI
-from app.api.hospitals import HospitalAPI
-from app.api.fuel import FuelAPI
-from app.api.poi import PoiAPI
+"""API V1 Router Configuration"""
+
+from fastapi import APIRouter
 
 router = APIRouter()
 
-db = SpatialDB("geo.db")
+# Chat Endpoints
+@router.post("/chat/message")
+async def send_message(message: str):
+    """Send a message to the chat bot"""
+    return {"response": "Chat endpoint placeholder"}
 
+# Knowledge Graph Endpoints
+@router.get("/graph/entities")
+async def get_entities():
+    """Get all entities from knowledge graph"""
+    return {"entities": []}
 
-@router.get("/ping")
-async def ping():
-    return {"status": "pong"}
+@router.get("/graph/relations")
+async def get_relations():
+    """Get all relations from knowledge graph"""
+    return {"relations": []}
 
+# Location Endpoints
+@router.get("/locations/search")
+async def search_locations(query: str):
+    """Search for locations"""
+    return {"results": []}
 
-@router.get("/map/tourism")
-def tourism(
-    north: float,
-    south: float,
-    east: float,
-    west: float,
-    limit: int = Query(500),
-):
-    return TourismAPI.list_bbox(
-        db,
-        north=north,
-        south=south,
-        east=east,
-        west=west,
-        limit=limit,
-    )
+@router.get("/locations/nearest")
+async def nearest_services(latitude: float, longitude: float, service_type: str = None):
+    """Get nearest services"""
+    return {"services": []}
 
-
-@router.get("/map/hospitals")
-def hospitals(
-    north: float,
-    south: float,
-    east: float,
-    west: float,
-):
-    return HospitalAPI.list_bbox(
-        db,
-        north=north,
-        south=south,
-        east=east,
-        west=west,
-    )
-
-
-@router.get("/map/fuel")
-def fuel(
-    north: float,
-    south: float,
-    east: float,
-    west: float,
-):
-    return FuelAPI.list_bbox(
-        db,
-        north=north,
-        south=south,
-        east=east,
-        west=west,
-    )
-
-
-@router.get("/map/poi")
-def poi(
-    north: float,
-    south: float,
-    east: float,
-    west: float,
-):
-    return PoiAPI.list_bbox(
-        db,
-        north=north,
-        south=south,
-        east=east,
-        west=west,
-    )
+# Analytics Endpoints
+@router.get("/analytics/stats")
+async def get_statistics():
+    """Get system statistics"""
+    return {"stats": {}}

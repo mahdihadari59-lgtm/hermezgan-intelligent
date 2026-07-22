@@ -1,116 +1,50 @@
-# 🧠 hdp — hermezgan intelligent platform
+# 🌊 هرمزگان هوشمند
 
- Next generation native ai platform for Hormozgan province
+سیستم دانش‌گراف هوشمند شهر بندرعباس
 
- ---
+## 🚀 راه‌اندازی
 
- ## features
+```bash
+# با Docker
+docker-compose up -d
 
- - Hybrid AI search engine
- - knowledge graph
- - symbolic ai
- - intent detection
- - persian nlp
- - bandari dialect support
- - graph search
- - sqlite optimized database
- - semantic search
- - traffic intelligence
- - tourism intelligence
- - medical expert system
+# یا بدون Docker
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
 
- ---
+cd ../frontend
+npm install
+npm start
+```
 
- ## technology stack
+🌐 دسترسی‌ها
 
- - python
- - sqlite
- - fts5
- - bm25+
- - tf-idf
- - embeddings
- - knowledge graph
- - symbolic ai
- - hybrid search
- Project status
- ## current status
+· Frontend: http://localhost:3000
+· Backend: http://localhost:8000
+· API Docs: http://localhost:8000/api/docs
 
- |  component |  status |
- |-----------|--------|
- |  search engine |  ✅
- |  graph engine |  ✅
- |  hybrid engine |  ✅
- |  sqlite service |  ✅
- |  knowledge graph |  ✅
- |  embedding |  ✅
- |  traffic ai |  🚧
- |  voice ai |  🚧 |
-Statistics
-## project statistics
+🧪 تست
 
-- knowledge records : 3803+
-- SQLite Database : 1.2 GB
-- Graph Nodes : Active
-- Embeddings : 3803
-- Hybrid Search : Working
-- Search Pipeline : Working
+```bash
+cd backend && pytest tests/ -v --cov=app
+cd frontend && npm test -- --coverage
+```
 
-Architecture
-User
+📁 ساختار
 
-↓
+```
+hermezgan-intelligent/
+├── backend/          # FastAPI Backend
+├── frontend/         # React Frontend
+├── database/         # Migrations & Seeds
+├── docs/             # Documentation
+├── scripts/          # Utility Scripts
+└── archive/          # Archived files
+```
 
-Normalizer
+📝 مجوز
 
-↓
-
-Intent Engine
-
-↓
-
-Hybrid Search
-
-├── Graph Search
-
-├── BM25+
-
-├── TF-IDF
-
-├── Embedding Search
-
-└── Synonym Engine
-
-↓
-
-Scorer
-
-↓
-
-Pipeline
-
-↓
-
-Answer
-Latest Changes
-
-## Latest Improvements
-
-### v2.1
-
-- SQLiteService Migration
-- SearchManager Refactor
-- Hybrid Engine Upgrade
-- Graph Join Optimization
-- Pipeline Improvements
-- Database Path Fix
-- Performance Optimization
-
-Image
-
-s
-Place images in README.
- docs/images/architecture.png
-
- docs/images/search_pipeline.png
-
- docs/images/dashboard.png
+MIT License

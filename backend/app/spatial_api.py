@@ -1,28 +1,35 @@
 #!/usr/bin/env python3
 """
-geo/spatial_api.py — spatial query + CRUD layer over geo.db's R-Tree indexes.
+spatial_api.py — spatial query layer over geo.db's R-Tree indexes.
 
-Pure stdlib (sqlite3 + math + json + time). No shapely/geopandas/PostGIS.
+Pure stdlib (sqlite3 + math + json). No shapely/geopandas/PostGIS.
 
 R-Tree gives a fast bounding-box prefilter; exact great-circle distance
 (haversine) is computed in Python only over the small candidate set the
-R-Tree returns, then used for radius filtering / nearest-k sorting.
+R-Tree returns, then used for radius filtering / nearest-k sorting. This is
+the standard, documented pattern for using SQLite's R-Tree module for
+"distance" queries, since R-Tree itself only knows about boxes.
 
-This module is intentionally "dumb" about field semantics (JSON encoding,
-enum validation, defaults) -- that's the api/ layer's job (see api/base.py).
-SpatialDB just moves already-prepared column dicts in and out of SQLite and
-guarantees the R-Tree stays in sync via the triggers in schema.sql.
+Usage:
+    from spatial_api import SpatialDB
+
+    db = SpatialDB("geo.db")
+    cameras_in_view = db.query_bbox("cameras", north=27.30, south=27.10, east=56.35, west=56.20)
+    nearby_hospitals = db.query_radius("hospitals", lat=27.2158, lng=56.2808, radius_km=5)
+    closest_fuel = db.query_nearest("fuel_stations", lat=27.2158, lng=56.2808, k=3)
 """
 import json
 import math
 import sqlite3
-import time
 from dataclasses import dataclass
 from typing import Optional
 
 
 EARTH_RADIUS_KM = 6371.0088
 
+# Table registry: which columns to select back from the main table, and
+# whether the table's PK matches its rtree table's `id` 1:1 (true for every
+# table in schema.sql after the cameras fix).
 TABLE_COLUMNS = {
     "pois": "id, category, name, lat, lng, description, tags_json, updated_at",
     "traffic": "id, name, lat, lng, level, speed_kmh, delay_min, updated_at",
@@ -41,7 +48,7 @@ def haversine_km(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
 
 
 def km_to_deg_lat(km: float) -> float:
-    return km / 111.32
+    return km / 111.32  # ~constant everywhere
 
 
 def km_to_deg_lng(km: float, at_lat: float) -> float:
@@ -49,14 +56,11 @@ def km_to_deg_lng(km: float, at_lat: float) -> float:
 
 
 def _row_to_dict(row: sqlite3.Row) -> dict:
-    """Decode *_json columns back into their `types`/`tags` Python-facing
-    names, and 0/1 integer flags into booleans. Purely a read-side
-    convenience -- write-side field naming lives in api/base.py."""
     d = dict(row)
-    for key in list(d.keys()):
-        if key.endswith("_json") and d[key]:
+    for key in ("tags_json", "types_json"):
+        if key in d and d[key]:
             try:
-                d[key[: -len("_json")]] = json.loads(d.pop(key))
+                d[key.replace("_json", "")] = json.loads(d.pop(key))
             except (json.JSONDecodeError, TypeError):
                 pass
     for key in ("emergency", "gasoline", "cng", "diesel"):
@@ -65,24 +69,14 @@ def _row_to_dict(row: sqlite3.Row) -> dict:
     return d
 
 
-class SpatialDBError(Exception):
-    pass
-
-
 @dataclass
 class SpatialDB:
     db_path: str
-    # False for bulk imports: caller commits explicitly (see geo/import_osm_geodata.py).
-    # True (default) for the REST server: every write is its own transaction.
-    autocommit: bool = True
 
     def __post_init__(self):
-        self._conn = sqlite3.connect(self.db_path, check_same_thread=False)
+        self._conn = sqlite3.connect(self.db_path)
         self._conn.row_factory = sqlite3.Row
         self._conn.execute("PRAGMA foreign_keys = ON")
-
-    def commit(self):
-        self._conn.commit()
 
     def close(self):
         self._conn.close()
@@ -93,48 +87,35 @@ class SpatialDB:
     def __exit__(self, *exc):
         self.close()
 
-    def _check_table(self, table: str) -> None:
-        if table not in TABLE_COLUMNS:
-            raise SpatialDBError(f"unknown spatial table: {table}")
-
     def _columns(self, table: str) -> str:
-        self._check_table(table)
+        if table not in TABLE_COLUMNS:
+            raise ValueError(f"Unknown spatial table: {table}")
         return TABLE_COLUMNS[table]
 
-    # -- Bounding box (map viewport) ----------------------------------
+    # ── Bounding box (map viewport) ────────────────────────────────────
     def query_bbox(self, table: str, north: float, south: float, east: float, west: float,
-                    limit: int = 500, where: Optional[dict] = None) -> list:
-        """`where`: optional exact-match column filters, e.g. {"category": "tourism"} --
-        used so resources that share a table (like `pois`) don't leak each
-        other's rows. Column names are only ever taken from TABLE_COLUMNS-
-        validated callers (api/base.py), never raw user input, so this stays
-        injection-safe despite the f-string."""
+                    limit: int = 500) -> list:
         cols = self._columns(table)
-        select_cols = ", ".join(f"m.{c.strip()}" for c in cols.split(","))
-        extra_sql = ""
-        params = [north, south, east, west]
-        if where:
-            extra_sql = " AND " + " AND ".join(f"m.{k} = ?" for k in where)
-            params += list(where.values())
         sql = f"""
-            SELECT {select_cols} FROM {table} m
+            SELECT m.* FROM {table} m
             JOIN {table}_rtree r ON r.id = m.id
             WHERE r.min_lat <= ? AND r.max_lat >= ?
               AND r.min_lng <= ? AND r.max_lng >= ?
-              {extra_sql}
             LIMIT ?
         """
-        rows = self._conn.execute(sql, (*params, limit)).fetchall()
+        # Replace m.* with explicit columns for a stable, documented shape
+        sql = sql.replace("m.*", ", ".join(f"m.{c.strip()}" for c in cols.split(",")))
+        rows = self._conn.execute(sql, (north, south, east, west, limit)).fetchall()
         return [_row_to_dict(r) for r in rows]
 
-    # -- Radius search ("nearby") --------------------------------------
+    # ── Radius search ("nearby") ───────────────────────────────────────
     def query_radius(self, table: str, lat: float, lng: float, radius_km: float,
-                      limit: Optional[int] = None, where: Optional[dict] = None) -> list:
+                      limit: Optional[int] = None) -> list:
         dlat = km_to_deg_lat(radius_km)
         dlng = km_to_deg_lng(radius_km, lat)
         candidates = self.query_bbox(
             table, north=lat + dlat, south=lat - dlat, east=lng + dlng, west=lng - dlng,
-            limit=limit * 5 if limit else 2000, where=where,
+            limit=limit * 5 if limit else 2000,
         )
         results = []
         for row in candidates:
@@ -145,7 +126,7 @@ class SpatialDB:
         results.sort(key=lambda r: r["distance_km"])
         return results[:limit] if limit else results
 
-    # -- Nearest-k (expanding radius search) ----------------------------
+    # ── Nearest-k (expanding radius search) ────────────────────────────
     def query_nearest(self, table: str, lat: float, lng: float, k: int = 5,
                        max_radius_km: float = 100.0) -> list:
         radius = 2.0
@@ -154,49 +135,20 @@ class SpatialDB:
             if len(results) >= k:
                 return results[:k]
             radius *= 2
+        # last attempt at the max radius, return whatever we found
         return self.query_radius(table, lat, lng, max_radius_km, limit=k)
 
-    def get(self, table: str, obj_id: int) -> Optional[dict]:
-        cols = self._columns(table)
-        select_cols = ", ".join(c.strip() for c in cols.split(","))
-        row = self._conn.execute(
-            f"SELECT {select_cols} FROM {table} WHERE id = ?", (obj_id,)
-        ).fetchone()
-        return _row_to_dict(row) if row else None
-
-    # -- Writes (R-Tree stays in sync automatically via schema triggers) -
-    def insert(self, table: str, **columns) -> int:
-        """`columns` must already use real DB column names (e.g. `types_json`,
-        not `types`) with values pre-serialized (JSON strings, not lists)."""
-        self._check_table(table)
-        columns.setdefault("updated_at", int(time.time()))
-        cols = ", ".join(columns.keys())
-        placeholders = ", ".join("?" for _ in columns)
+    # ── Simple insert helper (keeps R-Tree in sync via schema triggers) ─
+    def insert(self, table: str, **fields) -> int:
+        if table not in TABLE_COLUMNS:
+            raise ValueError(f"Unknown spatial table: {table}")
+        for json_field in ("tags", "types"):
+            if json_field in fields:
+                fields[f"{json_field}_json"] = json.dumps(fields.pop(json_field), ensure_ascii=False)
+        cols = ", ".join(fields.keys())
+        placeholders = ", ".join("?" for _ in fields)
         cur = self._conn.execute(
-            f"INSERT INTO {table} ({cols}) VALUES ({placeholders})", tuple(columns.values())
+            f"INSERT INTO {table} ({cols}) VALUES ({placeholders})", tuple(fields.values())
         )
-        if self.autocommit:
-            self._conn.commit()
+        self._conn.commit()
         return cur.lastrowid
-
-    def update(self, table: str, obj_id: int, **columns) -> None:
-        self._check_table(table)
-        if not columns:
-            return
-        columns["updated_at"] = int(time.time())
-        set_clause = ", ".join(f"{k} = ?" for k in columns)
-        cur = self._conn.execute(
-            f"UPDATE {table} SET {set_clause} WHERE id = ?", (*columns.values(), obj_id)
-        )
-        if self.autocommit:
-            self._conn.commit()
-        if cur.rowcount == 0:
-            raise SpatialDBError(f"{table} id={obj_id} not found")
-
-    def delete(self, table: str, obj_id: int) -> None:
-        self._check_table(table)
-        cur = self._conn.execute(f"DELETE FROM {table} WHERE id = ?", (obj_id,))
-        if self.autocommit:
-            self._conn.commit()
-        if cur.rowcount == 0:
-            raise SpatialDBError(f"{table} id={obj_id} not found")

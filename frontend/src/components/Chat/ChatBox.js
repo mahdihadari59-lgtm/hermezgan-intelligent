@@ -1,21 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import MessageList from './MessageList';
-import MessageInput from './MessageInput';
-import './ChatBox.css';
+import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import MessageList from "./MessageList";
+import MessageInput from "./MessageInput";
+import "./ChatBox.css";
 
 const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
   const messagesEndRef = useRef(null);
-  const { isSidebarOpen } = useSelector((state) => state.ui);
 
-  // Auto scroll to bottom
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
   return (
     <div className="chat-box-container">
-      {/* Header */}
       <div className="chat-box-header">
         <div className="header-left">
           <h2 className="chat-title">🌊 هرمزگان هوشمند</h2>
@@ -25,26 +22,19 @@ const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
           </div>
         </div>
         <div className="header-actions">
-          <button type="button" className="header-btn" title="تنظیمات" aria-label="تنظیمات">
+          <button className="header-btn" title="تنظیمات">
             ⚙️
           </button>
-          <button type="button" className="header-btn" title="صدای روشن/خاموش" aria-label="صدای روشن/خاموش">
+          <button className="header-btn" title="صدای روشن/خاموش">
             🔊
           </button>
-          <button type="button" className="header-btn" title="بیشتر" aria-label="منوی بیشتر">
+          <button className="header-btn" title="بیشتر">
             ⋯
           </button>
         </div>
       </div>
-
-      {/* Messages */}
       <MessageList messages={messages} isTyping={isTyping} isLoading={isLoading} />
-      <div ref={messagesEndRef} />
-
-      {/* Input */}
       <MessageInput onSendMessage={onSendMessage} />
-
-      {/* Loading Overlay */}
       {isLoading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>

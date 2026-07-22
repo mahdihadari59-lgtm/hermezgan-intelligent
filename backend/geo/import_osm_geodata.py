@@ -33,10 +33,10 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # backend/
 
 from geo.spatial_api import SpatialDB
-from app.api.hospitals import HospitalAPI
-from app.api.fuel import FuelAPI
-from app.api.poi import PoiAPI
-from app.api.base import ValidationError
+from api.hospitals import HospitalAPI
+from api.fuel import FuelAPI
+from api.poi import PoiAPI
+from api.base import ValidationError
 
 # Hormozgan province rough bounding box -- used only to flag (not drop)
 # suspicious coordinates in the summary. Hajiabad/Bastak legitimately reach

@@ -10,7 +10,7 @@ filter value that matches reality. Related categories the scrape keeps
 separate (museum, beach, island) are reachable via the generic /poi route
 if you want them folded in later.
 """
-from app.api.base import ResourceAPI
+from api.base import ResourceAPI
 
 
 class TourismAPI(ResourceAPI):
