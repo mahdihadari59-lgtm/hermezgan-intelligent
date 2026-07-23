@@ -1,13 +1,14 @@
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.responses import ORJSONResponse
+from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import logging
 import os
 from dotenv import load_dotenv
 
 from app.api.v1 import chat, locations, analytics, cameras, hotspots
+from app.api.v1.ping import router as ping_router
 
 # Import Hybrid Engine
 from engine.hybrid.hybrid_engine import HybridEngine
@@ -42,11 +43,11 @@ app = FastAPI(
     title="هرمزگان هوشمند API",
     description="سیستم دانش‌گراف هوشمند استان هرمزگان",
     version="1.0.0",
-    default_response_class=ORJSONResponse,
+    default_response_class=JSONResponse,
     lifespan=lifespan
 )
 
-app.add_middleware(GZIPMiddleware, minimum_size=1000)
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://localhost:5000"],
@@ -56,10 +57,15 @@ app.add_middleware(
 )
 
 app.include_router(chat.router, prefix="/api/v1", tags=["Chat"])
+app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(locations.router, prefix="/api/v1", tags=["Locations"])
+app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(analytics.router, prefix="/api/v1", tags=["Analytics"])
+app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(cameras.router, prefix="/api/v1", tags=["Cameras"])
+app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(hotspots.router, prefix="/api/v1", tags=["Hotspots"])
+app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 
 # ============================================================
 # Hybrid Search Endpoint

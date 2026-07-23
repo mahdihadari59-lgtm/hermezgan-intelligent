@@ -9,7 +9,7 @@ def get_pagination(
     page: int = Query(1, ge=1, description="شماره صفحه"),
     limit: int = Query(100, ge=1, le=1000, description="تعداد آیتم در هر صفحه"),
     sort_by: Optional[str] = Query(None, description="فیلد مرتب‌سازی"),
-    sort_order: str = Query("desc", regex="^(asc|desc)$", description="ترتیب مرتب‌سازی")
+    sort_order: str = Query("desc", pattern="^(asc|desc)$", description="ترتیب مرتب‌سازی")
 ) -> PaginationParams:
     """
     دریافت پارامترهای صفحه‌بندی

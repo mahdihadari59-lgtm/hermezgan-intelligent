@@ -6,7 +6,7 @@ from typing import Optional, List, Dict
 from datetime import datetime
 import logging
 
-from app.core.exceptions import ValidationException
+from app.core.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -43,14 +43,14 @@ class FileService:
             Dict: اطلاعات فایل ذخیره شده
 
         Raises:
-            ValidationException: اگر پسوند مجاز نباشد
+            ValidationError: اگر پسوند مجاز نباشد
         """
         # بررسی پسوند
         extension = Path(filename).suffix.lower()
         allowed_extensions = self._get_allowed_extensions(category)
 
         if extension not in allowed_extensions:
-            raise ValidationException(f"پسوند {extension} برای دسته {category} مجاز نیست")
+            raise ValidationError(f"پسوند {extension} برای دسته {category} مجاز نیست")
 
         # تولید نام یکتا
         unique_name = f"{uuid.uuid4().hex}_{filename}"

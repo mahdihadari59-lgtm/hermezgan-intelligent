@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, DateTime, Boolean, func
 from sqlalchemy.ext.declarative import declared_attr
 from datetime import datetime
-from app.core.database import Base
+from app.database.session import Base
 
 
 class BaseModel(Base):

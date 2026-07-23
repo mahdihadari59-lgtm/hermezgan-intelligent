@@ -1,21 +1,25 @@
-from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+# ============================================================
+# chat.py - Router چت‌بات
+# ============================================================
+from fastapi import APIRouter, HTTPException, Depends, status
 from typing import Optional, List
-from sqlalchemy.orm import Session
-from sqlalchemy import func
+from pydantic import BaseModel, Field
 import uuid
-
-from app.database.session import get_db
-from app.services.chat_service import ChatService
+import time
 
 router = APIRouter(prefix="/chat", tags=["Chat"])
 
+
+# ============================================================
+# Schemas
+# ============================================================
 class ChatMessageRequest(BaseModel):
-    message: str
-    user_id: str = "anonymous"
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    session_id: Optional[str] = None
+    message: str = Field(..., min_length=1, description="متن پیام")
+    user_id: str = Field(..., description="شناسه کاربر")
+    latitude: Optional[float] = Field(None, ge=-90, le=90, description="عرض جغرافیایی")
+    longitude: Optional[float] = Field(None, ge=-180, le=180, description="طول جغرافیایی")
+    session_id: Optional[str] = Field(None, description="شناسه جلسه")
+
 
 class ChatMessageResponse(BaseModel):
     response: str
@@ -24,94 +28,114 @@ class ChatMessageResponse(BaseModel):
     suggestions: List[str] = []
     processing_time: float
     from_cache: bool = False
-    message_id: Optional[int] = None
-    session_id: Optional[str] = None
+    location: Optional[dict] = None
+    session_id: str
+
 
 class ConversationResponse(BaseModel):
     session_id: str
-    messages: List[dict]
-    total: int
+    messages: List[dict] = []
 
-class RatingRequest(BaseModel):
-    message_id: int
-    helpful: bool
 
+# ============================================================
+# Endpoints
+# ============================================================
 @router.post("/message", response_model=ChatMessageResponse)
-async def send_message(
-    data: ChatMessageRequest,
-    db: Session = Depends(get_db)
-):
+async def send_message(data: ChatMessageRequest):
+    """
+    ارسال پیام به چت‌بات
+    """
     try:
-        chat_service = ChatService(db)
+        start_time = time.time()
+        
+        # تولید session_id اگر وجود نداشته باشد
         session_id = data.session_id or str(uuid.uuid4())
         
-        response = await chat_service.process_message(
-            user_id=data.user_id,
-            message=data.message,
-            latitude=data.latitude,
-            longitude=data.longitude,
+        # تشخیص ساده نیت
+        intent = "general"
+        confidence = 0.5
+        suggestions = []
+        response_text = ""
+        
+        message = data.message.lower()
+        
+        # تشخیص نیت بر اساس کلمات کلیدی
+        if any(word in message for word in ["بیمارستان", "بیمار", "درمان", "داکتر", "پزشک"]):
+            intent = "hospital"
+            confidence = 0.9
+            if data.latitude and data.longitude:
+                response_text = "نزدیک‌ترین بیمارستان: بیمارستان امام خمینی - ۲.۵ کیلومتر"
+                suggestions = ["📞 تماس", "🧭 مسیریابی", "دیگر بیمارستان‌ها"]
+            else:
+                response_text = "لطفاً موقعیت خود را به اشتراک بگذارید تا بیمارستان‌های نزدیک را پیدا کنم."
+                suggestions = ["📍 اشتراک موقعیت"]
+                
+        elif any(word in message for word in ["رستوران", "غذا", "کباب", "شام", "ناهار"]):
+            intent = "restaurant"
+            confidence = 0.9
+            if data.latitude and data.longitude:
+                response_text = "رستوران تالار خلیج برای شما پیشنهاد می‌شود - ۱.۲ کیلومتر"
+                suggestions = ["🍽️ صفحه رستوران", "⭐ نظرات", "📞 تماس"]
+            else:
+                response_text = "لطفاً موقعیت خود را به اشتراک بگذارید تا رستوران‌های نزدیک را پیدا کنم."
+                suggestions = ["📍 اشتراک موقعیت"]
+                
+        elif any(word in message for word in ["تاکسی", "خودرو", "رفتن", "حمل"]):
+            intent = "taxi"
+            confidence = 0.9
+            response_text = "تاکسی برای شما فراخوانده شد. راننده ۲ دقیقه دیگر می‌رسد"
+            suggestions = ["⏱️ زمان باقی‌مانده", "📞 تماس راننده", "❌ لغو"]
+            
+        elif any(word in message for word in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
+            intent = "greeting"
+            confidence = 0.95
+            response_text = "سلام! 🌊 من دستیار هوشمند هرمزگان هستم. چطور می‌تونم کمکتون کنم؟"
+            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
+            
+        else:
+            intent = "general"
+            confidence = 0.3
+            response_text = "چطور می‌تونم کمکتون کنم؟ می‌تونم اطلاعات خدمات، بیمارستان‌ها یا رستوران‌ها را برای شما جستجو کنم."
+            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
+        
+        processing_time = time.time() - start_time
+        
+        return ChatMessageResponse(
+            response=response_text,
+            intent=intent,
+            confidence=confidence,
+            suggestions=suggestions,
+            processing_time=processing_time,
+            from_cache=False,
+            location={"lat": data.latitude, "lng": data.longitude} if data.latitude and data.longitude else None,
             session_id=session_id
         )
         
-        response['session_id'] = session_id
-        return ChatMessageResponse(**response)
-    
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"خطا در پردازش پیام: {str(e)}")
-
-@router.get("/history/{session_id}", response_model=ConversationResponse)
-async def get_conversation_history(
-    session_id: str,
-    limit: int = 50,
-    db: Session = Depends(get_db)
-):
-    try:
-        chat_service = ChatService(db)
-        messages = chat_service.get_conversation_history(session_id, limit)
-        
-        return ConversationResponse(
-            session_id=session_id,
-            messages=messages,
-            total=len(messages)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"خطا در پردازش پیام: {str(e)}"
         )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"خطا در دریافت تاریخچه: {str(e)}")
 
-@router.post("/rate")
-async def rate_response(
-    data: RatingRequest,
-    db: Session = Depends(get_db)
-):
-    try:
-        chat_service = ChatService(db)
-        success = chat_service.rate_response(data.message_id, data.helpful)
-        
-        if not success:
-            raise HTTPException(status_code=404, detail="پیام یافت نشد")
-        
-        return {"status": "rated", "message_id": data.message_id, "helpful": data.helpful}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"خطا در ارزیابی: {str(e)}")
+
+@router.get("/history/{user_id}", response_model=ConversationResponse)
+async def get_chat_history(user_id: str, limit: int = 50):
+    """
+    دریافت تاریخچه چت کاربر
+    """
+    return ConversationResponse(
+        session_id=f"session_{user_id}",
+        messages=[]
+    )
+
 
 @router.get("/stats")
-async def get_chat_stats(db: Session = Depends(get_db)):
-    from app.models.chat import ChatMessage, ChatConversation
-    
-    total_messages = db.query(ChatMessage).count()
-    total_conversations = db.query(ChatConversation).count()
-    
-    avg_processing_time = db.query(
-        func.avg(ChatMessage.processing_time)
-    ).scalar()
-    
-    intents = db.query(
-        ChatMessage.intent,
-        func.count(ChatMessage.id).label('count')
-    ).group_by(ChatMessage.intent).all()
-    
+async def get_chat_stats():
+    """
+    دریافت آمار چت‌بات
+    """
     return {
-        "total_messages": total_messages,
-        "total_conversations": total_conversations,
-        "avg_processing_time": round(avg_processing_time or 0, 3),
-        "intents": [{"intent": i[0], "count": i[1]} for i in intents]
+        "total_messages": 0,
+        "avg_processing_time": 0,
+        "intents": []
     }

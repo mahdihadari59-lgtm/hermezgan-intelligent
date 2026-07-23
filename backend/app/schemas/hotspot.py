@@ -1,61 +1,38 @@
-from pydantic import BaseModel, Field
-from typing import Optional, List
-from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class HotspotBase(BaseModel):
-    """کلاس پایه نقطه حادثه‌خیز"""
-    type: str = Field(..., max_length=50, description="نوع حادثه")
-    latitude: float = Field(..., ge=-90, le=90, description="عرض جغرافیایی")
-    longitude: float = Field(..., ge=-180, le=180, description="طول جغرافیایی")
-    title: str = Field(..., max_length=255, description="عنوان")
-    description: Optional[str] = Field(None, description="توضیحات")
-    severity: str = Field(..., max_length=20, description="شدت")
-    reported_by: Optional[str] = Field(None, max_length=255, description="گزارش‌دهنده")
+    type: str = Field(..., description="نوع حادثه")
+    lat: float = Field(..., ge=-90, le=90, description="عرض جغرافیایی")
+    lng: float = Field(..., ge=-180, le=180, description="طول جغرافیایی")
+    title: str = Field(..., min_length=3, max_length=255, description="عنوان")
+    description: str = Field(..., min_length=5, max_length=500, description="توضیحات")
+    severity: str = Field(..., description="شدت")
+
+    model_config = ConfigDict(from_attributes=True, str_strip_whitespace=True)
 
 
 class HotspotCreate(HotspotBase):
-    """ایجاد نقطه حادثه‌خیز جدید"""
-    pass
-
-
-class HotspotUpdate(BaseModel):
-    """به‌روزرسانی نقطه حادثه‌خیز"""
-    type: Optional[str] = Field(None, max_length=50)
-    latitude: Optional[float] = Field(None, ge=-90, le=90)
-    longitude: Optional[float] = Field(None, ge=-180, le=180)
-    title: Optional[str] = Field(None, max_length=255)
-    description: Optional[str] = None
-    severity: Optional[str] = Field(None, max_length=20)
-    status: Optional[str] = Field(None, max_length=20)
-    reported_by: Optional[str] = Field(None, max_length=255)
+    reported_by: str = Field("کاربر", description="گزارش‌دهنده")
 
 
 class HotspotResponse(HotspotBase):
-    """پاسخ نقطه حادثه‌خیز"""
     id: int
-    status: str = "active"
-    reported_at: datetime
-    updated_at: Optional[datetime] = None
-    distance: Optional[float] = Field(None, description="فاصله بر حسب کیلومتر")
+    status: str
+    reported_by: str
+    reported_at: str
+    updated_at: Optional[str] = None
 
-    class Config:
-        from_attributes = True
-
-
-class HotspotSummary(BaseModel):
-    """خلاصه نقاط حادثه‌خیز"""
-    total: int
-    by_type: List[dict]
-    by_severity: List[dict]
-    recent: List[HotspotResponse]
+    model_config = ConfigDict(from_attributes=True)
 
 
-class HotspotFilter(BaseModel):
-    """فیلتر نقاط حادثه‌خیز"""
+class HotspotFilterParams(BaseModel):
     type: Optional[str] = Field(None, description="نوع حادثه")
     severity: Optional[str] = Field(None, description="شدت")
     status: Optional[str] = Field(None, description="وضعیت")
-    latitude: Optional[float] = Field(None, ge=-90, le=90, description="عرض جغرافیایی")
-    longitude: Optional[float] = Field(None, ge=-180, le=180, description="طول جغرافیایی")
-    radius: float = Field(5.0, ge=0, le=50, description="شعاع جستجو بر حسب کیلومتر")
+    lat: Optional[float] = Field(None, ge=-90, le=90)
+    lng: Optional[float] = Field(None, ge=-180, le=180)
+    radius: float = Field(5, ge=0.5, le=50)
+
+    model_config = ConfigDict(from_attributes=True)

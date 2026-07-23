@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from typing import Optional, List, Dict, Any
 import logging
 
-from app.core.exceptions import NotFoundException, ConflictException, ValidationException
+from app.core.exceptions import NotFoundException, ConflictError, ValidationError
 from app.repositories.user_repository import UserRepository
 from app.models.user import User
 from app.schemas.user import UserUpdate
@@ -42,15 +42,15 @@ class UserService:
         # بررسی تکراری بودن
         if data.username and data.username != user.username:
             if self.user_repo.get_by_username(data.username):
-                raise ConflictException("نام کاربری قبلاً استفاده شده است")
+                raise ConflictError("نام کاربری قبلاً استفاده شده است")
 
         if data.email and data.email != user.email:
             if self.user_repo.get_by_email(data.email):
-                raise ConflictException("ایمیل قبلاً ثبت شده است")
+                raise ConflictError("ایمیل قبلاً ثبت شده است")
 
         if data.phone and data.phone != user.phone:
             if self.user_repo.get_by_phone(data.phone):
-                raise ConflictException("شماره تلفن قبلاً ثبت شده است")
+                raise ConflictError("شماره تلفن قبلاً ثبت شده است")
 
         return self.user_repo.update(user_id, **data.dict(exclude_unset=True))
 

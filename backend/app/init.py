@@ -1,3 +1,0 @@
-
-Hermezgan Intelligent Backend App
-

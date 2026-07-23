@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Float, DateTime, Index, ForeignKey
+from sqlalchemy import JSON, Column, Integer, String, Text, Float, DateTime, Index, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -22,7 +22,7 @@ class Hotspot(BaseModel, TimestampMixin):
     
     images = Column(JSON, nullable=True)
     
-    metadata = Column(JSON, nullable=True)
+    extra_metadata = Column("metadata", JSON, nullable=True)
     
     service_id = Column(Integer, ForeignKey('services.id'), nullable=True)
     service = relationship("Service", back_populates="hotspots")

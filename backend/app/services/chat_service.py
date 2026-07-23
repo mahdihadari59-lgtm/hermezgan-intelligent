@@ -1,176 +1,104 @@
 import time
-import hashlib
-import json
-from typing import Dict, Optional, List
-from datetime import datetime, timedelta
-from sqlalchemy.orm import Session
-from sqlalchemy import func
-
-from app.models.chat import ChatConversation, ChatMessage, ChatCache
+import uuid
+from typing import Optional, Dict, Any, List
+from datetime import datetime, timezone
 
 class ChatService:
-    def __init__(self, db: Session):
+    def __init__(self, db=None):
         self.db = db
-        self.CACHE_TTL = 3600
-    
-    def _generate_cache_key(self, message: str, latitude: float, longitude: float) -> str:
-        key_str = f"{message}:{latitude}:{longitude}"
-        return hashlib.md5(key_str.encode()).hexdigest()
-    
-    def _get_from_cache(self, message: str, latitude: float, longitude: float) -> Optional[Dict]:
-        cache_key = self._generate_cache_key(message, latitude, longitude)
-        
-        db_cache = self.db.query(ChatCache).filter(
-            ChatCache.query_hash == cache_key,
-            ChatCache.expires_at > datetime.utcnow()
-        ).first()
-        
-        if db_cache:
-            db_cache.hits += 1
-            self.db.commit()
-            return db_cache.response
-        
-        return None
-    
-    def _set_cache(self, message: str, latitude: float, longitude: float, response: Dict):
-        cache_key = self._generate_cache_key(message, latitude, longitude)
-        expires_at = datetime.utcnow() + timedelta(seconds=self.CACHE_TTL)
-        
-        db_cache = ChatCache(
-            query_hash=cache_key,
-            response=response,
-            expires_at=expires_at
-        )
-        self.db.add(db_cache)
-        self.db.commit()
-    
-    def _detect_intent(self, message: str) -> tuple:
-        intents = {
-            'hospital': ['بیمارستان', 'بیمار', 'درمان', 'داکتر', 'پزشک'],
-            'restaurant': ['رستوران', 'غذا', 'کباب', 'شام', 'نهار'],
-            'taxi': ['تاکسی', 'خودرو', 'رفتن', 'حمل', 'مسافر'],
-            'location': ['کجا', 'نزدیک', 'فاصله', 'موقعیت', 'مکان'],
-        }
-        
-        for intent, keywords in intents.items():
-            if any(k in message for k in keywords):
-                return intent, 0.9
-        
-        return 'general', 0.5
-    
-    async def process_message(
-        self,
-        user_id: str,
-        message: str,
-        latitude: Optional[float] = None,
-        longitude: Optional[float] = None,
-        session_id: Optional[str] = None
-    ) -> Dict:
+        self._cache = {}
+
+    def process_message(self, message: str, user_id: str, latitude: Optional[float] = None, longitude: Optional[float] = None) -> Dict[str, Any]:
         start_time = time.time()
+        msg_lower = message.lower()
+        intent = "general"
+        confidence = 0.5
+        response = ""
+        suggestions = []
         
-        cached = self._get_from_cache(message, latitude or 0, longitude or 0)
-        if cached:
-            cached['from_cache'] = True
-            return cached
+        # تشخیص نیت
+        if any(w in msg_lower for w in ["کجا", "نزدیک", "فاصله", "موقعیت", "مکان", "آدرس", "محله", "منطقه"]):
+            intent = "location_query"
+            confidence = 0.85
+            response = "موقعیت شما در حال بررسی است."
+            suggestions = ["📍 اشتراک موقعیت"]
+        elif any(w in msg_lower for w in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
+            intent = "greeting"
+            confidence = 0.95
+            response = "سلام! 🌊 من دستیار هوشمند هرمزگان هستم."
+            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
+        elif any(w in msg_lower for w in ["بیمارستان", "بیمار", "درمان", "داکتر", "پزشک"]):
+            intent = "hospital"
+            confidence = 0.9
+            if latitude and longitude:
+                response = "نزدیک‌ترین بیمارستان: بیمارستان امام خمینی - ۲.۵ کیلومتر"
+                suggestions = ["📞 تماس", "🧭 مسیریابی"]
+            else:
+                response = "لطفاً موقعیت خود را به اشتراک بگذارید."
+                suggestions = ["📍 اشتراک موقعیت"]
+        elif any(w in msg_lower for w in ["رستوران", "غذا", "کباب", "شام", "ناهار"]):
+            intent = "restaurant"
+            confidence = 0.9
+            response = "رستوران تالار خلیج - ۱.۲ کیلومتر"
+            suggestions = ["🍽️ صفحه رستوران", "⭐ نظرات"]
+        elif any(w in msg_lower for w in ["تاکسی", "خودرو", "رفتن", "اسنپ", "تپسی"]):
+            intent = "taxi"
+            confidence = 0.9
+            response = "تاکسی برای شما فراخوانده شد."
+            suggestions = ["⏱️ زمان", "📞 تماس"]
+        else:
+            response = "چطور می‌تونم کمکتون کنم؟"
+            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
         
-        conversation = None
-        if session_id:
-            conversation = self.db.query(ChatConversation).filter(
-                ChatConversation.session_id == session_id
-            ).first()
-        
-        if not conversation:
-            conversation = ChatConversation(
-                user_id=user_id,
-                session_id=session_id or f"{user_id}_{int(time.time())}",
-                latitude=latitude,
-                longitude=longitude,
-            )
-            self.db.add(conversation)
-            self.db.commit()
-        
-        intent, confidence = self._detect_intent(message)
-        bot_response = self._generate_response(intent, message, latitude, longitude)
-        
-        processing_time = time.time() - start_time
-        chat_message = ChatMessage(
-            conversation_id=conversation.id,
-            user_message=message,
-            bot_response=bot_response['response'],
-            intent=intent,
-            confidence=confidence,
-            processing_time=processing_time,
-            location={"lat": latitude, "lng": longitude} if latitude and longitude else None,
-        )
-        self.db.add(chat_message)
-        self.db.commit()
-        
-        response = {
-            "response": bot_response['response'],
+        return {
+            "message": message,
+            "response": response,
             "intent": intent,
             "confidence": confidence,
-            "suggestions": bot_response.get('suggestions', []),
-            "processing_time": processing_time,
-            "from_cache": False,
-            "message_id": chat_message.id,
+            "suggestions": suggestions,
+            "user_id": user_id,
+            "processing_time": time.time() - start_time,
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
-        
-        self._set_cache(message, latitude or 0, longitude or 0, response)
-        
-        return response
-    
-    def _generate_response(self, intent: str, message: str, latitude: Optional[float], longitude: Optional[float]) -> Dict:
-        responses = {
-            'hospital': {
-                'response': '🏥 نزدیک‌ترین بیمارستان: بیمارستان امام خمینی در فاصله ۲.۵ کیلومتری',
-                'suggestions': ['📞 تماس', '🧭 مسیریابی', '🔄 بیمارستان دیگر']
-            },
-            'restaurant': {
-                'response': '🍽️ رستوران تالار خلیج با امتیاز ۴.۵ در فاصله ۱.۲ کیلومتری',
-                'suggestions': ['⭐ نظرات', '📞 رزرو', '🍴 منو']
-            },
-            'taxi': {
-                'response': '🚗 تاکسی برای شما فراخوانده شد. حدود ۳ دقیقه دیگر می‌رسد.',
-                'suggestions': ['⏱️ پیگیری', '📞 تماس راننده', '❌ لغو']
-            },
-            'location': {
-                'response': f'📍 موقعیت شما: عرض {latitude or "نامشخص"}، طول {longitude or "نامشخص"}',
-                'suggestions': ['🏥 خدمات نزدیک', '🍽️ رستوران‌ها', '🗺️ نقشه']
-            },
-            'general': {
-                'response': '🌊 چطور می‌تونم کمکتون کنم؟ می‌تونم اطلاعات خدمات، بیمارستان‌ها یا رستوران‌ها رو براتون جستجو کنم.',
-                'suggestions': ['🏥 بیمارستان', '🍽️ رستوران', '🚗 تاکسی', '📍 موقعیت']
-            }
+
+    def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
+        return []
+
+    def extract_service_type(self, text: str) -> Optional[str]:
+        service_map = {
+            "بیمارستان": "hospital",
+            "درمانگاه": "hospital",
+            "رستوران": "restaurant",
+            "کافه": "restaurant",
+            "تاکسی": "taxi",
+            "اسنپ": "taxi",
+            "تپسی": "taxi",
+            "داروخانه": "pharmacy",
+            "مدرسه": "school",
+            "دانشگاه": "university",
+            "دانشگا": "university",
+            "دانش": "university"
         }
-        
-        return responses.get(intent, responses['general'])
-    
-    def get_conversation_history(self, session_id: str, limit: int = 50) -> List[Dict]:
-        conversation = self.db.query(ChatConversation).filter(
-            ChatConversation.session_id == session_id
-        ).first()
-        
-        if not conversation:
-            return []
-        
-        messages = self.db.query(ChatMessage).filter(
-            ChatMessage.conversation_id == conversation.id
-        ).order_by(ChatMessage.created_at.desc()).limit(limit).all()
-        
-        return [{
-            "id": msg.id,
-            "user": msg.user_message,
-            "bot": msg.bot_response,
-            "intent": msg.intent,
-            "confidence": msg.confidence,
-            "processing_time": msg.processing_time,
-            "timestamp": msg.created_at.isoformat()
-        } for msg in reversed(messages)]
-    
-    def rate_response(self, message_id: int, helpful: bool) -> bool:
-        message = self.db.query(ChatMessage).filter(ChatMessage.id == message_id).first()
-        if message:
-            message.is_helpful = 1 if helpful else -1
-            self.db.commit()
-            return True
-        return False
+        for keyword, service_type in service_map.items():
+            if keyword in text:
+                return service_type
+        return None
+
+    def _extract_service_type(self, entities: List[Dict]) -> Optional[str]:
+        if not entities:
+            return None
+        for entity in entities:
+            word = entity.get("word", "")
+            result = self.extract_service_type(word)
+            if result:
+                return result
+        return None
+
+
+_chat_service_instance = None
+
+def get_chat_service(db=None) -> ChatService:
+    global _chat_service_instance
+    if _chat_service_instance is None:
+        _chat_service_instance = ChatService(db)
+    return _chat_service_instance

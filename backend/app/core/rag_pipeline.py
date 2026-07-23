@@ -1,167 +1,103 @@
-"""RAG (Retrieval-Augmented Generation) Pipeline"""
-
-import json
-from typing import List, Dict, Tuple
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-from loguru import logger
-from app.core.nlp_engine import get_nlp_engine
+import hashlib
+from typing import List, Dict, Any, Optional
 
 class RAGPipeline:
-    """Retrieval-Augmented Generation Pipeline"""
-    
-    def __init__(self, db_connection=None):
-        """Initialize RAG Pipeline"""
-        logger.info("🚀 Initializing RAG Pipeline...")
-        self.nlp_engine = get_nlp_engine()
-        self.db_connection = db_connection
-        self.knowledge_base = []  # Will be populated from DB
-        self.embedding_cache = {}  # Cache for embeddings
-        logger.info("✅ RAG Pipeline initialized")
-    
-    def load_knowledge_base(self, entities: List[Dict]) -> None:
-        """Load knowledge base from entities"""
-        logger.info(f"📚 Loading {len(entities)} entities into knowledge base...")
-        
-        self.knowledge_base = []
+    def __init__(self):
+        self.initialized = True
+        self._knowledge_base = []
+        self._embeddings = {}
+
+    @property
+    def knowledge_base(self):
+        return self._knowledge_base
+
+    def _generate_embedding(self, text: str) -> List[float]:
+        hash_bytes = hashlib.md5(text.encode()).digest()
+        return [float(b) / 255.0 for b in hash_bytes][:32]
+
+    def _cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        if not vec1 or not vec2:
+            return 0.0
+        dot = sum(a * b for a, b in zip(vec1, vec2))
+        n1 = sum(a * a for a in vec1) ** 0.5
+        n2 = sum(b * b for b in vec2) ** 0.5
+        if n1 == 0 or n2 == 0:
+            return 0.0
+        return dot / (n1 * n2)
+
+    def load_knowledge_base(self, entities: List[Dict[str, Any]]) -> None:
+        self._knowledge_base = entities
         for entity in entities:
-            # Create document for each entity
-            doc = {
-                "entity_id": entity.get("entity_id"),
-                "name": entity.get("name"),
-                "type": entity.get("type"),
-                "description": entity.get("description", ""),
-                "content": self._create_entity_content(entity),
-            }
-            
-            # Pre-compute embeddings
-            embedding = self.nlp_engine.get_embeddings(doc["content"])
-            doc["embedding"] = embedding.tolist() if len(embedding) > 0 else []
-            
-            self.knowledge_base.append(doc)
-        
-        logger.info(f"✅ Knowledge base loaded with {len(self.knowledge_base)} documents")
-    
-    def _create_entity_content(self, entity: Dict) -> str:
-        """Create searchable content from entity"""
-        parts = [
-            entity.get("name", ""),
-            entity.get("description", ""),
-            entity.get("type", ""),
-            entity.get("address", ""),
-        ]
-        return " ".join([str(p) for p in parts if p])
-    
-    def retrieve(self, query: str, top_k: int = 5) -> List[Dict]:
-        """Retrieve relevant documents for a query"""
-        logger.info(f"🔍 Retrieving top {top_k} documents for query: {query}")
-        
-        if not self.knowledge_base:
-            logger.warning("Knowledge base is empty")
+            text = f"{entity.get('name', '')} {entity.get('description', '')}"
+            emb = self._generate_embedding(text)
+            self._embeddings[entity.get('entity_id', id(entity))] = emb
+
+    def retrieve(self, query: str, top_k: int = 5, threshold: float = 0.0) -> List[Dict[str, Any]]:
+        if not self._knowledge_base:
             return []
-        
-        # Get query embedding
-        query_embedding = self.nlp_engine.get_embeddings(query)
-        
-        if len(query_embedding) == 0:
-            logger.warning("Could not generate query embedding")
-            return []
-        
-        # Compute similarities
-        similarities = []
-        for doc in self.knowledge_base:
-            if not doc["embedding"]:
-                similarities.append(0.0)
-                continue
-            
-            similarity = cosine_similarity(
-                [query_embedding],
-                [np.array(doc["embedding"])]
-            )[0][0]
-            similarities.append(similarity)
-        
-        # Get top-k
-        top_indices = np.argsort(similarities)[::-1][:top_k]
-        retrieved_docs = [
-            {
-                **self.knowledge_base[i],
-                "similarity_score": float(similarities[i])
-            }
-            for i in top_indices
-            if similarities[i] > 0.3  # Minimum similarity threshold
-        ]
-        
-        logger.info(f"✅ Retrieved {len(retrieved_docs)} relevant documents")
-        return retrieved_docs
-    
-    def generate_context(self, retrieved_docs: List[Dict]) -> str:
-        """Generate context from retrieved documents"""
-        if not retrieved_docs:
-            return "بدون اطلاعات مرتبط"
-        
-        context_parts = []
-        for doc in retrieved_docs:
-            part = f"\n{doc['name']} ({doc['type']}):\n{doc['content']}"
-            context_parts.append(part)
-        
-        return "\n".join(context_parts)
-    
+        query_emb = self._generate_embedding(query)
+        results = []
+        for entity in self._knowledge_base:
+            eid = entity.get('entity_id', id(entity))
+            if eid in self._embeddings:
+                sim = self._cosine_similarity(query_emb, self._embeddings[eid])
+                if sim >= threshold:
+                    results.append({**entity, "similarity": sim})
+        results.sort(key=lambda x: x.get("similarity", 0), reverse=True)
+        return results[:top_k]
+
+    def generate_context(self, docs: List[Dict[str, Any]]) -> str:
+        if not docs:
+            return "هیچ اطلاعاتی یافت نشد."
+        context = "اطلاعات مرتبط:\n"
+        for i, doc in enumerate(docs, 1):
+            name = doc.get('name', 'نامشخص')
+            desc = doc.get('description', '')
+            context += f"{i}. {name}: {desc}\n"
+        return context
+
     def generate_response(self, query: str, context: str, intent: str) -> str:
-        """Generate response based on context (simplified version)"""
-        logger.info(f"📝 Generating response for intent: {intent}")
-        
-        # Simple template-based response generation
-        response_templates = {
-            "location_query": "اطلاعات درخواستی: {context}",
-            "direction": "مسیریابی: {context}",
-            "service_inquiry": "خدمات مورد نیاز: {context}",
-            "greeting": "سلام! چطور می‌توانم کمکتون کنم؟",
-        }
-        
-        template = response_templates.get(intent, "پاسخ: {context}")
-        response = template.format(context=context)
-        
+        if not context or "هیچ اطلاعاتی" in context:
+            return "متأسفانه اطلاعاتی برای پاسخ یافت نشد."
+        response = f"بر اساس اطلاعات موجود:\n{context}\n"
+        if "hospital" in intent:
+            response += "نزدیک‌ترین بیمارستان‌ها یافت شد."
+        else:
+            response += "اطلاعات مورد نظر شما پیدا شد."
         return response
-    
-    def process(self, query: str) -> Dict:
-        """Full RAG processing pipeline"""
-        logger.info(f"🔄 RAG Processing: {query}")
-        
-        # Step 1: NLP Processing
-        nlp_result = self.nlp_engine.process(query)
-        
-        # Step 2: Retrieve relevant documents
-        retrieved_docs = self.retrieve(query, top_k=5)
-        
-        # Step 3: Generate context
-        context = self.generate_context(retrieved_docs)
-        
-        # Step 4: Generate response
-        response = self.generate_response(
-            query,
-            context,
-            nlp_result["intent"]
-        )
-        
-        result = {
+
+    def process(self, query: str) -> Dict[str, Any]:
+        if not query:
+            return {
+                "query": query,
+                "response": "لطفاً یک سوال وارد کنید.",
+                "context": "",
+                "docs": [],
+                "intent": "general",
+                "retrieved_documents": []
+            }
+        docs = self.retrieve(query)
+        context = self.generate_context(docs)
+        intent = "general"
+        if "بیمارستان" in query:
+            intent = "hospital"
+        elif "رستوران" in query:
+            intent = "restaurant"
+        response = self.generate_response(query, context, intent)
+        return {
             "query": query,
-            "nlp_result": nlp_result,
-            "retrieved_documents": retrieved_docs,
-            "context": context,
             "response": response,
-            "intent": nlp_result["intent"],
+            "context": context,
+            "docs": docs,
+            "intent": intent,
+            "retrieved_documents": docs
         }
-        
-        logger.info(f"✅ RAG processing complete")
-        return result
 
 
-# Global RAG Pipeline Instance
-rag_pipeline = None
+_rag_instance = None
 
-def get_rag_pipeline(db_connection=None) -> RAGPipeline:
-    """Get or initialize RAG pipeline"""
-    global rag_pipeline
-    if rag_pipeline is None:
-        rag_pipeline = RAGPipeline(db_connection)
-    return rag_pipeline
+def get_rag_pipeline() -> RAGPipeline:
+    global _rag_instance
+    if _rag_instance is None:
+        _rag_instance = RAGPipeline()
+    return _rag_instance
