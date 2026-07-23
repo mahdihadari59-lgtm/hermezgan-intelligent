@@ -106,3 +106,4 @@ _archived_backups/
 *.bak
 *.backup
 *.gz
+backups/
