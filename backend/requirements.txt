@@ -19,7 +19,7 @@ scipy==1.11.4
 transformers==4.36.2
 torch==2.1.2
 sentencepiece==0.2.0
-hazm==0.7.0
+hazm==0.9.3
 
 # Location Services
 geopy==2.4.0
