@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knowledge-base
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="hdp_schema_v5.xsd"
+  name="هرمزگان هوشمند - HDP"
+  version="5.0"
+  schema_version="5.0"
+  created_at="2025-01-01"
+  last_updated="2026-07-25"
+  total_records="9"
+  total_categories="1"
+  total_subcategories="8"
+  total_relations="8"
+  revision="1">
+
+  <metadata>
+    <description>داده‌های تحلیلی دوربین‌های ثبت تخلف، نقاط بحرانی و برنامه اجرایی ترافیک بندرعباس</description>
+    <coverage>ترافیک، دوربین‌ها، تخلفات، نقاط بحرانی، برنامه اجرایی، پیش‌بینی</coverage>
+    <language>fa</language>
+    <region>بندرعباس، هرمزگان، ایران</region>
+    <maintainer>پروژه HDP</maintainer>
+    <license>استفاده آزاد با ذکر منبع</license>
+  </metadata>
+
+  <category id="traffic" name="ترافیک و رانندگی" type="category">
+    <description>دوربین‌های نظارتی، آمار تخلفات، نقاط بحرانی، برنامه اجرایی و پیش‌بینی</description>
+    <icon>🚦</icon>
+
+    <subcategory id="traffic_statistics" name="آمار دوربین‌ها" type="subcategory">
+      <item id="traffic_camera_stats_001"
+            uuid="550e8400-e29b-41d4-a716-446655500001"
+            slug="bandarabbas-camera-statistics"
+            type="traffic_statistics"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="گزارش تحلیلی ترافیک بندرعباس"
+            confidence="0.95">
+        <title>
+          <fa>آمار دوربین‌های ثبت تخلف بندرعباس</fa>
+          <en>Bandar Abbas Traffic Camera Statistics</en>
+        </title>
+        <summary>مجموع دوربین‌های نصب‌شده، فعال، بودجه و درصد فعال‌سازی</summary>
+        <description>تعداد کل دوربین‌های نصب شده: 164 دستگاه. تعداد دوربین‌های فعال: 14 دستگاه. درصد فعال‌سازی: 8.5 درصد. بودجه مصوب سال 1405: 35 میلیارد تومان.</description>
+        <keywords>
+          <keyword>دوربین</keyword>
+          <keyword>ثبت تخلف</keyword>
+          <keyword>بندرعباس</keyword>
+          <keyword>ترافیک</keyword>
+        </keywords>
+        <tags>
+          <tag>traffic</tag>
+          <tag>camera</tag>
+          <tag>statistics</tag>
+        </tags>
+        <ai>
+          <intent>traffic.statistics</intent>
+          <priority>10</priority>
+          <context>camera, traffic, violation, Bandar Abbas</context>
+          <answer_template>در بندرعباس 164 دوربین نصب شده که 14 دستگاه فعال هستند و 8.5 درصد فعال‌سازی دارند.</answer_template>
+        </ai>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_active_cameras" name="دوربین‌های فعال" type="subcategory">
+      <item id="traffic_camera_active_001"
+            uuid="550e8400-e29b-41d4-a716-446655500002"
+            slug="active-red-light-cameras"
+            type="camera_group"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="پلیس راهور بندرعباس"
+            confidence="0.95">
+        <title>
+          <fa>دوربین‌های فعال عبور از چراغ قرمز</fa>
+          <en>Active Red-Light Cameras</en>
+        </title>
+        <summary>فهرست نقاط فعال ثبت تخلف عبور از چراغ قرمز</summary>
+        <description>تقاطع بلوار امام خمینی و خیابان پل سفید، چهارراه شهدا، میدان ولیعصر، تقاطع بلوار شهید رجایی و خیابان طالقانی.</description>
+        <keywords>
+          <keyword>چراغ قرمز</keyword>
+          <keyword>تقاطع</keyword>
+          <keyword>دوربین فعال</keyword>
+        </keywords>
+        <tags>
+          <tag>camera</tag>
+          <tag>active</tag>
+          <tag>red-light</tag>
+        </tags>
+      </item>
+
+      <item id="traffic_camera_active_002"
+            uuid="550e8400-e29b-41d4-a716-446655500003"
+            slug="active-speed-cameras"
+            type="camera_group"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="پلیس راهور بندرعباس"
+            confidence="0.95">
+        <title>
+          <fa>دوربین‌های فعال ثبت سرعت</fa>
+          <en>Active Speed Cameras</en>
+        </title>
+        <summary>فهرست نقاط فعال ثبت سرعت غیرمجاز</summary>
+        <description>بلوار شهید رجایی محدوده میدان الغدیر تا سه‌راه گاراژ، بلوار امام خمینی محدوده پل سفید تا میدان شهدا، بلوار پاسداران نزدیک چهارراه شهدا، خروجی شرقی شهر جاده میناب.</description>
+        <keywords>
+          <keyword>سرعت</keyword>
+          <keyword>تخلف</keyword>
+          <keyword>دوربین فعال</keyword>
+        </keywords>
+        <tags>
+          <tag>camera</tag>
+          <tag>active</tag>
+          <tag>speed</tag>
+        </tags>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_infractions" name="آمار تخلفات" type="subcategory">
+      <item id="traffic_violation_001"
+            uuid="550e8400-e29b-41d4-a716-446655500004"
+            slug="traffic-violations-first-half-1405"
+            type="traffic_report"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="گزارش شش‌ماهه ترافیک 1405"
+            confidence="0.96">
+        <title>
+          <fa>آمار تخلفات ثبت‌شده توسط دوربین‌ها</fa>
+          <en>Traffic Violations Captured by Cameras</en>
+        </title>
+        <summary>آمار شش‌ماهه اول 1405 از تخلفات دوربین‌ها</summary>
+        <description>عبور از چراغ قرمز: 8420 مورد. سرعت غیرمجاز 30 تا 50 کیلومتر: 12150 مورد. سرعت غیرمجاز بیش از 50 کیلومتر: 920 مورد. توقف روی خط عابر پیاده: 3210 مورد. مجموع تخلفات: 24700 مورد. میانگین روزانه: 136.5 تخلف.</description>
+        <keywords>
+          <keyword>تخلف</keyword>
+          <keyword>جریمه</keyword>
+          <keyword>سرعت</keyword>
+          <keyword>چراغ قرمز</keyword>
+        </keywords>
+        <tags>
+          <tag>statistics</tag>
+          <tag>violation</tag>
+          <tag>traffic</tag>
+        </tags>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_effect" name="تاثیر دوربین‌ها" type="subcategory">
+      <item id="traffic_effect_001"
+            uuid="550e8400-e29b-41d4-a716-446655500005"
+            slug="camera-impact-on-accidents"
+            type="traffic_analysis"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="تحلیل عملکرد دوربین‌ها"
+            confidence="0.94">
+        <title>
+          <fa>تاثیر دوربین‌های فعال بر تصادفات</fa>
+          <en>Impact of Active Cameras on Accidents</en>
+        </title>
+        <summary>مقایسه تصادفات قبل و بعد از فعال‌سازی دوربین‌ها</summary>
+        <description>تصادفات فوتی: از 9 به 4 مورد. تصادفات جرحی: از 42 به 28 مورد. تصادفات خسارتی: از 187 به 134 مورد.</description>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_blackspots" name="نقاط بدون پوشش" type="subcategory">
+      <item id="traffic_blackspot_001"
+            uuid="550e8400-e29b-41d4-a716-446655500006"
+            slug="camera-free-critical-points"
+            type="blackspot_report"
+            status="verified"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="گزارش پوشش دوربین"
+            confidence="0.93">
+        <title>
+          <fa>نقاط بحرانی بدون پوشش دوربین</fa>
+          <en>Critical Camera-Free Points</en>
+        </title>
+        <summary>فهرست 5 نقطه بحرانی فاقد پوشش کامل</summary>
+        <description>محله نایبند خیابان اصلی، بلوار رسالت چهارراه آپادانا، خیابان سید جمال‌الدین اسدآبادی، بلوار ساحلی سورو، میدان امام حسین.</description>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_plan" name="برنامه اجرایی" type="subcategory">
+      <item id="traffic_plan_001"
+            uuid="550e8400-e29b-41d4-a716-446655500007"
+            slug="traffic-execution-plan-1405"
+            type="execution_plan"
+            status="planned"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="شهرداری بندرعباس"
+            confidence="0.95">
+        <title>
+          <fa>برنامه اجرایی دوربین‌ها</fa>
+          <en>Traffic Camera Execution Plan</en>
+        </title>
+        <summary>برنامه افزایش دوربین‌های فعال و تکمیل زیرساخت</summary>
+        <description>افزایش دوربین‌های فعال به 40 دستگاه، نصب 30 دوربین جدید، تکمیل فیبر نوری برای 50 دوربین، راه‌اندازی مرکز کنترل ترافیک یکپارچه.</description>
+        <budget currency="IRR" total="35000000000" />
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_recommendations" name="پیشنهادات بهبود" type="subcategory">
+      <item id="traffic_recommendation_001"
+            uuid="550e8400-e29b-41d4-a716-446655500008"
+            slug="traffic-improvement-recommendations"
+            type="recommendation"
+            status="active"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="کارگروه تحلیل ترافیک"
+            confidence="0.94">
+        <title>
+          <fa>پیشنهادات بهبود سیستم دوربین‌ها</fa>
+          <en>Traffic Camera Improvement Recommendations</en>
+        </title>
+        <summary>توصیه‌های راهبردی برای شهرداری و پلیس راهور</summary>
+        <description>تشکیل کارگروه هوشمندسازی، استفاده از دوربین خورشیدی، اولویت‌بندی نقاط حادثه‌خیز، راه‌اندازی هشدار پیامکی تخلف، آموزش نیروهای پایش دوربین.</description>
+      </item>
+    </subcategory>
+
+    <subcategory id="traffic_forecast" name="پیش‌بینی پایان سال" type="subcategory">
+      <item id="traffic_forecast_001"
+            uuid="550e8400-e29b-41d4-a716-446655500009"
+            slug="end-of-year-traffic-forecast"
+            type="forecast"
+            status="active"
+            revision="1"
+            created_at="2025-01-01"
+            updated_at="2026-07-25"
+            source="تحلیل پیش‌بینی ترافیک"
+            confidence="0.91">
+        <title>
+          <fa>پیش‌بینی وضعیت پایان سال 1405</fa>
+          <en>End-of-Year 1405 Traffic Forecast</en>
+        </title>
+        <summary>پیش‌بینی افزایش دوربین‌های فعال و کاهش تصادفات</summary>
+        <description>تعداد دوربین‌های فعال: 40 تا 45 دستگاه. کاهش تصادفات درون‌شهری: 15 تا 20 درصد. درآمد ناشی از جرایم: 30 تا 35 میلیارد تومان.</description>
+      </item>
+    </subcategory>
+  </category>
+
+  <relations>
+    <relation id="rel_traffic_001" type="contains" from="hormozgan_province" to="traffic_camera_stats_001" />
+    <relation id="rel_traffic_002" type="contains" from="hormozgan_province" to="traffic_camera_active_001" />
+    <relation id="rel_traffic_003" type="contains" from="hormozgan_province" to="traffic_camera_active_002" />
+    <relation id="rel_traffic_004" type="contains" from="hormozgan_province" to="traffic_violation_001" />
+    <relation id="rel_traffic_005" type="contains" from="hormozgan_province" to="traffic_blackspot_001" />
+    <relation id="rel_traffic_006" type="contains" from="hormozgan_province" to="traffic_plan_001" />
+    <relation id="rel_traffic_007" type="contains" from="hormozgan_province" to="traffic_recommendation_001" />
+    <relation id="rel_traffic_008" type="contains" from="hormozgan_province" to="traffic_forecast_001" />
+  </relations>
+</knowledge-base>

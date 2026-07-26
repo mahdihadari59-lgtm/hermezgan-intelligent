@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import MessageList from "./MessageList";
-import MessageInput from "./MessageInput";
-import "./ChatBox.css";
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import MessageList from './MessageList';
+import MessageInput from './MessageInput';
+import './ChatBox.css';
 
 const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
   const messagesEndRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
   return (
@@ -22,15 +23,9 @@ const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
           </div>
         </div>
         <div className="header-actions">
-          <button className="header-btn" title="تنظیمات">
-            ⚙️
-          </button>
-          <button className="header-btn" title="صدای روشن/خاموش">
-            🔊
-          </button>
-          <button className="header-btn" title="بیشتر">
-            ⋯
-          </button>
+          <button className="header-btn" title="تنظیمات">⚙️</button>
+          <button className="header-btn" title="صدای روشن/خاموش">🔊</button>
+          <button className="header-btn" title="بیشتر">⋯</button>
         </div>
       </div>
       <MessageList messages={messages} isTyping={isTyping} isLoading={isLoading} />

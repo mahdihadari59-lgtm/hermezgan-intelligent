@@ -1,0 +1,1071 @@
+keep_id,duplicate_id,score,status,keep_title,keep_category,duplicate_title,duplicate_category
+29,12005,1.0,pending,ترافیک چهارراه غزی,traffic,ترافیک چهارراه غزی,traffic
+30,12006,1.0,pending,ترافیک میدان سپاه,traffic,ترافیک میدان سپاه,traffic
+31,12007,1.0,pending,ترافیک بلوار پاسداران,traffic,ترافیک بلوار پاسداران,traffic
+32,12008,1.0,pending,ترافیک بلوار امام خمینی,traffic,ترافیک بلوار امام خمینی,traffic
+34,12010,1.0,pending,ترافیک بلوار هرمز,traffic,ترافیک بلوار هرمز,traffic
+35,12011,1.0,pending,نقاط حادثه خیز,traffic,نقاط حادثه خیز,traffic
+36,12012,1.0,pending,دوربین های فعال,traffic,دوربین های فعال,traffic
+45,12021,1.0,pending,ساحل غدیر,tourism,ساحل غدیر,tourism
+46,12022,1.0,pending,ساحل مرجان کیش,tourism,ساحل مرجان کیش,tourism
+47,12023,1.0,pending,قلیه ماهی,food,قلیه ماهی,food
+48,12024,1.0,pending,مهیاوه,food,مهیاوه,food
+50,12026,1.0,pending,هواری,food,هواری,food
+51,12027,1.0,pending,موفلک,food,موفلک,food
+54,12030,1.0,pending,بیمارستان کودکان,medical,بیمارستان کودکان,medical
+55,12031,1.0,pending,بیمارستان شهید محمدی,medical,بیمارستان شهید محمدی,medical
+56,12032,1.0,pending,بیمارستان خلیج فارس,medical,بیمارستان خلیج فارس,medical
+57,12033,1.0,pending,داروخانه شبانه روزی,medical,داروخانه شبانه روزی,medical
+58,12034,1.0,pending,اورژانس,medical,اورژانس,medical
+59,12035,1.0,pending,هتل هرمز بندرعباس,tourism,هتل هرمز بندرعباس,tourism
+60,12036,1.0,pending,هتل خلیج فارس,tourism,هتل خلیج فارس,tourism
+61,12037,1.0,pending,هتل ترنج کیش,tourism,هتل ترنج کیش,tourism
+62,12038,1.0,pending,هتل سورینت قشم,tourism,هتل سورینت قشم,tourism
+63,12039,1.0,pending,دیه کامل,general,دیه کامل,general
+75,12051,1.0,pending,بندرعباس مال,tourism,بندرعباس مال,tourism
+2380,12154,1.0,pending,دیه تصادف چقدره,traffic,دیه تصادف چقدره,traffic
+2382,12156,1.0,pending,وکیل خوب کجاست,traffic,وکیل خوب کجاست,traffic
+2391,12159,1.0,pending,چهارراه غزی,traffic,چهارراه غزی,traffic
+2392,12160,1.0,pending,میدان سپاه,traffic,میدان سپاه,traffic
+2393,12161,1.0,pending,هتل هرمز,tourism,هتل هرمز,tourism
+2404,12164,1.0,pending,دوربین های فعال؟,traffic,دوربین های فعال؟,traffic
+2414,12168,1.0,pending,قلیه ماهی؟,food,قلیه ماهی؟,food
+2418,12169,1.0,pending,بیمارستان کودکان؟,medical,بیمارستان کودکان؟,medical
+2420,12170,1.0,pending,داروخانه شبانه روزی؟,medical,داروخانه شبانه روزی؟,medical
+2422,12171,1.0,pending,هتل هرمز؟,tourism,هتل هرمز؟,tourism
+2424,12172,1.0,pending,هتل ترنج کیش؟,tourism,هتل ترنج کیش؟,tourism
+2438,12174,1.0,pending,جریمه سرعت,traffic,جریمه سرعت,traffic
+2439,12175,1.0,pending,جریمه چراغ قرمز,traffic,جریمه چراغ قرمز,traffic
+2440,12176,1.0,pending,جریمه کمربند,traffic,جریمه کمربند,traffic
+2442,12178,1.0,pending,قوانین راهنمایی,traffic,قوانین راهنمایی,traffic
+2444,12180,1.0,pending,ترافیک چهارراه غزی الان,traffic,ترافیک چهارراه غزی الان,traffic
+2445,12181,1.0,pending,دوربین های بلوار هرمز فعال,traffic,دوربین های بلوار هرمز فعال,traffic
+2446,12182,1.0,pending,مسیر نخل ناخدا به چهارراه پگاه,traffic,مسیر نخل ناخدا به چهارراه پگاه,traffic
+2447,12183,1.0,pending,خطرناک ترین جای بلوار هرمز,traffic,خطرناک ترین جای بلوار هرمز,traffic
+2448,12184,1.0,pending,پارکینگ نزدیک بیمارستان کودکان,medical,پارکینگ نزدیک بیمارستان کودکان,medical
+2449,12185,1.0,pending,مسیر فرودگاه بدون ترافیک,traffic,مسیر فرودگاه بدون ترافیک,traffic
+2450,12186,1.0,pending,تصادف امروز بلوار هرمز,traffic,تصادف امروز بلوار هرمز,traffic
+2468,12195,1.0,pending,راهنمای وکالت,traffic,راهنمای وکالت,traffic
+2470,12197,1.0,pending,رستوران سنتی بندر,food,رستوران سنتی بندر,food
+2477,12204,1.0,pending,کبابی البرز,general,کبابی البرز,general
+2479,12206,1.0,pending,راهنمای رستوران,food,راهنمای رستوران,food
+2480,12207,1.0,pending,هتل هما,tourism,هتل هما,tourism
+2481,12208,1.0,pending,هتل سینا,tourism,هتل سینا,tourism
+2482,12209,1.0,pending,هتل امین,tourism,هتل امین,tourism
+2483,12210,1.0,pending,هتل داریوش کیش,tourism,هتل داریوش کیش,tourism
+2484,12211,1.0,pending,هتل آرمان قشم,tourism,هتل آرمان قشم,tourism
+2485,12212,1.0,pending,بومگردی هرمز,food,بومگردی هرمز,food
+2486,12213,1.0,pending,بومگردی لافت,tourism,بومگردی لافت,tourism
+2487,12214,1.0,pending,راهنمای هتل,tourism,راهنمای هتل,tourism
+2494,12221,1.0,pending,موسیقی محلی هرمزگان,culture,موسیقی محلی هرمزگان,culture
+2497,12224,1.0,pending,بازار کار و مشاغل پرتقاضا,tourism,بازار کار و مشاغل پرتقاضا,tourism
+2509,12236,1.0,pending,پزشکان گوارش,medical,پزشکان گوارش,medical
+2517,12244,1.0,pending,الگوریتم های ai,traffic,الگوریتم های ai,traffic
+2518,12245,1.0,pending,expert systems,traffic,expert systems,traffic
+2519,12246,1.0,pending,bfs algorithm,traffic,bfs algorithm,traffic
+2520,12247,1.0,pending,dfs algorithm,traffic,dfs algorithm,traffic
+2521,12248,1.0,pending,symbolic ai,traffic,symbolic ai,traffic
+2522,12249,1.0,pending,deep learning,traffic,deep learning,traffic
+2523,12250,1.0,pending,random forest,traffic,random forest,traffic
+2529,12252,1.0,pending,یادگیری عمیق,general,یادگیری عمیق,general
+2531,12253,1.0,pending,راهنمای الگوریتم,traffic,راهنمای الگوریتم,traffic
+2532,12254,1.0,pending,قطار بندرعباس,traffic,قطار بندرعباس,traffic
+2534,12256,1.0,pending,قایق بندرعباس هرمز,tourism,قایق بندرعباس هرمز,tourism
+2543,12265,1.0,pending,دود اگزوز,general,دود اگزوز,general
+2544,12266,1.0,pending,لرزش فرمان,traffic,لرزش فرمان,traffic
+2546,12268,1.0,pending,کولر,general,کولر,general
+2548,12270,1.0,pending,لاستیک,traffic,لاستیک,traffic
+2567,12289,1.0,pending,لیست تعویض سالانه,general,لیست تعویض سالانه,general
+2568,12290,1.0,pending,زمان تعویض قطعات,general,زمان تعویض قطعات,general
+2569,12291,1.0,pending,هزینه تعویض,general,هزینه تعویض,general
+2573,12295,1.0,pending,جواب نمیده,general,جواب نمیده,general
+2575,12297,1.0,pending,علاقه نشون بده,general,علاقه نشون بده,general
+2576,12298,1.0,pending,نه شنیدن,general,نه شنیدن,general
+2578,12300,1.0,pending,آشتی,general,آشتی,general
+2579,12301,1.0,pending,ازدواج,general,ازدواج,general
+2582,12304,1.0,pending,دنده و کلاچ,general,دنده و کلاچ,general
+2584,12306,1.0,pending,توقف,traffic,توقف,traffic
+2585,12307,1.0,pending,دوربرگردان,traffic,دوربرگردان,traffic
+2588,12310,1.0,pending,نیم کلاچ,traffic,نیم کلاچ,traffic
+2589,12311,1.0,pending,سبقت,traffic,سبقت,traffic
+2590,12312,1.0,pending,راهنمای آموزش,traffic,راهنمای آموزش,traffic
+2591,12313,1.0,pending,تشخیص مقصر,traffic,تشخیص مقصر,traffic
+2592,12314,1.0,pending,سرعت از ترمز,traffic,سرعت از ترمز,traffic
+2595,12317,1.0,pending,نقص فنی,traffic,نقص فنی,traffic
+2598,12320,1.0,pending,راهنمای کارشناسی,traffic,راهنمای کارشناسی,traffic
+2610,12331,1.0,pending,فلسفه زندگی,general,فلسفه زندگی,general
+2611,12332,1.0,pending,عشق چیست,general,عشق چیست,general
+2612,12333,1.0,pending,خوشبختی,general,خوشبختی,general
+2613,12334,1.0,pending,موفقیت,general,موفقیت,general
+2616,12337,1.0,pending,بخشش,general,بخشش,general
+2617,12338,1.0,pending,تغییر,general,تغییر,general
+2618,12339,1.0,pending,زمان,general,زمان,general
+2619,12340,1.0,pending,پول,general,پول,general
+2620,12341,1.0,pending,دوستی,general,دوستی,general
+2621,12342,1.0,pending,باور,general,باور,general
+2622,12343,1.0,pending,عادت,food,عادت,food
+2625,12346,1.0,pending,هدف,general,هدف,general
+2626,12347,1.0,pending,آزادی,general,آزادی,general
+2627,12348,1.0,pending,خلاقیت,general,خلاقیت,general
+2631,12352,1.0,pending,خوبی,general,خوبی,general
+2632,12353,1.0,pending,چه خبر,traffic,چه خبر,traffic
+2633,12354,1.0,pending,چیکار میکنی,general,چیکار میکنی,general
+2636,12357,1.0,pending,چند سالته,general,چند سالته,general
+2638,12359,1.0,pending,امروز چندمه,traffic,امروز چندمه,traffic
+2639,12360,1.0,pending,هوا چطوره,general,هوا چطوره,general
+2643,12364,1.0,pending,شرجی,general,شرجی,general
+2644,12365,1.0,pending,گرسنه ام,food,گرسنه ام,food
+2647,12368,1.0,pending,خوابم میاد,general,خوابم میاد,general
+2648,12369,1.0,pending,حوصله ندارم,general,حوصله ندارم,general
+2649,12370,1.0,pending,ناراحتم,general,ناراحتم,general
+2650,12371,1.0,pending,عصبانی ام,general,عصبانی ام,general
+2651,12372,1.0,pending,میترسم,traffic,میترسم,traffic
+2652,12373,1.0,pending,خوشحالم,general,خوشحالم,general
+2654,12375,1.0,pending,دلتنگی,general,دلتنگی,general
+2655,12376,1.0,pending,پشیمونم,general,پشیمونم,general
+2659,12380,1.0,pending,خداحافظ,general,خداحافظ,general
+2662,12383,1.0,pending,روانشناسی اضطراب,medical,روانشناسی اضطراب,medical
+2663,12384,1.0,pending,روانشناسی وسواس,medical,روانشناسی وسواس,medical
+2664,12385,1.0,pending,روانشناسی عزت نفس,general,روانشناسی عزت نفس,general
+2666,12387,1.0,pending,روانشناسی سوگ,general,روانشناسی سوگ,general
+2667,12388,1.0,pending,روانشناسی استرس,medical,روانشناسی استرس,medical
+2668,12389,1.0,pending,روانشناسی اعتیاد,medical,روانشناسی اعتیاد,medical
+2675,12396,1.0,pending,کمک امدادی,medical,کمک امدادی,medical
+2676,12397,1.0,pending,گرمازدگی راننده,traffic,گرمازدگی راننده,traffic
+2679,12400,1.0,pending,گردشگر ساحل,tourism,گردشگر ساحل,tourism
+2680,12401,1.0,pending,گردشگر قشم,tourism,گردشگر قشم,tourism
+2681,12402,1.0,pending,گردشگر هرمز,tourism,گردشگر هرمز,tourism
+2682,12403,1.0,pending,گردشگر کیش,tourism,گردشگر کیش,tourism
+2683,12404,1.0,pending,گردشگر غذا,food,گردشگر غذا,food
+2684,12405,1.0,pending,گردشگر خرید,tourism,گردشگر خرید,tourism
+2685,12406,1.0,pending,گردشگر هتل,tourism,گردشگر هتل,tourism
+2688,12409,1.0,pending,راهنمای گردشگر,tourism,راهنمای گردشگر,tourism
+2689,12410,1.0,pending,خدمات hdp,tourism,خدمات hdp,tourism
+2702,12423,1.0,pending,راهنمای کافه,tourism,راهنمای کافه,tourism
+2708,12429,1.0,pending,مسیریابی هوشمند,traffic,مسیریابی هوشمند,traffic
+2709,12430,1.0,pending,دور زدن ترافیک,traffic,دور زدن ترافیک,traffic
+2710,12431,1.0,pending,هشدار دوربین,traffic,هشدار دوربین,traffic
+2711,12432,1.0,pending,هشدار مامور,traffic,هشدار مامور,traffic
+2712,12433,1.0,pending,مسیر امن کامل,traffic,مسیر امن کامل,traffic
+2713,12434,1.0,pending,بهترین زمان حرکت,traffic,بهترین زمان حرکت,traffic
+2714,12435,1.0,pending,مسیر کامل امام به ساحل,traffic,مسیر کامل امام به ساحل,traffic
+2715,12436,1.0,pending,مسیر کامل شرق به غرب,traffic,مسیر کامل شرق به غرب,traffic
+2716,12437,1.0,pending,راهنمای مسیریابی کامل,traffic,راهنمای مسیریابی کامل,traffic
+2717,12438,1.0,pending,مسیر جایگزین غزی,traffic,مسیر جایگزین غزی,traffic
+2718,12439,1.0,pending,مسیر جایگزین سپاه,traffic,مسیر جایگزین سپاه,traffic
+2719,12440,1.0,pending,مسیر جایگزین ایسین,traffic,مسیر جایگزین ایسین,traffic
+2720,12441,1.0,pending,مسیر جایگزین خواجو,traffic,مسیر جایگزین خواجو,traffic
+2721,12442,1.0,pending,مسیر جایگزین هدیش,traffic,مسیر جایگزین هدیش,traffic
+2722,12443,1.0,pending,مسیر جایگزین ساحل,traffic,مسیر جایگزین ساحل,traffic
+2723,12444,1.0,pending,مسیر جایگزین امام خمینی,traffic,مسیر جایگزین امام خمینی,traffic
+2724,12445,1.0,pending,مسیر جایگزین گلشهر,traffic,مسیر جایگزین گلشهر,traffic
+2725,12446,1.0,pending,مسیر شب امن,traffic,مسیر شب امن,traffic
+2726,12447,1.0,pending,مسیر بارانی,traffic,مسیر بارانی,traffic
+2728,12449,1.0,pending,مسیریابی بندری,traffic,مسیریابی بندری,traffic
+2729,12450,1.0,pending,مسیر ساحل بندری,traffic,مسیر ساحل بندری,traffic
+2730,12451,1.0,pending,مسیر بازار بندری,traffic,مسیر بازار بندری,traffic
+2731,12452,1.0,pending,مسیر فرودگاه بندری,traffic,مسیر فرودگاه بندری,traffic
+2732,12453,1.0,pending,مسیر بیمارستان بندری,medical,مسیر بیمارستان بندری,medical
+2733,12454,1.0,pending,مسیر قشم بندری,traffic,مسیر قشم بندری,traffic
+2734,12455,1.0,pending,مسیر گنو بندری,traffic,مسیر گنو بندری,traffic
+2735,12456,1.0,pending,هشدار رانندگی بندری,traffic,هشدار رانندگی بندری,traffic
+2740,12461,1.0,pending,غذا بندری,food,غذا بندری,food
+2743,12464,1.0,pending,رانندگی بندری,traffic,رانندگی بندری,traffic
+2744,12465,1.0,pending,خانواده بندری,medical,خانواده بندری,medical
+2745,12466,1.0,pending,مهمانی بندری,food,مهمانی بندری,food
+2749,12470,1.0,pending,واژه نامه بندری,food,واژه نامه بندری,food
+2751,12472,1.0,pending,احساس تنهایی,general,احساس تنهایی,general
+2752,12473,1.0,pending,دلم گرفته,general,دلم گرفته,general
+2753,12474,1.0,pending,عصبانی هستم,general,عصبانی هستم,general
+2754,12475,1.0,pending,بی خوابی,medical,بی خوابی,medical
+2756,12477,1.0,pending,شکست عشقی,general,شکست عشقی,general
+2757,12478,1.0,pending,مشکل مالی,general,مشکل مالی,general
+2758,12479,1.0,pending,تصمیم گیری,general,تصمیم گیری,general
+2759,12480,1.0,pending,فرزند پروری,general,فرزند پروری,general
+2763,12484,1.0,pending,مشاوره ازدواج,culture,مشاوره ازدواج,culture
+2767,12488,1.0,pending,افسردگی,medical,افسردگی,medical
+2768,12489,1.0,pending,اضطراب,medical,اضطراب,medical
+2771,12492,1.0,pending,اعتیاد,medical,اعتیاد,medical
+2774,12495,1.0,pending,راهنمای مشاوره,medical,راهنمای مشاوره,medical
+2775,12496,1.0,pending,پارک غدیر,tourism,پارک غدیر,tourism
+2777,12498,1.0,pending,پارک ولایت,tourism,پارک ولایت,tourism
+2782,12503,1.0,pending,پارک اوتیسم,tourism,پارک اوتیسم,tourism
+2785,12506,1.0,pending,پارک جنگلی خلیج فارس,traffic,پارک جنگلی خلیج فارس,traffic
+2787,12508,1.0,pending,پارک زیتون قشم,tourism,پارک زیتون قشم,tourism
+2788,12509,1.0,pending,پارک سوزا,tourism,پارک سوزا,tourism
+2789,12510,1.0,pending,پارک مرجان کیش,tourism,پارک مرجان کیش,tourism
+2790,12511,1.0,pending,پارک شهر کیش,tourism,پارک شهر کیش,tourism
+2791,12512,1.0,pending,پارک دلفین کیش,tourism,پارک دلفین کیش,tourism
+2792,12513,1.0,pending,پارک آهوان کیش,tourism,پارک آهوان کیش,tourism
+2794,12515,1.0,pending,پنجه علی,traffic,پنجه علی,traffic
+2814,12535,1.0,pending,بیمارستان رازی,medical,بیمارستان رازی,medical
+2815,12536,1.0,pending,درمانگاه سینا,medical,درمانگاه سینا,medical
+2816,12537,1.0,pending,درمانگاه پیامبر اعظم,medical,درمانگاه پیامبر اعظم,medical
+2817,12538,1.0,pending,درمانگاه شهرک توحید,medical,درمانگاه شهرک توحید,medical
+2818,12539,1.0,pending,درمانگاه گلشهر,medical,درمانگاه گلشهر,medical
+2819,12540,1.0,pending,دندانپزشکی شبانه روزی,medical,دندانپزشکی شبانه روزی,medical
+2822,12543,1.0,pending,متخصص قلب,medical,متخصص قلب,medical
+2824,12545,1.0,pending,متخصص اطفال,medical,متخصص اطفال,medical
+2825,12546,1.0,pending,متخصص داخلی,medical,متخصص داخلی,medical
+2826,12547,1.0,pending,متخصص مغز و اعصاب,medical,متخصص مغز و اعصاب,medical
+2829,12550,1.0,pending,متخصص پوست,medical,متخصص پوست,medical
+2831,12552,1.0,pending,راهنمای درمانی,medical,راهنمای درمانی,medical
+2833,12554,1.0,pending,میناب,food,میناب,food
+2843,12564,1.0,pending,سیریک,tourism,سیریک,tourism
+2845,12566,1.0,pending,ابوموسی,tourism,ابوموسی,tourism
+2857,12578,1.0,pending,بازار بزرگ هرمزگان,tourism,بازار بزرگ هرمزگان,tourism
+2863,12584,1.0,pending,قوانین راهنمایی و رانندگی,traffic,قوانین راهنمایی و رانندگی,traffic
+2864,12585,1.0,pending,کارشناسی تصادفات تکمیلی,traffic,کارشناسی تصادفات تکمیلی,traffic
+2865,12586,1.0,pending,اطلس معابر و حوادث,traffic,اطلس معابر و حوادث,traffic
+2866,12587,1.0,pending,اطلس هتل و اقامتگاه,tourism,اطلس هتل و اقامتگاه,tourism
+2867,12588,1.0,pending,اطلس سواحل هرمزگان,tourism,اطلس سواحل هرمزگان,tourism
+2890,12611,1.0,pending,پیش بینی هوا,tourism,پیش بینی هوا,tourism
+2891,12612,1.0,pending,آب و هوای فصلی,tourism,آب و هوای فصلی,tourism
+2892,12613,1.0,pending,هشدار آب و هوا,traffic,هشدار آب و هوا,traffic
+2893,12614,1.0,pending,ترافیک هفتگی کامل,traffic,ترافیک هفتگی کامل,traffic
+2894,12615,1.0,pending,دوربین های نظارتی کامل,traffic,دوربین های نظارتی کامل,traffic
+2895,12616,1.0,pending,دوربین هدیش,traffic,دوربین هدیش,traffic
+2896,12617,1.0,pending,دوربین تنگ زاغ,traffic,دوربین تنگ زاغ,traffic
+2897,12618,1.0,pending,دوربین ایسین,traffic,دوربین ایسین,traffic
+2899,12620,1.0,pending,راهنمای دوربین ها,traffic,راهنمای دوربین ها,traffic
+2902,12623,1.0,pending,محله امیرآباد,traffic,محله امیرآباد,traffic
+2903,12624,1.0,pending,محله داروپخش,traffic,محله داروپخش,traffic
+2904,12625,1.0,pending,محله تولو,traffic,محله تولو,traffic
+2905,12626,1.0,pending,شهرک توحید,traffic,شهرک توحید,traffic
+2906,12627,1.0,pending,شهرک نور,traffic,شهرک نور,traffic
+2907,12628,1.0,pending,شهرک امام رضا,traffic,شهرک امام رضا,traffic
+2909,12630,1.0,pending,گلشهر جنوبی,traffic,گلشهر جنوبی,traffic
+2910,12631,1.0,pending,کوی فرودگاه,traffic,کوی فرودگاه,traffic
+2911,12632,1.0,pending,نخل پیرمرد,traffic,نخل پیرمرد,traffic
+2912,12633,1.0,pending,محله کنسولگری,traffic,محله کنسولگری,traffic
+2914,12635,1.0,pending,الهیه جنوبی,traffic,الهیه جنوبی,traffic
+2915,12636,1.0,pending,نایبند شمالی,traffic,نایبند شمالی,traffic
+2916,12637,1.0,pending,نایبند جنوبی,traffic,نایبند جنوبی,traffic
+2918,12639,1.0,pending,بازار قدیم,traffic,بازار قدیم,traffic
+2919,12640,1.0,pending,محله شاهد,traffic,محله شاهد,traffic
+2921,12642,1.0,pending,پل خواجو,traffic,پل خواجو,traffic
+2922,12643,1.0,pending,امامزاده سید کامل,traffic,امامزاده سید کامل,traffic
+2923,12644,1.0,pending,شریعتی جنوبی,traffic,شریعتی جنوبی,traffic
+2925,12646,1.0,pending,پیامبر اعظم,traffic,پیامبر اعظم,traffic
+2926,12647,1.0,pending,دوهزار,traffic,دوهزار,traffic
+2927,12648,1.0,pending,چهارصد,traffic,چهارصد,traffic
+2928,12649,1.0,pending,اسلام آباد,traffic,اسلام آباد,traffic
+2930,12651,1.0,pending,پارک گلها,traffic,پارک گلها,traffic
+2931,12652,1.0,pending,بهشت زهرا,traffic,بهشت زهرا,traffic
+2932,12653,1.0,pending,کوی ملت,traffic,کوی ملت,traffic
+2933,12654,1.0,pending,بلوار جهانباز,traffic,بلوار جهانباز,traffic
+2934,12655,1.0,pending,شهرک سجادیه,traffic,شهرک سجادیه,traffic
+2939,12660,1.0,pending,ایسین,traffic,ایسین,traffic
+2941,12662,1.0,pending,باقرآباد,traffic,باقرآباد,traffic
+2943,12664,1.0,pending,سیاهچاله,general,سیاهچاله,general
+2945,12666,1.0,pending,مریخ,general,مریخ,general
+2946,12667,1.0,pending,نقاشی,general,نقاشی,general
+2947,12668,1.0,pending,عکاسی,traffic,عکاسی,traffic
+2948,12669,1.0,pending,فیلمنامه نویسی,general,فیلمنامه نویسی,general
+2950,12671,1.0,pending,نخل,general,نخل,general
+2951,12672,1.0,pending,گلخانه,general,گلخانه,general
+2954,12675,1.0,pending,صیادی,general,صیادی,general
+2958,12679,1.0,pending,دستگاه شور,general,دستگاه شور,general
+2960,12681,1.0,pending,نت نویسی,general,نت نویسی,general
+2961,12682,1.0,pending,مولانا,general,مولانا,general
+2964,12685,1.0,pending,فوتبال,general,فوتبال,general
+2965,12686,1.0,pending,شنا,general,شنا,general
+2966,12687,1.0,pending,بدنسازی,general,بدنسازی,general
+2967,12688,1.0,pending,هوش مصنوعی مولد,general,هوش مصنوعی مولد,general
+2968,12689,1.0,pending,متاورس,general,متاورس,general
+2969,12690,1.0,pending,کامپیوتر کوانتومی,general,کامپیوتر کوانتومی,general
+2970,12691,1.0,pending,dna,general,dna,general
+2972,12693,1.0,pending,آشپزی,general,آشپزی,general
+2973,12694,1.0,pending,خیاطی,general,خیاطی,general
+2974,12695,1.0,pending,تعمیرات خانه,general,تعمیرات خانه,general
+2975,12696,1.0,pending,فهرست دانشنامه,tourism,فهرست دانشنامه,tourism
+2976,12697,1.0,pending,مموری لیک,general,مموری لیک,general
+2977,12698,1.0,pending,ددلاین همزمان,general,ددلاین همزمان,general
+2978,12699,1.0,pending,مهاجرت یا ماندن,general,مهاجرت یا ماندن,general
+2979,12700,1.0,pending,سرور هک شده,general,سرور هک شده,general
+2980,12701,1.0,pending,اخلاق حرفه ای,general,اخلاق حرفه ای,general
+2981,12702,1.0,pending,استارتاپ ورشکست,general,استارتاپ ورشکست,general
+2983,12704,1.0,pending,سوختگی شغلی,general,سوختگی شغلی,general
+2984,12705,1.0,pending,هواپیما تهران,general,هواپیما تهران,general
+2985,12706,1.0,pending,کجا بریم آخر هفته,tourism,کجا بریم آخر هفته,tourism
+2987,12708,1.0,pending,آب دریا تمیزه,tourism,آب دریا تمیزه,tourism
+2988,12709,1.0,pending,پایتون یاد بگیرم,general,پایتون یاد بگیرم,general
+2990,12711,1.0,pending,بنزین چند,general,بنزین چند,general
+2991,12712,1.0,pending,باطری تموم,general,باطری تموم,general
+2992,12713,1.0,pending,عزیز جان چطوری,general,عزیز جان چطوری,general
+2994,12715,1.0,pending,ده,general,ده,general
+2995,12716,1.0,pending,بکش به,general,بکش به,general
+2996,12717,1.0,pending,چند زدن,general,چند زدن,general
+2999,12720,1.0,pending,گد,general,گد,general
+3001,12722,1.0,pending,چشمداشت,general,چشمداشت,general
+3006,12727,1.0,pending,دلم تنگه,general,دلم تنگه,general
+3007,12728,1.0,pending,عصبانیم,general,عصبانیم,general
+3009,12730,1.0,pending,شوکه شدم,medical,شوکه شدم,medical
+3010,12731,1.0,pending,حسودیم,general,حسودیم,general
+3011,12732,1.0,pending,آرومم,general,آرومم,general
+3012,12733,1.0,pending,متنفرم,general,متنفرم,general
+3013,12734,1.0,pending,امید,general,امید,general
+3014,12735,1.0,pending,نوزاد,general,نوزاد,general
+3029,12750,1.0,pending,واکسن نوزاد,general,واکسن نوزاد,general
+3030,12751,1.0,pending,تغذیه کمکی نوزاد,food,تغذیه کمکی نوزاد,food
+3033,12754,1.0,pending,بهداشت نوزاد,general,بهداشت نوزاد,general
+3034,12755,1.0,pending,بیماری نوزاد,medical,بیماری نوزاد,medical
+3035,12756,1.0,pending,انسولین,general,انسولین,general
+3040,12761,1.0,pending,ایمونولوژی,general,ایمونولوژی,general
+3046,12767,1.0,pending,پردازش زبان طبیعی,general,پردازش زبان طبیعی,general
+3047,12768,1.0,pending,بینایی ماشین,general,بینایی ماشین,general
+3050,12771,1.0,pending,برنامه نویسی وب,general,برنامه نویسی وب,general
+3051,12772,1.0,pending,سیستم عامل,general,سیستم عامل,general
+3052,12773,1.0,pending,الکترونیک قدرت,general,الکترونیک قدرت,general
+3053,12774,1.0,pending,مخابرات,general,مخابرات,general
+3054,12775,1.0,pending,سیستم های کنترل,general,سیستم های کنترل,general
+3055,12776,1.0,pending,پردازش سیگنال,general,پردازش سیگنال,general
+3056,12777,1.0,pending,شبکه های عصبی مصنوعی,general,شبکه های عصبی مصنوعی,general
+3057,12778,1.0,pending,ترمودینامیک,general,ترمودینامیک,general
+3058,12779,1.0,pending,انتقال حرارت,general,انتقال حرارت,general
+3059,12780,1.0,pending,مکانیک سیالات,general,مکانیک سیالات,general
+3060,12781,1.0,pending,طراحی راکتور,general,طراحی راکتور,general
+3062,12783,1.0,pending,تحلیل سازه,general,تحلیل سازه,general
+3063,12784,1.0,pending,بتن,general,بتن,general
+3064,12785,1.0,pending,خاک و پی,general,خاک و پی,general
+3065,12786,1.0,pending,زلزله,general,زلزله,general
+3066,12787,1.0,pending,معماری پایدار,general,معماری پایدار,general
+3069,12790,1.0,pending,مدیریت مالی,general,مدیریت مالی,general
+3072,12793,1.0,pending,کارآفرینی,general,کارآفرینی,general
+3074,12795,1.0,pending,نسبیت,general,نسبیت,general
+3075,12796,1.0,pending,ژنتیک,general,ژنتیک,general
+3077,12798,1.0,pending,ریاضیات پیشرفته,general,ریاضیات پیشرفته,general
+3079,12800,1.0,pending,جامعه شناسی,general,جامعه شناسی,general
+3080,12801,1.0,pending,روانشناسی,general,روانشناسی,general
+3081,12802,1.0,pending,فلسفه,general,فلسفه,general
+3083,12804,1.0,pending,کارشناسی تصادف,traffic,کارشناسی تصادف,traffic
+3089,12810,1.0,pending,شیب عرضی,general,شیب عرضی,general
+3090,12811,1.0,pending,روسازی,general,روسازی,general
+3093,12814,1.0,pending,فیلتر اکتیو,general,فیلتر اکتیو,general
+3094,12815,1.0,pending,رله دیفرانسیل,general,رله دیفرانسیل,general
+3095,12816,1.0,pending,اینورتر,general,اینورتر,general
+3099,12820,1.0,pending,الگوریتم مسیریابی,general,الگوریتم مسیریابی,general
+3100,12821,1.0,pending,پایگاه داده,general,پایگاه داده,general
+3102,12823,1.0,pending,بلاکچین,general,بلاکچین,general
+3103,12824,1.0,pending,کروماتوگرافی,general,کروماتوگرافی,general
+3106,12827,1.0,pending,خوردگی,general,خوردگی,general
+3109,12830,1.0,pending,فشار خون,general,فشار خون,general
+3110,12831,1.0,pending,دیابت,general,دیابت,general
+3116,12837,1.0,pending,نرخ بهره,general,نرخ بهره,general
+3117,12838,1.0,pending,تورم,general,تورم,general
+3118,12839,1.0,pending,بورس,general,بورس,general
+3119,12840,1.0,pending,ارز دیجیتال,general,ارز دیجیتال,general
+3121,12842,1.0,pending,مقاله isi,general,مقاله isi,general
+3123,12844,1.0,pending,مذاکره,general,مذاکره,general
+3125,12846,1.0,pending,خودمراقبتی,general,خودمراقبتی,general
+3129,12850,1.0,pending,صبح بخیر,general,صبح بخیر,general
+3131,12852,1.0,pending,ثبت نام,general,ثبت نام,general
+3132,12853,1.0,pending,ثبت نام راننده,general,ثبت نام راننده,general
+3133,12854,1.0,pending,ثبت نام مسافر,general,ثبت نام مسافر,general
+3135,12856,1.0,pending,درخواست سفر,general,درخواست سفر,general
+3136,12857,1.0,pending,کرایه,general,کرایه,general
+3137,12858,1.0,pending,پرداخت,general,پرداخت,general
+3138,12859,1.0,pending,تخفیف,general,تخفیف,general
+3142,12863,1.0,pending,تصادف,traffic,تصادف,traffic
+3143,12864,1.0,pending,هرمز,tourism,هرمز,tourism
+3144,12865,1.0,pending,هنگام,general,هنگام,general
+3145,12866,1.0,pending,لارک,tourism,لارک,tourism
+3146,12867,1.0,pending,هتل,tourism,هتل,tourism
+3147,12868,1.0,pending,اقامت,tourism,اقامت,tourism
+3149,12870,1.0,pending,غذا,food,غذا,food
+3150,12871,1.0,pending,قلیه,food,قلیه,food
+3157,12878,1.0,pending,پارک,tourism,پارک,tourism
+3158,12879,1.0,pending,قوانین,traffic,قوانین,traffic
+3159,12880,1.0,pending,جریمه,traffic,جریمه,traffic
+3160,12881,1.0,pending,گواهینامه,general,گواهینامه,general
+3161,12882,1.0,pending,پلیس,traffic,پلیس,traffic
+3163,12884,1.0,pending,امداد,traffic,امداد,traffic
+3164,12885,1.0,pending,sos,general,sos,general
+3166,12887,1.0,pending,باران,general,باران,general
+3168,12889,1.0,pending,فرهنگ,culture,فرهنگ,culture
+3170,12891,1.0,pending,هدیش,traffic,هدیش,traffic
+3171,12892,1.0,pending,تنگ زاغ,traffic,تنگ زاغ,traffic
+3174,12894,1.0,pending,hapt,traffic,hapt,traffic
+3175,12895,1.0,pending,عصبانی,general,عصبانی,general
+3176,12896,1.0,pending,گریه,general,گریه,general
+3181,12900,1.0,pending,گرمازدگی,general,گرمازدگی,general
+3182,12901,1.0,pending,رانندگی بارانی,traffic,رانندگی بارانی,traffic
+3183,12902,1.0,pending,رانندگی شب,traffic,رانندگی شب,traffic
+3188,12907,1.0,pending,پشتیبانی,general,پشتیبانی,general
+3190,12909,1.0,pending,نسخه پرو,general,نسخه پرو,general
+3191,12910,1.0,pending,انرژی هسته ای,general,انرژی هسته ای,general
+3192,12911,1.0,pending,تئاتر,general,تئاتر,general
+3193,12912,1.0,pending,تور قشم,tourism,تور قشم,tourism
+3194,12913,1.0,pending,تور کیش,tourism,تور کیش,tourism
+3195,12914,1.0,pending,تور هرمز,tourism,تور هرمز,tourism
+3197,12916,1.0,pending,فوتبال ساحلی,tourism,فوتبال ساحلی,tourism
+3199,12918,1.0,pending,نگهداری نوزاد,general,نگهداری نوزاد,general
+3200,12919,1.0,pending,شیردهی,general,شیردهی,general
+3201,12920,1.0,pending,پوشک,general,پوشک,general
+3202,12921,1.0,pending,دندان درآوردن,general,دندان درآوردن,general
+3208,12927,1.0,pending,دلار,general,دلار,general
+3210,12929,1.0,pending,مقاله,general,مقاله,general
+3211,12930,1.0,pending,پروپوزال,general,پروپوزال,general
+3213,12932,1.0,pending,ویزا,general,ویزا,general
+3215,12934,1.0,pending,نمیفهمم,general,نمیفهمم,general
+3216,12935,1.0,pending,چی بپرسم,traffic,چی بپرسم,traffic
+3226,12945,1.0,pending,قلیه میگو,food,قلیه میگو,food
+3228,12947,1.0,pending,ماهی کبابی,tourism,ماهی کبابی,tourism
+3231,12950,1.0,pending,ترشی بندری,food,ترشی بندری,food
+3232,12951,1.0,pending,راهنمای آشپزی بندری,food,راهنمای آشپزی بندری,food
+3236,12955,1.0,pending,بخش قلعه قاضی,general,بخش قلعه قاضی,general
+3241,12960,1.0,pending,بخش شهاب,tourism,بخش شهاب,tourism
+3245,12964,1.0,pending,بخش کیش,tourism,بخش کیش,tourism
+3248,12967,1.0,pending,بخش مرکزی حاجی آباد,general,بخش مرکزی حاجی آباد,general
+3249,12968,1.0,pending,بخش فارغان,general,بخش فارغان,general
+3252,12971,1.0,pending,بخش مرکزی پارسیان,tourism,بخش مرکزی پارسیان,tourism
+3262,12981,1.0,pending,بندر خمیر,food,بندر خمیر,food
+3266,12985,1.0,pending,رمزارز,general,رمزارز,general
+3267,12986,1.0,pending,جنگ,general,جنگ,general
+3268,12987,1.0,pending,بهترین گوشی,general,بهترین گوشی,general
+3269,12988,1.0,pending,بهترین لپتاپ,general,بهترین لپتاپ,general
+3273,12992,1.0,pending,طراحی سایت,general,طراحی سایت,general
+3275,12994,1.0,pending,اجاره خانه,general,اجاره خانه,general
+3279,12998,1.0,pending,کنکور,general,کنکور,general
+3281,13000,1.0,pending,رشته,medical,رشته,medical
+3283,13002,1.0,pending,ورزش,general,ورزش,general
+3284,13003,1.0,pending,خواب,general,خواب,general
+3286,13005,1.0,pending,کرونا,general,کرونا,general
+3291,13010,1.0,pending,تقویم,traffic,تقویم,traffic
+3296,13015,1.0,pending,چطور لاغر بشم,general,چطور لاغر بشم,general
+3297,13016,1.0,pending,چطور خوشحال باشم,general,چطور خوشحال باشم,general
+3299,13018,1.0,pending,gpt 4 چیست,general,gpt 4 چیست,general
+3301,13020,1.0,pending,api chatgpt,general,api chatgpt,general
+3302,13021,1.0,pending,chatgpt فارسی,general,chatgpt فارسی,general
+3303,13022,1.0,pending,جیلبریک chatgpt,general,جیلبریک chatgpt,general
+3305,13024,1.0,pending,جایگزین chatgpt,general,جایگزین chatgpt,general
+3310,13029,1.0,pending,هوش مصنوعی خطرناک,general,هوش مصنوعی خطرناک,general
+3311,13030,1.0,pending,یادگیری ماشین,general,یادگیری ماشین,general
+3312,13031,1.0,pending,دیپ لرنینگ,general,دیپ لرنینگ,general
+3314,13033,1.0,pending,بهترین زبان برنامه نویسی,general,بهترین زبان برنامه نویسی,general
+3315,13034,1.0,pending,frontend یا backend,general,frontend یا backend,general
+3317,13036,1.0,pending,فلاتر,general,فلاتر,general
+3318,13037,1.0,pending,کوبرنتیز,general,کوبرنتیز,general
+3319,13038,1.0,pending,گیت,general,گیت,general
+3320,13039,1.0,pending,sql یا nosql,general,sql یا nosql,general
+3321,13040,1.0,pending,api چیست,general,api چیست,general
+3322,13041,1.0,pending,جیسون,general,جیسون,general
+3323,13042,1.0,pending,کلود,general,کلود,general
+3325,13044,1.0,pending,واقعیت افزوده,general,واقعیت افزوده,general
+3326,13045,1.0,pending,رباتیک,medical,رباتیک,medical
+3328,13047,1.0,pending,وای فای 7,traffic,وای فای 7,traffic
+3329,13048,1.0,pending,شارژ سریع,general,شارژ سریع,general
+3331,13050,1.0,pending,خودرو برقی,general,خودرو برقی,general
+3333,13052,1.0,pending,هایپرلوپ,traffic,هایپرلوپ,traffic
+3334,13053,1.0,pending,اسپیس ایکس,general,اسپیس ایکس,general
+3335,13054,1.0,pending,استارلینک,traffic,استارلینک,traffic
+3336,13055,1.0,pending,هوش مصنوعی و پزشکی,medical,هوش مصنوعی و پزشکی,medical
+3338,13057,1.0,pending,تغییر اقلیم,general,تغییر اقلیم,general
+3339,13058,1.0,pending,بیت کوین,general,بیت کوین,general
+3342,13061,1.0,pending,دیفای,general,دیفای,general
+3343,13062,1.0,pending,وب 3,general,وب 3,general
+3344,13063,1.0,pending,متامسک,general,متامسک,general
+3346,13065,1.0,pending,بهره بانکی,general,بهره بانکی,general
+3347,13066,1.0,pending,فدرال رزرو,general,فدرال رزرو,general
+3348,13067,1.0,pending,شاخص دلار,general,شاخص دلار,general
+3350,13069,1.0,pending,طلا,general,طلا,general
+3354,13073,1.0,pending,تحلیل تکنیکال,general,تحلیل تکنیکال,general
+3355,13074,1.0,pending,تحلیل فاندامنتال,general,تحلیل فاندامنتال,general
+3356,13075,1.0,pending,سرمایه گذاری,general,سرمایه گذاری,general
+3357,13076,1.0,pending,صندوق سرمایه گذاری,general,صندوق سرمایه گذاری,general
+3359,13078,1.0,pending,چک,general,چک,general
+3360,13079,1.0,pending,وام,general,وام,general
+3361,13080,1.0,pending,لیزینگ,general,لیزینگ,general
+3363,13082,1.0,pending,کارت اعتباری,general,کارت اعتباری,general
+3365,13084,1.0,pending,سود مرکب,general,سود مرکب,general
+3366,13085,1.0,pending,تورم ایران,general,تورم ایران,general
+3370,13089,1.0,pending,سفته,general,سفته,general
+3375,13094,1.0,pending,انگیزه,general,انگیزه,general
+3376,13095,1.0,pending,بهره وری,general,بهره وری,general
+3379,13098,1.0,pending,شادی,general,شادی,general
+3380,13099,1.0,pending,رابطه,general,رابطه,general
+3381,13100,1.0,pending,دوست یابی,general,دوست یابی,general
+3382,13101,1.0,pending,مهارت اجتماعی,general,مهارت اجتماعی,general
+3383,13102,1.0,pending,فن بیان,general,فن بیان,general
+3384,13103,1.0,pending,رهبری,general,رهبری,general
+3385,13104,1.0,pending,کار تیمی,general,کار تیمی,general
+3387,13106,1.0,pending,تفکر نقاد,general,تفکر نقاد,general
+3388,13107,1.0,pending,هوش هیجانی,general,هوش هیجانی,general
+3389,13108,1.0,pending,ذهن آگاهی,general,ذهن آگاهی,general
+3391,13110,1.0,pending,شکرگزاری,general,شکرگزاری,general
+3393,13112,1.0,pending,پایتخت ایران,general,پایتخت ایران,general
+3394,13113,1.0,pending,پرجمعیت ترین,general,پرجمعیت ترین,general
+3395,13114,1.0,pending,بزرگترین کشور,general,بزرگترین کشور,general
+3396,13115,1.0,pending,قدیمی ترین تمدن,general,قدیمی ترین تمدن,general
+3397,13116,1.0,pending,عجایب هفتگانه,general,عجایب هفتگانه,general
+3398,13117,1.0,pending,رئیس جمهور آمریکا,general,رئیس جمهور آمریکا,general
+3399,13118,1.0,pending,رئیس جمهور ایران,general,رئیس جمهور ایران,general
+3404,13123,1.0,pending,انرژی تجدیدپذیر,general,انرژی تجدیدپذیر,general
+3405,13124,1.0,pending,هوش مصنوعی عمومی,general,هوش مصنوعی عمومی,general
+3406,13125,1.0,pending,تکینگی,general,تکینگی,general
+3407,13126,1.0,pending,ماه,general,ماه,general
+3408,13127,1.0,pending,سیاه چاله,general,سیاه چاله,general
+3409,13128,1.0,pending,بیگ بنگ,general,بیگ بنگ,general
+3410,13129,1.0,pending,دایناسورها,general,دایناسورها,general
+3411,13130,1.0,pending,انسان,general,انسان,general
+3412,13131,1.0,pending,زبان,culture,زبان,culture
+3413,13132,1.0,pending,دین,general,دین,general
+3414,13133,1.0,pending,اخلاق,general,اخلاق,general
+3418,13137,1.0,pending,المپیک,general,المپیک,general
+3419,13138,1.0,pending,شطرنج,general,شطرنج,general
+3420,13139,1.0,pending,قرآن,general,قرآن,general
+3421,13140,1.0,pending,نهج البلاغه,general,نهج البلاغه,general
+3422,13141,1.0,pending,حافظ,general,حافظ,general
+3423,13142,1.0,pending,فردوسی,general,فردوسی,general
+3424,13143,1.0,pending,خیام,general,خیام,general
+3425,13144,1.0,pending,انیشتین,general,انیشتین,general
+3427,13146,1.0,pending,تسلا,general,تسلا,general
+3429,13148,1.0,pending,ایلان ماسک,general,ایلان ماسک,general
+3430,13149,1.0,pending,چطور موفق بشم,general,چطور موفق بشم,general
+3433,13152,1.0,pending,چطور برنامه ریزی کنم,general,چطور برنامه ریزی کنم,general
+3434,13153,1.0,pending,چطور زبان انگلیسی یاد بگیرم,general,چطور زبان انگلیسی یاد بگیرم,general
+3436,13155,1.0,pending,چطور بخوابم,general,چطور بخوابم,general
+3437,13156,1.0,pending,چطور تمرکز کنم,general,چطور تمرکز کنم,general
+3438,13157,1.0,pending,چطور استرس رو کم کنم,general,چطور استرس رو کم کنم,general
+3439,13158,1.0,pending,چطور اعتماد به نفس پیدا کنم,general,چطور اعتماد به نفس پیدا کنم,general
+3440,13159,1.0,pending,چطور تصمیم بگیرم,general,چطور تصمیم بگیرم,general
+3443,13162,1.0,pending,چطور با آدم سمی برخورد کنم,general,چطور با آدم سمی برخورد کنم,general
+3444,13163,1.0,pending,چطور ببخشم,general,چطور ببخشم,general
+3445,13164,1.0,pending,چطور breakup رو فراموش کنم,general,چطور breakup رو فراموش کنم,general
+3446,13165,1.0,pending,چطور با افسردگی مقابله کنم,medical,چطور با افسردگی مقابله کنم,medical
+3449,13168,1.0,pending,چطور شغل پیدا کنم,general,چطور شغل پیدا کنم,general
+3452,13171,1.0,pending,چطور سرمایه گذاری کنم,general,چطور سرمایه گذاری کنم,general
+3453,13172,1.0,pending,چطور قانع باشم,general,چطور قانع باشم,general
+3454,13173,1.0,pending,چطور خلاق باشم,general,چطور خلاق باشم,general
+3455,13174,1.0,pending,چطور نویسنده بشم,general,چطور نویسنده بشم,general
+3458,13177,1.0,pending,چطور بلاگر بشم,food,چطور بلاگر بشم,food
+3460,13179,1.0,pending,چطور عکاس بشم,traffic,چطور عکاس بشم,traffic
+3462,13181,1.0,pending,چطور آشپزی یاد بگیرم,food,چطور آشپزی یاد بگیرم,food
+3466,13185,1.0,pending,چطور مهاجرت کنم,traffic,چطور مهاجرت کنم,traffic
+3467,13186,1.0,pending,چطور رزومه بنویسم,general,چطور رزومه بنویسم,general
+3468,13187,1.0,pending,چطور مصاحبه کاری رو قبول بشم,general,چطور مصاحبه کاری رو قبول بشم,general
+3469,13188,1.0,pending,چطور مذاکره کنم,general,چطور مذاکره کنم,general
+3470,13189,1.0,pending,چطور ارائه بدم,general,چطور ارائه بدم,general
+3471,13190,1.0,pending,چطور رهبر باشم,general,چطور رهبر باشم,general
+3472,13191,1.0,pending,چطور تیم بسازم,general,چطور تیم بسازم,general
+3476,13195,1.0,pending,چطور productivity رو بالا ببرم,general,چطور productivity رو بالا ببرم,general
+3478,13197,1.0,pending,چطور سخنرانی کنم,general,چطور سخنرانی کنم,general
+3480,13199,1.0,pending,سوالات رایج,general,سوالات رایج,general
+3484,13203,1.0,pending,غذا گفتگو,food,غذا گفتگو,food
+3485,13204,1.0,pending,ترافیک گفتگو,traffic,ترافیک گفتگو,traffic
+3486,13205,1.0,pending,عزاداری,general,عزاداری,general
+3487,13206,1.0,pending,فصل ها,general,فصل ها,general
+3490,13209,1.0,pending,دستورات,general,دستورات,general
+3491,13210,1.0,pending,جملات روزمره,tourism,جملات روزمره,tourism
+3493,13212,1.0,pending,ترافیک امروز,traffic,ترافیک امروز,traffic
+3494,13213,1.0,pending,ترافیک چهارشنبه,traffic,ترافیک چهارشنبه,traffic
+3496,13215,1.0,pending,فرهنگ ایران,culture,فرهنگ ایران,culture
+3506,13225,1.0,pending,واتساپ,general,واتساپ,general
+3507,13226,1.0,pending,تلگرام,general,تلگرام,general
+3508,13227,1.0,pending,توییتر,general,توییتر,general
+3516,13235,1.0,pending,ترجمه,general,ترجمه,general
+3517,13236,1.0,pending,ویرایش عکس,general,ویرایش عکس,general
+3519,13238,1.0,pending,کسب درآمد بلاگری,general,کسب درآمد بلاگری,general
+3520,13239,1.0,pending,تجهیزات بلاگری,traffic,تجهیزات بلاگری,traffic
+3524,13243,1.0,pending,الگوریتم اینستاگرام,general,الگوریتم اینستاگرام,general
+3527,13246,1.0,pending,نور عکاسی بلاگری,general,نور عکاسی بلاگری,general
+3530,13249,1.0,pending,کپشن آماده انگیزشی,traffic,کپشن آماده انگیزشی,traffic
+3533,13252,1.0,pending,هشتگ طبیعت,tourism,هشتگ طبیعت,tourism
+3538,13257,1.0,pending,ووکامرس,traffic,ووکامرس,traffic
+3546,13265,1.0,pending,پروژه hapt,traffic,پروژه hapt,traffic
+3547,13266,1.0,pending,hapt نتایج,traffic,hapt نتایج,traffic
+3549,13268,1.0,pending,hapt هزینه,general,hapt هزینه,general
+3550,13269,1.0,pending,hapt تماس,general,hapt تماس,general
+3551,13270,1.0,pending,پنچری چه کنم,general,پنچری چه کنم,general
+3553,13272,1.0,pending,مار عقرب گزیدگی,general,مار عقرب گزیدگی,general
+3555,13274,1.0,pending,سفر دونفره هرمز,tourism,سفر دونفره هرمز,tourism
+3557,13276,1.0,pending,عروسی جنوبی,food,عروسی جنوبی,food
+3558,13277,1.0,pending,نوروز بندرعباس,tourism,نوروز بندرعباس,tourism
+3560,13279,1.0,pending,ناراحت,general,ناراحت,general
+3561,13280,1.0,pending,خسته,general,خسته,general
+3562,13281,1.0,pending,دلتنگ,general,دلتنگ,general
+3563,13282,1.0,pending,افسرده,general,افسرده,general
+3564,13283,1.0,pending,خوشحال,general,خوشحال,general
+3565,13284,1.0,pending,عاشق,general,عاشق,general
+3567,13286,1.0,pending,بارون,traffic,بارون,traffic
+3568,13287,1.0,pending,طوفان,tourism,طوفان,tourism
+3571,13290,1.0,pending,رادیولوژی,medical,رادیولوژی,medical
+3582,13301,1.0,pending,بلاگری هرمزگان,tourism,بلاگری هرمزگان,tourism
+3590,13309,1.0,pending,هتل های بندرعباس کامل,tourism,هتل های بندرعباس کامل,tourism
+3601,13320,1.0,pending,کیک خانگی,general,کیک خانگی,general
+3603,13322,1.0,pending,کیک تولد,general,کیک تولد,general
+3609,13328,1.0,pending,نمونه سوالات راه آهن,traffic,نمونه سوالات راه آهن,traffic
+3610,13329,1.0,pending,نمونه سوالات استخدامی عمومی,general,نمونه سوالات استخدامی عمومی,general
+3612,13331,1.0,pending,احکام شرعی,general,احکام شرعی,general
+3621,13340,1.0,pending,اجتماعی,medical,اجتماعی,medical
+3629,13348,1.0,pending,مسائل اجتماعی روز,traffic,مسائل اجتماعی روز,traffic
+3648,13367,1.0,pending,ثبت نام وام,traffic,ثبت نام وام,traffic
+3659,13378,1.0,pending,ملی شدن نفت,general,ملی شدن نفت,general
+3668,13387,1.0,pending,جنگ چالدران,general,جنگ چالدران,general
+3669,13388,1.0,pending,عهدنامه ترکمانچای,general,عهدنامه ترکمانچای,general
+3673,13392,1.0,pending,صلح نامه های ایران,general,صلح نامه های ایران,general
+3678,13397,1.0,pending,رمضان خلاصه,general,رمضان خلاصه,general
+3682,13401,1.0,pending,ترافیک الان,traffic,ترافیک الان,traffic
+3683,13402,1.0,pending,گشنه,food,گشنه,food
+3684,13403,1.0,pending,مقایسه ماشین,general,مقایسه ماشین,general
+3686,13405,1.0,pending,وام فرزند,general,وام فرزند,general
+3689,13408,1.0,pending,انقلاب,general,انقلاب,general
+3690,13409,1.0,pending,مشروطه,general,مشروطه,general
+3691,13410,1.0,pending,مصدق,general,مصدق,general
+3692,13411,1.0,pending,خمس,general,خمس,general
+3693,13412,1.0,pending,زکات,general,زکات,general
+3694,13413,1.0,pending,روزه,general,روزه,general
+3696,13415,1.0,pending,بیمارستان,medical,بیمارستان,medical
+3697,13416,1.0,pending,آزمایش,general,آزمایش,general
+3703,13422,1.0,pending,دلِمی,general,دلِمی,general
+3746,13465,1.0,pending,مسیر بندری,traffic,مسیر بندری,traffic
+3806,13525,1.0,pending,ساحل بندری,tourism,ساحل بندری,tourism
+3833,13552,1.0,pending,بریم لارک بندری,tourism,بریم لارک بندری,tourism
+3845,13564,1.0,pending,بریم دولت بندری,tourism,بریم دولت بندری,tourism
+3850,13569,1.0,pending,درمانگاه بندری,medical,درمانگاه بندری,medical
+3865,13584,1.0,pending,دادگستری بندری,medical,دادگستری بندری,medical
+3868,13587,1.0,pending,کافه بندری,tourism,کافه بندری,tourism
+3910,13629,1.0,pending,هشدار ترافیکی,traffic,هشدار ترافیکی,traffic
+3912,13631,1.0,pending,نقاط حادثه خیز اولویت بندی,traffic,نقاط حادثه خیز اولویت بندی,traffic
+3913,13632,1.0,pending,دوربین های سرعت بندرعباس,traffic,دوربین های سرعت بندرعباس,traffic
+3914,13633,1.0,pending,پایش ترافیک لحظه ای,traffic,پایش ترافیک لحظه ای,traffic
+3918,13636,1.0,pending,هشدار ایسین,traffic,هشدار ایسین,traffic
+3932,13650,1.0,pending,استخدام وزارت بهداشت,medical,استخدام وزارت بهداشت,medical
+3935,13653,1.0,pending,انتقال خون بندرعباس,medical,انتقال خون بندرعباس,medical
+3938,13656,1.0,pending,کمپ ترک اعتیاد بندرعباس,medical,کمپ ترک اعتیاد بندرعباس,medical
+3941,13659,1.0,pending,مراکز مشاوره اعتیاد,medical,مراکز مشاوره اعتیاد,medical
+3947,13665,1.0,pending,سامانه ثبت اسناد,general,سامانه ثبت اسناد,general
+3956,13674,1.0,pending,ازمون ایین نامه,traffic,ازمون ایین نامه,traffic
+3957,13675,1.0,pending,نمونه سوالات ایین نامه,traffic,نمونه سوالات ایین نامه,traffic
+3959,13677,1.0,pending,رانندگی ایمن نکات,traffic,رانندگی ایمن نکات,traffic
+3965,13683,1.0,pending,کمک های اولیه کودکان,medical,کمک های اولیه کودکان,medical
+3967,13685,1.0,pending,شیر خشک راهنما,food,شیر خشک راهنما,food
+3968,13686,1.0,pending,بیماری های شایع کودکان,medical,بیماری های شایع کودکان,medical
+3971,13689,1.0,pending,تغذیه کودک یک تا پنج سال,food,تغذیه کودک یک تا پنج سال,food
+3972,13690,1.0,pending,واکسیناسیون کامل,medical,واکسیناسیون کامل,medical
+3974,13692,1.0,pending,فتاوای رهبری,medical,فتاوای رهبری,medical
+3984,13702,1.0,pending,نیروی دریایی سپاه,traffic,نیروی دریایی سپاه,traffic
+3985,13703,1.0,pending,خلیج فارس نظامی,tourism,خلیج فارس نظامی,tourism
+3987,13705,1.0,pending,سپاه پاسداران,traffic,سپاه پاسداران,traffic
+3989,13707,1.0,pending,فراجا ناجا,traffic,فراجا ناجا,traffic
+3995,13713,1.0,pending,سپاه,traffic,سپاه,traffic
+3998,13716,1.0,pending,فتاح هایپرسونیک,traffic,فتاح هایپرسونیک,traffic
+4001,13719,1.0,pending,روش تدریس علوم,traffic,روش تدریس علوم,traffic
+4002,13720,1.0,pending,روش تدریس انگلیسی,general,روش تدریس انگلیسی,general
+4005,13723,1.0,pending,تکالیف خلاقانه,culture,تکالیف خلاقانه,culture
+4007,13725,1.0,pending,پایه دوم ابتدایی,general,پایه دوم ابتدایی,general
+4009,13727,1.0,pending,پایه چهارم ابتدایی,food,پایه چهارم ابتدایی,food
+4017,13735,1.0,pending,فرمول های ریاضی,general,فرمول های ریاضی,general
+4018,13736,1.0,pending,حل معادله درجه دو,general,حل معادله درجه دو,general
+4020,13738,1.0,pending,جدول ضرب,general,جدول ضرب,general
+4021,13739,1.0,pending,اعداد اول,general,اعداد اول,general
+4022,13740,1.0,pending,ریاضی کنکور,general,ریاضی کنکور,general
+4023,13741,1.0,pending,علوم پزشکی هرمزگان,medical,علوم پزشکی هرمزگان,medical
+4024,13742,1.0,pending,پزشکی رشته ها,medical,پزشکی رشته ها,medical
+4027,13745,1.0,pending,انواع مقاله علمی,medical,انواع مقاله علمی,medical
+4035,13753,1.0,pending,آگهی روزنامه,tourism,آگهی روزنامه,tourism
+4055,13773,1.0,pending,استعلام خلافی خودرو,traffic,استعلام خلافی خودرو,traffic
+4060,13778,1.0,pending,پارک فناوری هرمزگان,traffic,پارک فناوری هرمزگان,traffic
+4066,13783,1.0,pending,تغذیه بارداری,food,تغذیه بارداری,food
+4067,13784,1.0,pending,علائم خطر بارداری,medical,علائم خطر بارداری,medical
+4070,13787,1.0,pending,رمضان در هرمزگان,food,رمضان در هرمزگان,food
+4071,13788,1.0,pending,رمضان در جهان,food,رمضان در جهان,food
+4075,13792,1.0,pending,نیمه شعبان,culture,نیمه شعبان,culture
+4076,13793,1.0,pending,نیمه شعبان هرمزگان,tourism,نیمه شعبان هرمزگان,tourism
+4085,13802,1.0,pending,غدیر هرمزگان,food,غدیر هرمزگان,food
+4086,13803,1.0,pending,خطبه غدیر,general,خطبه غدیر,general
+4091,13808,1.0,pending,روز پدر هرمزگان,food,روز پدر هرمزگان,food
+4092,13809,1.0,pending,امام علی,general,امام علی,general
+4093,13810,1.0,pending,ولنتاین,tourism,ولنتاین,tourism
+4097,13814,1.0,pending,چهارشنبه سوری هرمزگان,tourism,چهارشنبه سوری هرمزگان,tourism
+4101,13818,1.0,pending,فال حافظ,traffic,فال حافظ,traffic
+4105,13822,1.0,pending,قرآن به سر,general,قرآن به سر,general
+4108,13825,1.0,pending,دعای ارزوها,general,دعای ارزوها,general
+4112,13829,1.0,pending,اسم پسر با الف,general,اسم پسر با الف,general
+4115,13832,1.0,pending,اسم دختر مذهبی,general,اسم دختر مذهبی,general
+4127,13843,1.0,pending,طرح یسنا,medical,طرح یسنا,medical
+4128,13844,1.0,pending,کودکان سوءتغذیه,medical,کودکان سوءتغذیه,medical
+4130,13846,1.0,pending,ساعت قطار بندرعباس,traffic,ساعت قطار بندرعباس,traffic
+4133,13849,1.0,pending,تاکسی اینترنتی hdp,traffic,تاکسی اینترنتی hdp,traffic
+4136,13852,1.0,pending,الگوریتم هشدار hdp,traffic,الگوریتم هشدار hdp,traffic
+4138,13854,1.0,pending,غذاهای بندری شیرین,food,غذاهای بندری شیرین,food
+4139,13855,1.0,pending,طرز تهیه رنگینک,food,طرز تهیه رنگینک,food
+4140,13856,1.0,pending,دسر سریع,general,دسر سریع,general
+4141,13857,1.0,pending,طرز تهیه شله زرد,food,طرز تهیه شله زرد,food
+4142,13858,1.0,pending,پارکینگ های بندرعباس,traffic,پارکینگ های بندرعباس,traffic
+4144,13860,1.0,pending,پارک حاشیه ای ممنوع,traffic,پارک حاشیه ای ممنوع,traffic
+4146,13862,1.0,pending,معاینه فنی بندرعباس,traffic,معاینه فنی بندرعباس,traffic
+4151,13867,1.0,pending,اقامت ارزان بندرعباس,tourism,اقامت ارزان بندرعباس,tourism
+4155,13871,1.0,pending,ثبت نام خوابگاه,medical,ثبت نام خوابگاه,medical
+4157,13873,1.0,pending,اسم دخترانه,general,اسم دخترانه,general
+4158,13874,1.0,pending,اسم پسرانه,general,اسم پسرانه,general
+4159,13875,1.0,pending,دسر,food,دسر,food
+4160,13876,1.0,pending,هوش,medical,هوش,medical
+4167,13883,1.0,pending,مکالمه بندری غذا,food,مکالمه بندری غذا,food
+4169,13885,1.0,pending,مکالمه بندری عروسی,food,مکالمه بندری عروسی,food
+4171,13887,1.0,pending,مکالمه بندری شادی,culture,مکالمه بندری شادی,culture
+4174,13890,1.0,pending,مکالمه بندری دکتر,food,مکالمه بندری دکتر,food
+4178,13894,1.0,pending,هوا امروز,general,هوا امروز,general
+4179,13895,1.0,pending,فردا بارون,general,فردا بارون,general
+4180,13896,1.0,pending,باد شمال,general,باد شمال,general
+4182,13898,1.0,pending,دریا مواج,general,دریا مواج,general
+4184,13900,1.0,pending,دمای آب,tourism,دمای آب,tourism
+4185,13901,1.0,pending,هوای گنو,general,هوای گنو,general
+4186,13902,1.0,pending,طوفان شن,general,طوفان شن,general
+4187,13903,1.0,pending,هوای سفر,general,هوای سفر,general
+4195,13910,1.0,pending,سرعت مجاز,traffic,سرعت مجاز,traffic
+4196,13911,1.0,pending,دوربین متحرک,traffic,دوربین متحرک,traffic
+4201,13916,1.0,pending,جریمه چراغ,traffic,جریمه چراغ,traffic
+4204,13919,1.0,pending,بیمارستان خلیج,medical,بیمارستان خلیج,medical
+4206,13921,1.0,pending,هتل هما مسیر,tourism,هتل هما مسیر,tourism
+4209,13924,1.0,pending,داروخانه شبانه,medical,داروخانه شبانه,medical
+4213,13928,1.0,pending,پیک نیک کجا,tourism,پیک نیک کجا,tourism
+4215,13930,1.0,pending,فرودگاه مسیر,traffic,فرودگاه مسیر,traffic
+4218,13933,1.0,pending,اسکله تفریحی,tourism,اسکله تفریحی,tourism
+4221,13936,1.0,pending,قیمت پراید,general,قیمت پراید,general
+4230,13945,1.0,pending,اجاره وانت,general,اجاره وانت,general
+4233,13948,1.0,pending,کرایه تاکسی فرودگاه,general,کرایه تاکسی فرودگاه,general
+4235,13950,1.0,pending,غروب قشنگ,tourism,غروب قشنگ,tourism
+4236,13951,1.0,pending,بهترین ساحل,tourism,بهترین ساحل,tourism
+4237,13952,1.0,pending,دلفین هنگام,tourism,دلفین هنگام,tourism
+4239,13954,1.0,pending,باغ پرندگان ارزش,general,باغ پرندگان ارزش,general
+4243,13958,1.0,pending,تور قشم قیمت,tourism,تور قشم قیمت,tourism
+4245,13960,1.0,pending,هرمز با ماشین,tourism,هرمز با ماشین,tourism
+4246,13961,1.0,pending,عکاسی حرفه ای کجا,tourism,عکاسی حرفه ای کجا,tourism
+4247,13962,1.0,pending,تفریحات شبانه بندر,tourism,تفریحات شبانه بندر,tourism
+4248,13963,1.0,pending,بومگردی قشم,tourism,بومگردی قشم,tourism
+4249,13964,1.0,pending,سوزا قشم,tourism,سوزا قشم,tourism
+4250,13965,1.0,pending,جای بکر,tourism,جای بکر,tourism
+4251,13966,1.0,pending,قلیه ماهی طرز,food,قلیه ماهی طرز,food
+4254,13969,1.0,pending,سس تمر هندی,general,سس تمر هندی,general
+4257,13972,1.0,pending,موفلک چیه,food,موفلک چیه,food
+4262,13977,1.0,pending,مربای انبه,general,مربای انبه,general
+4264,13979,1.0,pending,سبزی قلیه,food,سبزی قلیه,food
+4270,13985,1.0,pending,ساعت صیادی,general,ساعت صیادی,general
+4276,13991,1.0,pending,فیله صبور,general,فیله صبور,general
+4278,13993,1.0,pending,جزر و مد,general,جزر و مد,general
+4279,13994,1.0,pending,موج صیادی,tourism,موج صیادی,tourism
+4280,13995,1.0,pending,خوراک ماهی تمر,food,خوراک ماهی تمر,food
+4284,13999,1.0,pending,فصل هامور,general,فصل هامور,general
+4287,14002,1.0,pending,ممنون,general,ممنون,general
+4291,14006,1.0,pending,محلی امروز,medical,محلی امروز,medical
+4292,14007,1.0,pending,مذاکرات,general,مذاکرات,general
+4297,14012,1.0,pending,پارک علم فناوری هرمزگان,traffic,پارک علم فناوری هرمزگان,traffic
+4300,14013,1.0,pending,ناهار,food,ناهار,food
+4303,14016,1.0,pending,قرار ملاقات,tourism,قرار ملاقات,tourism
+4305,14018,1.0,pending,بهترین غذا بندر,food,بهترین غذا بندر,food
+4306,14019,1.0,pending,ارزان ترین هتل,tourism,ارزان ترین هتل,tourism
+4307,14020,1.0,pending,نزدیک ترین بیمارستان,medical,نزدیک ترین بیمارستان,medical
+4308,14021,1.0,pending,بهترین فصل سفر,general,بهترین فصل سفر,general
+4309,14022,1.0,pending,کجا شنا کنم,tourism,کجا شنا کنم,tourism
+4310,14023,1.0,pending,قیمت تاکسی,general,قیمت تاکسی,general
+4312,14025,1.0,pending,چطور برم هرمز,general,چطور برم هرمز,general
+4316,14029,1.0,pending,آب هوا فردا,general,آب هوا فردا,general
+4320,14033,1.0,pending,کجا عکس بگیرم,tourism,کجا عکس بگیرم,tourism
+4322,14035,1.0,pending,نهار,food,نهار,food
+4324,14037,1.0,pending,قایق,tourism,قایق,tourism
+4325,14038,1.0,pending,ماهی,tourism,ماهی,tourism
+4329,14041,1.0,pending,پیشگیری گرمازدگی,medical,پیشگیری گرمازدگی,medical
+4330,14042,1.0,pending,گرمازدگی هرمزگان,medical,گرمازدگی هرمزگان,medical
+4340,14052,1.0,pending,گروه های جام جهانی 2026,general,گروه های جام جهانی 2026,general
+4347,14059,1.0,pending,روانشناس کی برم,medical,روانشناس کی برم,medical
+4351,14063,1.0,pending,گمبرون,tourism,گمبرون,tourism
+4353,14065,1.0,pending,قتل,general,قتل,general
+4355,14067,1.0,pending,صبح,general,صبح,general
+4357,14069,1.0,pending,خدا,general,خدا,general
+4358,14070,1.0,pending,pcr,medical,pcr,medical
+4363,14075,1.0,pending,بندرلنگه,tourism,بندرلنگه,tourism
+4364,14076,1.0,pending,لاوان,tourism,لاوان,tourism
+4368,14080,1.0,pending,پزشکی,medical,پزشکی,medical
+4370,14082,1.0,pending,معابر فرعی,traffic,معابر فرعی,traffic
+4371,14083,1.0,pending,نقاط پرخطر,traffic,نقاط پرخطر,traffic
+4375,14087,1.0,pending,هشدار تصادف,traffic,هشدار تصادف,traffic
+4376,14088,1.0,pending,ردیابی,traffic,ردیابی,traffic
+4377,14089,1.0,pending,آموزشی,traffic,آموزشی,traffic
+4378,14090,1.0,pending,کسب وکار,general,کسب وکار,general
+4380,14092,1.0,pending,تحلیل ترافیک,traffic,تحلیل ترافیک,traffic
+4381,14093,1.0,pending,اپلیکیشن hdp,tourism,اپلیکیشن hdp,tourism
+4382,14094,1.0,pending,امکانات hdp,tourism,امکانات hdp,tourism
+4383,14095,1.0,pending,نقشه راه hdp,traffic,نقشه راه hdp,traffic
+4384,14096,1.0,pending,هرمز کامل,tourism,هرمز کامل,tourism
+4385,14097,1.0,pending,قشم کامل,tourism,قشم کامل,tourism
+4386,14098,1.0,pending,کیش کامل,tourism,کیش کامل,tourism
+4387,14099,1.0,pending,هندورابی,tourism,هندورابی,tourism
+4391,14103,1.0,pending,غذا کامل,food,غذا کامل,food
+4394,14106,1.0,pending,مستندات hdp,traffic,مستندات hdp,traffic
+4395,14107,1.0,pending,روش تحقیق,traffic,روش تحقیق,traffic
+4396,14108,1.0,pending,یافته ها,traffic,یافته ها,traffic
+4397,14109,1.0,pending,راهکارها,traffic,راهکارها,traffic
+4398,14110,1.0,pending,معماری hdp,general,معماری hdp,general
+4399,14111,1.0,pending,مدل مالی,tourism,مدل مالی,tourism
+4400,14112,1.0,pending,kpi,traffic,kpi,traffic
+4401,14113,1.0,pending,ذینفعان,traffic,ذینفعان,traffic
+4403,14115,1.0,pending,گردشگری جامع,tourism,گردشگری جامع,tourism
+4410,14122,1.0,pending,ترافیک صبحگاهی,traffic,ترافیک صبحگاهی,traffic
+4411,14123,1.0,pending,ترافیک عصرگاهی,traffic,ترافیک عصرگاهی,traffic
+4412,14124,1.0,pending,نقاط اوج ترافیک,traffic,نقاط اوج ترافیک,traffic
+4413,14125,1.0,pending,کی برم بیرون,traffic,کی برم بیرون,traffic
+4414,14126,1.0,pending,الان چطوره,traffic,الان چطوره,traffic
+4415,14127,1.0,pending,محور حاجی آباد کامل,traffic,محور حاجی آباد کامل,traffic
+4416,14128,1.0,pending,ترافیک لحظه ای,traffic,ترافیک لحظه ای,traffic
+4417,14129,1.0,pending,محور حاجی آباد,traffic,محور حاجی آباد,traffic
+4418,14130,1.0,pending,چشمه سبزپوشان,tourism,چشمه سبزپوشان,tourism
+4420,14132,1.0,pending,نقاط حادثه خیز محور,traffic,نقاط حادثه خیز محور,traffic
+4421,14133,1.0,pending,راهکارهای محور,traffic,راهکارهای محور,traffic
+4422,14134,1.0,pending,تحلیل مسیر هدیش سرباز,traffic,تحلیل مسیر هدیش سرباز,traffic
+4423,14135,1.0,pending,تحلیل مسیر شرق,traffic,تحلیل مسیر شرق,traffic
+4425,14137,1.0,pending,تحلیل کریدور ساحلی,traffic,تحلیل کریدور ساحلی,traffic
+4426,14138,1.0,pending,تحلیل مسیر جهانبار,traffic,تحلیل مسیر جهانبار,traffic
+4427,14139,1.0,pending,تحلیل مسیر شرق کامل,traffic,تحلیل مسیر شرق کامل,traffic
+4428,14140,1.0,pending,ساعات پیک بندرعباس,traffic,ساعات پیک بندرعباس,traffic
+4429,14141,1.0,pending,راهکارهای ترافیکی,traffic,راهکارهای ترافیکی,traffic
+4430,14142,1.0,pending,شرق هرمزگان,traffic,شرق هرمزگان,traffic
+4432,14144,1.0,pending,راهکارهای شرق,traffic,راهکارهای شرق,traffic
+4434,14146,1.0,pending,شمال بندرعباس,tourism,شمال بندرعباس,tourism
+4437,14149,1.0,pending,نسخه,general,نسخه,general
+4438,14150,1.0,pending,وضعیت,general,وضعیت,general
+4440,14152,1.0,pending,آداب و رسوم,food,آداب و رسوم,food
+4442,14154,1.0,pending,آلودگی تفصیلی,food,آلودگی تفصیلی,food
+4443,14155,1.0,pending,بندرعباس کلانشهر,traffic,بندرعباس کلانشهر,traffic
+4445,14157,1.0,pending,گویش بندری,food,گویش بندری,food
+4447,14159,1.0,pending,پیک ترافیک شهری,traffic,پیک ترافیک شهری,traffic
+4449,14161,1.0,pending,هتل های بندرعباس,tourism,هتل های بندرعباس,tourism
+4452,14164,1.0,pending,ترافیک زنده,traffic,ترافیک زنده,traffic
+4453,14165,1.0,pending,آموزش گویش بندری,food,آموزش گویش بندری,food
+4456,14168,1.0,pending,گزارش روزانه ترافیک,traffic,گزارش روزانه ترافیک,traffic
+4457,14169,1.0,pending,محور اسکله خونسرخ,traffic,محور اسکله خونسرخ,traffic
+4458,14170,1.0,pending,نقاط حادثه خیز ایمن سازی,traffic,نقاط حادثه خیز ایمن سازی,traffic
+4459,14171,1.0,pending,پارک ساحلی نخل ناخدا,tourism,پارک ساحلی نخل ناخدا,tourism
+4461,14173,1.0,pending,محله سورو,traffic,محله سورو,traffic
+4464,14176,1.0,pending,پروژه های عمرانی,tourism,پروژه های عمرانی,tourism
+4466,14178,1.0,pending,جزایر کامل,tourism,جزایر کامل,tourism
+4470,14182,1.0,pending,پارک ساحلی دولت,tourism,پارک ساحلی دولت,tourism
+4479,14191,1.0,pending,عمارت کلاه فرنگی جدید,culture,عمارت کلاه فرنگی جدید,culture
+4480,14192,1.0,pending,پارک ساحلی دولت جدید,tourism,پارک ساحلی دولت جدید,tourism
+4481,14193,1.0,pending,پارک ولایت جدید,traffic,پارک ولایت جدید,traffic
+4486,14198,1.0,pending,آلودگی هوا جدید,general,آلودگی هوا جدید,general
+4490,14202,1.0,pending,ترافیک روزهای هفته,traffic,ترافیک روزهای هفته,traffic
+4491,14203,1.0,pending,ترافیک پیامبر اعظم,traffic,ترافیک پیامبر اعظم,traffic
+4496,14207,1.0,pending,ترافیک نخل ناخدا,traffic,ترافیک نخل ناخدا,traffic
+4497,14208,1.0,pending,اطلس گردشگری,tourism,اطلس گردشگری,tourism
+4501,14212,1.0,pending,تصادفات جدید,traffic,تصادفات جدید,traffic
+4502,14213,1.0,pending,گویش بندرعباسی کامل,culture,گویش بندرعباسی کامل,culture
+4503,14214,1.0,pending,مسیرهای سفر,tourism,مسیرهای سفر,tourism
+4507,14218,1.0,pending,وضعیت سیستم,tourism,وضعیت سیستم,tourism
+4509,14220,1.0,pending,الگوهای ترافیک,traffic,الگوهای ترافیک,traffic
+4511,14222,1.0,pending,مسیریاب بندری کامل,traffic,مسیریاب بندری کامل,traffic
+4514,14225,1.0,pending,بیمارستان محمدی,medical,بیمارستان محمدی,medical
+4528,14238,1.0,pending,لغتنامه چت,culture,لغتنامه چت,culture
+4532,14242,1.0,pending,مکالمات معنایی بندری,traffic,مکالمات معنایی بندری,traffic
+4534,14244,1.0,pending,راهنمای مکالمه ai,traffic,راهنمای مکالمه ai,traffic
+4535,14245,1.0,pending,شمال غربی ترافیک,traffic,شمال غربی ترافیک,traffic
+4536,14246,1.0,pending,شمال شرقی ترافیک,traffic,شمال شرقی ترافیک,traffic
+4538,14248,1.0,pending,هندورابی جامع,tourism,هندورابی جامع,tourism
+4539,14249,1.0,pending,هنگام جامع,tourism,هنگام جامع,tourism
+4540,14250,1.0,pending,ابوموسی جامع,tourism,ابوموسی جامع,tourism
+4541,14251,1.0,pending,لاوان جامع,tourism,لاوان جامع,tourism
+4542,14252,1.0,pending,جنوب ترافیک,traffic,جنوب ترافیک,traffic
+4549,14259,1.0,pending,ترافیک هرمزگان,traffic,ترافیک هرمزگان,traffic
+4550,14260,1.0,pending,بستک کامل,food,بستک کامل,food
+4552,14262,1.0,pending,پارسیان کامل,tourism,پارسیان کامل,tourism
+4553,14263,1.0,pending,آمار تردد استان,traffic,آمار تردد استان,traffic
+4554,14264,1.0,pending,اطلس زیرساخت بندرعباس,traffic,اطلس زیرساخت بندرعباس,traffic
+4556,14266,1.0,pending,زیرساخت ترافیک بندرعباس,traffic,زیرساخت ترافیک بندرعباس,traffic
+4557,14267,1.0,pending,اطلس زیرساخت,traffic,اطلس زیرساخت,traffic
+4558,14268,1.0,pending,مصاحبه ها,traffic,مصاحبه ها,traffic
+4559,14269,1.0,pending,راهکارهای زیرساخت,traffic,راهکارهای زیرساخت,traffic
+4569,14279,1.0,pending,اطلس نهایی محلات,traffic,اطلس نهایی محلات,traffic
+4572,14282,1.0,pending,اطلس مناطق شهری,traffic,اطلس مناطق شهری,traffic
+4574,14284,1.0,pending,ترافیک سه شنبه,traffic,ترافیک سه شنبه,traffic
+4577,14287,1.0,pending,اتوتاج,traffic,اتوتاج,traffic
+4578,14288,1.0,pending,گزارش ترافیک امروز,traffic,گزارش ترافیک امروز,traffic
+4583,14292,1.0,pending,شهید تختی نژاد,traffic,شهید تختی نژاد,traffic
+4588,14297,1.0,pending,گویش مکالمات مسیریابی,traffic,گویش مکالمات مسیریابی,traffic
+4589,14298,1.0,pending,ترافیک امروز کامل,traffic,ترافیک امروز کامل,traffic
+4590,14299,1.0,pending,تصادفات هدیش کامل,traffic,تصادفات هدیش کامل,traffic
+4600,14309,1.0,pending,کاشت نوزاد بندرعباس,medical,کاشت نوزاد بندرعباس,medical
+4603,14312,1.0,pending,دکتر کودکان بندرعباس,medical,دکتر کودکان بندرعباس,medical
+4606,14315,1.0,pending,فوتبال ساحلی هرمزگان,tourism,فوتبال ساحلی هرمزگان,tourism
+4613,14322,1.0,pending,بزرگترین محله بندرعباس,tourism,بزرگترین محله بندرعباس,tourism
+4615,14324,1.0,pending,بهترین منطقه توریستی,tourism,بهترین منطقه توریستی,tourism
+4616,14325,1.0,pending,بوم گردی های برتر هرمزگان,tourism,بوم گردی های برتر هرمزگان,tourism
+4624,14333,1.0,pending,مکالمه رانندگان رودان,traffic,مکالمه رانندگان رودان,traffic
+4628,14337,1.0,pending,مکالمه روزمره بندری کامل,traffic,مکالمه روزمره بندری کامل,traffic
+4646,14355,1.0,pending,ثبت نام hdp,tourism,ثبت نام hdp,tourism
+4648,14357,1.0,pending,قوانین رانندگی hdp,traffic,قوانین رانندگی hdp,traffic
+4650,14359,1.0,pending,سوالات متداول hdp,traffic,سوالات متداول hdp,traffic
+4656,14365,1.0,pending,ثبت نام موتور,traffic,ثبت نام موتور,traffic
+4661,14370,1.0,pending,مسیر محلات بندرعباس,traffic,مسیر محلات بندرعباس,traffic
+4663,14372,1.0,pending,مسیر های داخل شهری,traffic,مسیر های داخل شهری,traffic
+4669,14378,1.0,pending,محله گلشهر شمالی,traffic,محله گلشهر شمالی,traffic
+4670,14379,1.0,pending,محله گلشهر جنوبی,traffic,محله گلشهر جنوبی,traffic
+4671,14380,1.0,pending,محله الهیه شمالی,traffic,محله الهیه شمالی,traffic
+4672,14381,1.0,pending,محله الهیه جنوبی,traffic,محله الهیه جنوبی,traffic
+4673,14382,1.0,pending,محله نایبند شمالی,traffic,محله نایبند شمالی,traffic
+4674,14383,1.0,pending,محله نایبند جنوبی,traffic,محله نایبند جنوبی,traffic
+4675,14384,1.0,pending,محله بلوچها,traffic,محله بلوچها,traffic
+4676,14385,1.0,pending,محله چهارراه غزی,traffic,محله چهارراه غزی,traffic
+4677,14386,1.0,pending,محله پل خواجو,traffic,محله پل خواجو,traffic
+4678,14387,1.0,pending,محله پیامبر اعظم,traffic,محله پیامبر اعظم,traffic
+4679,14388,1.0,pending,محله دوهزار,traffic,محله دوهزار,traffic
+4680,14389,1.0,pending,محله اسلام آباد,traffic,محله اسلام آباد,traffic
+4682,14391,1.0,pending,محله ایسین,traffic,محله ایسین,traffic
+4684,14393,1.0,pending,محله باقرآباد,traffic,محله باقرآباد,traffic
+4686,14395,1.0,pending,معابر اصلی بندرعباس,traffic,معابر اصلی بندرعباس,traffic
+4688,14397,1.0,pending,قطعات خودرو سبک,traffic,قطعات خودرو سبک,traffic
+4699,14408,1.0,pending,دوربین های ثبت تخلف بندرعباس,traffic,دوربین های ثبت تخلف بندرعباس,traffic
+4702,14411,1.0,pending,دوربین های مداربسته بندرعباس,traffic,دوربین های مداربسته بندرعباس,traffic
+4703,14412,1.0,pending,دوربین چراغ قرمز بندرعباس,traffic,دوربین چراغ قرمز بندرعباس,traffic
+4704,14413,1.0,pending,دوربین های ثبت تخلف سرعت بندرعباس,traffic,دوربین های ثبت تخلف سرعت بندرعباس,traffic
+4705,14414,1.0,pending,تشخیص چهره بندرعباس,traffic,تشخیص چهره بندرعباس,traffic
+4712,14415,1.0,pending,انواع ماهی,food,انواع ماهی,food
+4714,14417,1.0,pending,طرز تهیه قلیه ماهی,food,طرز تهیه قلیه ماهی,food
+4716,14419,1.0,pending,طرز پخت ماهی,food,طرز پخت ماهی,food
+4733,14427,1.0,pending,درد عضلانی,medical,درد عضلانی,medical
+4734,14428,1.0,pending,بهترین دکتر ارتوپد بندرعباس,medical,بهترین دکتر ارتوپد بندرعباس,medical
+4750,14430,1.0,pending,دمنوش های درمانی,food,دمنوش های درمانی,food
+4753,14433,1.0,pending,مراسم سنتی هرمزگان,food,مراسم سنتی هرمزگان,food
+4758,14438,1.0,pending,گزارش تصادفات روزانه,traffic,گزارش تصادفات روزانه,traffic
+4759,14439,1.0,pending,تصادفات فوتی امروز,traffic,تصادفات فوتی امروز,traffic
+4760,14440,1.0,pending,تصادفات جرحی امروز,traffic,تصادفات جرحی امروز,traffic
+4762,14441,1.0,pending,پیشگیری از تصادف,traffic,پیشگیری از تصادف,traffic
+4776,14442,1.0,pending,دوربین های فعال بندرعباس,traffic,دوربین های فعال بندرعباس,traffic
+4777,14443,1.0,pending,جریمه های راهنمایی رانندگی,traffic,جریمه های راهنمایی رانندگی,traffic
+4790,14444,1.0,pending,دوربین های 1405 احداث,traffic,دوربین های 1405 احداث,traffic
+4793,14447,1.0,pending,حوادث 1405,traffic,حوادث 1405,traffic
+4794,14448,1.0,pending,حوادث,traffic,حوادث,traffic
+4795,14449,1.0,pending,حوادث سال 1403,traffic,حوادث سال 1403,traffic
+4796,14450,1.0,pending,حوادث سال 1404,traffic,حوادث سال 1404,traffic
+4797,14451,1.0,pending,حوادث سال 1405,traffic,حوادث سال 1405,traffic
+4804,14452,1.0,pending,رویدادهای ملی,medical,رویدادهای ملی,medical
+4914,14555,1.0,pending,تعمیر کولر,general,تعمیر کولر,general
+4915,14556,1.0,pending,تعمیر لوله,general,تعمیر لوله,general
+4916,14557,1.0,pending,تعمیر برق,general,تعمیر برق,general
+4917,14558,1.0,pending,تصادف چه کنم,traffic,تصادف چه کنم,traffic
+4919,14560,1.0,pending,تصادف میناب,traffic,تصادف میناب,traffic
+4934,14569,1.0,pending,شهردار,traffic,شهردار,traffic
+4938,14571,1.0,pending,حمیدرضا حیدری,traffic,حمیدرضا حیدری,traffic
+4943,14573,1.0,pending,تیم hdp,traffic,تیم hdp,traffic
+4956,14576,1.0,pending,بهبود وضعیت,traffic,بهبود وضعیت,traffic
+4962,14577,1.0,pending,پویش,traffic,پویش,traffic
+4969,14579,1.0,pending,یاداوری رویداد,traffic,یاداوری رویداد,traffic
+4973,14580,1.0,pending,پارک های بندرعباس کامل,traffic,پارک های بندرعباس کامل,traffic
+4978,14581,1.0,pending,دکتر قلب بندرعباس,medical,دکتر قلب بندرعباس,medical
+5001,14590,1.0,pending,اطلس معابر بندرعباس,traffic,اطلس معابر بندرعباس,traffic
+5002,14591,1.0,pending,مشاغل گردشگری هرمزگان,tourism,مشاغل گردشگری هرمزگان,tourism
+5017,14597,1.0,pending,ساختار نظامی هرمزگان,traffic,ساختار نظامی هرمزگان,traffic
+5018,14598,1.0,pending,سازمان حمل نقل هرمزگان,traffic,سازمان حمل نقل هرمزگان,traffic
+5021,14600,1.0,pending,سازمان حمل نقل,traffic,سازمان حمل نقل,traffic
+5039,14604,1.0,pending,پروپوزال hdp,traffic,پروپوزال hdp,traffic
+5040,14605,1.0,pending,دوقلوی دیجیتال,traffic,دوقلوی دیجیتال,traffic
+5041,14606,1.0,pending,گیمیفیکیشن رانندگی,traffic,گیمیفیکیشن رانندگی,traffic
+5042,14607,1.0,pending,اتاق پایش دیجیتال,traffic,اتاق پایش دیجیتال,traffic
+5043,14608,1.0,pending,نقاط حادثه خیز بندرعباس,traffic,نقاط حادثه خیز بندرعباس,traffic
+5044,14609,1.0,pending,بحران ترافیک بندرعباس,traffic,بحران ترافیک بندرعباس,traffic
+5045,14610,1.0,pending,گره های ترافیکی بندرعباس,traffic,گره های ترافیکی بندرعباس,traffic
+5047,14612,1.0,pending,فرهنگ رانندگی بندرعباس,traffic,فرهنگ رانندگی بندرعباس,traffic
+5048,14613,1.0,pending,تصادفات بندرعباس,traffic,تصادفات بندرعباس,traffic
+5049,14614,1.0,pending,پروژه hdp کامل,traffic,پروژه hdp کامل,traffic
+5056,14621,1.0,pending,دکتر بتول عباسی,medical,دکتر بتول عباسی,medical
+5058,14623,1.0,pending,ساختمان پزشکان پارسیان,medical,ساختمان پزشکان پارسیان,medical
+5059,14624,1.0,pending,پزشکان پارسیان,medical,پزشکان پارسیان,medical
+5062,14627,1.0,pending,ndt,general,ndt,general
+5064,14629,1.0,pending,دواپس,general,دواپس,general
+5065,14630,1.0,pending,داکر,general,داکر,general
+5069,14632,1.0,pending,bandari proverbs,general,bandari proverbs,general
+5071,14634,1.0,pending,traffic laws,traffic,traffic laws,traffic
+8567,14291,1.0,pending,بلوار شهید رجایی,traffic,بلوار شهید رجایی,traffic
+9206,14825,1.0,pending,title,tourism,title,tourism
+9282,14900,1.0,pending,ادویه بندری,food,ادویه بندری,food
+9283,14901,1.0,pending,غذاهای دریایی,food,غذاهای دریایی,food
+9285,14903,1.0,pending,رستوران بورکه,food,رستوران بورکه,food
+9287,14905,1.0,pending,اورنی,food,اورنی,food
+9291,14909,1.0,pending,زیورآلات بندری,culture,زیورآلات بندری,culture
+9296,14914,1.0,pending,مسیرهای شهری,traffic,مسیرهای شهری,traffic
+9302,14920,1.0,pending,تخلفات رانندگی,traffic,تخلفات رانندگی,traffic
+9303,14921,1.0,pending,جریمه رانندگی,traffic,جریمه رانندگی,traffic
+9304,14922,1.0,pending,پیشنهادات رانندگی,traffic,پیشنهادات رانندگی,traffic
+9305,14923,1.0,pending,دوراهی ایسینی,traffic,دوراهی ایسینی,traffic
+9313,14931,1.0,pending,ایسین پاتل,traffic,ایسین پاتل,traffic
+9316,14934,1.0,pending,سنگ کلیه,medical,سنگ کلیه,medical
+9317,14935,1.0,pending,نفخ نوزاد,medical,نفخ نوزاد,medical
+9318,14936,1.0,pending,راهنمای گردشگری هرمزگان,tourism,راهنمای گردشگری هرمزگان,tourism
+9319,14937,1.0,pending,هتل های هرمزگان,tourism,هتل های هرمزگان,tourism
+9325,14943,1.0,pending,پیست موتورسواری,traffic,پیست موتورسواری,traffic
+9327,14944,1.0,pending,پست موتور سیکلت,traffic,پست موتور سیکلت,traffic
+9329,14946,1.0,pending,موتور سیکلت,traffic,موتور سیکلت,traffic
+9332,14948,1.0,pending,گنو,tourism,گنو,tourism
+9333,14949,1.0,pending,استخرهای هرمزگان,tourism,استخرهای هرمزگان,tourism
+9334,14950,1.0,pending,پارک آبی,tourism,پارک آبی,tourism
+9335,14951,1.0,pending,استخرهای بندرعباس,tourism,استخرهای بندرعباس,tourism
+9337,14953,1.0,pending,بیمارستان های بندرعباس,medical,بیمارستان های بندرعباس,medical
+9338,14954,1.0,pending,سالمندان,medical,سالمندان,medical
+9347,14958,1.0,pending,گزارش دانشنامه,tourism,گزارش دانشنامه,tourism
+9361,14962,1.0,pending,دادگاه صلح,traffic,دادگاه صلح,traffic
+9362,14963,1.0,pending,شورای حل اختلاف,traffic,شورای حل اختلاف,traffic
+9365,14966,1.0,pending,آموزشگاه ریاضی,medical,آموزشگاه ریاضی,medical
+9370,14970,1.0,pending,اتحادیه حمل و نقل بندرعباس,traffic,اتحادیه حمل و نقل بندرعباس,traffic
+9379,14978,1.0,pending,بندر نوستالژی - فروپاشی,tourism,بندر نوستالژی - فروپاشی,tourism
+9385,14984,1.0,pending,اطلس پزشکی بندرعباس,medical,اطلس پزشکی بندرعباس,medical
+9387,14986,1.0,pending,دوربین ترافیک بندرعباس,traffic,دوربین ترافیک بندرعباس,traffic
+9388,14987,1.0,pending,بهترین دکتر بندرعباس,medical,بهترین دکتر بندرعباس,medical
+9390,14989,1.0,pending,فست فود بندرعباس,medical,فست فود بندرعباس,medical
+9392,14991,1.0,pending,تفریح بندرعباس,tourism,تفریح بندرعباس,tourism
+9403,15002,1.0,pending,قاچاق سوخت بندرعباس,traffic,قاچاق سوخت بندرعباس,traffic
+9404,15003,1.0,pending,دوربین پلاک خوان سوخت,traffic,دوربین پلاک خوان سوخت,traffic
+9405,15004,1.0,pending,راهکار قاچاق سوخت,traffic,راهکار قاچاق سوخت,traffic
+9406,15005,1.0,pending,قاچاق سوخت,traffic,قاچاق سوخت,traffic
+9407,15006,1.0,pending,آمار قاچاق سوخت,general,آمار قاچاق سوخت,general
+9413,15012,1.0,pending,شهر قشم,tourism,شهر قشم,tourism
+9414,15013,1.0,pending,گویش قشمی,tourism,گویش قشمی,tourism
+9415,15014,1.0,pending,ویس قشم,tourism,ویس قشم,tourism
+9416,15015,1.0,pending,شهر کیش,tourism,شهر کیش,tourism
+9417,15016,1.0,pending,گویش کیشی,tourism,گویش کیشی,tourism
+9418,15017,1.0,pending,ویس کیش,tourism,ویس کیش,tourism
+9455,15054,1.0,pending,پل های بندرعباس,traffic,پل های بندرعباس,traffic
+9456,15055,1.0,pending,دوربین چراغ قرمز,traffic,دوربین چراغ قرمز,traffic
+9458,15057,1.0,pending,دوربین چهارراه غزی,traffic,دوربین چهارراه غزی,traffic
+9459,15058,1.0,pending,دوربین میدان سپاه,traffic,دوربین میدان سپاه,traffic
+9461,15060,1.0,pending,دوربین پل خواجو,traffic,دوربین پل خواجو,traffic
+9462,15061,1.0,pending,دوربین سربالایی هدیش,traffic,دوربین سربالایی هدیش,traffic
+9463,15062,1.0,pending,دوربین نخل ناخدا,traffic,دوربین نخل ناخدا,traffic
+9464,15063,1.0,pending,دوربین سه راه برق,traffic,دوربین سه راه برق,traffic
+9465,15064,1.0,pending,دوربین پاسداران سجادیه,traffic,دوربین پاسداران سجادیه,traffic
+9466,15065,1.0,pending,دوربین ساحل سورو,traffic,دوربین ساحل سورو,traffic
+9467,15066,1.0,pending,دوربین ورودی بندر,traffic,دوربین ورودی بندر,traffic
+9468,15067,1.0,pending,دوربین پارک دولت,traffic,دوربین پارک دولت,traffic
+9469,15068,1.0,pending,دوربین پارک غدیر,traffic,دوربین پارک غدیر,traffic
+9470,15069,1.0,pending,دوربین سه راه ایسین,traffic,دوربین سه راه ایسین,traffic
+9471,15070,1.0,pending,دوربین جاده میناب,traffic,دوربین جاده میناب,traffic
+9472,15071,1.0,pending,آمار دوربین ها,traffic,آمار دوربین ها,traffic
+9478,15077,1.0,pending,اصطلاحات رانندگی بندری,traffic,اصطلاحات رانندگی بندری,traffic
+9481,15080,1.0,pending,غذاهای بندری,food,غذاهای بندری,food
+9495,15094,1.0,pending,لیست پارک های بندرعباس,tourism,لیست پارک های بندرعباس,tourism
+9499,15095,1.0,pending,پارک ساحلی سورو,tourism,پارک ساحلی سورو,tourism
+9500,15096,1.0,pending,بهترین پارک برای خانواده,tourism,بهترین پارک برای خانواده,tourism
+9501,15097,1.0,pending,پارک مناسب پیک نیک,tourism,پارک مناسب پیک نیک,tourism
+9504,15100,1.0,pending,چگونه از فرسودگی زودرس باتری خودرو در گرما جلوگیری کنیم؟,traffic,چگونه از فرسودگی زودرس باتری خودرو در گرما جلوگیری کنیم؟,traffic
+9505,15101,1.0,pending,علائم گرمازدگی در رانندگان چیست و چه باید کرد؟,medical,علائم گرمازدگی در رانندگان چیست و چه باید کرد؟,medical
+9511,15107,1.0,pending,بهترین زمان سفر به جزایر هرمزگان از نظر آب و هوا کی است؟,tourism,بهترین زمان سفر به جزایر هرمزگان از نظر آب و هوا کی است؟,tourism
+9513,15109,1.0,pending,چگونه مصرف سوخت خودرو را در ترافیک سنگین بندرعباس کاهش دهیم؟,traffic,چگونه مصرف سوخت خودرو را در ترافیک سنگین بندرعباس کاهش دهیم؟,traffic
+9515,15111,1.0,pending,هزینه سفر قشم,tourism,هزینه سفر قشم,tourism
+9516,15112,1.0,pending,علائم گرمازدگی,medical,علائم گرمازدگی,medical
+9518,15114,1.0,pending,پیشگیری از تصادف جاده ای,traffic,پیشگیری از تصادف جاده ای,traffic
+9519,15115,1.0,pending,کاهش مصرف سوخت در ترافیک,traffic,کاهش مصرف سوخت در ترافیک,traffic
+9644,15167,1.0,pending,نون حلال,general,نون حلال,general
+9671,9672,1.0,pending,آموزش هرمزگان,education,آموزش هرمزگان,education
+10004,11008,1.0,pending,سونوگرافی بارداری,general,سونوگرافی بارداری,general
+10005,11009,1.0,pending,سونوگرافی شکم,general,سونوگرافی شکم,general
+10007,11010,1.0,pending,سونوگرافی تیروئید,general,سونوگرافی تیروئید,general
+10028,10702,1.0,pending,آزمایش ادرار,general,آزمایش ادرار,general
+10196,10391,1.0,pending,خوشه تست آلایندگی,general,خوشه تست آلایندگی,general
+10197,10392,1.0,pending,خوشه تست ترمز,general,خوشه تست ترمز,general
+10198,10393,1.0,pending,خوشه تست چراغ ها,traffic,خوشه تست چراغ ها,traffic
+10211,10235,1.0,pending,تست آلایندگی بنزینی,general,تست آلایندگی بنزینی,general
+10212,10236,1.0,pending,تست آلایندگی دیزلی,general,تست آلایندگی دیزلی,general
+10215,10239,1.0,pending,تست ترمز جلو,general,تست ترمز جلو,general
+10216,10240,1.0,pending,تست ترمز عقب,general,تست ترمز عقب,general
+10217,10241,1.0,pending,تست ترمز دستی,general,تست ترمز دستی,general
+10548,10560,1.0,pending,درمان تب کودک,medical,درمان تب کودک,medical
+10550,10562,1.0,pending,زمان مراجعه به پزشک در تب کودک,medical,زمان مراجعه به پزشک در تب کودک,medical
+10551,10563,1.0,pending,تغذیه نوزاد 6 ماهه,general,تغذیه نوزاد 6 ماهه,general

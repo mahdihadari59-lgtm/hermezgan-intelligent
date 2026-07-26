@@ -1,0 +1,2786 @@
+======================================================================
+DATABASE AUDIT REPORT — /data/data/com.termux/files/home/hermezgan-intelligent/backend/hdp_v2.db
+======================================================================
+
+Total tables: 149
+
+----------------------------------------------------------------------
+TABLE OVERVIEW
+----------------------------------------------------------------------
+  accident_points                rows=54       cols=3
+  aliases                        rows=0        cols=3
+  atlas_backup                   rows=8        cols=19
+  atlas_categories               rows=6        cols=4
+  atlas_master                   rows=10       cols=4
+  atlas_stats                    rows=0        cols=4
+  attractions                    rows=360      cols=3
+  attributes                     rows=4        cols=4
+  auto_topic_fix                 rows=235      cols=4
+  businesses                     rows=0        cols=3
+  cafes                          rows=0        cols=3
+  camera_entities                rows=14       cols=4
+  camera_locations               rows=0        cols=7
+  cameras                        rows=124      cols=14
+  category_mapping               rows=5        cols=4
+  cities                         rows=18       cols=3
+  clinics                        rows=0        cols=2
+  cluster_rules                  rows=655      cols=4
+  conversation_context           rows=0        cols=6
+  conversation_memory            rows=1        cols=7
+  corpus_stats                   rows=0        cols=2
+  counties                       rows=13       cols=2
+  cultural_items                 rows=0        cols=4
+  dialect_terms                  rows=2        cols=4
+  districts                      rows=1        cols=3
+  doc_length                     rows=0        cols=2
+  duplicate_candidates           rows=1        cols=4
+  duplicate_cleanup              rows=52       cols=2
+  duplicate_cleanup_final        rows=28       cols=2
+  duplicate_groups               rows=0        cols=6
+  duplicate_review               rows=1070     cols=4
+  embeddings                     rows=0        cols=5
+  entities                       rows=0        cols=8
+  entity_aliases                 rows=9        cols=3
+  entity_attributes              rows=31       cols=7
+  entity_dictionary              rows=3098     cols=5
+  entity_relations_graph         rows=0        cols=6
+  entity_types                   rows=8        cols=3
+  entity_weight                  rows=8        cols=2
+  entity_weights                 rows=9        cols=2
+  expert_dispatcher              rows=0        cols=5
+  expert_mapping                 rows=10       cols=2
+  expert_rules                   rows=5        cols=8
+  extraction_queue               rows=0        cols=6
+  fuel_stations                  rows=0        cols=4
+  geo_relations                  rows=0        cols=6
+  government_offices             rows=0        cols=3
+  graph_edges                    rows=41868    cols=7
+  graph_nodes                    rows=3803     cols=13
+  graph_paths                    rows=0        cols=4
+  graph_properties               rows=0        cols=4
+  graph_relations                rows=0        cols=7
+  hierarchy                      rows=169      cols=4
+  hospitals                      rows=21       cols=3
+  hotels                         rows=0        cols=4
+  intent_entity_map              rows=6        cols=3
+  intent_logs                    rows=0        cols=6
+  intent_mapping                 rows=173      cols=7
+  intent_patterns                rows=27       cols=4
+  intent_routes                  rows=14       cols=6
+  intersections                  rows=0        cols=3
+  knowledge                      rows=5900     cols=39
+  knowledge_aliases              rows=13       cols=3
+  knowledge_categories           rows=10       cols=4
+  knowledge_categories_master    rows=0        cols=4
+  knowledge_category_map         rows=1070     cols=3
+  knowledge_children             rows=0        cols=7
+  knowledge_clusters             rows=57       cols=6
+  knowledge_dialects             rows=8        cols=6
+  knowledge_edges                rows=0        cols=5
+  knowledge_embeddings           rows=3803     cols=7
+  knowledge_fts                  rows=4108     cols=5
+  knowledge_fts_config           rows=1        cols=2
+  knowledge_fts_content          rows=4108     cols=6
+  knowledge_fts_data             rows=33       cols=2
+  knowledge_fts_docsize          rows=4108     cols=2
+  knowledge_fts_idx              rows=31       cols=3
+  knowledge_graph                rows=1414     cols=5
+  knowledge_graph_paths          rows=0        cols=3
+  knowledge_hubs                 rows=114      cols=3
+  knowledge_intents              rows=5        cols=3
+  knowledge_links                rows=39632    cols=6
+  knowledge_links_auto           rows=0        cols=5
+  knowledge_links_backup         rows=14609317 cols=6
+  knowledge_links_before_cleanup rows=4873255  cols=6
+  knowledge_links_smart          rows=1041     cols=5
+  knowledge_nodes                rows=0        cols=5
+  knowledge_rank                 rows=3103     cols=10
+  knowledge_relations            rows=14787    cols=6
+  knowledge_search               rows=3042     cols=3
+  knowledge_search_config        rows=1        cols=2
+  knowledge_search_content       rows=3042     cols=4
+  knowledge_search_data          rows=640      cols=2
+  knowledge_search_docsize       rows=3042     cols=2
+  knowledge_search_idx           rows=632      cols=3
+  knowledge_stats                rows=3132     cols=5
+  knowledge_synonyms             rows=22       cols=5
+  knowledge_tags                 rows=0        cols=5
+  knowledge_topic_candidates     rows=240      cols=6
+  knowledge_topic_review         rows=0        cols=4
+  links                          rows=0        cols=5
+  local_foods                    rows=1        cols=5
+  master_knowledge               rows=4        cols=3
+  medical_entities               rows=0        cols=11
+  medical_relations              rows=0        cols=5
+  neighborhood_children          rows=113      cols=4
+  neighborhood_graph             rows=0        cols=5
+  neighborhood_links             rows=31       cols=4
+  neighborhood_master            rows=43       cols=5
+  neighborhoods                  rows=7        cols=3
+  pharmacies                     rows=0        cols=2
+  places                         rows=677      cols=9
+  police_services                rows=0        cols=13
+  police_stations                rows=0        cols=10
+  proverbs                       rows=1        cols=4
+  query_routes                   rows=6        cols=3
+  question_patterns              rows=5        cols=4
+  relation_candidates            rows=4715     cols=6
+  relation_rules                 rows=14       cols=4
+  relation_types                 rows=0        cols=3
+  response_templates             rows=0        cols=4
+  restaurants                    rows=0        cols=3
+  roads                          rows=0        cols=2
+  router                         rows=0        cols=5
+  schools                        rows=0        cols=2
+  search_keywords                rows=9        cols=2
+  semantic_relations             rows=3618     cols=4
+  shopping_centers               rows=0        cols=3
+  term_frequencies               rows=0        cols=3
+  topic_priority                 rows=9        cols=2
+  topic_rules                    rows=40       cols=4
+  traffic_accidents              rows=2        cols=15
+  traffic_blackspots             rows=4        cols=13
+  traffic_blackspots_fts         rows=0        cols=4
+  traffic_blackspots_fts_config  rows=1        cols=2
+  traffic_blackspots_fts_content rows=0        cols=5
+  traffic_blackspots_fts_data    rows=2        cols=2
+  traffic_blackspots_fts_docsize rows=0        cols=2
+  traffic_blackspots_fts_idx     rows=0        cols=3
+  traffic_cameras                rows=8        cols=11
+  traffic_cameras_fts            rows=0        cols=3
+  traffic_cameras_fts_config     rows=1        cols=2
+  traffic_cameras_fts_content    rows=0        cols=4
+  traffic_cameras_fts_data       rows=2        cols=2
+  traffic_cameras_fts_docsize    rows=0        cols=2
+  traffic_cameras_fts_idx        rows=0        cols=3
+  unified_search                 rows=4112     cols=3
+  universities                   rows=0        cols=2
+  user_feedback                  rows=3104     cols=5
+
+----------------------------------------------------------------------
+PER-TABLE SCHEMA + COLUMN DETAIL
+----------------------------------------------------------------------
+
+### accident_points
+CREATE TABLE accident_points(
+ id INTEGER PRIMARY KEY,
+ title TEXT,
+ severity TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT)
+    - severity (TEXT)
+
+### aliases
+CREATE TABLE aliases(
+ id INTEGER PRIMARY KEY,
+ alias TEXT,
+ knowledge_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - alias (TEXT)
+    - knowledge_id (INTEGER)
+
+### atlas_backup
+CREATE TABLE atlas_backup(
+  id INT,
+  title TEXT,
+  category TEXT,
+  content TEXT,
+  created_at NUM,
+  keywords TEXT,
+  source TEXT,
+  priority INT,
+  subcategory TEXT,
+  question TEXT,
+  answer TEXT,
+  city TEXT,
+  lat REAL,
+  lon REAL,
+  updated_at NUM,
+  category_fa TEXT,
+  valid_until NUM,
+  tags TEXT,
+  topic TEXT
+)
+  columns:
+    - id (INT)
+    - title (TEXT)
+    - category (TEXT)
+    - content (TEXT)
+    - created_at (NUM)
+    - keywords (TEXT)
+    - source (TEXT)
+    - priority (INT)
+    - subcategory (TEXT)
+    - question (TEXT)
+    - answer (TEXT)
+    - city (TEXT)
+    - lat (REAL)
+    - lon (REAL)
+    - updated_at (NUM)
+    - category_fa (TEXT)
+    - valid_until (NUM)
+    - tags (TEXT)
+    - topic (TEXT)
+
+### atlas_categories
+CREATE TABLE atlas_categories (
+    id INTEGER PRIMARY KEY,
+    atlas_name TEXT,
+    category_name TEXT,
+    description TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - atlas_name (TEXT)
+    - category_name (TEXT)
+    - description (TEXT)
+
+### atlas_master
+CREATE TABLE atlas_master (
+    id INTEGER PRIMARY KEY,
+    atlas_name TEXT,
+    category TEXT,
+    content LONGTEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - atlas_name (TEXT)
+    - category (TEXT)
+    - content (LONGTEXT)
+
+### atlas_stats
+CREATE TABLE atlas_stats (
+    atlas_name TEXT PRIMARY KEY,
+    direct_links INTEGER,
+    total_nodes INTEGER,
+    depth INTEGER
+)
+  columns:
+    - atlas_name (TEXT) [PK]
+    - direct_links (INTEGER)
+    - total_nodes (INTEGER)
+    - depth (INTEGER)
+
+### attractions
+CREATE TABLE attractions(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ type TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - type (TEXT)
+
+### attributes
+CREATE TABLE attributes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    entity_id INTEGER,
+    attr_key TEXT,
+    attr_value TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - entity_id (INTEGER)
+    - attr_key (TEXT)
+    - attr_value (TEXT)
+
+### auto_topic_fix
+CREATE TABLE auto_topic_fix (
+    knowledge_id INTEGER,
+    old_topic TEXT,
+    new_topic TEXT,
+    confidence REAL
+)
+  columns:
+    - knowledge_id (INTEGER)
+    - old_topic (TEXT)
+    - new_topic (TEXT)
+    - confidence (REAL)
+
+### businesses
+CREATE TABLE businesses(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ business_type TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - business_type (TEXT)
+
+### cafes
+CREATE TABLE cafes(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+
+### camera_entities
+CREATE TABLE camera_entities(
+ id INTEGER PRIMARY KEY,
+ camera_id INTEGER,
+ entity_type TEXT,
+ entity_value TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - camera_id (INTEGER)
+    - entity_type (TEXT)
+    - entity_value (TEXT)
+
+### camera_locations
+CREATE TABLE camera_locations(
+ id INTEGER PRIMARY KEY,
+ camera_id INTEGER,
+ city TEXT,
+ district TEXT,
+ neighborhood TEXT,
+ road_name TEXT,
+ intersection_name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - camera_id (INTEGER)
+    - city (TEXT)
+    - district (TEXT)
+    - neighborhood (TEXT)
+    - road_name (TEXT)
+    - intersection_name (TEXT)
+
+### cameras
+CREATE TABLE cameras(
+ id INTEGER PRIMARY KEY,
+ title TEXT,
+ type TEXT,
+ neighborhood_id INTEGER,
+ lat REAL,
+ lon REAL
+, status TEXT, city_id INTEGER, node_type TEXT DEFAULT 'entity', is_real INTEGER DEFAULT 1, node_level TEXT DEFAULT 'leaf', concept_type TEXT, camera_type TEXT, location_name TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT)
+    - type (TEXT)
+    - neighborhood_id (INTEGER)
+    - lat (REAL)
+    - lon (REAL)
+    - status (TEXT)
+    - city_id (INTEGER)
+    - node_type (TEXT) [DEFAULT 'entity']
+    - is_real (INTEGER) [DEFAULT 1]
+    - node_level (TEXT) [DEFAULT 'leaf']
+    - concept_type (TEXT)
+    - camera_type (TEXT)
+    - location_name (TEXT)
+
+### category_mapping
+CREATE TABLE category_mapping(
+ code TEXT PRIMARY KEY,
+ name_fa TEXT,
+ search_weight INTEGER DEFAULT 1,
+ icon TEXT
+)
+  columns:
+    - code (TEXT) [PK]
+    - name_fa (TEXT)
+    - search_weight (INTEGER) [DEFAULT 1]
+    - icon (TEXT)
+
+### cities
+CREATE TABLE cities(
+ id INTEGER PRIMARY KEY,
+ county_id INTEGER,
+ name TEXT UNIQUE
+)
+  columns:
+    - id (INTEGER) [PK]
+    - county_id (INTEGER)
+    - name (TEXT)
+
+### clinics
+CREATE TABLE clinics(
+ id INTEGER PRIMARY KEY,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### cluster_rules
+CREATE TABLE cluster_rules(
+    cluster_id INTEGER,
+    pattern TEXT,
+    relation_type TEXT DEFAULT 'contains',
+    weight REAL DEFAULT 1
+)
+  columns:
+    - cluster_id (INTEGER)
+    - pattern (TEXT)
+    - relation_type (TEXT) [DEFAULT 'contains']
+    - weight (REAL) [DEFAULT 1]
+
+### conversation_context
+CREATE TABLE conversation_context (
+    session_id TEXT PRIMARY KEY,
+    last_intent TEXT,
+    last_entity TEXT,
+    last_topic TEXT,
+    last_response_id INTEGER,
+    updated_at TEXT
+)
+  columns:
+    - session_id (TEXT) [PK]
+    - last_intent (TEXT)
+    - last_entity (TEXT)
+    - last_topic (TEXT)
+    - last_response_id (INTEGER)
+    - updated_at (TEXT)
+
+### conversation_memory
+CREATE TABLE conversation_memory (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT,
+    user_message TEXT,
+    detected_intent TEXT,
+    detected_entity TEXT,
+    response_text TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - session_id (TEXT)
+    - user_message (TEXT)
+    - detected_intent (TEXT)
+    - detected_entity (TEXT)
+    - response_text (TEXT)
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### corpus_stats
+CREATE TABLE corpus_stats (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                )
+  columns:
+    - key (TEXT) [PK]
+    - value (TEXT)
+
+### counties
+CREATE TABLE counties(
+ id INTEGER PRIMARY KEY,
+ name TEXT UNIQUE
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### cultural_items
+CREATE TABLE cultural_items(
+ id INTEGER PRIMARY KEY,
+ title TEXT,
+ description TEXT
+, item_type TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT)
+    - description (TEXT)
+    - item_type (TEXT)
+
+### dialect_terms
+CREATE TABLE dialect_terms(
+ id INTEGER PRIMARY KEY,
+ term TEXT,
+ meaning TEXT,
+ example TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - term (TEXT)
+    - meaning (TEXT)
+    - example (TEXT)
+
+### districts
+CREATE TABLE districts(
+ id INTEGER PRIMARY KEY,
+ county_id INTEGER,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - county_id (INTEGER)
+    - name (TEXT)
+
+### doc_length
+CREATE TABLE doc_length (
+                    node_id INTEGER PRIMARY KEY,
+                    length INTEGER NOT NULL
+                )
+  columns:
+    - node_id (INTEGER) [PK]
+    - length (INTEGER) [NOT NULL]
+
+### duplicate_candidates
+CREATE TABLE duplicate_candidates(
+    source_id INTEGER,
+    target_id INTEGER,
+    reason TEXT,
+    status TEXT DEFAULT 'pending'
+)
+  columns:
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - reason (TEXT)
+    - status (TEXT) [DEFAULT 'pending']
+
+### duplicate_cleanup
+CREATE TABLE duplicate_cleanup (
+    old_id INTEGER,
+    master_id INTEGER
+)
+  columns:
+    - old_id (INTEGER)
+    - master_id (INTEGER)
+
+### duplicate_cleanup_final
+CREATE TABLE duplicate_cleanup_final(
+  old_id INT,
+  master_id
+)
+  columns:
+    - old_id (INT)
+    - master_id ()
+
+### duplicate_groups
+CREATE TABLE duplicate_groups (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    canonical_id INTEGER,
+    duplicate_count INTEGER,
+    content_hash TEXT,
+    reviewed INTEGER DEFAULT 0,
+    keep_group INTEGER DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - canonical_id (INTEGER)
+    - duplicate_count (INTEGER)
+    - content_hash (TEXT)
+    - reviewed (INTEGER) [DEFAULT 0]
+    - keep_group (INTEGER) [DEFAULT 1]
+
+### duplicate_review
+CREATE TABLE duplicate_review (keep_id INTEGER, duplicate_id INTEGER, score REAL, status TEXT DEFAULT 'pending')
+  columns:
+    - keep_id (INTEGER)
+    - duplicate_id (INTEGER)
+    - score (REAL)
+    - status (TEXT) [DEFAULT 'pending']
+
+### embeddings
+CREATE TABLE embeddings (
+                    node_id INTEGER NOT NULL,
+                    model_name TEXT NOT NULL,
+                    vector_json TEXT NOT NULL,
+                    dim INTEGER NOT NULL,
+                    updated_at TEXT,
+                    PRIMARY KEY (node_id, model_name)
+                )
+  columns:
+    - node_id (INTEGER) [PK, NOT NULL]
+    - model_name (TEXT) [PK, NOT NULL]
+    - vector_json (TEXT) [NOT NULL]
+    - dim (INTEGER) [NOT NULL]
+    - updated_at (TEXT)
+
+### entities
+CREATE TABLE entities(
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    entity_type TEXT,
+    parent_id INTEGER,
+    level INTEGER,
+    latitude REAL,
+    longitude REAL,
+    status TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT)
+    - entity_type (TEXT)
+    - parent_id (INTEGER)
+    - level (INTEGER)
+    - latitude (REAL)
+    - longitude (REAL)
+    - status (TEXT)
+
+### entity_aliases
+CREATE TABLE entity_aliases(
+    entity_id INTEGER,
+    alias TEXT,
+    confidence REAL
+)
+  columns:
+    - entity_id (INTEGER)
+    - alias (TEXT)
+    - confidence (REAL)
+
+### entity_attributes
+CREATE TABLE entity_attributes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    entity_id INTEGER NOT NULL,
+    attribute_key TEXT NOT NULL,
+    attribute_value TEXT,
+    attribute_type TEXT,
+    confidence REAL DEFAULT 1.0,
+    source_knowledge_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - entity_id (INTEGER) [NOT NULL]
+    - attribute_key (TEXT) [NOT NULL]
+    - attribute_value (TEXT)
+    - attribute_type (TEXT)
+    - confidence (REAL) [DEFAULT 1.0]
+    - source_knowledge_id (INTEGER)
+
+### entity_dictionary
+CREATE TABLE entity_dictionary (
+    id INTEGER PRIMARY KEY,
+    entity TEXT,
+    entity_type TEXT,
+    city TEXT,
+    importance INTEGER DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - entity (TEXT)
+    - entity_type (TEXT)
+    - city (TEXT)
+    - importance (INTEGER) [DEFAULT 1]
+
+### entity_relations_graph
+CREATE TABLE entity_relations_graph (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_entity_id INTEGER,
+    relation_type TEXT,
+    target_entity_id INTEGER,
+    weight REAL DEFAULT 1.0,
+    source_knowledge_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_entity_id (INTEGER)
+    - relation_type (TEXT)
+    - target_entity_id (INTEGER)
+    - weight (REAL) [DEFAULT 1.0]
+    - source_knowledge_id (INTEGER)
+
+### entity_types
+CREATE TABLE entity_types (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    entity_type TEXT UNIQUE,
+    description TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - entity_type (TEXT)
+    - description (TEXT)
+
+### entity_weight
+CREATE TABLE entity_weight(
+    entity_type TEXT,
+    weight REAL
+)
+  columns:
+    - entity_type (TEXT)
+    - weight (REAL)
+
+### entity_weights
+CREATE TABLE entity_weights(
+    entity_type TEXT PRIMARY KEY,
+    weight REAL
+)
+  columns:
+    - entity_type (TEXT) [PK]
+    - weight (REAL)
+
+### expert_dispatcher
+CREATE TABLE expert_dispatcher(
+    expert_name TEXT PRIMARY KEY,
+    description TEXT,
+    priority_weight REAL DEFAULT 1.0,
+    timeout_ms INTEGER DEFAULT 5000,
+    is_active INTEGER DEFAULT 1
+)
+  columns:
+    - expert_name (TEXT) [PK]
+    - description (TEXT)
+    - priority_weight (REAL) [DEFAULT 1.0]
+    - timeout_ms (INTEGER) [DEFAULT 5000]
+    - is_active (INTEGER) [DEFAULT 1]
+
+### expert_mapping
+CREATE TABLE expert_mapping (
+    expert_code TEXT PRIMARY KEY,
+    expert_name TEXT NOT NULL
+)
+  columns:
+    - expert_code (TEXT) [PK]
+    - expert_name (TEXT) [NOT NULL]
+
+### expert_rules
+CREATE TABLE expert_rules(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    rule_name TEXT UNIQUE,
+    source_pattern TEXT,
+    target_pattern TEXT,
+    relation_type TEXT,
+    weight REAL DEFAULT 1,
+    priority INTEGER DEFAULT 1,
+    enabled INTEGER DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - rule_name (TEXT)
+    - source_pattern (TEXT)
+    - target_pattern (TEXT)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1]
+    - priority (INTEGER) [DEFAULT 1]
+    - enabled (INTEGER) [DEFAULT 1]
+
+### extraction_queue
+CREATE TABLE extraction_queue (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    knowledge_id INTEGER,
+    status TEXT DEFAULT 'pending',
+    extracted_entities INTEGER DEFAULT 0,
+    extracted_relations INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - knowledge_id (INTEGER)
+    - status (TEXT) [DEFAULT 'pending']
+    - extracted_entities (INTEGER) [DEFAULT 0]
+    - extracted_relations (INTEGER) [DEFAULT 0]
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### fuel_stations
+CREATE TABLE fuel_stations(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ fuel_type TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - fuel_type (TEXT)
+    - city_id (INTEGER)
+
+### geo_relations
+CREATE TABLE geo_relations(
+ id INTEGER PRIMARY KEY,
+ source_type TEXT,
+ source_id INTEGER,
+ relation TEXT,
+ target_type TEXT,
+ target_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_type (TEXT)
+    - source_id (INTEGER)
+    - relation (TEXT)
+    - target_type (TEXT)
+    - target_id (INTEGER)
+
+### government_offices
+CREATE TABLE government_offices(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+
+### graph_edges
+CREATE TABLE graph_edges(
+ id INTEGER PRIMARY KEY,
+ source_id INTEGER,
+ target_id INTEGER,
+ relation_type TEXT
+, weight REAL DEFAULT 1.0, confidence REAL DEFAULT 1.0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1.0]
+    - confidence (REAL) [DEFAULT 1.0]
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### graph_nodes
+CREATE TABLE graph_nodes(
+ id INTEGER PRIMARY KEY,
+ parent_id INTEGER,
+ title TEXT,
+ node_type TEXT,
+ knowledge_id INTEGER
+, depth INTEGER DEFAULT 0, root_id INTEGER, level INTEGER DEFAULT 0, path TEXT, children_count INTEGER DEFAULT 0, is_leaf INTEGER DEFAULT 0, score REAL DEFAULT 1.0, title_normalized TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - parent_id (INTEGER)
+    - title (TEXT)
+    - node_type (TEXT)
+    - knowledge_id (INTEGER)
+    - depth (INTEGER) [DEFAULT 0]
+    - root_id (INTEGER)
+    - level (INTEGER) [DEFAULT 0]
+    - path (TEXT)
+    - children_count (INTEGER) [DEFAULT 0]
+    - is_leaf (INTEGER) [DEFAULT 0]
+    - score (REAL) [DEFAULT 1.0]
+    - title_normalized (TEXT)
+
+### graph_paths
+CREATE TABLE graph_paths (
+    source_id INTEGER,
+    target_id INTEGER,
+    depth INTEGER,
+    score REAL
+)
+  columns:
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - depth (INTEGER)
+    - score (REAL)
+
+### graph_properties
+CREATE TABLE graph_properties (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    node_id INTEGER NOT NULL,
+                    key TEXT NOT NULL,
+                    value TEXT,
+                    FOREIGN KEY(node_id) REFERENCES graph_nodes(id)
+                )
+  columns:
+    - id (INTEGER) [PK]
+    - node_id (INTEGER) [NOT NULL]
+    - key (TEXT) [NOT NULL]
+    - value (TEXT)
+
+### graph_relations
+CREATE TABLE graph_relations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    from_id INTEGER,
+    to_id INTEGER,
+    relation TEXT,
+    confidence REAL DEFAULT 1.0,
+    source TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - from_id (INTEGER)
+    - to_id (INTEGER)
+    - relation (TEXT)
+    - confidence (REAL) [DEFAULT 1.0]
+    - source (TEXT)
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### hierarchy
+CREATE TABLE hierarchy(
+ id INTEGER PRIMARY KEY,
+ parent_id INTEGER,
+ child_id INTEGER,
+ relation_type TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - parent_id (INTEGER)
+    - child_id (INTEGER)
+    - relation_type (TEXT)
+
+### hospitals
+CREATE TABLE hospitals(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+
+### hotels
+CREATE TABLE hotels(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER,
+ stars INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+    - stars (INTEGER)
+
+### intent_entity_map
+CREATE TABLE intent_entity_map(
+    intent TEXT,
+    entity_type TEXT,
+    boost REAL
+)
+  columns:
+    - intent (TEXT)
+    - entity_type (TEXT)
+    - boost (REAL)
+
+### intent_logs
+CREATE TABLE intent_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_query TEXT,
+    detected_intent TEXT,
+    confidence REAL,
+    expert_name TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - user_query (TEXT)
+    - detected_intent (TEXT)
+    - confidence (REAL)
+    - expert_name (TEXT)
+    - created_at (TIMESTAMP) [DEFAULT CURRENT_TIMESTAMP]
+
+### intent_mapping
+CREATE TABLE intent_mapping (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    category TEXT,
+    subcategory TEXT,
+
+    main_intent TEXT,
+    sub_intent TEXT,
+
+    expert_name TEXT,
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - category (TEXT)
+    - subcategory (TEXT)
+    - main_intent (TEXT)
+    - sub_intent (TEXT)
+    - expert_name (TEXT)
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### intent_patterns
+CREATE TABLE intent_patterns (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    intent_name TEXT NOT NULL,
+    pattern TEXT NOT NULL,
+    confidence REAL DEFAULT 0.90
+)
+  columns:
+    - id (INTEGER) [PK]
+    - intent_name (TEXT) [NOT NULL]
+    - pattern (TEXT) [NOT NULL]
+    - confidence (REAL) [DEFAULT 0.90]
+
+### intent_routes
+CREATE TABLE intent_routes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            intent_pattern TEXT NOT NULL,
+            target_table TEXT,
+            target_column TEXT,
+            priority INTEGER DEFAULT 5,
+            description TEXT,
+            UNIQUE(intent_pattern, target_table)
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - intent_pattern (TEXT) [NOT NULL]
+    - target_table (TEXT)
+    - target_column (TEXT)
+    - priority (INTEGER) [DEFAULT 5]
+    - description (TEXT)
+
+### intersections
+CREATE TABLE intersections(
+ id INTEGER PRIMARY KEY,
+ road_id INTEGER,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - road_id (INTEGER)
+    - name (TEXT)
+
+### knowledge
+CREATE TABLE knowledge (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    category TEXT,
+    content TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+, keywords TEXT, source TEXT, priority INTEGER DEFAULT 1, subcategory TEXT, question TEXT, answer TEXT, city TEXT, lat REAL, lon REAL, updated_at DATETIME, category_fa TEXT, valid_until DATE, tags TEXT, topic TEXT, status TEXT DEFAULT 'active', subtopic TEXT, atlas TEXT, intent TEXT, main_intent TEXT, sub_intent TEXT, expert_name TEXT, is_deleted INTEGER DEFAULT 0, verified INTEGER DEFAULT 0, last_verified TEXT, confidence REAL, merged_into INTEGER, quality TEXT, entity_type TEXT, parent_id INTEGER, relation_type TEXT, graph_parent INTEGER, graph_depth INTEGER DEFAULT 0, graph_root TEXT, graph_path TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT) [NOT NULL]
+    - category (TEXT)
+    - content (TEXT) [NOT NULL]
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+    - keywords (TEXT)
+    - source (TEXT)
+    - priority (INTEGER) [DEFAULT 1]
+    - subcategory (TEXT)
+    - question (TEXT)
+    - answer (TEXT)
+    - city (TEXT)
+    - lat (REAL)
+    - lon (REAL)
+    - updated_at (DATETIME)
+    - category_fa (TEXT)
+    - valid_until (DATE)
+    - tags (TEXT)
+    - topic (TEXT)
+    - status (TEXT) [DEFAULT 'active']
+    - subtopic (TEXT)
+    - atlas (TEXT)
+    - intent (TEXT)
+    - main_intent (TEXT)
+    - sub_intent (TEXT)
+    - expert_name (TEXT)
+    - is_deleted (INTEGER) [DEFAULT 0]
+    - verified (INTEGER) [DEFAULT 0]
+    - last_verified (TEXT)
+    - confidence (REAL)
+    - merged_into (INTEGER)
+    - quality (TEXT)
+    - entity_type (TEXT)
+    - parent_id (INTEGER)
+    - relation_type (TEXT)
+    - graph_parent (INTEGER)
+    - graph_depth (INTEGER) [DEFAULT 0]
+    - graph_root (TEXT)
+    - graph_path (TEXT)
+
+### knowledge_aliases
+CREATE TABLE knowledge_aliases (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    alias_title TEXT NOT NULL,
+    knowledge_id INTEGER NOT NULL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - alias_title (TEXT) [NOT NULL]
+    - knowledge_id (INTEGER) [NOT NULL]
+
+### knowledge_categories
+CREATE TABLE knowledge_categories (
+    category_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category_name TEXT UNIQUE,
+    parent_category TEXT,
+    description TEXT
+)
+  columns:
+    - category_id (INTEGER) [PK]
+    - category_name (TEXT)
+    - parent_category (TEXT)
+    - description (TEXT)
+
+### knowledge_categories_master
+CREATE TABLE knowledge_categories_master (
+    id INTEGER PRIMARY KEY,
+    category TEXT UNIQUE,
+    parent_category TEXT,
+    description TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - category (TEXT)
+    - parent_category (TEXT)
+    - description (TEXT)
+
+### knowledge_category_map
+CREATE TABLE knowledge_category_map (
+    knowledge_id INTEGER,
+    category_name TEXT,
+    confidence REAL
+)
+  columns:
+    - knowledge_id (INTEGER)
+    - category_name (TEXT)
+    - confidence (REAL)
+
+### knowledge_children
+CREATE TABLE knowledge_children (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    parent_id INTEGER NOT NULL,
+    child_title TEXT NOT NULL,
+    child_content TEXT,
+    child_order INTEGER,
+    category TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - parent_id (INTEGER) [NOT NULL]
+    - child_title (TEXT) [NOT NULL]
+    - child_content (TEXT)
+    - child_order (INTEGER)
+    - category (TEXT)
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### knowledge_clusters
+CREATE TABLE knowledge_clusters (
+    id INTEGER PRIMARY KEY,
+    cluster_id INTEGER,
+    parent_id INTEGER,
+    child_id INTEGER,
+    relation_type TEXT,
+    weight REAL DEFAULT 1.0
+)
+  columns:
+    - id (INTEGER) [PK]
+    - cluster_id (INTEGER)
+    - parent_id (INTEGER)
+    - child_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1.0]
+
+### knowledge_dialects
+CREATE TABLE knowledge_dialects (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            dialect TEXT NOT NULL,
+            formal TEXT NOT NULL,
+            region TEXT,
+            category TEXT,
+            weight INTEGER DEFAULT 1,
+            UNIQUE(dialect, formal)
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - dialect (TEXT) [NOT NULL]
+    - formal (TEXT) [NOT NULL]
+    - region (TEXT)
+    - category (TEXT)
+    - weight (INTEGER) [DEFAULT 1]
+
+### knowledge_edges
+CREATE TABLE knowledge_edges (
+    edge_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    from_node INTEGER,
+    to_node INTEGER,
+    relation TEXT,
+    weight REAL DEFAULT 1,
+    FOREIGN KEY(from_node) REFERENCES knowledge_nodes(node_id),
+    FOREIGN KEY(to_node) REFERENCES knowledge_nodes(node_id)
+)
+  columns:
+    - edge_id (INTEGER) [PK]
+    - from_node (INTEGER)
+    - to_node (INTEGER)
+    - relation (TEXT)
+    - weight (REAL) [DEFAULT 1]
+
+### knowledge_embeddings
+CREATE TABLE knowledge_embeddings (
+    knowledge_id INTEGER PRIMARY KEY,
+    embedding BLOB NOT NULL,
+    text_hash TEXT NOT NULL,
+    model_version TEXT,
+    dimension INTEGER DEFAULT 384,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - knowledge_id (INTEGER) [PK]
+    - embedding (BLOB) [NOT NULL]
+    - text_hash (TEXT) [NOT NULL]
+    - model_version (TEXT)
+    - dimension (INTEGER) [DEFAULT 384]
+    - created_at (TEXT) [DEFAULT CURRENT_TIMESTAMP]
+    - updated_at (TEXT) [DEFAULT CURRENT_TIMESTAMP]
+
+### knowledge_fts
+CREATE VIRTUAL TABLE knowledge_fts
+        USING fts5(
+            knowledge_id UNINDEXED,
+            title,
+            content,
+            tags,
+            entities,
+            tokenize='unicode61 remove_diacritics 0'
+        )
+  columns:
+    - knowledge_id ()
+    - title ()
+    - content ()
+    - tags ()
+    - entities ()
+
+### knowledge_fts_config
+CREATE TABLE 'knowledge_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID
+  columns:
+    - k () [PK, NOT NULL]
+    - v ()
+
+### knowledge_fts_content
+CREATE TABLE 'knowledge_fts_content'(id INTEGER PRIMARY KEY, c0, c1, c2, c3, c4)
+  columns:
+    - id (INTEGER) [PK]
+    - c0 ()
+    - c1 ()
+    - c2 ()
+    - c3 ()
+    - c4 ()
+
+### knowledge_fts_data
+CREATE TABLE 'knowledge_fts_data'(id INTEGER PRIMARY KEY, block BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - block (BLOB)
+
+### knowledge_fts_docsize
+CREATE TABLE 'knowledge_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - sz (BLOB)
+
+### knowledge_fts_idx
+CREATE TABLE 'knowledge_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID
+  columns:
+    - segid () [PK, NOT NULL]
+    - term () [PK, NOT NULL]
+    - pgno ()
+
+### knowledge_graph
+CREATE TABLE knowledge_graph (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_entity TEXT,
+    relation TEXT,
+    target_entity TEXT,
+    confidence REAL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_entity (TEXT)
+    - relation (TEXT)
+    - target_entity (TEXT)
+    - confidence (REAL)
+
+### knowledge_graph_paths
+CREATE TABLE knowledge_graph_paths(
+    source_id INTEGER,
+    target_id INTEGER,
+    distance INTEGER
+)
+  columns:
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - distance (INTEGER)
+
+### knowledge_hubs
+CREATE TABLE knowledge_hubs(id INT,title TEXT,size)
+  columns:
+    - id (INT)
+    - title (TEXT)
+    - size ()
+
+### knowledge_intents
+CREATE TABLE knowledge_intents (
+    intent_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    intent_name TEXT,
+    description TEXT
+)
+  columns:
+    - intent_id (INTEGER) [PK]
+    - intent_name (TEXT)
+    - description (TEXT)
+
+### knowledge_links
+CREATE TABLE knowledge_links (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id INTEGER NOT NULL,
+    target_id INTEGER NOT NULL,
+    relation TEXT NOT NULL,
+    confidence REAL DEFAULT 1.0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER) [NOT NULL]
+    - target_id (INTEGER) [NOT NULL]
+    - relation (TEXT) [NOT NULL]
+    - confidence (REAL) [DEFAULT 1.0]
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### knowledge_links_auto
+CREATE TABLE knowledge_links_auto (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id INTEGER,
+    target_id INTEGER,
+    relation TEXT,
+    confidence REAL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation (TEXT)
+    - confidence (REAL)
+
+### knowledge_links_backup
+CREATE TABLE knowledge_links_backup(
+  id INT,
+  source_id INT,
+  target_id INT,
+  relation TEXT,
+  confidence REAL,
+  created_at NUM
+)
+  columns:
+    - id (INT)
+    - source_id (INT)
+    - target_id (INT)
+    - relation (TEXT)
+    - confidence (REAL)
+    - created_at (NUM)
+
+### knowledge_links_before_cleanup
+CREATE TABLE knowledge_links_before_cleanup(
+  id INT,
+  source_id INT,
+  target_id INT,
+  relation TEXT,
+  confidence REAL,
+  created_at NUM
+)
+  columns:
+    - id (INT)
+    - source_id (INT)
+    - target_id (INT)
+    - relation (TEXT)
+    - confidence (REAL)
+    - created_at (NUM)
+
+### knowledge_links_smart
+CREATE TABLE knowledge_links_smart (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id INTEGER NOT NULL,
+    target_id INTEGER NOT NULL,
+    relation TEXT NOT NULL,
+    confidence REAL DEFAULT 1.0
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER) [NOT NULL]
+    - target_id (INTEGER) [NOT NULL]
+    - relation (TEXT) [NOT NULL]
+    - confidence (REAL) [DEFAULT 1.0]
+
+### knowledge_nodes
+CREATE TABLE knowledge_nodes (
+    node_id INTEGER PRIMARY KEY,
+    knowledge_id INTEGER,
+    entity_type TEXT,
+    canonical_name TEXT,
+    parent_node INTEGER,
+    FOREIGN KEY(knowledge_id) REFERENCES knowledge(id)
+)
+  columns:
+    - node_id (INTEGER) [PK]
+    - knowledge_id (INTEGER)
+    - entity_type (TEXT)
+    - canonical_name (TEXT)
+    - parent_node (INTEGER)
+
+### knowledge_rank
+CREATE TABLE knowledge_rank (
+    knowledge_id INTEGER PRIMARY KEY,
+    score REAL DEFAULT 0,
+    incoming_links INTEGER DEFAULT 0,
+    outgoing_links INTEGER DEFAULT 0,
+    importance TEXT
+, user_score REAL DEFAULT 0, final_score REAL DEFAULT 0, entity_weight REAL DEFAULT 0, topic_weight REAL DEFAULT 1, strategic_score REAL DEFAULT 0)
+  columns:
+    - knowledge_id (INTEGER) [PK]
+    - score (REAL) [DEFAULT 0]
+    - incoming_links (INTEGER) [DEFAULT 0]
+    - outgoing_links (INTEGER) [DEFAULT 0]
+    - importance (TEXT)
+    - user_score (REAL) [DEFAULT 0]
+    - final_score (REAL) [DEFAULT 0]
+    - entity_weight (REAL) [DEFAULT 0]
+    - topic_weight (REAL) [DEFAULT 1]
+    - strategic_score (REAL) [DEFAULT 0]
+
+### knowledge_relations
+CREATE TABLE knowledge_relations (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    source_id INTEGER NOT NULL,
+
+    target_id INTEGER NOT NULL,
+
+    relation_type TEXT NOT NULL,
+
+    weight REAL DEFAULT 1.0,
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY(source_id) REFERENCES knowledge(id),
+
+    FOREIGN KEY(target_id) REFERENCES knowledge(id)
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER) [NOT NULL]
+    - target_id (INTEGER) [NOT NULL]
+    - relation_type (TEXT) [NOT NULL]
+    - weight (REAL) [DEFAULT 1.0]
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### knowledge_search
+CREATE VIRTUAL TABLE knowledge_search
+USING fts5(
+    title,
+    content,
+    topic,
+    tokenize='unicode61'
+)
+  columns:
+    - title ()
+    - content ()
+    - topic ()
+
+### knowledge_search_config
+CREATE TABLE 'knowledge_search_config'(k PRIMARY KEY, v) WITHOUT ROWID
+  columns:
+    - k () [PK, NOT NULL]
+    - v ()
+
+### knowledge_search_content
+CREATE TABLE 'knowledge_search_content'(id INTEGER PRIMARY KEY, c0, c1, c2)
+  columns:
+    - id (INTEGER) [PK]
+    - c0 ()
+    - c1 ()
+    - c2 ()
+
+### knowledge_search_data
+CREATE TABLE 'knowledge_search_data'(id INTEGER PRIMARY KEY, block BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - block (BLOB)
+
+### knowledge_search_docsize
+CREATE TABLE 'knowledge_search_docsize'(id INTEGER PRIMARY KEY, sz BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - sz (BLOB)
+
+### knowledge_search_idx
+CREATE TABLE 'knowledge_search_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID
+  columns:
+    - segid () [PK, NOT NULL]
+    - term () [PK, NOT NULL]
+    - pgno ()
+
+### knowledge_stats
+CREATE TABLE knowledge_stats (
+            knowledge_id INTEGER PRIMARY KEY,
+            tag_count INTEGER DEFAULT 0,
+            entity_count INTEGER DEFAULT 0,
+            relation_count INTEGER DEFAULT 0,
+            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (knowledge_id) REFERENCES knowledge(id) ON DELETE CASCADE
+        )
+  columns:
+    - knowledge_id (INTEGER) [PK]
+    - tag_count (INTEGER) [DEFAULT 0]
+    - entity_count (INTEGER) [DEFAULT 0]
+    - relation_count (INTEGER) [DEFAULT 0]
+    - last_updated (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### knowledge_synonyms
+CREATE TABLE knowledge_synonyms (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            term TEXT NOT NULL,
+            synonym TEXT NOT NULL,
+            category TEXT,
+            weight INTEGER DEFAULT 1,
+            UNIQUE(term, synonym)
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - term (TEXT) [NOT NULL]
+    - synonym (TEXT) [NOT NULL]
+    - category (TEXT)
+    - weight (INTEGER) [DEFAULT 1]
+
+### knowledge_tags
+CREATE TABLE knowledge_tags (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    knowledge_id INTEGER NOT NULL,
+    tag TEXT NOT NULL,
+    weight INTEGER DEFAULT 1,
+    source TEXT DEFAULT 'auto',
+    FOREIGN KEY (knowledge_id) REFERENCES knowledge(id)
+)
+  columns:
+    - id (INTEGER) [PK]
+    - knowledge_id (INTEGER) [NOT NULL]
+    - tag (TEXT) [NOT NULL]
+    - weight (INTEGER) [DEFAULT 1]
+    - source (TEXT) [DEFAULT 'auto']
+
+### knowledge_topic_candidates
+CREATE TABLE knowledge_topic_candidates (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    knowledge_id INTEGER,
+    current_topic TEXT,
+    suggested_topic TEXT,
+    confidence REAL,
+    reason TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - knowledge_id (INTEGER)
+    - current_topic (TEXT)
+    - suggested_topic (TEXT)
+    - confidence (REAL)
+    - reason (TEXT)
+
+### knowledge_topic_review
+CREATE TABLE knowledge_topic_review (
+    id INTEGER PRIMARY KEY,
+    old_topic TEXT,
+    new_topic TEXT,
+    confidence REAL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - old_topic (TEXT)
+    - new_topic (TEXT)
+    - confidence (REAL)
+
+### links
+CREATE TABLE links(
+    id INTEGER PRIMARY KEY,
+    source_id INTEGER,
+    target_id INTEGER,
+    relation_type TEXT,
+    weight REAL DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1]
+
+### local_foods
+CREATE TABLE local_foods(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ description TEXT
+, origin TEXT, ingredients TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - description (TEXT)
+    - origin (TEXT)
+    - ingredients (TEXT)
+
+### master_knowledge
+CREATE TABLE master_knowledge (
+    master_id INTEGER,
+    duplicate_id INTEGER,
+    confidence REAL
+)
+  columns:
+    - master_id (INTEGER)
+    - duplicate_id (INTEGER)
+    - confidence (REAL)
+
+### medical_entities
+CREATE TABLE medical_entities (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    entity_type TEXT NOT NULL,
+    specialty TEXT,
+    description TEXT,
+    address TEXT,
+    phone TEXT,
+    latitude REAL,
+    longitude REAL,
+    is_24h INTEGER DEFAULT 0,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT) [NOT NULL]
+    - entity_type (TEXT) [NOT NULL]
+    - specialty (TEXT)
+    - description (TEXT)
+    - address (TEXT)
+    - phone (TEXT)
+    - latitude (REAL)
+    - longitude (REAL)
+    - is_24h (INTEGER) [DEFAULT 0]
+    - updated_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### medical_relations
+CREATE TABLE medical_relations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id INTEGER,
+    target_id INTEGER,
+    relation_type TEXT,
+    weight REAL DEFAULT 1.0
+)
+  columns:
+    - id (INTEGER) [PK]
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1.0]
+
+### neighborhood_children
+CREATE TABLE neighborhood_children(
+    neighborhood_id INTEGER,
+    child_id INTEGER,
+    relation_type TEXT,
+    weight REAL DEFAULT 1
+)
+  columns:
+    - neighborhood_id (INTEGER)
+    - child_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1]
+
+### neighborhood_graph
+CREATE TABLE neighborhood_graph (
+    neighborhood_id INTEGER,
+    neighborhood_name TEXT,
+    parent_id INTEGER,
+    parent_title TEXT,
+    relation_type TEXT
+)
+  columns:
+    - neighborhood_id (INTEGER)
+    - neighborhood_name (TEXT)
+    - parent_id (INTEGER)
+    - parent_title (TEXT)
+    - relation_type (TEXT)
+
+### neighborhood_links
+CREATE TABLE neighborhood_links(
+    neighborhood TEXT,
+    knowledge_id INTEGER,
+    title TEXT,
+    relation_type TEXT
+)
+  columns:
+    - neighborhood (TEXT)
+    - knowledge_id (INTEGER)
+    - title (TEXT)
+    - relation_type (TEXT)
+
+### neighborhood_master
+CREATE TABLE neighborhood_master(
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT UNIQUE,
+ old_name TEXT,
+ region TEXT,
+ source_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - old_name (TEXT)
+    - region (TEXT)
+    - source_id (INTEGER)
+
+### neighborhoods
+CREATE TABLE neighborhoods(
+ id INTEGER PRIMARY KEY,
+ city_id INTEGER,
+ name TEXT UNIQUE
+)
+  columns:
+    - id (INTEGER) [PK]
+    - city_id (INTEGER)
+    - name (TEXT)
+
+### pharmacies
+CREATE TABLE pharmacies(
+ id INTEGER PRIMARY KEY,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### places
+CREATE TABLE places (
+            id TEXT PRIMARY KEY,
+            cat TEXT NOT NULL,
+            name TEXT NOT NULL,
+            lat REAL,
+            lon REAL
+        , osm_id TEXT, category TEXT, latitude REAL, longitude REAL)
+  columns:
+    - id (TEXT) [PK]
+    - cat (TEXT) [NOT NULL]
+    - name (TEXT) [NOT NULL]
+    - lat (REAL)
+    - lon (REAL)
+    - osm_id (TEXT)
+    - category (TEXT)
+    - latitude (REAL)
+    - longitude (REAL)
+
+### police_services
+CREATE TABLE police_services (
+    id TEXT PRIMARY KEY,
+    type TEXT NOT NULL,
+    name TEXT NOT NULL,
+    address TEXT,
+    district TEXT,
+    phone TEXT,
+    code TEXT,
+    phones TEXT,
+    services TEXT,
+    lat REAL NOT NULL,
+    lon REAL NOT NULL,
+    source TEXT,
+    updated_at TEXT
+)
+  columns:
+    - id (TEXT) [PK]
+    - type (TEXT) [NOT NULL]
+    - name (TEXT) [NOT NULL]
+    - address (TEXT)
+    - district (TEXT)
+    - phone (TEXT)
+    - code (TEXT)
+    - phones (TEXT)
+    - services (TEXT)
+    - lat (REAL) [NOT NULL]
+    - lon (REAL) [NOT NULL]
+    - source (TEXT)
+    - updated_at (TEXT)
+
+### police_stations
+CREATE TABLE police_stations (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    phone TEXT,
+    address TEXT,
+    district TEXT,
+    description TEXT,
+    lat REAL,
+    lon REAL,
+    category TEXT DEFAULT 'police',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - id (TEXT) [PK]
+    - name (TEXT) [NOT NULL]
+    - phone (TEXT)
+    - address (TEXT)
+    - district (TEXT)
+    - description (TEXT)
+    - lat (REAL)
+    - lon (REAL)
+    - category (TEXT) [DEFAULT 'police']
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### proverbs
+CREATE TABLE proverbs(
+ id INTEGER PRIMARY KEY,
+ proverb TEXT,
+ meaning TEXT
+, usage_context TEXT)
+  columns:
+    - id (INTEGER) [PK]
+    - proverb (TEXT)
+    - meaning (TEXT)
+    - usage_context (TEXT)
+
+### query_routes
+CREATE TABLE query_routes(
+    intent TEXT,
+    target_source TEXT,
+    priority INTEGER
+)
+  columns:
+    - intent (TEXT)
+    - target_source (TEXT)
+    - priority (INTEGER)
+
+### question_patterns
+CREATE TABLE question_patterns (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pattern TEXT,
+    knowledge_id INTEGER,
+    confidence REAL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - pattern (TEXT)
+    - knowledge_id (INTEGER)
+    - confidence (REAL)
+
+### relation_candidates
+CREATE TABLE relation_candidates(
+    source_id INTEGER,
+    target_id INTEGER,
+    relation_type TEXT,
+    score REAL,
+    rule_name TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+  columns:
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation_type (TEXT)
+    - score (REAL)
+    - rule_name (TEXT)
+    - created_at (DATETIME) [DEFAULT CURRENT_TIMESTAMP]
+
+### relation_rules
+CREATE TABLE relation_rules(
+    keyword TEXT,
+    relation_type TEXT,
+    target_pattern TEXT
+, weight REAL DEFAULT 1)
+  columns:
+    - keyword (TEXT)
+    - relation_type (TEXT)
+    - target_pattern (TEXT)
+    - weight (REAL) [DEFAULT 1]
+
+### relation_types
+CREATE TABLE relation_types (
+    relation_type_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type_name TEXT UNIQUE NOT NULL,
+    description TEXT
+)
+  columns:
+    - relation_type_id (INTEGER) [PK]
+    - type_name (TEXT) [NOT NULL]
+    - description (TEXT)
+
+### response_templates
+CREATE TABLE response_templates (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    intent_name TEXT,
+    template TEXT,
+    priority INTEGER DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - intent_name (TEXT)
+    - template (TEXT)
+    - priority (INTEGER) [DEFAULT 1]
+
+### restaurants
+CREATE TABLE restaurants(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+
+### roads
+CREATE TABLE roads(
+ id INTEGER PRIMARY KEY,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### router
+CREATE TABLE router(
+    id INTEGER PRIMARY KEY,
+    main_intent TEXT UNIQUE,
+    expert_name TEXT,
+    fallback_expert TEXT,
+    priority INTEGER DEFAULT 1
+)
+  columns:
+    - id (INTEGER) [PK]
+    - main_intent (TEXT)
+    - expert_name (TEXT)
+    - fallback_expert (TEXT)
+    - priority (INTEGER) [DEFAULT 1]
+
+### schools
+CREATE TABLE schools(
+ id INTEGER PRIMARY KEY,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### search_keywords
+CREATE TABLE search_keywords(
+    keyword TEXT,
+    knowledge_id INTEGER
+)
+  columns:
+    - keyword (TEXT)
+    - knowledge_id (INTEGER)
+
+### semantic_relations
+CREATE TABLE semantic_relations(
+    source_id INTEGER,
+    target_id INTEGER,
+    relation_type TEXT,
+    weight REAL DEFAULT 1,
+    UNIQUE(source_id,target_id,relation_type)
+)
+  columns:
+    - source_id (INTEGER)
+    - target_id (INTEGER)
+    - relation_type (TEXT)
+    - weight (REAL) [DEFAULT 1]
+
+### shopping_centers
+CREATE TABLE shopping_centers(
+ id INTEGER PRIMARY KEY,
+ name TEXT,
+ city_id INTEGER
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+    - city_id (INTEGER)
+
+### term_frequencies
+CREATE TABLE term_frequencies (
+                    node_id INTEGER NOT NULL,
+                    term TEXT NOT NULL,
+                    tf INTEGER NOT NULL,
+                    PRIMARY KEY (node_id, term)
+                )
+  columns:
+    - node_id (INTEGER) [PK, NOT NULL]
+    - term (TEXT) [PK, NOT NULL]
+    - tf (INTEGER) [NOT NULL]
+
+### topic_priority
+CREATE TABLE topic_priority(
+    topic TEXT PRIMARY KEY,
+    weight REAL
+)
+  columns:
+    - topic (TEXT) [PK]
+    - weight (REAL)
+
+### topic_rules
+CREATE TABLE topic_rules (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    keyword TEXT,
+    target_topic TEXT,
+    confidence REAL
+)
+  columns:
+    - id (INTEGER) [PK]
+    - keyword (TEXT)
+    - target_topic (TEXT)
+    - confidence (REAL)
+
+### traffic_accidents
+CREATE TABLE traffic_accidents (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            description TEXT,
+            accident_date DATETIME,
+            lat REAL,
+            lon REAL,
+            severity TEXT,
+            vehicles_involved INTEGER DEFAULT 0,
+            fatalities INTEGER DEFAULT 0,
+            injuries INTEGER DEFAULT 0,
+            cause TEXT,
+            weather_condition TEXT,
+            road_condition TEXT,
+            report_source TEXT,
+            knowledge_id INTEGER,
+            FOREIGN KEY (knowledge_id) REFERENCES knowledge(id) ON DELETE CASCADE
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - title (TEXT)
+    - description (TEXT)
+    - accident_date (DATETIME)
+    - lat (REAL)
+    - lon (REAL)
+    - severity (TEXT)
+    - vehicles_involved (INTEGER) [DEFAULT 0]
+    - fatalities (INTEGER) [DEFAULT 0]
+    - injuries (INTEGER) [DEFAULT 0]
+    - cause (TEXT)
+    - weather_condition (TEXT)
+    - road_condition (TEXT)
+    - report_source (TEXT)
+    - knowledge_id (INTEGER)
+
+### traffic_blackspots
+CREATE TABLE traffic_blackspots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            location TEXT,
+            lat REAL,
+            lon REAL,
+            severity INTEGER DEFAULT 3,
+            accident_count INTEGER DEFAULT 0,
+            fatal_count INTEGER DEFAULT 0,
+            injury_count INTEGER DEFAULT 0,
+            risk_factors TEXT,
+            suggestions TEXT,
+            last_updated DATE,
+            knowledge_id INTEGER,
+            FOREIGN KEY (knowledge_id) REFERENCES knowledge(id) ON DELETE CASCADE
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT) [NOT NULL]
+    - location (TEXT)
+    - lat (REAL)
+    - lon (REAL)
+    - severity (INTEGER) [DEFAULT 3]
+    - accident_count (INTEGER) [DEFAULT 0]
+    - fatal_count (INTEGER) [DEFAULT 0]
+    - injury_count (INTEGER) [DEFAULT 0]
+    - risk_factors (TEXT)
+    - suggestions (TEXT)
+    - last_updated (DATE)
+    - knowledge_id (INTEGER)
+
+### traffic_blackspots_fts
+CREATE VIRTUAL TABLE traffic_blackspots_fts
+        USING fts5(
+            blackspot_id UNINDEXED,
+            name,
+            location,
+            risk_factors,
+            tokenize='unicode61 remove_diacritics 0'
+        )
+  columns:
+    - blackspot_id ()
+    - name ()
+    - location ()
+    - risk_factors ()
+
+### traffic_blackspots_fts_config
+CREATE TABLE 'traffic_blackspots_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID
+  columns:
+    - k () [PK, NOT NULL]
+    - v ()
+
+### traffic_blackspots_fts_content
+CREATE TABLE 'traffic_blackspots_fts_content'(id INTEGER PRIMARY KEY, c0, c1, c2, c3)
+  columns:
+    - id (INTEGER) [PK]
+    - c0 ()
+    - c1 ()
+    - c2 ()
+    - c3 ()
+
+### traffic_blackspots_fts_data
+CREATE TABLE 'traffic_blackspots_fts_data'(id INTEGER PRIMARY KEY, block BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - block (BLOB)
+
+### traffic_blackspots_fts_docsize
+CREATE TABLE 'traffic_blackspots_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - sz (BLOB)
+
+### traffic_blackspots_fts_idx
+CREATE TABLE 'traffic_blackspots_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID
+  columns:
+    - segid () [PK, NOT NULL]
+    - term () [PK, NOT NULL]
+    - pgno ()
+
+### traffic_cameras
+CREATE TABLE traffic_cameras (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            location TEXT,
+            lat REAL,
+            lon REAL,
+            camera_type TEXT,
+            status TEXT DEFAULT 'active',
+            install_date DATE,
+            last_maintenance DATE,
+            notes TEXT,
+            knowledge_id INTEGER,
+            FOREIGN KEY (knowledge_id) REFERENCES knowledge(id) ON DELETE CASCADE
+        )
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT) [NOT NULL]
+    - location (TEXT)
+    - lat (REAL)
+    - lon (REAL)
+    - camera_type (TEXT)
+    - status (TEXT) [DEFAULT 'active']
+    - install_date (DATE)
+    - last_maintenance (DATE)
+    - notes (TEXT)
+    - knowledge_id (INTEGER)
+
+### traffic_cameras_fts
+CREATE VIRTUAL TABLE traffic_cameras_fts
+        USING fts5(
+            camera_id UNINDEXED,
+            name,
+            location,
+            tokenize='unicode61 remove_diacritics 0'
+        )
+  columns:
+    - camera_id ()
+    - name ()
+    - location ()
+
+### traffic_cameras_fts_config
+CREATE TABLE 'traffic_cameras_fts_config'(k PRIMARY KEY, v) WITHOUT ROWID
+  columns:
+    - k () [PK, NOT NULL]
+    - v ()
+
+### traffic_cameras_fts_content
+CREATE TABLE 'traffic_cameras_fts_content'(id INTEGER PRIMARY KEY, c0, c1, c2)
+  columns:
+    - id (INTEGER) [PK]
+    - c0 ()
+    - c1 ()
+    - c2 ()
+
+### traffic_cameras_fts_data
+CREATE TABLE 'traffic_cameras_fts_data'(id INTEGER PRIMARY KEY, block BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - block (BLOB)
+
+### traffic_cameras_fts_docsize
+CREATE TABLE 'traffic_cameras_fts_docsize'(id INTEGER PRIMARY KEY, sz BLOB)
+  columns:
+    - id (INTEGER) [PK]
+    - sz (BLOB)
+
+### traffic_cameras_fts_idx
+CREATE TABLE 'traffic_cameras_fts_idx'(segid, term, pgno, PRIMARY KEY(segid, term)) WITHOUT ROWID
+  columns:
+    - segid () [PK, NOT NULL]
+    - term () [PK, NOT NULL]
+    - pgno ()
+
+### unified_search
+CREATE TABLE unified_search(
+    term TEXT,
+    knowledge_id INTEGER,
+    score REAL DEFAULT 1
+)
+  columns:
+    - term (TEXT)
+    - knowledge_id (INTEGER)
+    - score (REAL) [DEFAULT 1]
+
+### universities
+CREATE TABLE universities(
+ id INTEGER PRIMARY KEY,
+ name TEXT
+)
+  columns:
+    - id (INTEGER) [PK]
+    - name (TEXT)
+
+### user_feedback
+CREATE TABLE user_feedback(
+    id INTEGER PRIMARY KEY,
+    knowledge_id INTEGER,
+    click_count INTEGER DEFAULT 0,
+    like_count INTEGER DEFAULT 0,
+    dislike_count INTEGER DEFAULT 0
+)
+  columns:
+    - id (INTEGER) [PK]
+    - knowledge_id (INTEGER)
+    - click_count (INTEGER) [DEFAULT 0]
+    - like_count (INTEGER) [DEFAULT 0]
+    - dislike_count (INTEGER) [DEFAULT 0]
+
+----------------------------------------------------------------------
+TEXTUAL CONTENT STATS (tables with a detected content column)
+----------------------------------------------------------------------
+
+### atlas_backup.content
+  rows: 8
+  null: 0   empty/blank: 0
+  length min/avg/max: 703 / 3677 / 5679
+  duplicate (title+category) rows: 0
+
+### atlas_categories.description
+  rows: 6
+  null: 0   empty/blank: 0
+  length min/avg/max: 15 / 21 / 40
+
+### atlas_master.content
+  rows: 10
+  null: 0   empty/blank: 10
+  length min/avg/max: 0 / 0 / 0
+
+### entity_types.description
+  rows: 8
+  null: 0   empty/blank: 0
+  length min/avg/max: 3 / 6 / 13
+
+### intent_routes.description
+  rows: 14
+  null: 0   empty/blank: 0
+  length min/avg/max: 4 / 7 / 16
+
+### knowledge.content
+  rows: 5900
+  null: 0   empty/blank: 0
+  length min/avg/max: 3 / 407 / 7401
+  duplicate (title+category) rows: 27
+
+### knowledge_categories.description
+  rows: 10
+  null: 0   empty/blank: 0
+  length min/avg/max: 4 / 10 / 19
+
+### knowledge_fts.content
+  rows: 4108
+  null: 4108   empty/blank: 4108
+  duplicate (title+category) rows: 98
+
+### knowledge_intents.description
+  rows: 5
+  null: 0   empty/blank: 0
+  length min/avg/max: 10 / 13 / 15
+
+### knowledge_search.content
+  rows: 3042
+  null: 0   empty/blank: 0
+  length min/avg/max: 20 / 492 / 6713
+  duplicate (title+category) rows: 9
+
+### local_foods.description
+  rows: 1
+  null: 0   empty/blank: 0
+  length min/avg/max: 99 / 99 / 99
+
+### traffic_accidents.description
+  rows: 2
+  null: 0   empty/blank: 0
+  length min/avg/max: 21 / 21 / 21
+  duplicate (title+category) rows: 1
+
+### traffic_cameras.notes
+  rows: 8
+  null: 8   empty/blank: 8
+
+----------------------------------------------------------------------
+KNOWLEDGE TABLE — DUPLICATES BY CATEGORY
+----------------------------------------------------------------------
+  medical         7 duplicate title groups
+  general         6 duplicate title groups
+  food            4 duplicate title groups
+  traffic         3 duplicate title groups
+  tourism         3 duplicate title groups
+  geography       3 duplicate title groups
+  economy         1 duplicate title groups
+
+KNOWLEDGE TABLE — CATEGORY BREAKDOWN
+  general         1649
+  traffic         1366
+  tourism         854
+  geography       438
+  medical         381
+  food            296
+  economy         244
+  culture         220
+  shopping        182
+  legal           119
+  government      87
+  education       64
+
+----------------------------------------------------------------------
+SAMPLE ROWS (first 3 per table)
+----------------------------------------------------------------------
+
+### accident_points (showing 3 of 54)
+  id=1 | title=الکل و تصادف | severity=medium
+  id=2 | title=امداد تصادف | severity=medium
+  id=3 | title=بعد تصادف | severity=medium
+
+### atlas_backup (showing 3 of 8)
+  id=2865 | title=اطلس معابر و حوادث | category=faq | content=🛣️ اطلس معابر اصلی و فرعی + نقاط حادثه‌خیز بندرعباس
+
+═══════════════════════════… | created_at=2026-06-14 23:12:14 | keywords=اطلس معابر و حوادث | source=MASTER | priority=3 | subcategory=NULL | question=NULL | answer=🛣️ اطلس معابر اصلی و فرعی + نقاط حادثه‌خیز بندرعباس
+
+═══════════════════════════… | city=NULL | lat=NULL | lon=NULL | updated_at=NULL | category_fa=NULL | valid_until=NULL | tags=NULL | topic=traffic
+  id=2866 | title=اطلس هتل و اقامتگاه | category=faq | content=🏨 اطلس جامع هتل‌ها و اقامتگاه‌های استان هرمزگان
+════════════════════════════════… | created_at=2026-06-14 23:12:14 | keywords=اطلس هتل و اقامتگاه | source=MASTER | priority=3 | subcategory=NULL | question=NULL | answer=🏨 اطلس جامع هتل‌ها و اقامتگاه‌های استان هرمزگان
+════════════════════════════════… | city=NULL | lat=NULL | lon=NULL | updated_at=NULL | category_fa=گردشگری | valid_until=NULL | tags=NULL | topic=misc
+  id=2867 | title=اطلس سواحل هرمزگان | category=faq | content=🏖️ اطلس جامع سواحل استان هرمزگان — ۹۰۰km نوار ساحلی
+════════════════════════════… | created_at=2026-06-14 23:12:14 | keywords=اطلس سواحل هرمزگان | source=MASTER | priority=3 | subcategory=NULL | question=NULL | answer=🏖️ اطلس جامع سواحل استان هرمزگان — ۹۰۰km نوار ساحلی
+════════════════════════════… | city=NULL | lat=NULL | lon=NULL | updated_at=NULL | category_fa=NULL | valid_until=NULL | tags=NULL | topic=misc
+
+### atlas_categories (showing 3 of 6)
+  id=1 | atlas_name=ATLAS_TRAFFIC_MASTER | category_name=traffic | description=ترافیک، دوربین، تصادف، راهور و حمل و نقل
+  id=2 | atlas_name=master | category_name=root | description=دانشنامه مادر هرمزگان
+  id=3 | atlas_name=urban | category_name=location | description=اطلس محلات و مناطق
+
+### atlas_master (showing 3 of 10)
+  id=1 | atlas_name=ATLAS_NEIGHBORHOODS_MASTER | category=urban | content=
+  id=2 | atlas_name=ATLAS_TRAFFIC_MASTER | category=traffic | content=
+  id=3 | atlas_name=ATLAS_TOURISM_MASTER | category=tourism | content=
+
+### attractions (showing 3 of 360)
+  id=1 | name=معرفی هرمزگان | type=NULL
+  id=2 | name=آب و هوای هرمزگان | type=NULL
+  id=3 | name=جزیره قشم | type=NULL
+
+### attributes (showing 3 of 4)
+  id=1 | entity_id=1 | attr_key=population | attr_value=50000
+  id=2 | entity_id=1 | attr_key=area | attr_value=450
+  id=3 | entity_id=1 | attr_key=district | attr_value=4
+
+### auto_topic_fix (showing 3 of 235)
+  knowledge_id=5 | old_topic=misc | new_topic=location | confidence=0.9
+  knowledge_id=6 | old_topic=misc | new_topic=location | confidence=0.9
+  knowledge_id=59 | old_topic=misc | new_topic=tourism | confidence=0.95
+
+### camera_entities (showing 3 of 14)
+  id=1 | camera_id=17 | entity_type=location | entity_value=هدیش
+  id=2 | camera_id=17 | entity_type=city | entity_value=بندرعباس
+  id=3 | camera_id=17 | entity_type=feature | entity_value=speed
+
+### cameras (showing 3 of 124)
+  id=1 | title=آمار دوربین ها | type=traffic | neighborhood_id=NULL | lat=NULL | lon=NULL | status=NULL | city_id=NULL | node_type=hub | is_real=1 | node_level=hub | concept_type=guide | camera_type=NULL | location_name=NULL
+  id=2 | title=دوربین | type=traffic | neighborhood_id=NULL | lat=NULL | lon=NULL | status=NULL | city_id=NULL | node_type=entity | is_real=1 | node_level=root | concept_type=camera | camera_type=NULL | location_name=NULL
+  id=3 | title=دوربین 1405 | type=traffic | neighborhood_id=NULL | lat=NULL | lon=NULL | status=NULL | city_id=NULL | node_type=entity | is_real=1 | node_level=leaf | concept_type=camera | camera_type=NULL | location_name=NULL
+
+### category_mapping (showing 3 of 5)
+  code=accident_blackspot | name_fa=نقاط حادثه‌خیز | search_weight=10 | icon=⚠️
+  code=traffic | name_fa=ترافیک | search_weight=9 | icon=🚦
+  code=hospital | name_fa=پزشکی | search_weight=8 | icon=🏥
+
+### cities (showing 3 of 18)
+  id=1 | county_id=NULL | name=بندرعباس
+  id=2 | county_id=NULL | name=میناب
+  id=3 | county_id=NULL | name=قشم
+
+### cluster_rules (showing 3 of 655)
+  cluster_id=9942 | pattern=%کودک% | relation_type=contains | weight=1.0
+  cluster_id=9942 | pattern=%نوزاد% | relation_type=contains | weight=1.0
+  cluster_id=9943 | pattern=%ازدواج% | relation_type=contains | weight=1.0
+
+### conversation_memory (showing 1 of 1)
+  id=1 | session_id=test001 | user_message=هتل خوب در بندرعباس | detected_intent=find_hotel | detected_entity=هتل هرمز | response_text=هتل هرمز بندرعباس پیشنهاد شد | created_at=2026-06-16 19:12:04
+
+### counties (showing 3 of 13)
+  id=1 | name=بندرعباس
+  id=2 | name=میناب
+  id=3 | name=قشم
+
+### dialect_terms (showing 2 of 2)
+  id=1 | term=هو | meaning=آب | example=هو بیار بخوریم
+  id=2 | term=ٱو | meaning=آب | example=ٱو سرد بده
+
+### districts (showing 1 of 1)
+  id=1 | county_id=1 | name=هرمز
+
+### duplicate_candidates (showing 1 of 1)
+  source_id=10792 | target_id=11013 | reason=duplicate_title | status=pending
+
+### duplicate_cleanup (showing 3 of 52)
+  old_id=2432 | master_id=74
+  old_id=2432 | master_id=2433
+  old_id=2434 | master_id=75
+
+### duplicate_cleanup_final (showing 3 of 28)
+  old_id=2385 | master_id=2379
+  old_id=2386 | master_id=2380
+  old_id=2387 | master_id=2381
+
+### duplicate_review (showing 3 of 1070)
+  keep_id=29 | duplicate_id=12005 | score=1.0 | status=merged
+  keep_id=30 | duplicate_id=12006 | score=1.0 | status=merged
+  keep_id=31 | duplicate_id=12007 | score=1.0 | status=merged
+
+### entity_aliases (showing 3 of 9)
+  entity_id=2393 | alias=هتل هرمز | confidence=0.99
+  entity_id=2393 | alias=هتل هرمز بندرعباس | confidence=0.99
+  entity_id=2393 | alias=هرمز هتل | confidence=0.9
+
+### entity_attributes (showing 3 of 31)
+  id=1 | entity_id=1 | attribute_key=population | attribute_value=50000 | attribute_type=numeric | confidence=1.0 | source_knowledge_id=2900
+  id=2 | entity_id=1 | attribute_key=area | attribute_value=450 | attribute_type=numeric | confidence=1.0 | source_knowledge_id=2900
+  id=3 | entity_id=1 | attribute_key=district | attribute_value=4 | attribute_type=administrative | confidence=1.0 | source_knowledge_id=2900
+
+### entity_dictionary (showing 3 of 3098)
+  id=1 | entity=شماره پلیس | entity_type=misc | city=Hormozgan | importance=1
+  id=2 | entity=منطقه شمال بندرعباس | entity_type=misc | city=Hormozgan | importance=1
+  id=3 | entity=منطقه مرکز بندرعباس | entity_type=misc | city=Hormozgan | importance=1
+
+### entity_types (showing 3 of 8)
+  id=1 | entity_type=city | description=شهر
+  id=2 | entity_type=hotel | description=هتل
+  id=3 | entity_type=restaurant | description=رستوران
+
+### entity_weight (showing 3 of 8)
+  entity_type=hotel | weight=10.0
+  entity_type=restaurant | weight=10.0
+  entity_type=doctor | weight=10.0
+
+### entity_weights (showing 3 of 9)
+  entity_type=hotel | weight=5.0
+  entity_type=restaurant | weight=4.0
+  entity_type=doctor | weight=4.0
+
+### expert_mapping (showing 3 of 10)
+  expert_code=general_expert | expert_name=general_expert
+  expert_code=tourism_expert | expert_name=tourism_expert
+  expert_code=traffic_expert | expert_name=traffic_expert
+
+### expert_rules (showing 3 of 5)
+  id=1 | rule_name=اسهال_اطفال | source_pattern=%اسهال% | target_pattern=%اطفال% | relation_type=related | weight=0.95 | priority=10 | enabled=1
+  id=2 | rule_name=نوزاد_اطفال | source_pattern=%نوزاد% | target_pattern=%اطفال% | relation_type=related | weight=0.95 | priority=10 | enabled=1
+  id=3 | rule_name=پارکینگ_بازار | source_pattern=%پارکینگ% | target_pattern=%بازار% | relation_type=near | weight=0.9 | priority=8 | enabled=1
+
+### graph_edges (showing 3 of 41868)
+  id=1 | source_id=4972 | target_id=2867 | relation_type=contains | weight=1.0 | confidence=1.0 | created_at=2026-06-29 15:11:19
+  id=2 | source_id=4972 | target_id=4495 | relation_type=contains | weight=1.0 | confidence=1.0 | created_at=2026-06-29 15:11:19
+  id=3 | source_id=4972 | target_id=4720 | relation_type=contains | weight=1.0 | confidence=1.0 | created_at=2026-06-29 15:11:19
+
+### graph_nodes (showing 3 of 3803)
+  id=2 | parent_id=NULL | title=شماره پلیس | node_type=knowledge | knowledge_id=2 | depth=0 | root_id=NULL | level=0 | path=NULL | children_count=0 | is_leaf=0 | score=1.0 | title_normalized=NULL
+  id=3 | parent_id=NULL | title=منطقه شمال بندرعباس | node_type=knowledge | knowledge_id=3 | depth=0 | root_id=NULL | level=0 | path=NULL | children_count=0 | is_leaf=0 | score=1.0 | title_normalized=NULL
+  id=4 | parent_id=NULL | title=منطقه مرکز بندرعباس | node_type=knowledge | knowledge_id=4 | depth=0 | root_id=NULL | level=0 | path=NULL | children_count=0 | is_leaf=0 | score=1.0 | title_normalized=NULL
+
+### hierarchy (showing 3 of 169)
+  id=1 | parent_id=9720 | child_id=4443 | relation_type=contains
+  id=2 | parent_id=9720 | child_id=9318 | relation_type=contains
+  id=3 | parent_id=9720 | child_id=5311 | relation_type=contains
+
+### hospitals (showing 3 of 21)
+  id=1 | name=بریم بیمارستان بندری | city_id=NULL
+  id=2 | name=بیمارستان | city_id=NULL
+  id=3 | name=بیمارستان بندرعباس | city_id=NULL
+
+### intent_entity_map (showing 3 of 6)
+  intent=find_hotel | entity_type=hotel | boost=5.0
+  intent=find_restaurant | entity_type=restaurant | boost=5.0
+  intent=find_hospital | entity_type=hospital | boost=5.0
+
+### intent_mapping (showing 3 of 173)
+  id=1 | category=traffic | subcategory=traffic_general | main_intent=traffic | sub_intent=traffic_general | expert_name=traffic_expert | created_at=2026-06-18 05:47:50
+  id=2 | category=traffic | subcategory=cameras | main_intent=traffic | sub_intent=traffic_camera | expert_name=traffic_expert | created_at=2026-06-18 05:47:50
+  id=3 | category=traffic | subcategory=accident_law | main_intent=traffic | sub_intent=traffic_accident | expert_name=traffic_expert | created_at=2026-06-18 05:47:50
+
+### intent_patterns (showing 3 of 27)
+  id=1 | intent_name=find_hotel | pattern=هتل | confidence=0.95
+  id=2 | intent_name=find_hotel | pattern=هتل خوب | confidence=0.95
+  id=3 | intent_name=find_hotel | pattern=هتل بندرعباس | confidence=0.95
+
+### intent_routes (showing 3 of 14)
+  id=1 | intent_pattern=دوربین سرعت | target_table=traffic_cameras | target_column=camera_type | priority=10 | description=speed_camera
+  id=2 | intent_pattern=چراغ قرمز | target_table=traffic_cameras | target_column=camera_type | priority=10 | description=red_light_camera
+  id=3 | intent_pattern=دوربین | target_table=traffic_cameras | target_column=name | priority=9 | description=camera
+
+### knowledge (showing 3 of 5900)
+  id=2 | title=شماره پلیس | category=traffic | content=در مواقع اضطراری می‌توانید با شماره ۱۱۰ تماس بگیرید. پلیس ایران مسئول رسیدگی به … | created_at=2026-06-14 16:08:38 | keywords=پلیس,110,فوریت | source=HDP | priority=10 | subcategory=general_faq | question=NULL | answer=شماره فوریت های پلیس 110 است. | city= | lat=NULL | lon=NULL | updated_at=NULL | category_fa=امداد | valid_until=NULL | tags=NULL | topic=traffic | status=active | subtopic=NULL | atlas=NULL | intent=knowledge | main_intent=knowledge | sub_intent=traffic | expert_name=general_expert | is_deleted=0 | verified=0 | last_verified=NULL | confidence=NULL | merged_into=NULL | quality=NULL | entity_type=knowledge | parent_id=NULL | relation_type=NULL | graph_parent=NULL | graph_depth=0 | graph_root=NULL | graph_path=NULL
+  id=3 | title=منطقه شمال بندرعباس | category=traffic | content=منطقه شمالی بندرعباس شامل گلشهر، نایبند و پل سفید | created_at=2026-06-14 20:04:02 | keywords=ترافیک,گلشهر,نایبند,پل سفید | source=MASTER | priority=4 | subcategory=markets | question=NULL | answer=منطقه شمال بندرعباس شامل محله‌های گلشهر، نایبند، پل سفید و منطقه مسکونی طلاییه ا… | city=بندرعباس | lat=NULL | lon=NULL | updated_at=NULL | category_fa=ترافیک | valid_until=NULL | tags=NULL | topic=traffic | status=needs_content | subtopic=NULL | atlas=NULL | intent=economic_info | main_intent=economic_info | sub_intent=traffic | expert_name=city_expert | is_deleted=0 | verified=0 | last_verified=NULL | confidence=NULL | merged_into=NULL | quality=skeleton | entity_type=city | parent_id=NULL | relation_type=NULL | graph_parent=NULL | graph_depth=0 | graph_root=NULL | graph_path=NULL
+  id=4 | title=منطقه مرکز بندرعباس | category=traffic | content=پرترددترین بخش شهر شامل میدان ولیعصر و چهارراه شهدا | created_at=2026-06-14 20:04:02 | keywords=ترافیک,مرکز شهر,ولیعصر,شهدا | source=MASTER | priority=5 | subcategory=neighborhoods | question=NULL | answer=منطقه مرکز بندرعباس شامل محدوده میدان سپاه، چهارراه غزی، خیابان طالقانی، امام خم… | city=بندرعباس | lat=NULL | lon=NULL | updated_at=NULL | category_fa=ترافیک | valid_until=NULL | tags=NULL | topic=traffic | status=active | subtopic=NULL | atlas=NULL | intent=economic_info | main_intent=economic_info | sub_intent=traffic | expert_name=city_expert | is_deleted=0 | verified=0 | last_verified=NULL | confidence=NULL | merged_into=NULL | quality=NULL | entity_type=city | parent_id=NULL | relation_type=NULL | graph_parent=NULL | graph_depth=0 | graph_root=NULL | graph_path=NULL
+
+### knowledge_aliases (showing 3 of 13)
+  id=1 | alias_title=بندر عباس | knowledge_id=2832
+  id=2 | alias_title=جزیره قشم | knowledge_id=2834
+  id=3 | alias_title=جزیره کیش | knowledge_id=2835
+
+### knowledge_categories (showing 3 of 10)
+  category_id=1 | category_name=location | parent_category=NULL | description=مکان ها و شهرها
+  category_id=2 | category_name=tourism | parent_category=NULL | description=گردشگری
+  category_id=3 | category_name=traffic | parent_category=NULL | description=حمل و نقل و رانندگی
+
+### knowledge_category_map (showing 3 of 1070)
+  knowledge_id=9678 | category_name=ai | confidence=0.95
+  knowledge_id=2384 | category_name=automotive | confidence=0.95
+  knowledge_id=2390 | category_name=automotive | confidence=0.95
+
+### knowledge_clusters (showing 3 of 57)
+  id=1 | cluster_id=11031 | parent_id=11031 | child_id=10161 | relation_type=contains | weight=1.0
+  id=2 | cluster_id=11031 | parent_id=11031 | child_id=10256 | relation_type=contains | weight=1.0
+  id=3 | cluster_id=11031 | parent_id=11031 | child_id=10523 | relation_type=contains | weight=1.0
+
+### knowledge_dialects (showing 3 of 8)
+  id=1 | dialect=سَلام | formal=سلام | region=بندری | category=greeting | weight=1
+  id=2 | dialect=چِطوری بُو؟ | formal=چطوری پدر؟ | region=بندری | category=greeting | weight=1
+  id=3 | dialect=خُدا نگِهدار | formal=خداحافظ | region=بندری | category=goodbye | weight=1
+
+### knowledge_embeddings (showing 3 of 3803)
+  knowledge_id=2 | embedding=b'\xbfr\x87\xbc\x02\xbd\xd6\xbd\xd0\xdb\xb0\xbd\xe7\xbd\x92=]\xfc\xa2\xbd\xf0\xc… | text_hash=24816b9c899ab36fffdf295d907f3c8e351892766966456d6f9751883c8e9157 | model_version=local-hashing-v1 | dimension=384 | created_at=2026-07-19 22:50:27 | updated_at=2026-07-19 22:50:27
+  knowledge_id=3 | embedding=b'\xd0\x1a\xc3\xbc\xd4\x01\xcd<\xef/+\xbdT\xad\x1e=\xbe\xc0\xad\xbd\xf7;\xc5<\xc… | text_hash=4868b9634595d943d15e45e32a21aae77667d86487478aae3084cc3a8cd9a329 | model_version=local-hashing-v1 | dimension=384 | created_at=2026-07-19 22:50:27 | updated_at=2026-07-19 22:50:27
+  knowledge_id=4 | embedding=b'h\xfcd\xbd\x95\xa1\xb8<\x08\x97m\xbc\x8fr\x91\xbd\xb2Y\xd4\xbd\xbb\x19\xb4\xbd… | text_hash=c9dc969f82a0e52e905db76689b6b7e7e2c34a0e98ae2f71383574064cae4ca1 | model_version=local-hashing-v1 | dimension=384 | created_at=2026-07-19 22:50:27 | updated_at=2026-07-19 22:50:27
+
+### knowledge_fts (showing 3 of 4108)
+  knowledge_id=NULL | title=شماره پلیس | content=NULL | tags=NULL | entities=NULL
+  knowledge_id=NULL | title=منطقه شمال بندرعباس | content=NULL | tags=NULL | entities=NULL
+  knowledge_id=NULL | title=منطقه مرکز بندرعباس | content=NULL | tags=NULL | entities=NULL
+
+### knowledge_fts_config (showing 1 of 1)
+  k=version | v=4
+
+### knowledge_fts_content (showing 3 of 4108)
+  id=2 | c0=NULL | c1=شماره پلیس | c2=NULL | c3=NULL | c4=NULL
+  id=3 | c0=NULL | c1=منطقه شمال بندرعباس | c2=NULL | c3=NULL | c4=NULL
+  id=4 | c0=NULL | c1=منطقه مرکز بندرعباس | c2=NULL | c3=NULL | c4=NULL
+
+### knowledge_fts_data (showing 3 of 33)
+  id=1 | block=b'\xa0\x0c\x00\xd2e\x00\x00\x00'
+  id=10 | block=b'\x00\x00\x00\x00\x04\x0c\x8fe\x00\x07\x16\x01\x01\x04\x01\x01\x06\x01\x01\x07\…
+  id=137438953473 | block=b"\x00\x00\x0e\xfb\x0201\xcc$\x06\x01\x01\x03\x01\x012\xcc%\x06\x01\x01\x03\x02\…
+
+### knowledge_fts_docsize (showing 3 of 4108)
+  id=2 | sz=b'\x00\x02\x00\x00\x00'
+  id=3 | sz=b'\x00\x03\x00\x00\x00'
+  id=4 | sz=b'\x00\x03\x00\x00\x00'
+
+### knowledge_fts_idx (showing 3 of 31)
+  segid=1 | term=b'' | pgno=2
+  segid=1 | term=b'0\xd8\xb3\xdb\x8c\xd9\x86\xd9\x88' | pgno=4
+  segid=1 | term=b'0\xd9\x85\xd8\xa7\xd8\xb1' | pgno=6
+
+### knowledge_graph (showing 3 of 1414)
+  id=1 | source_entity=هتل هرمز | relation=located_in | target_entity=بندرعباس | confidence=0.98
+  id=2 | source_entity=قشم | relation=part_of | target_entity=هرمزگان | confidence=0.99
+  id=3 | source_entity=پارک زیتون | relation=located_in | target_entity=قشم | confidence=0.97
+
+### knowledge_hubs (showing 3 of 114)
+  id=36 | title=دوربین های فعال | size=2277
+  id=2558 | title=اماکن ورزشی بندرعباس | size=2755
+  id=2562 | title=سالنامه هرمزگان | size=3690
+
+### knowledge_intents (showing 3 of 5)
+  intent_id=1 | intent_name=find_hotel | description=جستجوی هتل
+  intent_id=2 | intent_name=find_restaurant | description=جستجوی رستوران
+  intent_id=3 | intent_name=traffic_info | description=اطلاعات ترافیکی
+
+### knowledge_links (showing 3 of 39632)
+  id=1 | source_id=4972 | target_id=2867 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=2 | source_id=4972 | target_id=4495 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=3 | source_id=4972 | target_id=4720 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+
+### knowledge_links_backup (showing 3 of 14609317)
+  id=1 | source_id=4972 | target_id=2867 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=2 | source_id=4972 | target_id=4495 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=3 | source_id=4972 | target_id=4720 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+
+### knowledge_links_before_cleanup (showing 3 of 4873255)
+  id=1 | source_id=4972 | target_id=2867 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=2 | source_id=4972 | target_id=4495 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+  id=3 | source_id=4972 | target_id=4720 | relation=contains | confidence=1.0 | created_at=2026-06-16 11:55:32
+
+### knowledge_links_smart (showing 3 of 1041)
+  id=1 | source_id=28 | target_id=9679 | relation=duplicate | confidence=0.95
+  id=2 | source_id=9671 | target_id=9672 | relation=duplicate | confidence=0.95
+  id=3 | source_id=74 | target_id=2432 | relation=duplicate | confidence=0.95
+
+### knowledge_rank (showing 3 of 3103)
+  knowledge_id=2 | score=0.0 | incoming_links=0 | outgoing_links=0 | importance=low | user_score=0.0 | final_score=21.0 | entity_weight=0.1 | topic_weight=1.0 | strategic_score=1.0
+  knowledge_id=3 | score=1.0 | incoming_links=0 | outgoing_links=1 | importance=low | user_score=0.0 | final_score=21.4 | entity_weight=0.1 | topic_weight=1.0 | strategic_score=1.0
+  knowledge_id=4 | score=1.0 | incoming_links=0 | outgoing_links=1 | importance=low | user_score=0.0 | final_score=21.4 | entity_weight=0.1 | topic_weight=1.0 | strategic_score=1.0
+
+### knowledge_relations (showing 3 of 14787)
+  id=3142001 | source_id=2 | target_id=23 | relation_type=keyword | weight=0.3 | created_at=2026-07-14 11:52:53
+  id=3142002 | source_id=2 | target_id=3161 | relation_type=keyword | weight=0.3 | created_at=2026-07-14 11:52:53
+  id=3142003 | source_id=23 | target_id=3161 | relation_type=keyword | weight=0.3 | created_at=2026-07-14 11:52:53
+
+### knowledge_search (showing 3 of 3042)
+  title=شماره پلیس | content=در مواقع اضطراری می‌توانید با شماره ۱۱۰ تماس بگیرید. پلیس ایران مسئول رسیدگی به … | topic=misc
+  title=منطقه شمال بندرعباس | content=منطقه شمالی بندرعباس شامل گلشهر، نایبند و پل سفید | topic=misc
+  title=منطقه مرکز بندرعباس | content=پرترددترین بخش شهر شامل میدان ولیعصر و چهارراه شهدا | topic=misc
+
+### knowledge_search_config (showing 1 of 1)
+  k=version | v=4
+
+### knowledge_search_content (showing 3 of 3042)
+  id=1 | c0=شماره پلیس | c1=در مواقع اضطراری می‌توانید با شماره ۱۱۰ تماس بگیرید. پلیس ایران مسئول رسیدگی به … | c2=misc
+  id=2 | c0=منطقه شمال بندرعباس | c1=منطقه شمالی بندرعباس شامل گلشهر، نایبند و پل سفید | c2=misc
+  id=3 | c0=منطقه مرکز بندرعباس | c1=پرترددترین بخش شهر شامل میدان ولیعصر و چهارراه شهدا | c2=misc
+
+### knowledge_search_data (showing 3 of 640)
+  id=1 | block=b'\x97b\xb8Q\x8f\xa7\x18\x97a'
+  id=10 | block=b'\x00\x00\x00\x00\x02\x04\x89\x1b\x00\x02\x01\x01\x81\x02\x02\x013\x00\x02\x04\…
+  id=137438953473 | block=b'\x00\x00\x0fW\x0200\x8f/\x06\x01\x01\x05\x14\x06\x01\x01\x06\x02\x06\x01\x01<\…
+
+### knowledge_search_docsize (showing 3 of 3042)
+  id=1 | sz=b'\x02*\x01'
+  id=2 | sz=b'\x03\t\x01'
+  id=3 | sz=b'\x03\t\x01'
+
+### knowledge_search_idx (showing 3 of 632)
+  segid=1 | term=b'' | pgno=2
+  segid=1 | term=b'080' | pgno=4
+  segid=1 | term=b'0chat' | pgno=6
+
+### knowledge_stats (showing 3 of 3132)
+  knowledge_id=2 | tag_count=0 | entity_count=0 | relation_count=0 | last_updated=2026-06-19 05:25:57
+  knowledge_id=3 | tag_count=0 | entity_count=0 | relation_count=0 | last_updated=2026-06-19 05:25:57
+  knowledge_id=4 | tag_count=0 | entity_count=0 | relation_count=0 | last_updated=2026-06-19 05:25:57
+
+### knowledge_synonyms (showing 3 of 22)
+  id=1 | term=بندرعباس | synonym=بندر | category=location | weight=1
+  id=2 | term=ماشین | synonym=خودرو | category=automotive | weight=1
+  id=3 | term=بیمارستان | synonym=درمانگاه | category=health | weight=1
+
+### knowledge_topic_candidates (showing 3 of 240)
+  id=1 | knowledge_id=3 | current_topic=misc | suggested_topic=location | confidence=0.85 | reason=contains city keyword
+  id=2 | knowledge_id=4 | current_topic=misc | suggested_topic=location | confidence=0.85 | reason=contains city keyword
+  id=3 | knowledge_id=14 | current_topic=misc | suggested_topic=location | confidence=0.85 | reason=contains city keyword
+
+### local_foods (showing 1 of 1)
+  id=1 | name=سوراغ | description=چاشنی و غذای محلی هرمزگان که از خاک سرخ خوراکی جزیره هرمز تهیه می‌شود و معمولاً … | origin=NULL | ingredients=NULL
+
+### master_knowledge (showing 3 of 4)
+  master_id=2393 | duplicate_id=2422 | confidence=0.99
+  master_id=2393 | duplicate_id=2423 | confidence=0.99
+  master_id=61 | duplicate_id=2424 | confidence=0.99
+
+### neighborhood_children (showing 3 of 113)
+  neighborhood_id=4461 | child_id=9237 | relation_type=contains | weight=1.0
+  neighborhood_id=4461 | child_id=3842 | relation_type=contains | weight=1.0
+  neighborhood_id=4461 | child_id=11032 | relation_type=contains | weight=1.0
+
+### neighborhood_links (showing 3 of 31)
+  neighborhood=نخل ناخدا | knowledge_id=4496 | title=ترافیک نخل ناخدا | relation_type=contains
+  neighborhood=نخل ناخدا | knowledge_id=9463 | title=دوربین نخل ناخدا | relation_type=contains
+  neighborhood=نخل ناخدا | knowledge_id=2446 | title=مسیر نخل ناخدا به چهارراه پگاه | relation_type=contains
+
+### neighborhood_master (showing 3 of 43)
+  id=1 | name=اسلام آباد | old_name=NULL | region=NULL | source_id=4680
+  id=2 | name=الهیه جنوبی | old_name=NULL | region=NULL | source_id=4672
+  id=3 | name=الهیه شمالی | old_name=NULL | region=NULL | source_id=4671
+
+### neighborhoods (showing 3 of 7)
+  id=1 | city_id=1 | name=گلشهر شمالی
+  id=2 | city_id=1 | name=گلشهر جنوبی
+  id=3 | city_id=1 | name=خواجه عطا
+
+### places (showing 3 of 677)
+  id=node_289419211 | cat=cafe | name=کافه هخامنش | lat=27.1829766 | lon=56.3188565 | osm_id=NULL | category=NULL | latitude=NULL | longitude=NULL
+  id=node_5509873821 | cat=cafe | name=آش | lat=27.1737384 | lon=56.255918 | osm_id=NULL | category=NULL | latitude=NULL | longitude=NULL
+  id=node_6501149292 | cat=cafe | name=چایخانه دالاهو | lat=27.207664 | lon=56.3390769 | osm_id=NULL | category=NULL | latitude=NULL | longitude=NULL
+
+### proverbs (showing 1 of 1)
+  id=1 | proverb=... | meaning=... | usage_context=NULL
+
+### query_routes (showing 3 of 6)
+  intent=find_hotel | target_source=hotel_results | priority=100
+  intent=find_restaurant | target_source=restaurant_results | priority=100
+  intent=medical_help | target_source=doctor_results | priority=100
+
+### question_patterns (showing 3 of 5)
+  id=1 | pattern=هتل خوب در بندرعباس | knowledge_id=2393 | confidence=0.95
+  id=2 | pattern=بهترین هتل بندرعباس | knowledge_id=2393 | confidence=0.95
+  id=3 | pattern=هتل نزدیک دریا | knowledge_id=2393 | confidence=0.8
+
+### relation_candidates (showing 3 of 4715)
+  source_id=10674 | target_id=9901 | relation_type=related | score=0.95 | rule_name=اسهال_اطفال | created_at=2026-06-22 09:49:46
+  source_id=10674 | target_id=9910 | relation_type=related | score=0.95 | rule_name=اسهال_اطفال | created_at=2026-06-22 09:49:46
+  source_id=10674 | target_id=4990 | relation_type=related | score=0.95 | rule_name=اسهال_اطفال | created_at=2026-06-22 09:49:46
+
+### relation_rules (showing 3 of 14)
+  keyword=اسهال | relation_type=related | target_pattern=%اطفال% | weight=1.0
+  keyword=نوزاد | relation_type=related | target_pattern=%اطفال% | weight=1.0
+  keyword=پارکینگ | relation_type=near | target_pattern=%بازار% | weight=1.0
+
+### search_keywords (showing 3 of 9)
+  keyword=دکتر اطفال | knowledge_id=2824
+  keyword=متخصص اطفال | knowledge_id=2824
+  keyword=پزشک کودکان | knowledge_id=2824
+
+### semantic_relations (showing 3 of 3618)
+  source_id=10674 | target_id=9901 | relation_type=related | weight=0.8
+  source_id=10674 | target_id=9910 | relation_type=related | weight=0.8
+  source_id=10674 | target_id=4990 | relation_type=related | weight=0.8
+
+### topic_priority (showing 3 of 9)
+  topic=traffic | weight=10.0
+  topic=driving | weight=10.0
+  topic=road | weight=10.0
+
+### topic_rules (showing 3 of 40)
+  id=1 | keyword=هتل | target_topic=tourism | confidence=0.95
+  id=2 | keyword=اقامتگاه | target_topic=tourism | confidence=0.95
+  id=3 | keyword=بومگردی | target_topic=tourism | confidence=0.95
+
+### traffic_accidents (showing 2 of 2)
+  id=1 | title=تصادف در سه راه ایسین | description=برخورد دو خودرو سواری | accident_date=2026-06-19 05:24:19 | lat=27.21 | lon=56.31 | severity=injury | vehicles_involved=0 | fatalities=0 | injuries=0 | cause=عدم توجه به جلو | weather_condition=NULL | road_condition=NULL | report_source=NULL | knowledge_id=NULL
+  id=2 | title=تصادف در سه راه ایسین | description=برخورد دو خودرو سواری | accident_date=2026-06-19 05:25:57 | lat=27.21 | lon=56.31 | severity=injury | vehicles_involved=0 | fatalities=0 | injuries=0 | cause=عدم توجه به جلو | weather_condition=NULL | road_condition=NULL | report_source=NULL | knowledge_id=NULL
+
+### traffic_blackspots (showing 3 of 4)
+  id=1 | name=سه راه ایسین | location=سه راه ایسین، جاده بندرعباس-میناب | lat=27.21 | lon=56.31 | severity=5 | accident_count=45 | fatal_count=8 | injury_count=35 | risk_factors=تداخل کامیون و سواری | suggestions=نصب دوربین و اصلاح مسیر | last_updated=NULL | knowledge_id=NULL
+  id=2 | name=سربالایی هدیش | location=سربالایی هدیش، بلوار هرمز | lat=27.205 | lon=56.295 | severity=4 | accident_count=30 | fatal_count=5 | injury_count=25 | risk_factors=سرعت بالا، نقاط کور | suggestions=کاهش سرعت، نصب سرعت‌گیر | last_updated=NULL | knowledge_id=NULL
+  id=3 | name=چهارراه غزی | location=چهارراه غزی، مرکز شهر | lat=27.183 | lon=56.267 | severity=4 | accident_count=28 | fatal_count=3 | injury_count=20 | risk_factors=ترافیک سنگین، عابران پیاده | suggestions=بهبود تقاطع، پل عابر | last_updated=NULL | knowledge_id=NULL
+
+### traffic_blackspots_fts_config (showing 1 of 1)
+  k=version | v=4
+
+### traffic_blackspots_fts_data (showing 2 of 2)
+  id=1 | block=b''
+  id=10 | block=b'\x00\x00\x00\x00\x00\x00\x00'
+
+### traffic_cameras (showing 3 of 8)
+  id=1 | name=دوربین چهارراه غزی | location=چهارراه غزی، بندرعباس | lat=27.183 | lon=56.267 | camera_type=red_light | status=active | install_date=NULL | last_maintenance=NULL | notes=NULL | knowledge_id=NULL
+  id=2 | name=دوربین میدان سپاه | location=میدان سپاه، بندرعباس | lat=27.192 | lon=56.278 | camera_type=speed | status=active | install_date=NULL | last_maintenance=NULL | notes=NULL | knowledge_id=NULL
+  id=3 | name=دوربین پل خواجو | location=پل خواجو، بندرعباس | lat=27.195 | lon=56.285 | camera_type=speed | status=active | install_date=NULL | last_maintenance=NULL | notes=NULL | knowledge_id=NULL
+
+### traffic_cameras_fts_config (showing 1 of 1)
+  k=version | v=4
+
+### traffic_cameras_fts_data (showing 2 of 2)
+  id=1 | block=b''
+  id=10 | block=b'\x00\x00\x00\x00\x00\x00\x00'
+
+### unified_search (showing 3 of 4112)
+  term=DALL-E | knowledge_id=7727 | score=10.0
+  term=GPT-4 چیست | knowledge_id=7720 | score=10.0
+  term=HDP | knowledge_id=8910 | score=10.0
+
+### user_feedback (showing 3 of 3104)
+  id=1 | knowledge_id=2393 | click_count=100 | like_count=30 | dislike_count=1
+  id=2 | knowledge_id=9662 | click_count=0 | like_count=0 | dislike_count=0
+  id=3 | knowledge_id=9664 | click_count=0 | like_count=0 | dislike_count=0
