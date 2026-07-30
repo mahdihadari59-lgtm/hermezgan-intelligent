@@ -1,4 +1,5 @@
-from fastapi import Query, Request, HTTPException, status
+from fastapi import Depends
+from fastapi import Query, Request, HTTPException, status, Depends
 from typing import Optional, List
 import re
 

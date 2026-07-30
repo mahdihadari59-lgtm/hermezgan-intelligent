@@ -5,7 +5,7 @@ from fastapi.responses import StreamingResponse
 import io
 from loguru import logger
 from app.core.speech_interface import get_speech_interface
-from app.services.chat_service import get_chat_service
+from app.dependencies.services import get_chat_service
 
 router = APIRouter(prefix="/voice", tags=["voice"])
 

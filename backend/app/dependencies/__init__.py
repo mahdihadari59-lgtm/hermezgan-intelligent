@@ -1,3 +1,4 @@
+from fastapi import Depends
 from .auth import get_current_user, get_current_active_user, get_current_admin_user
 from .database import get_db, get_redis
 from .services import get_chat_service, get_location_service, get_camera_service, get_hotspot_service

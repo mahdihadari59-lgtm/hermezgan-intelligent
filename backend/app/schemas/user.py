@@ -119,3 +119,17 @@ class PasswordResetConfirm(BaseModel):
 class UserRegister(UserCreate):
     """Schema برای ثبت‌نام کاربر (همنام با UserCreate)"""
     pass
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+    user_id: Optional[int] = None
+    scopes: list[str] = []
+
+    model_config = ConfigDict(from_attributes=True)
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+    user_id: Optional[int] = None
+    scopes: list[str] = []
+
+    model_config = ConfigDict(from_attributes=True)
