@@ -1,48 +1,35 @@
-"""
-providers/bandari_provider.py
-
-Wraps the standalone Bandari Engine service (dialect detection, morphology,
-dictionary lookup, LLM adapter) running on http://127.0.0.1:5200.
-
-This is the ONLY place in the backend that should know the Bandari Engine's
-network address. Everything else (chat_service, hybrid_engine, gateway)
-talks to it through this provider so the engine can move host/port later
-without touching call sites.
-"""
-
 from __future__ import annotations
 
-from typing import Optional
+import json
+import urllib.request
+from typing import Any, Dict, Optional
 
-from . import BaseProvider, ProviderError
+from . import BaseProvider
 
 
 class BandariProvider(BaseProvider):
-    name = "bandari"
-
-    def __init__(self, base_url: str = "http://127.0.0.1:5200", timeout: float = 3.0):
-        super().__init__(timeout=timeout, failure_threshold=5, recovery_timeout=20.0)
+    def __init__(self, base_url: str):
+        super().__init__()
         self.base_url = base_url.rstrip("/")
 
-    async def _execute(self, payload: dict) -> dict:
-        if payload.get("__health__"):
-            return await self._http_get(f"{self.base_url}/api/stats")
-
-        text = payload.get("text", "")
-        if not text:
-            raise ProviderError("bandari: 'text' is required")
-
-        return await self._http_post(
-            f"{self.base_url}/api/translate",
-            {"text": text, "direction": payload.get("direction", "auto")},
+    def _post(self, path: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        req = urllib.request.Request(
+            f"{self.base_url}{path}",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
         )
+        with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
+            return json.loads(resp.read().decode("utf-8"))
 
-    async def translate(self, text: str, direction: str = "auto") -> dict:
-        """Convenience wrapper: Bandari <-> Standard Persian translation + dialect detection."""
-        return await self.query({"text": text, "direction": direction})
+    async def intent(self, text: str) -> Dict[str, Any]:
+        return self._post("/intent", {"text": text})
 
-    async def stats(self) -> Optional[dict]:
-        try:
-            return await self.query({"__health__": True})
-        except ProviderError:
-            return None
+    async def detect(self, text: str) -> Dict[str, Any]:
+        return self._post("/detect", {"text": text})
+
+    async def translate(self, text: str, session_id: Optional[str] = None) -> Dict[str, Any]:
+        payload = {"text": text}
+        if session_id:
+            payload["sessionId"] = session_id
+        return self._post("/translate", payload)
