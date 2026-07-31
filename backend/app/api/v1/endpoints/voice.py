@@ -1,115 +1,159 @@
 """Voice API Endpoints - Speech Recognition and Text-to-Speech"""
 
+import io
+import os
+import shutil
+import tempfile
+
 from fastapi import APIRouter, HTTPException, File, UploadFile, Query
 from fastapi.responses import StreamingResponse
-import io
 from loguru import logger
+
 from app.core.speech_interface import get_speech_interface
-from app.services.chat_service import get_chat_service
+from app.dependencies.services import get_chat_service
 
 router = APIRouter(prefix="/voice", tags=["voice"])
 
+
 @router.post("/speech-to-text")
-async def speech_to_text(file: UploadFile = File(...), language: str = Query("fa-IR")):
-    """Convert speech to text from audio file"""
-    logger.info(f"🎙️ Converting audio file to text (language: {language})")
-    
+async def speech_to_text(
+    file: UploadFile = File(...),
+    language: str = Query("fa-IR"),
+):
+    """Convert speech to text from audio file."""
+
+    temp_file = None
+
     try:
         speech_interface = get_speech_interface()
-        
-        # Save uploaded file temporarily
-        temp_file = f"/tmp/{file.filename}"
-        with open(temp_file, "wb") as f:
-            content = await file.read()
-            f.write(content)
-        
-        # Convert to text
+
+        suffix = os.path.splitext(file.filename or "")[1] or ".wav"
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+            temp_file = tmp.name
+            shutil.copyfileobj(file.file, tmp)
+
         text, confidence = speech_interface.speech_to_text(
             audio_file=temp_file,
-            language=language
+            language=language,
         )
-        
+
         return {
             "status": "success",
             "text": text,
             "confidence": confidence,
-            "file_name": file.filename
+            "file_name": file.filename,
         }
-    
+
     except Exception as e:
-        logger.error(f"Speech-to-text error: {e}")
+        logger.exception("Speech-to-text failed")
         raise HTTPException(status_code=500, detail=str(e))
 
+    finally:
+        if temp_file and os.path.exists(temp_file):
+            try:
+                os.unlink(temp_file)
+            except Exception:
+                pass
+
+
 @router.post("/text-to-speech")
-async def text_to_speech(text: str = Query(...), language: str = Query("fa")):
-    """Convert text to speech"""
-    logger.info(f"🔊 Converting text to speech: {text[:50]}...")
-    
+async def text_to_speech(
+    text: str = Query(...),
+    language: str = Query("fa"),
+):
+    """Convert text to speech."""
+
     try:
         speech_interface = get_speech_interface()
-        
-        # Get audio bytes
-        audio_bytes = speech_interface.text_to_speech_bytes(text, language)
-        
-        if audio_bytes:
-            return StreamingResponse(
-                io.BytesIO(audio_bytes),
-                media_type="audio/mpeg",
-                headers={"Content-Disposition": "attachment; filename=audio.mp3"}
+
+        audio_bytes = speech_interface.text_to_speech_bytes(
+            text=text,
+            language=language,
+        )
+
+        if not audio_bytes:
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to generate speech",
             )
-        else:
-            raise HTTPException(status_code=500, detail="Failed to generate audio")
-    
+
+        return StreamingResponse(
+            io.BytesIO(audio_bytes),
+            media_type="audio/mpeg",
+            headers={
+                "Content-Disposition": "attachment; filename=speech.mp3"
+            },
+        )
+
+    except HTTPException:
+        raise
+
     except Exception as e:
-        logger.error(f"Text-to-speech error: {e}")
+        logger.exception("Text-to-speech failed")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.post("/voice-chat")
 async def voice_chat(
     file: UploadFile = File(...),
     user_id: str = Query(...),
-    language: str = Query("fa-IR")
+    language: str = Query("fa-IR"),
 ):
-    """End-to-end voice chat: speech-to-text -> chat -> text-to-speech"""
-    logger.info(f"💬 Voice chat from user: {user_id}")
-    
+    """Speech → Chat → Speech."""
+
+    temp_file = None
+
     try:
         speech_interface = get_speech_interface()
         chat_service = get_chat_service()
-        
-        # Step 1: Convert speech to text
-        temp_file = f"/tmp/{file.filename}"
-        with open(temp_file, "wb") as f:
-            content = await file.read()
-            f.write(content)
-        
-        user_message, stt_confidence = speech_interface.speech_to_text(
+
+        suffix = os.path.splitext(file.filename or "")[1] or ".wav"
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+            temp_file = tmp.name
+            shutil.copyfileobj(file.file, tmp)
+
+        user_message, confidence = speech_interface.speech_to_text(
             audio_file=temp_file,
-            language=language
+            language=language,
         )
-        
+
         if not user_message:
-            raise HTTPException(status_code=400, detail="Could not understand audio")
-        
-        # Step 2: Process chat
-        chat_result = chat_service.process_message(user_message, user_id)
-        
-        # Step 3: Convert response to speech
-        response_text = chat_result["response"]
-        response_audio = speech_interface.text_to_speech_bytes(
-            response_text,
-            language="fa"
+            raise HTTPException(
+                status_code=400,
+                detail="Could not recognize speech",
+            )
+
+        chat_result = chat_service.process_message(
+            user_message,
+            user_id,
         )
-        
+
+        response_text = chat_result["response"]
+
         return {
             "status": "success",
             "user_message": user_message,
-            "stt_confidence": stt_confidence,
+            "stt_confidence": confidence,
             "chat_response": response_text,
-            "chat_intent": chat_result["intent"],
-            "audio_url": "/api/v1/voice/text-to-speech?text=" + response_text.replace(" ", "%20")
+            "chat_intent": chat_result.get("intent"),
+            "audio_url": (
+                "/api/v1/voice/text-to-speech?text="
+                + response_text.replace(" ", "%20")
+            ),
         }
-    
+
+    except HTTPException:
+        raise
+
     except Exception as e:
-        logger.error(f"Voice chat error: {e}")
+        logger.exception("Voice chat failed")
         raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        if temp_file and os.path.exists(temp_file):
+            try:
+                os.unlink(temp_file)
+            except Exception:
+                pass

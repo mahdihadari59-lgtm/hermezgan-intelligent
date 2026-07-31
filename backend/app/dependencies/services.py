@@ -1,108 +1,74 @@
-from sqlalchemy.orm import Session
-from typing import Optional
-import redis
+from __future__ import annotations
 
+import importlib
+from functools import lru_cache
+
+from app.config import HDP_KNOWLEDGE_DB_PATH
+from app.gateway.copilot_gateway import CopilotGateway
 from app.services.chat_service import ChatService
-from app.services.nlp_service import NLPService
-from app.services.location_service import LocationService
-from app.services.camera_service import CameraService
-from app.services.hotspot_service import HotspotService
-from app.services.analytics_service import AnalyticsService
-from app.dependencies.database import get_db, get_redis
 
 
-# ============================================================
-# Chat Service
-# ============================================================
-
-def get_chat_service(
-    db: Session = Depends(get_db),
-    redis_client: Optional[redis.Redis] = Depends(get_redis)
-) -> ChatService:
-    """
-    دریافت سرویس چت‌بات
-
-    Returns:
-        ChatService: سرویس چت‌بات
-    """
-    return ChatService(db, redis_client)
+def _lazy_service(module_path: str, class_name: str):
+    module = importlib.import_module(module_path)
+    cls = getattr(module, class_name)
+    return cls()
 
 
-# ============================================================
-# NLP Service
-# ============================================================
-
-def get_nlp_service(
-    db: Session = Depends(get_db)
-) -> NLPService:
-    """
-    دریافت سرویس NLP
-
-    Returns:
-        NLPService: سرویس پردازش زبان طبیعی
-    """
-    return NLPService(db)
+@lru_cache(maxsize=1)
+def get_copilot_gateway() -> CopilotGateway:
+    return CopilotGateway(db_path=str(HDP_KNOWLEDGE_DB_PATH))
 
 
-# ============================================================
-# Location Service
-# ============================================================
-
-def get_location_service(
-    db: Session = Depends(get_db)
-) -> LocationService:
-    """
-    دریافت سرویس مکان‌یابی
-
-    Returns:
-        LocationService: سرویس مکان‌یابی
-    """
-    return LocationService(db)
+@lru_cache(maxsize=1)
+def get_chat_service() -> ChatService:
+    return ChatService()
 
 
-# ============================================================
-# Camera Service
-# ============================================================
-
-def get_camera_service(
-    db: Session = Depends(get_db)
-) -> CameraService:
-    """
-    دریافت سرویس دوربین‌ها
-
-    Returns:
-        CameraService: سرویس دوربین‌ها
-    """
-    return CameraService(db)
+@lru_cache(maxsize=1)
+def get_location_service():
+    return _lazy_service("app.services.location_service", "LocationService")
 
 
-# ============================================================
-# Hotspot Service
-# ============================================================
-
-def get_hotspot_service(
-    db: Session = Depends(get_db)
-) -> HotspotService:
-    """
-    دریافت سرویس نقاط حادثه‌خیز
-
-    Returns:
-        HotspotService: سرویس نقاط حادثه‌خیز
-    """
-    return HotspotService(db)
+@lru_cache(maxsize=1)
+def get_camera_service():
+    return _lazy_service("app.services.camera_service", "CameraService")
 
 
-# ============================================================
-# Analytics Service
-# ============================================================
+@lru_cache(maxsize=1)
+def get_hotspot_service():
+    return _lazy_service("app.services.hotspot_service", "HotspotService")
 
-def get_analytics_service(
-    db: Session = Depends(get_db)
-) -> AnalyticsService:
-    """
-    دریافت سرویس تحلیل داده‌ها
 
-    Returns:
-        AnalyticsService: سرویس تحلیل
-    """
-    return AnalyticsService(db)
+@lru_cache(maxsize=1)
+def get_auth_service():
+    return _lazy_service("app.services.auth_service", "AuthService")
+
+
+@lru_cache(maxsize=1)
+def get_user_service():
+    return _lazy_service("app.services.user_service", "UserService")
+
+
+@lru_cache(maxsize=1)
+def get_analytics_service():
+    return _lazy_service("app.services.analytics_service", "AnalyticsService")
+
+
+@lru_cache(maxsize=1)
+def get_nlp_service():
+    return _lazy_service("app.services.nlp_service", "NlpService")
+
+
+@lru_cache(maxsize=1)
+def get_websocket_service():
+    return _lazy_service("app.services.websocket_service", "WebsocketService")
+
+
+@lru_cache(maxsize=1)
+def get_file_service():
+    return _lazy_service("app.services.file_service", "FileService")
+
+
+@lru_cache(maxsize=1)
+def get_email_service():
+    return _lazy_service("app.services.email_service", "EmailService")

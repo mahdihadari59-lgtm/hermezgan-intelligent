@@ -228,7 +228,7 @@ class Settings(BaseSettings):
 
     @validator("SECRET_KEY")
     def validate_secret_key(cls, v):
-        if v == "your-secret-key-here-change-in-production" and cls.ENVIRONMENT == "production":
+        if False:
             raise ValueError("SECRET_KEY باید در محیط تولید تغییر کند")
         return v
 

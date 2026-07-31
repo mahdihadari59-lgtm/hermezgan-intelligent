@@ -1,104 +1,122 @@
-import time
-import uuid
-from typing import Optional, Dict, Any, List
-from datetime import datetime, timezone
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
+from app.config import HDP_KNOWLEDGE_DB_PATH
+from app.gateway.copilot_gateway import CopilotGateway
+
+
+_gateway = CopilotGateway(db_path=str(HDP_KNOWLEDGE_DB_PATH))
+
+_DEFAULT_SUGGESTIONS = {
+    "hospital": ["📞 تماس", "🧭 مسیریابی", "دیگر بیمارستان‌ها"],
+    "restaurant": ["🍽️ صفحه رستوران", "⭐ نظرات", "📞 تماس"],
+    "taxi": ["⏱️ زمان باقی‌مانده", "📞 تماس راننده", "❌ لغو"],
+    "greeting": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
+    "general": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
+}
+
 
 class ChatService:
-    def __init__(self, db=None):
-        self.db = db
-        self._cache = {}
+    async def process_message(
+        self,
+        message: str,
+        user_id: str,
+        latitude: float | None = None,
+        longitude: float | None = None,
+        session_id: str | None = None,
+    ) -> Dict[str, Any]:
+        result = await _gateway.handle_message(
+            text=message,
+            session_id=session_id,
+            user_id=user_id,
+        )
 
-    def process_message(self, message: str, user_id: str, latitude: Optional[float] = None, longitude: Optional[float] = None) -> Dict[str, Any]:
-        start_time = time.time()
-        msg_lower = message.lower()
-        intent = "general"
-        confidence = 0.5
-        response = ""
-        suggestions = []
-        
-        # تشخیص نیت
-        if any(w in msg_lower for w in ["کجا", "نزدیک", "فاصله", "موقعیت", "مکان", "آدرس", "محله", "منطقه"]):
-            intent = "location_query"
-            confidence = 0.85
-            response = "موقعیت شما در حال بررسی است."
-            suggestions = ["📍 اشتراک موقعیت"]
-        elif any(w in msg_lower for w in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
-            intent = "greeting"
-            confidence = 0.95
-            response = "سلام! 🌊 من دستیار هوشمند هرمزگان هستم."
-            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
-        elif any(w in msg_lower for w in ["بیمارستان", "بیمار", "درمان", "داکتر", "پزشک"]):
-            intent = "hospital"
-            confidence = 0.9
-            if latitude and longitude:
-                response = "نزدیک‌ترین بیمارستان: بیمارستان امام خمینی - ۲.۵ کیلومتر"
-                suggestions = ["📞 تماس", "🧭 مسیریابی"]
-            else:
-                response = "لطفاً موقعیت خود را به اشتراک بگذارید."
-                suggestions = ["📍 اشتراک موقعیت"]
-        elif any(w in msg_lower for w in ["رستوران", "غذا", "کباب", "شام", "ناهار"]):
-            intent = "restaurant"
-            confidence = 0.9
-            response = "رستوران تالار خلیج - ۱.۲ کیلومتر"
-            suggestions = ["🍽️ صفحه رستوران", "⭐ نظرات"]
-        elif any(w in msg_lower for w in ["تاکسی", "خودرو", "رفتن", "اسنپ", "تپسی"]):
-            intent = "taxi"
-            confidence = 0.9
-            response = "تاکسی برای شما فراخوانده شد."
-            suggestions = ["⏱️ زمان", "📞 تماس"]
-        else:
-            response = "چطور می‌تونم کمکتون کنم؟"
-            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
-        
+        intent_data = result.get("intent") or {}
+        if not isinstance(intent_data, dict):
+            intent_data = {}
+
+        knowledge = result.get("knowledge") or {}
+        if not isinstance(knowledge, dict):
+            knowledge = {}
+
+        intent_name = str(
+            intent_data.get("intent")
+            or intent_data.get("category")
+            or "general"
+        ).strip().lower()
+
+        response_text = (
+            result.get("response")
+            or knowledge.get("answer")
+            or result.get("answer")
+            or "پاسخی پیدا نشد."
+        )
+
+        confidence = intent_data.get("confidence", 1.0)
+        try:
+            confidence = float(confidence)
+        except Exception:
+            confidence = 1.0
+
+        retrieved_documents = knowledge.get("results") or []
+        if not isinstance(retrieved_documents, list):
+            retrieved_documents = []
+
         return {
-            "message": message,
-            "response": response,
-            "intent": intent,
+            "response": response_text,
+            "intent": intent_name or "general",
             "confidence": confidence,
-            "suggestions": suggestions,
-            "user_id": user_id,
-            "processing_time": time.time() - start_time,
-            "timestamp": datetime.now(timezone.utc).isoformat()
+            "suggestions": _DEFAULT_SUGGESTIONS.get(intent_name, _DEFAULT_SUGGESTIONS["general"]),
+            "retrieved_documents": retrieved_documents,
+            "dialect": result.get("dialect"),
+            "knowledge": knowledge,
+            "session_id": session_id,
+            "location": {
+                "lat": latitude,
+                "lng": longitude,
+            } if latitude is not None and longitude is not None else None,
         }
 
-    def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
-        return []
+    async def chat(
+        self,
+        message: str,
+        session_id: Optional[str] = None,
+        user_id: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        return await _gateway.handle_message(
+            text=message,
+            session_id=session_id,
+            user_id=user_id,
+        )
 
-    def extract_service_type(self, text: str) -> Optional[str]:
-        service_map = {
-            "بیمارستان": "hospital",
-            "درمانگاه": "hospital",
-            "رستوران": "restaurant",
-            "کافه": "restaurant",
-            "تاکسی": "taxi",
-            "اسنپ": "taxi",
-            "تپسی": "taxi",
-            "داروخانه": "pharmacy",
-            "مدرسه": "school",
-            "دانشگاه": "university",
-            "دانشگا": "university",
-            "دانش": "university"
-        }
-        for keyword, service_type in service_map.items():
-            if keyword in text:
-                return service_type
-        return None
-
-    def _extract_service_type(self, entities: List[Dict]) -> Optional[str]:
-        if not entities:
-            return None
-        for entity in entities:
-            word = entity.get("word", "")
-            result = self.extract_service_type(word)
-            if result:
-                return result
-        return None
+    async def handle_message(
+        self,
+        message: str,
+        session_id: Optional[str] = None,
+        user_id: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        return await self.chat(
+            message,
+            session_id=session_id,
+            user_id=user_id,
+        )
 
 
-_chat_service_instance = None
+async def chat(
+    message: str,
+    session_id: Optional[str] = None,
+    user_id: Optional[str] = None,
+) -> Dict[str, Any]:
+    return await _gateway.handle_message(
+        text=message,
+        session_id=session_id,
+        user_id=user_id,
+    )
 
-def get_chat_service(db=None) -> ChatService:
-    global _chat_service_instance
-    if _chat_service_instance is None:
-        _chat_service_instance = ChatService(db)
-    return _chat_service_instance
+
+def get_chat_service() -> ChatService:
+    """
+    FastAPI dependency provider
+    """
+    return ChatService()
