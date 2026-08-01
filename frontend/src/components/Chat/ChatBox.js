@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import './ChatBox.css';
 
 const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
   const messagesEndRef = useRef(null);
-  const dispatch = useDispatch();
-
+  
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);

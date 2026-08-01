@@ -1,140 +1,78 @@
-from sqlalchemy import create_engine, inspect, text
-from sqlalchemy.orm import Session
-from typing import Dict, Any, List, Optional
-import logging
-from datetime import datetime
+"""
+اتصال مرکزی به دیتابیس HDP
+"""
 
-from app.core.config import settings
-from app.core.database.session import get_db_session_manager
+import sqlite3
+import logging
+from pathlib import Path
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-
 class DatabaseConnection:
-    """
-    مدیریت اتصالات دیتابیس و اطلاعات
-    """
-
+    """مدیریت اتصال به دیتابیس HDP"""
+    
+    _instance = None
+    _connection = None
+    _db_path = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
     def __init__(self):
-        self.manager = get_db_session_manager()
-        self.engine = self.manager.engine
-
-    def get_status(self) -> Dict[str, Any]:
+        if hasattr(self, '_initialized') and self._initialized:
+            return
+        
+        self._initialized = True
+        
+        # مسیر درست دیتابیس
+        self._db_path = Path("/data/data/com.termux/files/home/hermezgan-intelligent/backend/data/hdp_v2.db")
+        
+        logger.info(f"📁 Database path: {self._db_path}")
+        self._connect()
+    
+    def _connect(self):
+        """اتصال به دیتابیس"""
         try:
-            with self.engine.connect() as conn:
-                result = conn.execute(text("SELECT 1")).fetchone()
-                connected = result is not None
-
-            return {
-                "connected": connected,
-                "pool_size": settings.DATABASE_POOL_SIZE,
-                "max_overflow": settings.DATABASE_MAX_OVERFLOW,
-                "pool_timeout": settings.DATABASE_POOL_TIMEOUT,
-                "environment": settings.ENVIRONMENT
-            }
+            if not self._db_path.exists():
+                logger.error(f"❌ Database not found: {self._db_path}")
+                self._connection = None
+                return
+            
+            self._connection = sqlite3.connect(str(self._db_path))
+            self._connection.row_factory = sqlite3.Row
+            size_mb = self._db_path.stat().st_size / 1024 / 1024
+            logger.info(f"✅ Connected to database: {self._db_path} ({size_mb:.1f} MB)")
+            
+            # نمایش جدول‌ها
+            cursor = self._connection.cursor()
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' LIMIT 10")
+            tables = cursor.fetchall()
+            table_names = [t[0] for t in tables]
+            logger.info(f"📊 Tables found: {table_names}")
+            
         except Exception as e:
-            return {
-                "connected": False,
-                "error": str(e)
-            }
-
-    def get_tables(self) -> List[str]:
-        inspector = inspect(self.engine)
-        return inspector.get_table_names()
-
-    def get_table_info(self, table_name: str) -> Dict[str, Any]:
-        inspector = inspect(self.engine)
-
-        columns = inspector.get_columns(table_name)
-        primary_keys = inspector.get_pk_constraint(table_name)
-        foreign_keys = inspector.get_foreign_keys(table_name)
-        indexes = inspector.get_indexes(table_name)
-
-        with self.engine.connect() as conn:
-            result = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}")).fetchone()
-            row_count = result[0] if result else 0
-
-        return {
-            "name": table_name,
-            "columns": [
-                {
-                    "name": col["name"],
-                    "type": str(col["type"]),
-                    "nullable": col["nullable"],
-                    "default": col.get("default")
-                }
-                for col in columns
-            ],
-            "primary_key": primary_keys.get("constrained_columns", []),
-            "foreign_keys": [
-                {
-                    "columns": fk["constrained_columns"],
-                    "referred_table": fk["referred_table"],
-                    "referred_columns": fk["referred_columns"]
-                }
-                for fk in foreign_keys
-            ],
-            "indexes": [
-                {
-                    "name": idx["name"],
-                    "columns": idx["column_names"],
-                    "unique": idx["unique"]
-                }
-                for idx in indexes
-            ],
-            "row_count": row_count
-        }
-
-    def get_database_size(self) -> float:
-        try:
-            with self.engine.connect() as conn:
-                result = conn.execute(text("""
-                    SELECT pg_database_size(current_database()) / 1024 / 1024
-                """)).fetchone()
-                return result[0] if result else 0
-        except Exception:
-            return 0
-
-    def get_active_connections(self) -> int:
-        try:
-            with self.engine.connect() as conn:
-                result = conn.execute(text("""
-                    SELECT COUNT(*) FROM pg_stat_activity
-                    WHERE datname = current_database()
-                """)).fetchone()
-                return result[0] if result else 0
-        except Exception:
-            return 0
-
-    def execute_raw_query(self, query: str) -> List[Dict]:
-        try:
-            with self.engine.connect() as conn:
-                result = conn.execute(text(query))
-                columns = result.keys()
-                return [dict(zip(columns, row)) for row in result.fetchall()]
-        except Exception as e:
-            logger.error(f"❌ Error executing raw query: {e}")
-            return []
-
-    def get_schema_info(self) -> Dict[str, Any]:
-        tables = self.get_tables()
-
-        return {
-            "database": settings.DATABASE_URL.split('@')[-1] if '@' in settings.DATABASE_URL else "unknown",
-            "tables": [
-                self.get_table_info(table) for table in tables
-            ],
-            "total_tables": len(tables),
-            "database_size_mb": self.get_database_size(),
-            "active_connections": self.get_active_connections()
-        }
+            logger.error(f"❌ Connection error: {e}")
+            self._connection = None
+    
+    def get_connection(self):
+        """دریافت اتصال"""
+        if self._connection is None:
+            self._connect()
+        return self._connection
+    
+    def get_db_path(self):
+        """دریافت مسیر دیتابیس"""
+        return self._db_path
+    
+    def close(self):
+        """بستن اتصال"""
+        if self._connection:
+            self._connection.close()
+            self._connection = None
 
 
-_db_connection = None
-
-
-def get_connection() -> DatabaseConnection:
-    global _db_connection
-    if _db_connection is None:
-        _db_connection = DatabaseConnection()
-    return _db_connection
+# نمونه Singleton
+db_connection = DatabaseConnection()
