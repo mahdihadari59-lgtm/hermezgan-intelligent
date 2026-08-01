@@ -1,122 +1,92 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+import threading
+import logging
+from typing import Any, Dict, List
 
-from app.config import HDP_KNOWLEDGE_DB_PATH
+from app.config import HDP_KNOWLEDGE_DB_PATH, DEFAULT_BANDARI_URL
 from app.gateway.copilot_gateway import CopilotGateway
 
+logger = logging.getLogger(__name__)
 
-_gateway = CopilotGateway(db_path=str(HDP_KNOWLEDGE_DB_PATH))
-
-_DEFAULT_SUGGESTIONS = {
-    "hospital": ["📞 تماس", "🧭 مسیریابی", "دیگر بیمارستان‌ها"],
-    "restaurant": ["🍽️ صفحه رستوران", "⭐ نظرات", "📞 تماس"],
-    "taxi": ["⏱️ زمان باقی‌مانده", "📞 تماس راننده", "❌ لغو"],
-    "greeting": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
-    "general": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
-}
+MAX_HISTORY_PER_USER = 50
 
 
 class ChatService:
-    async def process_message(
-        self,
-        message: str,
-        user_id: str,
-        latitude: float | None = None,
-        longitude: float | None = None,
-        session_id: str | None = None,
-    ) -> Dict[str, Any]:
-        result = await _gateway.handle_message(
-            text=message,
-            session_id=session_id,
-            user_id=user_id,
-        )
+    """Wrapper نازک روی CopilotGateway؛ فقط تاریخچه‌ی مکالمه رو اضافه می‌کند."""
 
-        intent_data = result.get("intent") or {}
-        if not isinstance(intent_data, dict):
-            intent_data = {}
+    _instance = None
+    _lock = threading.Lock()
 
-        knowledge = result.get("knowledge") or {}
-        if not isinstance(knowledge, dict):
-            knowledge = {}
+    def __new__(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    inst = super().__new__(cls)
+                    inst._gateway = CopilotGateway(
+                        db_path=str(HDP_KNOWLEDGE_DB_PATH),
+                        bandari_url=DEFAULT_BANDARI_URL,
+                    )
+                    inst._history: Dict[str, List[dict]] = {}
+                    logger.info("✅ ChatService wired to CopilotGateway")
+                    cls._instance = inst
+        return cls._instance
 
-        intent_name = str(
-            intent_data.get("intent")
-            or intent_data.get("category")
-            or "general"
-        ).strip().lower()
+    async def process_message(self, message: str, user_id: str = "anonymous", **kwargs) -> Dict[str, Any]:
+        text = message.strip()
+        if not text:
+            return {
+                "response": "پیام خالی است",
+                "intent": "general",
+                "source": "validation",
+                "confidence": 0.0,
+                "dialect": {},
+                "suggestions": [],
+                "success": False,
+            }
 
-        response_text = (
-            result.get("response")
-            or knowledge.get("answer")
-            or result.get("answer")
-            or "پاسخی پیدا نشد."
-        )
-
-        confidence = intent_data.get("confidence", 1.0)
         try:
-            confidence = float(confidence)
+            gw_result = await self._gateway.handle_message(
+                text=text,
+                session_id=kwargs.get("session_id"),
+                user_id=user_id,
+            )
         except Exception:
-            confidence = 1.0
+            logger.exception("CopilotGateway.handle_message failed")
+            return {
+                "response": "خطا در پردازش پیام؛ لطفاً دوباره تلاش کنید.",
+                "intent": "general",
+                "source": "error",
+                "confidence": 0.0,
+                "dialect": {},
+                "suggestions": [],
+                "success": False,
+            }
 
-        retrieved_documents = knowledge.get("results") or []
-        if not isinstance(retrieved_documents, list):
-            retrieved_documents = []
+        retrieved = gw_result.get("retrieved_documents") or []
 
-        return {
-            "response": response_text,
-            "intent": intent_name or "general",
-            "confidence": confidence,
-            "suggestions": _DEFAULT_SUGGESTIONS.get(intent_name, _DEFAULT_SUGGESTIONS["general"]),
-            "retrieved_documents": retrieved_documents,
-            "dialect": result.get("dialect"),
-            "knowledge": knowledge,
-            "session_id": session_id,
-            "location": {
-                "lat": latitude,
-                "lng": longitude,
-            } if latitude is not None and longitude is not None else None,
+        result = {
+            "response": gw_result.get("response", ""),
+            "intent": gw_result.get("intent", "general"),
+            "source": "knowledge" if retrieved else "fallback",
+            "confidence": gw_result.get("confidence", 0.0),
+            "normalized_text": text,
+            "dialect": gw_result.get("dialect", {}),
+            "suggestions": gw_result.get("suggestions", []),
+            "search_results": {"knowledge_count": len(retrieved)},
+            "success": True,
         }
 
-    async def chat(
-        self,
-        message: str,
-        session_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        return await _gateway.handle_message(
-            text=message,
-            session_id=session_id,
-            user_id=user_id,
-        )
+        hist = self._history.setdefault(user_id, [])
+        hist.append(result)
+        if len(hist) > MAX_HISTORY_PER_USER:
+            del hist[0: len(hist) - MAX_HISTORY_PER_USER]
 
-    async def handle_message(
-        self,
-        message: str,
-        session_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-    ) -> Dict[str, Any]:
-        return await self.chat(
-            message,
-            session_id=session_id,
-            user_id=user_id,
-        )
+        return result
 
-
-async def chat(
-    message: str,
-    session_id: Optional[str] = None,
-    user_id: Optional[str] = None,
-) -> Dict[str, Any]:
-    return await _gateway.handle_message(
-        text=message,
-        session_id=session_id,
-        user_id=user_id,
-    )
+    async def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
+        return self._history.get(user_id, [])[-limit:]
 
 
 def get_chat_service() -> ChatService:
-    """
-    FastAPI dependency provider
-    """
     return ChatService()

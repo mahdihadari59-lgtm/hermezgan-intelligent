@@ -30,6 +30,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 from spatial_api import SpatialDB
+from app.api.copilot import router as copilot_router
+from app.api.orchestrator import router as orchestrator_router
+from app.api.chat import router as chat_router
+from app.api.ws import router as ws_router
 
 DB_PATH = os.environ.get("HDP_GEO_DB", "geo.db")
 API_KEY = os.environ.get("HDP_API_KEY")  # unset = no auth (dev only — set this in production)
@@ -175,3 +179,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+app.include_router(copilot_router, prefix="/api/v1/copilot", tags=["Copilot"])
+
+app.include_router(orchestrator_router, prefix="/api/v1/orchestrator", tags=["Orchestrator"])
+
+try:
+    app.include_router(chat_router, prefix="/api/v1", tags=["Chat"])
+except Exception:
+    pass
+
+try:
+    app.include_router(ws_router, prefix="/api/v1", tags=["WebSocket"])
+except Exception:
+    pass

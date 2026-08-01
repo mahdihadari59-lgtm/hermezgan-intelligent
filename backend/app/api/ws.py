@@ -1,0 +1,32 @@
+from __future__ import annotations
+
+import json
+from typing import Any, Dict
+
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+
+from app.services.orchestrator_service import OrchestratorService
+
+router = APIRouter()
+_service = OrchestratorService()
+
+@router.websocket("/ws/chat")
+async def ws_chat(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            raw = await websocket.receive_text()
+            try:
+                payload: Dict[str, Any] = json.loads(raw)
+            except Exception:
+                payload = {"query": raw, "mode": "text"}
+
+            async for item in _service.stream_chat(payload):
+                await websocket.send_text(json.dumps(item, ensure_ascii=False))
+    except WebSocketDisconnect:
+        return
+    except Exception as e:
+        try:
+            await websocket.send_text(json.dumps({"type": "error", "error": str(e)}, ensure_ascii=False))
+        finally:
+            return
