@@ -1,64 +1,76 @@
 import time
-import uuid
 from typing import Optional, Dict, Any, List
 from datetime import datetime, timezone
+from loguru import logger
+
+from app.services.geo_link_service import enrich_geo as _enrich_geo
+from app.core.engine.hybrid.hybrid_engine import get_hybrid_engine
+
 
 class ChatService:
     def __init__(self, db=None):
         self.db = db
         self._cache = {}
+        self._hybrid_engine = None
 
-    def process_message(self, message: str, user_id: str, latitude: Optional[float] = None, longitude: Optional[float] = None) -> Dict[str, Any]:
+    @property
+    def hybrid_engine(self):
+        if self._hybrid_engine is None:
+            self._hybrid_engine = get_hybrid_engine()
+        return self._hybrid_engine
+
+    def process_message(
+        self,
+        message: str,
+        user_id: str,
+        latitude: Optional[float] = None,
+        longitude: Optional[float] = None,
+    ) -> Dict[str, Any]:
         start_time = time.time()
         msg_lower = message.lower()
-        intent = "general"
-        confidence = 0.5
-        response = ""
-        suggestions = []
-        
-        # تشخیص نیت
-        if any(w in msg_lower for w in ["کجا", "نزدیک", "فاصله", "موقعیت", "مکان", "آدرس", "محله", "منطقه"]):
-            intent = "location_query"
-            confidence = 0.85
-            response = "موقعیت شما در حال بررسی است."
+
+        # فست‌پث برای احوال‌پرسی ساده - نیازی به سرچ نداره
+        if any(w in msg_lower for w in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
+            return {
+                "message": message,
+                "response": "سلام! 🌊 من دستیار هوشمند هرمزگان هستم. چطور می‌تونم کمکتون کنم؟",
+                "intent": "greeting",
+                "confidence": 0.95,
+                "suggestions": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
+                "retrieved_documents": [],
+                "user_id": user_id,
+                "processing_time": time.time() - start_time,
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+
+        service_type = self.extract_service_type(message)
+        intent = service_type or "general"
+
+        try:
+            result = self.hybrid_engine.answer(message)
+            response = result.get("answer", "متأسفانه اطلاعاتی پیدا نشد.")
+            confidence = result.get("confidence", 0.5)
+            sources = result.get("sources", [])
+        except Exception as e:
+            logger.error(f"HybridEngine error: {e}")
+            response = "در حال حاضر امکان جستجو وجود نداره، لطفاً دوباره امتحان کنید."
+            confidence = 0.0
+            sources = []
+
+        suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
+        if intent == "location_query" and not (latitude and longitude):
             suggestions = ["📍 اشتراک موقعیت"]
-        elif any(w in msg_lower for w in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
-            intent = "greeting"
-            confidence = 0.95
-            response = "سلام! 🌊 من دستیار هوشمند هرمزگان هستم."
-            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
-        elif any(w in msg_lower for w in ["بیمارستان", "بیمار", "درمان", "داکتر", "پزشک"]):
-            intent = "hospital"
-            confidence = 0.9
-            if latitude and longitude:
-                response = "نزدیک‌ترین بیمارستان: بیمارستان امام خمینی - ۲.۵ کیلومتر"
-                suggestions = ["📞 تماس", "🧭 مسیریابی"]
-            else:
-                response = "لطفاً موقعیت خود را به اشتراک بگذارید."
-                suggestions = ["📍 اشتراک موقعیت"]
-        elif any(w in msg_lower for w in ["رستوران", "غذا", "کباب", "شام", "ناهار"]):
-            intent = "restaurant"
-            confidence = 0.9
-            response = "رستوران تالار خلیج - ۱.۲ کیلومتر"
-            suggestions = ["🍽️ صفحه رستوران", "⭐ نظرات"]
-        elif any(w in msg_lower for w in ["تاکسی", "خودرو", "رفتن", "اسنپ", "تپسی"]):
-            intent = "taxi"
-            confidence = 0.9
-            response = "تاکسی برای شما فراخوانده شد."
-            suggestions = ["⏱️ زمان", "📞 تماس"]
-        else:
-            response = "چطور می‌تونم کمکتون کنم؟"
-            suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
-        
+
         return {
             "message": message,
             "response": response,
             "intent": intent,
             "confidence": confidence,
             "suggestions": suggestions,
+            "retrieved_documents": sources,
             "user_id": user_id,
             "processing_time": time.time() - start_time,
-            "timestamp": datetime.now(timezone.utc).isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
     def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
@@ -76,8 +88,6 @@ class ChatService:
             "داروخانه": "pharmacy",
             "مدرسه": "school",
             "دانشگاه": "university",
-            "دانشگا": "university",
-            "دانش": "university"
         }
         for keyword, service_type in service_map.items():
             if keyword in text:
@@ -91,11 +101,12 @@ class ChatService:
             word = entity.get("word", "")
             result = self.extract_service_type(word)
             if result:
-                return result
+                return _enrich_geo(result)
         return None
 
 
 _chat_service_instance = None
+
 
 def get_chat_service(db=None) -> ChatService:
     global _chat_service_instance

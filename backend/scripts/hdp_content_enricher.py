@@ -50,7 +50,7 @@ except ImportError:
 # Configuration
 # ==========================================================
 
-DB_PATH = "backend/hdp_v2.db"
+DB_PATH = "data/hdp_v2.db"
 MIN_CONTENT_LENGTH = 20
 BATCH_SIZE = 100
 LOG_FILE = "backend/logs/content_enricher.log"

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/analytics", tags=["Analytics"])
+router = APIRouter( tags=["Analytics"])
 
 @router.get("/stats")
 async def get_statistics():

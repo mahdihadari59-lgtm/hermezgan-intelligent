@@ -42,7 +42,8 @@ async def send_message(chat_msg: ChatMessage) -> Dict:
         result = chat_service.process_message(
             chat_msg.message,
             chat_msg.user_id,
-            user_location
+            latitude=chat_msg.latitude,
+            longitude=chat_msg.longitude
         )
         
         return ChatResponse(

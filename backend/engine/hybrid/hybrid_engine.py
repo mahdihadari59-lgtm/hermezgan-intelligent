@@ -36,6 +36,7 @@ from engine.hybrid.hybrid_ranker import HybridRanker
 from engine.hybrid.fallback_engine import FallbackEngine
 from engine.hybrid.config import HybridConfig
 from engine.hybrid.constants import EXPERT_DOMAIN_MAP
+from app.services.geo_link_service import enrich_geo as _enrich_geo
 
 
 RerankFn = Callable[[List[Dict[str, Any]], Dict[str, Any]], List[Dict[str, Any]]]
@@ -308,9 +309,8 @@ WHERE g.id IN ({placeholders})
                     "score_breakdown": r.get("breakdown", {}),
                 }
             )
+        results = _enrich_geo(results)
         return results
-
-
 if __name__ == "__main__":
     import argparse
     import json

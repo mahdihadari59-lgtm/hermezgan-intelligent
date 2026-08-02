@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 import uuid
 import time
 
-router = APIRouter(prefix="/chat", tags=["Chat"])
+router = APIRouter( tags=["Chat"])
 
 
 # ============================================================

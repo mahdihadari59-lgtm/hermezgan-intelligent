@@ -7,7 +7,7 @@ from loguru import logger
 from app.core.speech_interface import get_speech_interface
 from app.services.chat_service import get_chat_service
 
-router = APIRouter(prefix="/voice", tags=["voice"])
+router = APIRouter( tags=["voice"])
 
 @router.post("/speech-to-text")
 async def speech_to_text(file: UploadFile = File(...), language: str = Query("fa-IR")):
