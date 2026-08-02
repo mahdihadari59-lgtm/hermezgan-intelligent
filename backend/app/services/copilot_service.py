@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 from app.services.db_intelligence_service import DBIntelligenceService
 from app.services.query_planner_service import QueryPlannerService
 
-DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent/backend/data/hdp_v2.db"
+DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db"
 DEFAULT_LLM_URL = "http://127.0.0.1:8080"
 DEFAULT_LLM_MODEL = "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf"
 
@@ -78,7 +78,7 @@ class CopilotService:
             },
         ]
 
-    def _llama_chat_sync(self, messages: List[Dict[str, str]], max_tokens: int = 700, temperature: float = 0.2) -> str:
+    def _llama_chat_sync(self, messages: List[Dict[str, str]], max_tokens: int = 250, temperature: float = 0.2) -> str:
         def _post(url: str, payload: Dict[str, Any]) -> Dict[str, Any]:
             req = urllib.request.Request(
                 url,
@@ -156,7 +156,7 @@ class CopilotService:
             answer = await asyncio.to_thread(
                 self._llama_chat_sync,
                 prompt,
-                int(context.get("max_tokens") or 700),
+                int(context.get("max_tokens") or 250),
                 float(context.get("temperature") or 0.2),
             )
         except Exception as e:
