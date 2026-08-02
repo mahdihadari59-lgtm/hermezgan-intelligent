@@ -11,7 +11,8 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 class ChatMessage(BaseModel):
     """Chat Message Request"""
     message: str
-    user_id: str
+    user_id: str = "anonymous"
+    language: str = "fa"
     latitude: Optional[float] = None
     longitude: Optional[float] = None
 
@@ -22,51 +23,52 @@ class ChatResponse(BaseModel):
     confidence: float
     retrieved_documents: list
 
-@router.post("/message", response_model=ChatResponse)
-async def send_message(chat_msg: ChatMessage) -> Dict:
-    """Send a message to chat bot"""
+async def _handle_message(chat_msg: ChatMessage) -> ChatResponse:
     logger.info(f"📨 Received chat message from {chat_msg.user_id}")
-    
     try:
         chat_service = get_chat_service()
-        
-        # Prepare user location if provided
-        user_location = None
-        if chat_msg.latitude and chat_msg.longitude:
-            user_location = {
-                "latitude": chat_msg.latitude,
-                "longitude": chat_msg.longitude,
-            }
-        
-        # Process message
+
         result = chat_service.process_message(
             chat_msg.message,
             chat_msg.user_id,
             latitude=chat_msg.latitude,
             longitude=chat_msg.longitude
         )
-        
+
         return ChatResponse(
             response=result["response"],
             intent=result["intent"],
             confidence=result["confidence"],
             retrieved_documents=result["retrieved_documents"]
         )
-    
+
     except Exception as e:
         logger.error(f"Chat error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/message", response_model=ChatResponse)
+async def send_message(chat_msg: ChatMessage) -> ChatResponse:
+    """Send a message to chat bot"""
+    return await _handle_message(chat_msg)
+
+
+@router.post("/send", response_model=ChatResponse)
+async def send_message_alias(chat_msg: ChatMessage) -> ChatResponse:
+    """Alias برای سازگاری با کلاینت‌هایی که /send صدا می‌زنن"""
+    return await _handle_message(chat_msg)
+
 
 @router.get("/history")
 async def get_chat_history(user_id: str = Query(...), limit: int = Query(50, le=200)):
     """Get chat history for a user"""
     logger.info(f"📖 Fetching chat history for {user_id}")
-    
+
     try:
         chat_service = get_chat_service()
         history = chat_service.get_chat_history(user_id, limit)
         return {"user_id": user_id, "messages": history}
-    
+
     except Exception as e:
         logger.error(f"History fetch error: {e}")
         raise HTTPException(status_code=500, detail=str(e))

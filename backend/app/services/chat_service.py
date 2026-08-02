@@ -1,115 +1,92 @@
-import time
-from typing import Optional, Dict, Any, List
-from datetime import datetime, timezone
-from loguru import logger
+from __future__ import annotations
 
-from app.services.geo_link_service import enrich_geo as _enrich_geo
-from app.core.engine.hybrid.hybrid_engine import get_hybrid_engine
+import threading
+import logging
+from typing import Any, Dict, List
+
+from app.config import HDP_KNOWLEDGE_DB_PATH, DEFAULT_BANDARI_URL
+from app.gateway.copilot_gateway import CopilotGateway
+
+logger = logging.getLogger(__name__)
+
+MAX_HISTORY_PER_USER = 50
 
 
 class ChatService:
-    def __init__(self, db=None):
-        self.db = db
-        self._cache = {}
-        self._hybrid_engine = None
+    """Wrapper نازک روی CopilotGateway؛ فقط تاریخچه‌ی مکالمه رو اضافه می‌کند."""
 
-    @property
-    def hybrid_engine(self):
-        if self._hybrid_engine is None:
-            self._hybrid_engine = get_hybrid_engine()
-        return self._hybrid_engine
+    _instance = None
+    _lock = threading.Lock()
 
-    def process_message(
-        self,
-        message: str,
-        user_id: str,
-        latitude: Optional[float] = None,
-        longitude: Optional[float] = None,
-    ) -> Dict[str, Any]:
-        start_time = time.time()
-        msg_lower = message.lower()
+    def __new__(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    inst = super().__new__(cls)
+                    inst._gateway = CopilotGateway(
+                        db_path=str(HDP_KNOWLEDGE_DB_PATH),
+                        bandari_url=DEFAULT_BANDARI_URL,
+                    )
+                    inst._history: Dict[str, List[dict]] = {}
+                    logger.info("✅ ChatService wired to CopilotGateway")
+                    cls._instance = inst
+        return cls._instance
 
-        # فست‌پث برای احوال‌پرسی ساده - نیازی به سرچ نداره
-        if any(w in msg_lower for w in ["سلام", "درود", "هی", "خوبی", "چطوری"]):
+    async def process_message(self, message: str, user_id: str = "anonymous", **kwargs) -> Dict[str, Any]:
+        text = message.strip()
+        if not text:
             return {
-                "message": message,
-                "response": "سلام! 🌊 من دستیار هوشمند هرمزگان هستم. چطور می‌تونم کمکتون کنم؟",
-                "intent": "greeting",
-                "confidence": 0.95,
-                "suggestions": ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"],
-                "retrieved_documents": [],
-                "user_id": user_id,
-                "processing_time": time.time() - start_time,
-                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "response": "پیام خالی است",
+                "intent": "general",
+                "source": "validation",
+                "confidence": 0.0,
+                "dialect": {},
+                "suggestions": [],
+                "success": False,
             }
 
-        service_type = self.extract_service_type(message)
-        intent = service_type or "general"
-
         try:
-            result = self.hybrid_engine.answer(message)
-            response = result.get("answer", "متأسفانه اطلاعاتی پیدا نشد.")
-            confidence = result.get("confidence", 0.5)
-            sources = result.get("sources", [])
-        except Exception as e:
-            logger.error(f"HybridEngine error: {e}")
-            response = "در حال حاضر امکان جستجو وجود نداره، لطفاً دوباره امتحان کنید."
-            confidence = 0.0
-            sources = []
+            gw_result = await self._gateway.handle_message(
+                text=text,
+                session_id=kwargs.get("session_id"),
+                user_id=user_id,
+            )
+        except Exception:
+            logger.exception("CopilotGateway.handle_message failed")
+            return {
+                "response": "خطا در پردازش پیام؛ لطفاً دوباره تلاش کنید.",
+                "intent": "general",
+                "source": "error",
+                "confidence": 0.0,
+                "dialect": {},
+                "suggestions": [],
+                "success": False,
+            }
 
-        suggestions = ["🏥 بیمارستان", "🍽️ رستوران", "🚗 تاکسی"]
-        if intent == "location_query" and not (latitude and longitude):
-            suggestions = ["📍 اشتراک موقعیت"]
+        retrieved = gw_result.get("retrieved_documents") or []
 
-        return {
-            "message": message,
-            "response": response,
-            "intent": intent,
-            "confidence": confidence,
-            "suggestions": suggestions,
-            "retrieved_documents": sources,
-            "user_id": user_id,
-            "processing_time": time.time() - start_time,
-            "timestamp": datetime.now(timezone.utc).isoformat(),
+        result = {
+            "response": gw_result.get("response", ""),
+            "intent": gw_result.get("intent", "general"),
+            "source": "knowledge" if retrieved else "fallback",
+            "confidence": gw_result.get("confidence", 0.0),
+            "normalized_text": text,
+            "dialect": gw_result.get("dialect", {}),
+            "suggestions": gw_result.get("suggestions", []),
+            "search_results": {"knowledge_count": len(retrieved)},
+            "success": True,
         }
 
-    def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
-        return []
+        hist = self._history.setdefault(user_id, [])
+        hist.append(result)
+        if len(hist) > MAX_HISTORY_PER_USER:
+            del hist[0: len(hist) - MAX_HISTORY_PER_USER]
 
-    def extract_service_type(self, text: str) -> Optional[str]:
-        service_map = {
-            "بیمارستان": "hospital",
-            "درمانگاه": "hospital",
-            "رستوران": "restaurant",
-            "کافه": "restaurant",
-            "تاکسی": "taxi",
-            "اسنپ": "taxi",
-            "تپسی": "taxi",
-            "داروخانه": "pharmacy",
-            "مدرسه": "school",
-            "دانشگاه": "university",
-        }
-        for keyword, service_type in service_map.items():
-            if keyword in text:
-                return service_type
-        return None
+        return result
 
-    def _extract_service_type(self, entities: List[Dict]) -> Optional[str]:
-        if not entities:
-            return None
-        for entity in entities:
-            word = entity.get("word", "")
-            result = self.extract_service_type(word)
-            if result:
-                return _enrich_geo(result)
-        return None
+    async def get_chat_history(self, user_id: str, limit: int = 50) -> List[Dict]:
+        return self._history.get(user_id, [])[-limit:]
 
 
-_chat_service_instance = None
-
-
-def get_chat_service(db=None) -> ChatService:
-    global _chat_service_instance
-    if _chat_service_instance is None:
-        _chat_service_instance = ChatService(db)
-    return _chat_service_instance
+def get_chat_service() -> ChatService:
+    return ChatService()

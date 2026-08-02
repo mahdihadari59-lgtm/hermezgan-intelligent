@@ -5,7 +5,7 @@ import './ChatBox.css';
 
 const ChatBox = ({ messages, isLoading, isTyping, onSendMessage }) => {
   const messagesEndRef = useRef(null);
-
+  
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);

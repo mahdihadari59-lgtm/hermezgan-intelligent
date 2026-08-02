@@ -1,0 +1,18 @@
+{
+  "name": "hermezgan-intelligent",
+  "version": "2.1.1",
+  "description": "HDP Intelligent System - Full Stack",
+  "scripts": {
+    "start": "node start-all.js",
+    "start:bandari": "cd bandari-engine-2026/bandari-engine && npm start",
+    "start:api": "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+    "start:all": "concurrently \"npm run start:bandari\" \"npm run start:api\" --kill-others",
+    "dev": "concurrently --names \"BANDARI,API\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run start:bandari\" \"npm run start:api\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
