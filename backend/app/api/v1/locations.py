@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import Optional
 
-router = APIRouter(prefix="/locations", tags=["Locations"])
+router = APIRouter( tags=["Locations"])
 
 @router.get("/search")
 async def search_locations(query: str, latitude: Optional[float] = None, longitude: Optional[float] = None):

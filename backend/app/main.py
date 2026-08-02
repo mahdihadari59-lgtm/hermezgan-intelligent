@@ -39,3 +39,13 @@ app = create_app()
 @app.get("/health")
 async def health():
     return {"status": "healthy", "version": "2.1.1"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=False
+    )
