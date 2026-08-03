@@ -1,0 +1,26 @@
+name: Security
+
+on:
+  push:
+    branches: [ main, ci/** ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 3 * * 1'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: pip-audit
+        run: |
+          pip install pip-audit
+          cd backend && pip-audit --format=json > ../pip-audit.json || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: security-audit
+          path: pip-audit.json

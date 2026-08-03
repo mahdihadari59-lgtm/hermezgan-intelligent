@@ -1,0 +1,17 @@
+name: Load Test
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install locust
+      - run: locust -f tests/load/locustfile.py --headless -u 10 -r 2 -t 30s --host=http://localhost:8000 || true
