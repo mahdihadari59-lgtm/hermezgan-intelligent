@@ -1,0 +1,121 @@
+from __future__ import annotations
+import asyncio, re
+from dataclasses import dataclass, field
+from typing import Any, Dict, Optional
+from app.services.copilot_service import CopilotService
+from app.services.memory_service import MemoryService
+from app.services.speech_service import SpeechService
+
+@dataclass
+class OrchestrationContext:
+    conversation_id: str = "default"
+    user_id: str = "anon"
+    location: Dict[str, Any] = field(default_factory=dict)
+    mode: str = "text"
+    dialect: Optional[str] = None
+    raw_input: str = ""
+    normalized_input: str = ""
+    intent: Optional[str] = None
+    entities: Dict[str, Any] = field(default_factory=dict)
+    metadata: Dict[str, Any] = field(default_factory=dict)
+
+class HDPOrchestratorV3:
+    def __init__(self, db_path: Optional[str] = None, llm_url: Optional[str] = None, model: Optional[str] = None) -> None:
+        self.copilot = CopilotService(db_path=db_path, llm_url=llm_url, model=model)
+        self.memory = MemoryService(db_path=db_path)
+        self.speech = SpeechService()
+
+    def _intent(self, text: str) -> str:
+        t = text.lower()
+        mapping = {
+            "route": ["راه", "مسیر", "کجاست", "چطور برم", "فاصله"],
+            "traffic": ["ترافیک", "شلوغ", "بسته", "قفل"],
+            "weather": ["هوا", "آب و هوا", "شرجی", "باران", "طوفان"],
+            "tourist": ["گردشگری", "دیدنی", "جاذبه"],
+            "emergency": ["امداد", "تصادف", "پنچری", "خرابی", "اورژانس"],
+            "transport": ["اتوبوس", "تاکسی", "شناور", "لندی", "پرواز"],
+            "medical": ["بیمارستان", "داروخانه", "کلینیک", "درمانگاه"],
+        }
+        for name, kws in mapping.items():
+            if any(k in t for k in kws):
+                return name
+        return "general"
+
+    def _entities(self, text: str) -> Dict[str, Any]:
+        entities: Dict[str, Any] = {}
+        m = re.search(r"(?:به|تا|از)\s+([^\s،.]{2,}(?:\s+[^\s،.]{2,}){0,2})", text)
+        if m:
+            entities["destination"] = m.group(1).strip()
+        r = re.search(r"(\d+)\s*(?:کیلومتر|کیلومتری|km|متر|متری|m)", text, re.I)
+        if r:
+            value = int(r.group(1))
+            entities["radius_km"] = value / 1000 if "متر" in text or "m" in text.lower() else value
+        return entities
+
+    async def handle(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        ctx = OrchestrationContext(
+            conversation_id=str(payload.get("conversationId") or payload.get("conversation_id") or "default"),
+            user_id=str(payload.get("userId") or payload.get("user_id") or "anon"),
+            location=payload.get("location") or {},
+            mode=str(payload.get("mode") or "text"),
+            dialect=payload.get("dialect"),
+            raw_input=str(payload.get("query") or payload.get("message") or payload.get("text") or ""),
+            metadata=payload.get("metadata") or {},
+        )
+        if not ctx.raw_input.strip():
+            return {"answer": "لطفاً یک پیام وارد کنید.", "intent": "empty", "confidence": 1.0, "sources": [], "relations": [], "context": ctx.__dict__}
+
+        mem = self.memory.load(ctx.conversation_id, {"history": []})
+
+        text = ctx.raw_input
+        if ctx.mode == "voice":
+            out = await self.speech.transcribe(payload, ctx.__dict__)
+            if out:
+                text = out
+        text = self.speech.normalize_text(text)
+
+        ctx.dialect = ctx.dialect or self.speech.detect_dialect(text)
+        ctx.normalized_input = text
+        ctx.intent = self._intent(text)
+        ctx.entities = self._entities(text)
+
+        self.memory.append_turn(ctx.conversation_id, {"role": "user", "text": text, "intent": ctx.intent})
+        result = await self.copilot.ask(text, {
+            "conversationId": ctx.conversation_id,
+            "userId": ctx.user_id,
+            "location": ctx.location,
+            "mode": ctx.mode,
+            "intent": ctx.intent,
+            "entities": ctx.entities,
+            "dialect": ctx.dialect,
+            "metadata": ctx.metadata,
+            "history": mem.get("history") or [],
+        })
+        result.setdefault("context", {})
+        result["context"].update({
+            "conversationId": ctx.conversation_id,
+            "userId": ctx.user_id,
+            "mode": ctx.mode,
+            "dialect": ctx.dialect,
+            "intent": ctx.intent,
+            "entities": ctx.entities,
+            "memory_count": len(mem.get("history") or []),
+        })
+        result["pipeline"] = {"stage": "stage5", "memory": True, "voice": True, "ws_ready": True}
+        self.memory.append_turn(ctx.conversation_id, {"role": "assistant", "text": result.get("answer") or result.get("text") or "", "intent": ctx.intent})
+        return result
+
+    async def stream_chat(self, payload: Dict[str, Any]):
+        result = await self.handle(payload)
+        answer = str(result.get("answer") or result.get("text") or "")
+        if not answer:
+            yield {"type": "final", "data": result}
+            return
+        for i in range(0, len(answer), 120):
+            yield {"type": "chunk", "data": answer[i:i+120]}
+        yield {"type": "final", "data": result}
+
+    async def health(self) -> Dict[str, Any]:
+        health = await self.copilot.health()
+        health.update({"orchestrator": "HDPOrchestratorV3", "stage": 5, "memory": True, "voice": True})
+        return health

@@ -1,11 +1,28 @@
+1# (محتوای کامل فایل HDPOrchestratorV2 با BandariBridge و wiring برای speech)
 from __future__ import annotations
 
 import importlib
 import inspect
+import json
+import os
+import subprocess
+import tempfile
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from app.services.copilot_service import CopilotService
+
+BANDARI_ENGINE_ENV = os.environ.get("BANDARI_ENGINE_PATH", "bandari-engine-2026/bandari-engine")
+BANDARI_MODULES = [
+    "dialect/index.js",
+    "morphology/index.js",
+    "grammar/index.js",
+    "intent/index.js",
+    "context/index.js",
+    "rag/index.js",
+]
+
 
 @dataclass
 class OrchestrationContext:
@@ -20,6 +37,91 @@ class OrchestrationContext:
     entities: Dict[str, Any] = field(default_factory=dict)
     memory: Dict[str, Any] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+
+class BandariBridge:
+    """A lightweight bridge to call Bandari JS modules under the bandari-engine directory.
+
+    It writes a small temporary Node script that requires the target module and calls a
+    common set of function names (normalize, process, detect_and_normalize, run, default).
+    The bridge exposes a few convenience methods used by the orchestrator.
+    """
+
+    def __init__(self, engine_path: str):
+        self.engine_path = Path(engine_path)
+
+    def _call_module(self, module_rel_path: str, text: str, ctx: Dict[str, Any], timeout: int = 20):
+        module_path = (self.engine_path / module_rel_path).resolve()
+        if not module_path.exists():
+            return None
+
+        payload = {
+            "text": text,
+            "ctx": ctx,
+        }
+
+        script = f"""
+const mod = require('{module_path.as_posix()}');
+const payload = {json.dumps(payload, ensure_ascii=False)};
+(async () => {{
+  try {{
+    const candidates = ["normalize","process","detect_and_normalize","run","default"];
+    let fn = null;
+    for (const n of candidates) {{
+      if (typeof mod[n] === 'function') {{ fn = mod[n]; break; }}
+    }}
+    if (!fn && typeof mod === 'function') fn = mod;
+    const out = fn ? await fn(payload.text, payload.ctx) : null;
+    console.log(JSON.stringify({{ok:true, out}}));
+  }} catch (e) {{
+    console.log(JSON.stringify({{ok:false, error: String(e)}}));
+  }}
+}})();
+"""
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".js", delete=False) as tmp:
+            tmp.write(script)
+            script_path = tmp.name
+        try:
+            res = subprocess.run(["node", script_path], capture_output=True, text=True, timeout=timeout)
+            out = res.stdout.strip()
+            try:
+                parsed = json.loads(out.splitlines()[-1]) if out else {"ok": False, "error": "no output"}
+            except Exception:
+                parsed = {"ok": False, "error": out or res.stderr}
+            return parsed
+        finally:
+            try:
+                os.unlink(script_path)
+            except Exception:
+                pass
+
+    def normalize(self, text: str, ctx: Dict[str, Any]) -> Optional[str]:
+        # Run dialect -> morphology -> grammar in order and return the first non-empty result
+        t = text
+        for m in ["dialect/index.js", "morphology/index.js", "grammar/index.js"]:
+            parsed = self._call_module(m, t, ctx)
+            if not parsed:
+                continue
+            if not parsed.get("ok"):
+                continue
+            out = parsed.get("out")
+            if isinstance(out, str) and out.strip():
+                t = out
+                continue
+            if isinstance(out, dict) and out.get("text"):
+                t = str(out.get("text"))
+                continue
+            # otherwise keep t
+        return t
+
+    def detect(self, text: str, ctx: Dict[str, Any]) -> Dict[str, Any]:
+        # call dialect module for detection if present
+        parsed = self._call_module("dialect/index.js", text, ctx)
+        if parsed and parsed.get("ok"):
+            return parsed.get("out") or {}
+        return {}
+
 
 class HDPOrchestratorV2:
     """
@@ -39,6 +141,7 @@ class HDPOrchestratorV2:
         self._services = {}
         self._load_optional_services()
 
+        # Ensure the copilot/call layer is created after optional services are known
         self.copilot = CopilotService(db_path=self.db_path, llm_url=self.llm_url, model=self.model)
 
     def _load_optional_services(self) -> None:
@@ -80,6 +183,25 @@ class HDPOrchestratorV2:
                     continue
             self._services[key] = loaded
 
+        # If a Node-based bandari engine exists in the repository, prefer it via the bridge
+        bandari_path = os.environ.get("BANDARI_ENGINE_PATH", BANDARI_ENGINE_ENV)
+        if Path(bandari_path).exists():
+            try:
+                self._services["bandari"] = BandariBridge(bandari_path)
+            except Exception:
+                # Keep any Python-based bandari module if present
+                pass
+
+        # If speech interface exists as Python module, prefer the instance
+        try:
+            mod = importlib.import_module("app.core.speech_interface")
+            if hasattr(mod, "get_speech_interface"):
+                # replace the module with an instance exposing methods like transcribe
+                self._services["speech"] = mod.get_speech_interface()
+        except Exception:
+            # leave current value
+            pass
+
     def _try_call(self, target: Any, names: List[str], *args, **kwargs):
         if target is None:
             return None
@@ -102,7 +224,18 @@ class HDPOrchestratorV2:
         if not mod:
             return text
 
-        # module-level preprocess / normalize
+        # If the bridge instance is present, call its normalize method
+        if hasattr(mod, "normalize") and callable(getattr(mod, "normalize")):
+            try:
+                out = mod.normalize(text, ctx.__dict__)
+                if isinstance(out, str) and out.strip():
+                    return out
+                if isinstance(out, dict) and out.get("text"):
+                    return str(out["text"])
+            except Exception:
+                pass
+
+        # module-level preprocess / normalize (py modules)
         for candidate in ["normalize", "preprocess", "detect_and_normalize", "process"]:
             fn = getattr(mod, candidate, None)
             if callable(fn):
@@ -137,6 +270,20 @@ class HDPOrchestratorV2:
         mod = self._services.get("intent")
         result = {"intent": None, "entities": {}, "confidence": 0.0}
         if not mod:
+            # fallback: try bandari intent module (bridge) if available
+            bandari_mod = self._services.get("bandari")
+            if bandari_mod and hasattr(bandari_mod, "_call_module"):
+                parsed = bandari_mod._call_module("intent/index.js", text, ctx.__dict__)
+                if parsed and parsed.get("ok"):
+                    out = parsed.get("out")
+                    if isinstance(out, dict):
+                        result["intent"] = out.get("intent") or out.get("type")
+                        result["entities"] = out.get("entities") or out.get("slots") or {}
+                        try:
+                            result["confidence"] = float(out.get("confidence") or 0.0)
+                        except Exception:
+                            result["confidence"] = 0.0
+                        return result
             return result
 
         for candidate in ["detect_intent", "detect", "predict", "classify"]:
@@ -150,7 +297,7 @@ class HDPOrchestratorV2:
                         result["confidence"] = float(out.get("confidence") or 0.0)
                         return result
                 except Exception:
-                    pass
+                    passج
 
         for cls_name in ["IntentEngine", "IntentDetector", "IntentClassifier"]:
             cls = getattr(mod, cls_name, None)

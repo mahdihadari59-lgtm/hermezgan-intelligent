@@ -1,87 +1,98 @@
-from __future__ import annotations
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-from typing import Any, Dict, Optional
+import logging
+from typing import Dict, Any
 
-from app.config import HDP_KNOWLEDGE_DB_PATH, DEFAULT_BANDARI_URL
-from app.pipelines.search_pipeline import SearchPipeline
-from app.providers.bandari_provider import BandariProvider
-from app.providers.knowledge_provider import KnowledgeProvider
-from app.providers.graph_provider import GraphProvider
-from app.providers.vector_provider import VectorProvider
+logger = logging.getLogger("hdp.copilot")
 
 
 class CopilotGateway:
+
     def __init__(
         self,
-        db_path: Optional[str] = None,
-        bandari_url: str = DEFAULT_BANDARI_URL,
+        search_pipeline=None,
+        hybrid_engine=None,
+        llm_client=None,
+        tts_client=None,
     ):
-        db_path = db_path or str(HDP_KNOWLEDGE_DB_PATH)
-        self.bandari = BandariProvider(base_url=bandari_url)
-        self.knowledge = KnowledgeProvider(db_path)
-        self.graph = GraphProvider(db_path)
-        self.vector = VectorProvider(db_path)
-        self.search_pipeline = SearchPipeline(self.knowledge, self.graph, self.vector)
-
-    def _normalize_intent(self, bandari_intent: Any) -> tuple[Optional[str], Optional[str], float]:
-        if not isinstance(bandari_intent, dict):
-            return None, None, 1.0
-
-        raw_intent = (bandari_intent.get("intent") or "").strip().lower()
-        raw_category = (bandari_intent.get("category") or "").strip().lower()
-        confidence = bandari_intent.get("confidence", 1.0)
-
-        try:
-            confidence = float(confidence)
-        except Exception:
-            confidence = 1.0
-
-        if raw_intent in {"", "general", "unknown", "other", "none"}:
-            raw_intent = None
-        if raw_category in {"", "general", "unknown", "other", "none"}:
-            raw_category = None
-
-        return raw_intent, raw_category, confidence
+        self.search_pipeline = search_pipeline
+        self.hybrid_engine = hybrid_engine
+        self.llm_client = llm_client
+        self.tts_client = tts_client
 
     async def handle_message(
         self,
-        text: str,
-        session_id: Optional[str] = None,
-        user_id: Optional[str] = None,
+        message: Dict[str, Any],
+        session_id: str,
+        user_id: str,
     ) -> Dict[str, Any]:
-        bandari_intent: Dict[str, Any] = {}
-        bandari_detect: Dict[str, Any] = {}
-        intent: Optional[str] = None
-        category: Optional[str] = None
-        confidence: float = 1.0
 
-        try:
-            bandari_intent = await self.bandari.intent(text)
-            bandari_detect = await self.bandari.detect(text)
-            intent, category, confidence = self._normalize_intent(bandari_intent)
-        except Exception:
-            bandari_intent = {}
-            bandari_detect = {}
-            intent = None
-            category = None
-            confidence = 1.0
+        query = message.get("content", "")
+        metadata = message.get("metadata", {})
+        dialect = metadata.get("dialect", "standard")
+        intent = metadata.get("intent", "general")
 
-        search_result = await self.search_pipeline.answer(
-            text,
-            limit=5,
-            category=category,
+        documents = []
+        if self.search_pipeline:
+            documents = await self.search_pipeline.search(
+                query=query,
+                dialect=dialect,
+                intent=intent,
+                top_k=5,
+            )
+        elif self.hybrid_engine:
+            documents = await self.hybrid_engine.search(
+                query=query,
+                limit=5,
+            )
+
+        context = []
+        for doc in documents:
+            text = doc.get("text", "")
+            source = doc.get("source", "knowledge")
+            context.append(f"[{source}]\n{text}")
+
+        rag_context = "\n\n".join(context)
+        prompt = self.build_prompt(
+            query=query,
+            context=rag_context,
+            dialect=dialect,
             intent=intent,
         )
 
+        if self.llm_client:
+            answer = await self.llm_client.generate(
+                prompt=prompt,
+                session_id=session_id,
+            )
+        else:
+            answer = "LLM Client Not Configured"
+
         return {
-            "response": search_result["answer"],
-            "intent": intent or "general",
-            "confidence": confidence,
-            "suggestions": [],
-            "retrieved_documents": search_result.get("results", []),
-            "knowledge": search_result,
-            "dialect": bandari_detect,
-            "session_id": session_id,
-            "user_id": user_id,
-            "answer": search_result["answer"],
+            "response": answer,
+            "sources": documents,
+            "metadata": {
+                "dialect": dialect,
+                "intent": intent,
+                "retrieval_count": len(documents),
+                "session_id": session_id,
+                "user_id": user_id,
+            },
         }
+
+    def build_prompt(self, query, context, dialect, intent):
+        return f"""
+شما موتور مرکزی HDP هستید.
+
+گویش: {dialect}
+هدف: {intent}
+
+دانش بازیابی شده:
+{context}
+
+سؤال: {query}
+
+فقط بر اساس اطلاعات بازیابی شده پاسخ بده.
+اگر اطلاعات کافی نبود اعلام کن.
+"""

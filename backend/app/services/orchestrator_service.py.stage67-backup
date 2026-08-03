@@ -1,20 +1,14 @@
 from __future__ import annotations
-
 from typing import Any, Dict, Optional
-
-# Use the V2 orchestrator that's present in the repo
-from app.core.orchestrator_v2 import HDPOrchestratorV2
+from app.core.orchestrator_v3 import HDPOrchestratorV3
 
 class OrchestratorService:
     def __init__(self, db_path: Optional[str] = None, llm_url: Optional[str] = None, model: Optional[str] = None) -> None:
-        self._orchestrator = HDPOrchestratorV2(db_path=db_path, llm_url=llm_url, model=model)
-
+        self._orchestrator = HDPOrchestratorV3(db_path=db_path, llm_url=llm_url, model=model)
     async def chat(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         return await self._orchestrator.handle(payload)
-
     async def health(self) -> Dict[str, Any]:
         return await self._orchestrator.health()
-
-    # stream_chat not implemented for V2 (provide fallback or implement stream in orchestrator)
     async def stream_chat(self, payload: Dict[str, Any]):
-        raise NotImplementedError("stream_chat is not implemented in HDPOrchestratorV2")
+        async for item in self._orchestrator.stream_chat(payload):
+            yield item

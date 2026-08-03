@@ -1,36 +1,32 @@
-from __future__ import annotations
+"""Pytest Configuration"""
 
-import os
+import pytest
 import sys
 from pathlib import Path
 
-import pytest
-
-
-BACKEND_ROOT = Path(__file__).resolve().parents[1]
-if str(BACKEND_ROOT) not in sys.path:
-    sys.path.insert(0, str(BACKEND_ROOT))
-
+# Add backend to path
+backend_path = Path(__file__).parent.parent
+sys.path.insert(0, str(backend_path))
 
 @pytest.fixture(scope="session")
-def backend_root() -> Path:
-    return BACKEND_ROOT
+def test_config():
+    """Test configuration"""
+    return {
+        "database_url": "sqlite:///:memory:",
+        "debug": True,
+    }
 
-
-@pytest.fixture(scope="session")
-def db_path() -> Path:
-    from app.config import HDP_KNOWLEDGE_DB_PATH
-    return Path(os.getenv("HDP_KNOWLEDGE_DB_PATH", str(HDP_KNOWLEDGE_DB_PATH))).expanduser().resolve()
-
-
-@pytest.fixture()
-def chat_service():
-    from app.services.chat_service import ChatService
-    return ChatService()
-
-
-@pytest.fixture()
-def gateway():
-    from app.gateway.copilot_gateway import CopilotGateway
-    from app.config import HDP_KNOWLEDGE_DB_PATH
-    return CopilotGateway(db_path=str(HDP_KNOWLEDGE_DB_PATH))
+@pytest.fixture(autouse=True)
+def reset_singletons():
+    """Reset singleton instances between tests"""
+    yield
+    # Reset after each test
+    import app.core.nlp_engine as nlp_module
+    import app.core.rag_pipeline as rag_module
+    import app.core.location_service as location_module
+    import app.services.chat_service as chat_module
+    
+    nlp_module.nlp_engine = None
+    rag_module.rag_pipeline = None
+    location_module.location_service = None
+    chat_module.chat_service = None

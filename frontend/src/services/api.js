@@ -9,3 +9,13 @@ const api = axios.create({
 });
 
 export default api;
+
+
+# STAGE8_PATCH
+
+// HDP Stage 8 Integration
+export const IntegrationService = {
+  checkHealth: () => apiService.get('/health'),
+  getSystemStatus: () => apiService.get('/system/status'),
+  getVersion: () => apiService.get('/version'),
+};
