@@ -27,9 +27,22 @@ async def lifespan(app: FastAPI):
     logger.info("✅ Backend started")
     
     # Initialize Hybrid Engine
-    db_path = os.getenv("DATABASE_PATH", "data/hdp_v2.db")
-    hybrid_engine = HybridEngine(db_path)
-    logger.info(f"✅ Hybrid Engine initialized with db: {db_path}")
+    # Priority for DB config: 1) DATABASE_URL (preferred), 2) DATABASE_PATH, 3) fallback file
+    database_url = os.getenv("DATABASE_URL")
+    database_path = os.getenv("DATABASE_PATH")
+
+    if database_url:
+        logger.info(f"Using DATABASE_URL from env: {database_url}")
+        db_conn = database_url
+    elif database_path:
+        logger.info(f"Using DATABASE_PATH from env: {database_path}")
+        db_conn = database_path
+    else:
+        db_conn = "data/hdp_v2.db"
+        logger.info(f"No DATABASE_URL or DATABASE_PATH set, using default: {db_conn}")
+
+    hybrid_engine = HybridEngine(db_conn)
+    logger.info(f"✅ Hybrid Engine initialized with db: {db_conn}")
     
     yield
     
@@ -59,13 +72,9 @@ app.add_middleware(
 app.include_router(chat.router, prefix="/api/v1", tags=["Chat"])
 app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(locations.router, prefix="/api/v1", tags=["Locations"])
-app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(analytics.router, prefix="/api/v1", tags=["Analytics"])
-app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(cameras.router, prefix="/api/v1", tags=["Cameras"])
-app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 app.include_router(hotspots.router, prefix="/api/v1", tags=["Hotspots"])
-app.include_router(ping_router, prefix="/api/v1", tags=["Ping"])
 
 # ============================================================
 # Hybrid Search Endpoint
