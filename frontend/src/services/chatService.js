@@ -9,7 +9,7 @@ const chatService = {
         latitude,
         longitude,
       });
-      return response;
+      return response.data;
     } catch (error) {
       console.error("خطا در ارسال پیام:", error);
       throw error;
@@ -21,7 +21,7 @@ const chatService = {
       const response = await api.get(`/chat/history/${userId}`, {
         params: { limit },
       });
-      return response;
+      return response.data;
     } catch (error) {
       console.error("خطا در دریافت تاریخچه:", error);
       throw error;

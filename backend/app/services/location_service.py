@@ -12,6 +12,7 @@ import logging
 
 from sqlalchemy.orm import Session
 from sqlalchemy import func, and_, or_
+from app.services.geo_link_service import enrich_geo as _enrich_geo
 
 logger = logging.getLogger(__name__)
 

@@ -13,7 +13,7 @@ from loguru import logger
 from app.core.speech_interface import get_speech_interface
 from app.dependencies.services import get_chat_service
 
-router = APIRouter(prefix="/voice", tags=["voice"])
+router = APIRouter( tags=["voice"])
 
 
 @router.post("/speech-to-text")

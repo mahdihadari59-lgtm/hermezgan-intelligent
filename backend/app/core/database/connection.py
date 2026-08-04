@@ -28,7 +28,7 @@ class DatabaseConnection:
         self._initialized = True
         
         # مسیر درست دیتابیس
-        self._db_path = Path("/data/data/com.termux/files/home/hermezgan-intelligent/backend/data/hdp_v2.db")
+        self._db_path = Path("/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db")
         
         logger.info(f"📁 Database path: {self._db_path}")
         self._connect()

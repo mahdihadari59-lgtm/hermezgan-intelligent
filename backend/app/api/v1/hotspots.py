@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import Optional
 
-router = APIRouter(prefix="/hotspots", tags=["Hotspots"])
+router = APIRouter( tags=["Hotspots"])
 
 @router.get("/")
 async def get_hotspots(type: Optional[str] = None):
