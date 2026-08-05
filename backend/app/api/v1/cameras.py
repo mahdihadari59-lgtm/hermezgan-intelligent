@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import Optional
 
-router = APIRouter(prefix="/cameras", tags=["Cameras"])
+router = APIRouter( tags=["Cameras"])
 
 @router.get("/")
 async def get_cameras(region: Optional[str] = None, status: Optional[str] = None):

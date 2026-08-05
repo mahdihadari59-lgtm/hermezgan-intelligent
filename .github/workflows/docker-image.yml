@@ -1,0 +1,36 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Backend
+        run: |
+          docker build \
+            -f backend/Dockerfile \
+            -t hermezgan-backend:${{ github.sha }} \
+            ./backend
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Frontend
+        run: |
+          docker build \
+            -f frontend/Dockerfile \
+            -t hermezgan-frontend:${{ github.sha }} \
+            ./frontend

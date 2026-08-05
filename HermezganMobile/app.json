@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Hermezgan Intelligent",
+    "slug": "hermezgan-intelligent",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#667eea"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hermezgan.intelligent"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#667eea"
+      },
+      "package": "com.hermezgan.intelligent"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "apiUrl": "https://hermezgan.ir/api/v1",
+      "eas": {
+        "projectId": "5733d066-2230-4979-9ce8-bcba44840e72"
+      }
+    },
+    "owner": "mahdihadari16"
+  }
+}

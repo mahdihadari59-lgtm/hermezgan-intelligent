@@ -1,22 +1,19 @@
-from pydantic_settings import BaseSettings
-from typing import Optional
+from __future__ import annotations
 
-class Settings(BaseSettings):
-    APP_NAME: str = "هرمزگان هوشمند"
-    APP_VERSION: str = "1.0.0"
-    ENVIRONMENT: str = "development"
-    
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/hermezgan_db"
-    REDIS_URL: str = "redis://localhost:6379"
-    
-    SECRET_KEY: str = "your-secret-key-here-change-in-production"
-    ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
-    
-    CORS_ORIGINS: list = ["http://localhost:3000"]
-    
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+import os
+from pathlib import Path
 
-settings = Settings()
+try:
+    from app.core.config.settings import Settings
+    settings = Settings()
+except Exception:
+    class _FallbackSettings:
+        def __getattr__(self, name):
+            return None
+    settings = _FallbackSettings()
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_KNOWLEDGE_DB = PROJECT_ROOT / "data" / "hdp_v2.db"
+HDP_KNOWLEDGE_DB_PATH = PROJECT_ROOT / "hdp_v2.db"
+
+DEFAULT_BANDARI_URL = os.getenv("BANDARI_ENGINE_URL", "http://127.0.0.1:5200/api")

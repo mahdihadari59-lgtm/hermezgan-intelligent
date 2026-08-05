@@ -29,6 +29,7 @@ engine/hybrid/hybrid_engine.py  (v2 — یکپارچه‌شده)
 import sqlite3
 import time
 from typing import Optional, List, Dict, Any, Callable
+import os
 
 from engine.hybrid.graph_builder import normalize_persian, GraphBuilder
 from engine.hybrid.vector_search import VectorSearchEngine
@@ -36,9 +37,42 @@ from engine.hybrid.hybrid_ranker import HybridRanker
 from engine.hybrid.fallback_engine import FallbackEngine
 from engine.hybrid.config import HybridConfig
 from engine.hybrid.constants import EXPERT_DOMAIN_MAP
+from app.services.geo_link_service import enrich_geo as _enrich_geo
 
 
 RerankFn = Callable[[List[Dict[str, Any]], Dict[str, Any]], List[Dict[str, Any]]]
+
+
+def _normalize_db_path(db_path: Optional[str]) -> str:
+    """Normalize a provided DB path/URL to a sqlite filesystem path.
+
+    Accepts:
+      - None -> returns HybridConfig.DB_PATH
+      - local file paths (./data/hdp_v2.db or /absolute/path)
+      - sqlite URLs like sqlite:///./data/hdp_v2.db or sqlite:///absolute/path
+    """
+    if not db_path:
+        return HybridConfig.DB_PATH
+
+    db_path = db_path.strip()
+    # Accept sqlite:///./relative/path and sqlite:///absolute/path
+    if db_path.startswith("sqlite:///"):
+        candidate = db_path.replace("sqlite:///", "", 1)
+        # If candidate is empty or :memory:, pass through
+        if candidate == ":memory:":
+            return candidate
+        return candidate
+    # Some systems might provide sqlite://localhost/./path or sqlite://file:... - handle common patterns
+    if db_path.startswith("sqlite://"):
+        candidate = db_path.replace("sqlite://", "", 1)
+        if candidate.startswith("/"):
+            candidate = candidate.lstrip("/")
+        if candidate == ":memory:":
+            return candidate
+        return candidate
+
+    # Otherwise assume it's already a filesystem path
+    return db_path
 
 
 class HybridEngine:
@@ -55,7 +89,9 @@ class HybridEngine:
         graph_decay: Optional[float] = None,
         low_confidence_threshold: Optional[float] = None,
     ):
-        self.db_path = db_path or HybridConfig.DB_PATH
+        # Normalize db_path so callers may pass DATABASE_URL or a plain path
+        normalized = _normalize_db_path(db_path or HybridConfig.DB_PATH)
+        self.db_path = normalized
         self.expert_domain_map = expert_domain_map or dict(EXPERT_DOMAIN_MAP)
 
         # ensure schema (نوشتن گراف مسئولیت GraphBuilder است، نه اینجا)
@@ -77,6 +113,16 @@ class HybridEngine:
         )
 
     def _connect(self) -> sqlite3.Connection:
+        # Ensure directory exists for file DB paths
+        try:
+            if self.db_path != ":memory":
+                db_dir = os.path.dirname(self.db_path)
+                if db_dir and not os.path.exists(db_dir):
+                    os.makedirs(db_dir, exist_ok=True)
+        except Exception:
+            # non-fatal; connection will still be attempted
+            pass
+
         conn = sqlite3.connect(self.db_path)
         conn.row_factory = sqlite3.Row
         return conn
@@ -186,26 +232,26 @@ class HybridEngine:
             placeholders = ",".join("?" for _ in domains)
             cur.execute(
                 f"""
-SELECT
-    g.id,
-    g.title,
-    k.content
-FROM graph_nodes g
-JOIN knowledge k
-ON k.id = g.knowledge_id
-WHERE k.category IN ({placeholders})
-""", domains
+ SELECT
+     g.id,
+     g.title,
+     k.content
+ FROM graph_nodes g
+ JOIN knowledge k
+ ON k.id = g.knowledge_id
+ WHERE k.category IN ({placeholders})
+ """, domains
             )
         else:
             cur.execute("""
-SELECT
-    g.id,
-    g.title,
-    k.content
-FROM graph_nodes g
-JOIN knowledge k
-ON k.id = g.knowledge_id
-""")
+ SELECT
+     g.id,
+     g.title,
+     k.content
+ FROM graph_nodes g
+ JOIN knowledge k
+ ON k.id = g.knowledge_id
+ """)
 
         scores: Dict[int, float] = {}
         for row in cur.fetchall():
@@ -275,17 +321,17 @@ ON k.id = g.knowledge_id
             placeholders = ",".join("?" for _ in ids)
             cur.execute(
                 f"""
-SELECT
-    g.id,
-    g.title,
-    k.content,
-    g.node_type,
-    k.category AS domain
-FROM graph_nodes g
-JOIN knowledge k
-ON k.id = g.knowledge_id
-WHERE g.id IN ({placeholders})
-""",
+ SELECT
+     g.id,
+     g.title,
+     k.content,
+     g.node_type,
+     k.category AS domain
+ FROM graph_nodes g
+ JOIN knowledge k
+ ON k.id = g.knowledge_id
+ WHERE g.id IN ({placeholders})
+ """,
                 ids,
             )
             rows = {row["id"]: row for row in cur.fetchall()}
@@ -308,9 +354,8 @@ WHERE g.id IN ({placeholders})
                     "score_breakdown": r.get("breakdown", {}),
                 }
             )
+        results = _enrich_geo(results)
         return results
-
-
 if __name__ == "__main__":
     import argparse
     import json

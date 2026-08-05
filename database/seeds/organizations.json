@@ -1,0 +1,57 @@
+[
+  {
+    "name": "بیمارستان فوق‌تخصصی کودکان",
+    "name_en": "Specialized Children's Hospital",
+    "type": "healthcare",
+    "category": "hospital",
+    "description": "بیمارستان فوق‌تخصصی کودکان بندرعباس",
+    "address": "بندرعباس، محله داروپخش",
+    "phone": "۰۷۶-۳۳۳۳-۱۰۰۰",
+    "latitude": 27.2250,
+    "longitude": 56.2950
+  },
+  {
+    "name": "دانشگاه هرمزگان",
+    "name_en": "Hormozgan University",
+    "type": "educational",
+    "category": "university",
+    "description": "دانشگاه دولتی هرمزگان",
+    "address": "بندرعباس، بلوار پاسداران",
+    "phone": "۰۷۶-۳۳۳۳-۲۰۰۰",
+    "latitude": 27.1950,
+    "longitude": 56.2700
+  },
+  {
+    "name": "بانک ملی",
+    "name_en": "National Bank",
+    "type": "financial",
+    "category": "bank",
+    "description": "شعبه اصلی بانک ملی",
+    "address": "بندرعباس، میدان هتل هرمز",
+    "phone": "۰۷۶-۳۳۳۳-۳۰۰۰",
+    "latitude": 27.2158,
+    "longitude": 56.2808
+  },
+  {
+    "name": "فرودگاه بین‌المللی بندرعباس",
+    "name_en": "Bandar Abbas International Airport",
+    "type": "transport",
+    "category": "airport",
+    "description": "فرودگاه اصلی استان هرمزگان",
+    "address": "بندرعباس، بلوار امام حسین",
+    "phone": "۰۷۶-۳۳۳۳-۴۰۰۰",
+    "latitude": 27.0719,
+    "longitude": 56.3711
+  },
+  {
+    "name": "شهرداری بندرعباس",
+    "name_en": "Bandar Abbas Municipality",
+    "type": "government",
+    "category": "municipal",
+    "description": "مدیریت شهر بندرعباس",
+    "address": "بندرعباس، خیابان شریعتی",
+    "phone": "۱۳۷",
+    "latitude": 27.2100,
+    "longitude": 56.2850
+  }
+]

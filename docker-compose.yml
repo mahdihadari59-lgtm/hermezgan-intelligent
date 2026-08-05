@@ -10,7 +10,8 @@ services:
       - "8000:8000"
     environment:
       - FASTAPI_ENV=production
-      - DATABASE_URL=sqlite:///./hermezgan.db
+      - DATABASE_URL=sqlite:///./data/hdp_v2.db
+      - DATABASE_PATH=./data/hdp_v2.db
       - DEBUG=false
     volumes:
       - ./backend:/app

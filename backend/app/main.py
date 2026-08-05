@@ -1,92 +1,51 @@
-"""FastAPI Main Application Entry Point"""
+"""FastAPI App Factory"""
 
 import os
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from dotenv import load_dotenv
-
-from app.api.v1 import routers
 from app.core.logger import logger
+from app.api.v1.routers import router
+from app.api.copilot import router as copilot_router
+from app.api.orchestrator import router as orchestrator_router
+from app.api.chat import router as chat_router
+from app.api.ws import router as ws_router
 
-# Load environment variables
-load_dotenv()
-
-# App Configuration
-DEBUG = os.getenv("DEBUG", "false").lower() == "true"
-FASTAPI_ENV = os.getenv("FASTAPI_ENV", "development")
-CORS_ORIGINS = os.getenv(
-    "API_CORS_ORIGINS",
-    "[\"http://localhost:3000\", \"http://localhost:8080\"]"
-)
-
-# Lifecycle Events
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Startup and Shutdown Events"""
-    logger.info(f"🚀 Starting Hermezgan Intelligent API - {FASTAPI_ENV}")
-    yield
-    logger.info("🛑 Shutting down Hermezgan Intelligent API")
-
-# Initialize FastAPI App
-app = FastAPI(
-    title="🌊 Hermezgan Intelligent - هرمزگان هوشمند",
-    description="Knowledge Graph & AI System for Bandar Abbas",
-    version="1.0.0",
-    docs_url="/api/docs",
-    redoc_url="/api/redoc",
-    openapi_url="/api/openapi.json",
-    lifespan=lifespan
-)
-
-# CORS Middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=eval(CORS_ORIGINS),
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Health Check Endpoint
-@app.get("/health")
-async def health_check():
-    """Health check endpoint"""
-    return JSONResponse(
-        status_code=200,
-        content={
-            "status": "healthy",
-            "environment": FASTAPI_ENV,
-            "debug": DEBUG
-        }
+def create_app() -> FastAPI:
+    app = FastAPI(
+        title="Hermezgan Intelligent API",
+        version="2.1.1",
+        debug=os.getenv("DEBUG", "false").lower() == "true",
     )
 
-# Include V1 Routers
-app.include_router(
-    routers.router,
-    prefix="/api/v1",
-    tags=["v1"]
-)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
-# Root Endpoint
-@app.get("/")
-async def root():
-    """Root endpoint"""
-    return {
-        "message": "Welcome to Hermezgan Intelligent API",
-        "docs": "/api/docs",
-        "health": "/health"
-    }
+    app.include_router(router, prefix="/api/v1")
+    app.include_router(ws_router, prefix="/api/v1", tags=["WebSocket"])
+    app.include_router(chat_router, prefix="/api/v1", tags=["Chat"])
+    app.include_router(orchestrator_router, prefix="/api/v1/orchestrator", tags=["Orchestrator"])
+    app.include_router(copilot_router, prefix="/api/v1/copilot", tags=["Copilot"])
+    logger.info("✅ Application initialized")
+    return app
+
+
+app = create_app()
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy", "version": "2.1.1"}
+
 
 if __name__ == "__main__":
     import uvicorn
-    
     uvicorn.run(
-        app,
-        host=os.getenv("API_HOST", "0.0.0.0"),
-        port=int(os.getenv("API_PORT", 8000)),
-        reload=DEBUG,
-        log_level="info" if not DEBUG else "debug"
+        "app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=False
     )

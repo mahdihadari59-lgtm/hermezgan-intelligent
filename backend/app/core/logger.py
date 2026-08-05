@@ -1,27 +1,16 @@
-"""Logging Configuration"""
-
-import os
+import logging
 import sys
-from loguru import logger
+from pathlib import Path
 
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-LOG_FILE = os.getenv("LOG_FILE", "./logs/app.log")
+Path("logs").mkdir(exist_ok=True)
 
-# Create logs directory
-os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
-
-# Configure logger
-logger.remove()  # Remove default handler
-logger.add(
-    sys.stderr,
-    format="<level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
-    level=LOG_LEVEL
-)
-logger.add(
-    LOG_FILE,
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}",
-    level=LOG_LEVEL,
-    rotation="500 MB"
+logging.basicConfig(
+level=logging.INFO,
+format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+handlers=[
+logging.StreamHandler(sys.stdout),
+logging.FileHandler('logs/app.log', encoding='utf-8')
+]
 )
 
-__all__ = ["logger"]
+logger = logging.getLogger("hermezgan")

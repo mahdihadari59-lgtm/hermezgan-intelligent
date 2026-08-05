@@ -18,6 +18,7 @@ import logging
 from engine.config import DATABASE_PATH
 from engine.engine_manager import EngineManager
 from engine.pipeline import SearchPipeline
+from app.services.geo_link_service import enrich_geo as _enrich_geo
 
 logger = logging.getLogger(__name__)
 
