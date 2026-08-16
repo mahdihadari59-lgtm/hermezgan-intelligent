@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import L from 'leaflet';
 import { mapApi } from '../services/mapApi';
 import { buildPopup } from './utils/popupContent';
-import { selectCamera } from '../store/slices/cameraSlice';
+import { selectCamera } from '../features/camera/cameraSlice';
 
 const FALLBACK_CAMERA_DATA = [
   { id: 'ba-001', name: 'چهارراه غزی', lat: 27.2158, lng: 56.2808, status: 'active', types: ['traffic-light', 'speed'] },

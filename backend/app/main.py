@@ -1,51 +1,129 @@
-"""FastAPI App Factory"""
-
-import os
+# ============================================================
+# main.py - فایل اصلی FastAPI
+# ============================================================
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.logger import logger
-from app.api.v1.routers import router
-from app.api.copilot import router as copilot_router
-from app.api.orchestrator import router as orchestrator_router
-from app.api.chat import router as chat_router
-from app.api.ws import router as ws_router
+from fastapi.responses import JSONResponse
+from dotenv import load_dotenv
+import os
+import logging
 
-def create_app() -> FastAPI:
-    app = FastAPI(
-        title="Hermezgan Intelligent API",
-        version="2.1.1",
-        debug=os.getenv("DEBUG", "false").lower() == "true",
+# بارگذاری متغیرهای محیطی
+load_dotenv()
+
+# تنظیم لاگ
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# ایجاد برنامه FastAPI
+app = FastAPI(
+    title="هرمزگان هوشمند API",
+    description="سیستم دانش‌گراف هوشمند استان هرمزگان",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
+
+# ============================================================
+# تنظیمات CORS
+# ============================================================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5000",
+        "https://hermezgan.ir",
+        "https://www.hermezgan.ir"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ============================================================
+# ثبت Routerها
+# ============================================================
+
+# ثبت Router POI
+try:
+    from app.api.v1.pois import router as pois_router
+    app.include_router(pois_router, prefix="/api/v1/pois", tags=["POI"])
+    logger.info("✅ Router POI ثبت شد")
+except Exception as e:
+    logger.error(f"❌ خطا در ثبت Router POI: {e}")
+
+# ثبت سایر Routerها
+try:
+    from app.api.v1.routers import router as api_router
+    app.include_router(api_router, prefix="/api/v1")
+    logger.info("✅ Routerهای دیگر ثبت شدند")
+except Exception as e:
+    logger.error(f"❌ خطا در ثبت Routerهای دیگر: {e}")
+
+# ============================================================
+# Health Check
+# ============================================================
+@app.get("/health", tags=["Health"])
+async def health_check():
+    """بررسی سلامت سرویس"""
+    return {
+        "status": "healthy",
+        "version": "1.0.0",
+        "environment": os.getenv("ENVIRONMENT", "development")
+    }
+
+@app.get("/", tags=["Root"])
+async def root():
+    """صفحه اصلی API"""
+    return {
+        "message": "خوش‌آمدید به هرمزگان هوشمند",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
+# ============================================================
+# Exception Handlers
+# ============================================================
+@app.exception_handler(Exception)
+async def general_exception_handler(request, exc):
+    """مدیریت خطاهای عمومی"""
+    logger.error(f"خطای غیرمنتظره: {exc}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "success": False,
+            "error": {
+                "code": "INTERNAL_ERROR",
+                "message": "خطای داخلی سرور رخ داده است",
+                "detail": str(exc) if os.getenv("DEBUG", "False").lower() == "true" else None
+            }
+        }
     )
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
-    app.include_router(router, prefix="/api/v1")
-    app.include_router(ws_router, prefix="/api/v1", tags=["WebSocket"])
-    app.include_router(chat_router, prefix="/api/v1", tags=["Chat"])
-    app.include_router(orchestrator_router, prefix="/api/v1/orchestrator", tags=["Orchestrator"])
-    app.include_router(copilot_router, prefix="/api/v1/copilot", tags=["Copilot"])
-    logger.info("✅ Application initialized")
-    return app
-
-
-app = create_app()
-
-@app.get("/health")
-async def health():
-    return {"status": "healthy", "version": "2.1.1"}
-
-
+# ============================================================
+# اجرا
+# ============================================================
 if __name__ == "__main__":
     import uvicorn
+    
+    host = os.getenv("API_HOST", "0.0.0.0")
+    port = int(os.getenv("API_PORT", "8000"))
+    reload = os.getenv("ENVIRONMENT", "development") == "development"
+    
+    logger.info(f"🚀 راه‌اندازی سرور در {host}:{port}")
+    logger.info(f"📚 مستندات: http://localhost:{port}/docs")
+    logger.info(f"🔍 سلامت: http://localhost:{port}/health")
+    
     uvicorn.run(
         "app.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=False
+        host=host,
+        port=port,
+        reload=reload,
+        workers=1 if reload else 4
     )

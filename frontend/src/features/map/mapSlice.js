@@ -6,7 +6,10 @@ const initialState = {
   markers: [],
   selectedMarker: null,
   searchQuery: '',
+  serviceTypeFilter: null,
+  mapMode: 'street',
   userLocation: null,
+  isGeolocating: false,
   isLoading: false,
   error: null,
 };
@@ -33,8 +36,17 @@ const mapSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+    setMapMode: (state, action) => {
+      state.mapMode = action.payload;
+    },
+    setServiceTypeFilter: (state, action) => {
+      state.serviceTypeFilter = action.payload;
+    },
     setUserLocation: (state, action) => {
       state.userLocation = action.payload;
+    },
+    setGeolocating: (state, action) => {
+      state.isGeolocating = action.payload;
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -49,13 +61,16 @@ const mapSlice = createSlice({
 });
 
 export const {
+  setMapMode,
   setMapCenter,
   setZoom,
   setMarkers,
   selectMarker,
   clearSelection,
   setSearchQuery,
+  setServiceTypeFilter,
   setUserLocation,
+  setGeolocating,
   setLoading,
   setError,
   clearError,

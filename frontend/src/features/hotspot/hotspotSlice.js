@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   hotspots: [],
   selectedHotspot: null,
+  hotspotFilter: null,
+  showHotspots: true,
   isLoading: false,
   error: null,
 };
@@ -20,6 +22,15 @@ const hotspotSlice = createSlice({
     clearSelection: (state) => {
       state.selectedHotspot = null;
     },
+    clearHotspotSelection: (state) => {
+      state.selectedHotspot = null;
+    },
+    setHotspotFilter: (state, action) => {
+      state.hotspotFilter = action.payload;
+    },
+    toggleHotspots: (state) => {
+      state.showHotspots = !state.showHotspots;
+    },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
@@ -32,5 +43,16 @@ const hotspotSlice = createSlice({
   },
 });
 
-export const { setHotspots, selectHotspot, clearSelection, setLoading, setError, clearError } = hotspotSlice.actions;
+export const {
+  setHotspots,
+  selectHotspot,
+  clearSelection,
+  clearHotspotSelection,
+  setHotspotFilter,
+  toggleHotspots,
+  setLoading,
+  setError,
+  clearError,
+} = hotspotSlice.actions;
+
 export default hotspotSlice.reducer;

@@ -1,13 +1,29 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+import uiReducer from './slices/uiSlice';
+import authReducer from './slices/authSlice';
+import chatReducer from './slices/chatSlice';
+import mapReducer from './slices/mapSlice';
+import hotspotReducer from './slices/hotspotSlice';
+import cameraReducer from './slices/cameraSlice';
+import dashboardReducer from './slices/dashboardSlice';
 
 const store = configureStore({
-  reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production',
+  reducer: {
+    ui: uiReducer,
+    auth: authReducer,
+    chat: chatReducer,
+    map: mapReducer,
+    hotspot: hotspotReducer,
+    camera: cameraReducer,
+    dashboard: dashboardReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST'],
+      },
     }),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;
