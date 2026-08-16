@@ -1,0 +1,7 @@
+{
+  "name": "Weather Plugin",
+  "intent": "weather",
+  "version": "1.0.0",
+  "entry": "../../experts/WeatherExpert.js",
+  "enabled": true
+}

@@ -1,0 +1,132 @@
+.chat-bubble-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 14px;
+  animation: bubbleFade .25s ease;
+}
+
+.chat-bubble-wrapper.user {
+  flex-direction: row-reverse;
+}
+
+.chat-bubble-wrapper.bot {
+  flex-direction: row;
+}
+
+.bubble-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #667eea;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chat-bubble {
+  max-width: 75%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  word-break: break-word;
+  line-height: 1.7;
+}
+
+.user-message {
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+
+.bot-message {
+  background: #fff;
+  color: #2d3748;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 6px;
+}
+
+.bubble-text {
+  margin: 0;
+  white-space: pre-wrap;
+  text-align: right;
+}
+
+.bubble-time {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: .7;
+  text-align: left;
+}
+
+.message-location {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,.08);
+  font-size: .85rem;
+}
+
+.message-location span {
+  display: block;
+}
+
+.distance {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.message-suggestions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.message-suggestions .suggestion-btn {
+  border: none;
+  background: #eef2ff;
+  color: #667eea;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.message-suggestions .suggestion-btn:hover {
+  background: #667eea;
+  color: #fff;
+}
+
+@keyframes bubbleFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width:768px) {
+
+  .chat-bubble {
+    max-width: 88%;
+    padding: 10px 14px;
+  }
+
+  .bubble-avatar {
+    width: 36px;
+    height: 36px;
+  }
+}

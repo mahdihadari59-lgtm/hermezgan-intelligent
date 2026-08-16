@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addMessage, setLoading, setTyping, clearMessages } from '../store/slices/chatSlice';
+import { addMessage, setLoading, setTyping, clearMessages } from '../features';
 import chatService from '../services/chatService';
 import useLocation from './useLocation';
 

@@ -1,0 +1,148 @@
+=========================================
+📊  گزارش بررسی فایل‌های پروژه
+=========================================
+
+تاریخ: Wed Aug  5 00:09:42 +0330 2026
+مسیر: /data/data/com.termux/files/home/hermezgan-intelligent
+
+=========================================
+📁  بررسی Frontend
+=========================================
+
+📂 پوشه‌های موجود در frontend/src/:
+  📁 .
+  📁 ..
+  📁 api
+  📁 components
+  📁 features
+  📁 hdp-copilot
+  📁 hooks
+  📁 pages
+  📁 reducers
+  📁 services
+  📁 store
+  📁 utils
+
+📄 فایل‌های اصلی Frontend:
+  ✅ frontend/src/App.js (4.0K)
+  ✅ frontend/src/index.js (4.0K)
+  ✅ frontend/src/App.css (4.0K)
+  ✅ frontend/src/index.css (4.0K)
+  ✅ frontend/package.json (4.0K)
+
+📦 ماژول‌های Frontend:
+  ✅ frontend/src/components → 48 فایل | 324K
+  ✅ frontend/src/features → 11 فایل | 92K
+  ✅ frontend/src/pages → 5 فایل | 72K
+  ✅ frontend/src/services → 10 فایل | 44K
+  ✅ frontend/src/hooks → 4 فایل | 20K
+  ✅ frontend/src/utils → 5 فایل | 28K
+  ✅ frontend/src/store → 9 فایل | 55K
+  ✅ frontend/src/hdp-copilot → 28 فایل | 180K
+
+=========================================
+📁  بررسی Backend
+=========================================
+
+✅ پوشه backend وجود دارد!
+
+📂 ساختار backend:
+  📁 backend/ → 0 فایل
+  📁 api/ → 3 فایل
+  📁 app/ → 150 فایل
+  📁 app/api/ → 24 فایل
+  📁 app/api/v1/ → 14 فایل
+  📁 app/api/v1/endpoints/ → 5 فایل
+  📁 app/api/v1/endpoints/__pycache__/ → 0 فایل
+  📁 app/api/v1/__pycache__/ → 0 فایل
+  📁 app/api/__pycache__/ → 0 فایل
+  📁 app/auth/ → 1 فایل
+  📁 app/core/ → 46 فایل
+  📁 app/core/config/ → 5 فایل
+  📁 app/core/config/__pycache__/ → 0 فایل
+  📁 app/core/data/ → 9 فایل
+  📁 app/core/database/ → 6 فایل
+  📁 app/core/database/__pycache__/ → 0 فایل
+  📁 app/core/engine/ → 12 فایل
+  📁 app/core/engine/hybrid/ → 6 فایل
+  📁 app/core/engine/__pycache__/ → 0 فایل
+  📁 app/core/__pycache__/ → 0 فایل
+
+📄 فایل‌های اصلی Backend:
+  ✅ backend/app/main.py (4.0K, 51 خط)
+  ✅ backend/app/__init__.py (4.0K, 3 خط)
+  ✅ backend/requirements.txt (4.0K, 15 خط)
+  ✅ backend/.env (4.0K, 10 خط)
+  ✅ backend/app/core/config.py (8.0K, 214 خط)
+  ❌ backend/app/core/database.py (وجود ندارد!)
+  ✅ backend/app/core/security.py (20K, 553 خط)
+  ✅ backend/app/models/__init__.py (4.0K, 15 خط)
+  ✅ backend/app/schemas/__init__.py (4.0K, 86 خط)
+  ✅ backend/app/api/__init__.py (4.0K, 4 خط)
+
+📊 مدل‌های Backend:
+  ❌ backend/app/models/service.py (وجود ندارد!)
+  ✅ backend/app/models/hotspot.py (34 خط)
+  ✅ backend/app/models/camera.py (44 خط)
+  ✅ backend/app/models/user.py (408 خط)
+
+🔧 سرویس‌های Backend:
+  ❌ backend/app/services/map_service.py (وجود ندارد!)
+  ✅ backend/app/services/hotspot_service.py (112 خط)
+  ✅ backend/app/services/camera_service.py (135 خط)
+
+🛣️  API Routes:
+  ❌ backend/app/api/routes/services.py (وجود ندارد!)
+  ❌ backend/app/api/routes/hotspots.py (وجود ندارد!)
+  ❌ backend/app/api/routes/cameras.py (وجود ندارد!)
+  ❌ backend/app/api/routes/analytics.py (وجود ندارد!)
+
+
+=========================================
+🔗  فایل‌های مشترک بین Frontend و Backend
+=========================================
+
+📄 سرویس‌های Frontend:
+  📄 analyticsService.js
+  📄 api.js
+  📄 authService.js
+  📄 cameraService.js
+  📄 chatService.js
+  📄 copilotService.js
+  📄 hotspotService.js
+  📄 mapService.js
+  📄 orchestratorService.js
+  📄 wsClient.js
+
+📄 سرویس‌های Backend (در صورت وجود):
+  📄 __init__.py
+  📄 analytics_service.py
+  📄 auth_service.py
+  📄 camera_service.py
+  📄 chat_service.py
+  📄 copilot_hybrid.py
+  📄 copilot_service.py
+  📄 copilot_sqlite.py
+  📄 db_intelligence_service.py
+  📄 email_service.py
+  📄 file_service.py
+  📄 geo_link_service.py
+  📄 hotspot_service.py
+  📄 location_service.py
+  📄 memory_service.py
+  📄 nlp_service.py
+  📄 orchestrator_service.py
+  📄 query_planner_service.py
+  📄 speech_service.py
+  📄 user_service.py
+  📄 websocket_service.py
+
+
+=========================================
+🔍  خلاصه فایل‌های گم شده
+=========================================
+
+  ❌ backend/app/core/database.py
+
+  📊 تعداد کل فایل‌های گم شده: 1
+
