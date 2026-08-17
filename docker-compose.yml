@@ -1,60 +1,197 @@
 version: '3.8'
 
 services:
+  # ============================================================
+  # PostgreSQL Database (Primary operational database)
+  # ============================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: hdp-postgres
+    environment:
+      POSTGRES_USER: hermezgan_user
+      POSTGRES_PASSWORD: hermezgan_secure_password
+      POSTGRES_DB: hermezgan_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - hdp-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hermezgan_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # Redis Cache & Session Store
+  # ============================================================
+  redis:
+    image: redis:7-alpine
+    container_name: hdp-redis
+    command: redis-server --appendonly yes --requirepass hermezgan_redis_password
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - hdp-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # FastAPI Backend
+  # ============================================================
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: hermezgan_backend
-    ports:
-      - "8000:8000"
+    container_name: hdp-backend
     environment:
-      - FASTAPI_ENV=production
-      - DATABASE_URL=sqlite:///./data/hdp_v2.db
-      - DATABASE_PATH=./data/hdp_v2.db
-      - DEBUG=false
+      # Database Configuration (Unified)
+      DATABASE_URL: postgresql://hermezgan_user:hermezgan_secure_password@postgres:5432/hermezgan_db
+      
+      # Redis Configuration
+      REDIS_URL: redis://:hermezgan_redis_password@redis:6379
+      REDIS_DB: 0
+      
+      # API Configuration
+      SECRET_KEY: your-super-secret-key-change-in-production
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      FASTAPI_ENV: production
+      DEBUG: "false"
+      
+      # API Server
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5000,http://frontend:3000
+      
+      # External Services
+      MAPBOX_TOKEN: ${MAPBOX_TOKEN:-your-token}
+      NESHAN_API_KEY: ${NESHAN_API_KEY:-your-key}
+      OSRM_SERVER: http://osrm:5000
+      
+      # LLM Services
+      OLLAMA_API_URL: http://ollama:11434
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-your-key}
+      
+      # Voice Services
+      TTS_PROVIDER: local
+      
+      # MLflow Configuration
+      MLFLOW_TRACKING_URI: http://mlflow:5001
+      MLFLOW_BACKEND_STORE_URI: sqlite:///mlflow/mlflow.db
+      MLFLOW_ARTIFACT_ROOT: ./mlflow/artifacts
+      
+      # Logging
+      LOG_LEVEL: INFO
     volumes:
       - ./backend:/app
-      - backend_logs:/app/logs
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./mlflow:/app/mlflow
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
-      - hermezgan_network
-    restart: unless-stopped
+      - hdp-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
 
+  # ============================================================
+  # React Frontend
+  # ============================================================
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: hermezgan_frontend
+    container_name: hdp-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:8000
+      REACT_APP_API_VERSION: v1
+      REACT_APP_MAP_CENTER_LAT: 27.2158
+      REACT_APP_MAP_CENTER_LNG: 56.2808
+      REACT_APP_MAP_ZOOM: 12
     ports:
       - "3000:3000"
-    environment:
-      - REACT_APP_API_URL=http://backend:8000
-    networks:
-      - hermezgan_network
     depends_on:
       - backend
-    restart: unless-stopped
-
-  redis:
-    image: redis:7-alpine
-    container_name: hermezgan_redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
     networks:
-      - hermezgan_network
-    restart: unless-stopped
+      - hdp-network
 
-networks:
-  hermezgan_network:
-    driver: bridge
+  # ============================================================
+  # Bandari Engine (Language Processing)
+  # ============================================================
+  bandari-engine:
+    build:
+      context: ./bandari-engine-2026/bandari-engine
+      dockerfile: Dockerfile
+    container_name: hdp-bandari-engine
+    environment:
+      PORT: 5200
+      NODE_ENV: production
+      BANDARI_LLM_ENABLED: "0"
+    ports:
+      - "5200:5200"
+    networks:
+      - hdp-network
+
+  # ============================================================
+  # MLflow Tracking Server
+  # ============================================================
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.0
+    container_name: hdp-mlflow
+    environment:
+      BACKEND_STORE_URI: sqlite:////mlflow/mlflow.db
+      DEFAULT_ARTIFACT_ROOT: /mlflow/artifacts
+    volumes:
+      - mlflow_data:/mlflow
+    ports:
+      - "5001:5000"
+    networks:
+      - hdp-network
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+
+  # ============================================================
+  # Prometheus Monitoring
+  # ============================================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: hdp-prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - hdp-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
 
 volumes:
-  backend_logs:
+  postgres_data:
+    driver: local
   redis_data:
+    driver: local
+  mlflow_data:
+    driver: local
+  prometheus_data:
+    driver: local
+
+networks:
+  hdp-network:
+    driver: bridge
