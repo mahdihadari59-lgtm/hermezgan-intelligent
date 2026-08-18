@@ -9,7 +9,6 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from app.gateway.copilot_gateway import CopilotGateway
 
 logger = logging.getLogger(__name__)
 
@@ -18,10 +17,11 @@ router = APIRouter()
 _gateway: CopilotGateway | None = None
 
 
-def get_copilot_gateway() -> CopilotGateway:
+def get_copilot_gateway():
     global _gateway
     if _gateway is None:
-        _gateway = CopilotGateway()
+        from app.services.chat_service import get_chat_service
+        _gateway = get_chat_service()
     return _gateway
 
 
@@ -36,7 +36,7 @@ async def copilot_message(payload: CopilotMessageRequest):
     """پردازش پیام از طریق Copilot Gateway (Bandari + Knowledge/Graph/Vector search pipeline)"""
     gateway = get_copilot_gateway()
     try:
-        result = await gateway.handle_message(
+        result = await gateway.process_message(
             text=payload.text,
             session_id=payload.session_id,
             user_id=payload.user_id,

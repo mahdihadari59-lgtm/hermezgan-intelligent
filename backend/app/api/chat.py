@@ -27,7 +27,7 @@ class ChatRequest(BaseModel):
 
 @router.get("/health")
 async def health():
-    return {"status": "ok", "service": "ChatService (CopilotGateway)"}
+    return {"status": "ok", "service": "ChatService (BandariProvider)"}
 
 def _query_of(req: ChatRequest) -> str:
     return req.query or req.message or req.text or ""
