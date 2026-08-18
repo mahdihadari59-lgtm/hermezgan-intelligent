@@ -124,7 +124,7 @@ function createRoutes(engines) {
   });
 
   // =====================================================
-  // اندپوینت‌های v5.2.0 — مرجع دستور زبان (از مستندات واقعی کاربر)
+  // اندپوینت‌های v5.2.3 — مرجع دستور زبان (از مستندات واقعی کاربر)
   // =====================================================
 
   router.get('/grammar/pronouns', (req, res) => {
@@ -237,12 +237,12 @@ function createRoutes(engines) {
       rag: rag.getStats(),
       context: context.getStats(),
       llmEnabled: llm.enabled,
-      version: '5.2.0'
+      version: '5.2.3'
     });
   });
 
   router.get('/health', (req, res) => {
-    res.json({ status: 'online', version: '5.2.0' });
+    res.json({ status: 'online', version: '5.2.3' });
   });
 
   return router;
