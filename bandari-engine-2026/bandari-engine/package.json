@@ -1,6 +1,6 @@
 {
   "name": "bandari-engine",
-  "version": "5.2.0",
+  "version": "5.2.3",
   "description": "Bandari Dialect Engine - 8-Layer Architecture (Dialect Detection, Dictionary, Morphology, Grammar, Intent, Context, RAG, LLM)",
   "main": "index.js",
   "scripts": {
