@@ -1,1 +1,1 @@
-from .copilot_gateway import CopilotGateway
+"""Gateway package. CopilotGateway intentionally disabled."""
