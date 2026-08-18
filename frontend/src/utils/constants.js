@@ -1,5 +1,5 @@
 export const APP_NAME = 'هرمزگان هوشمند';
-export const APP_VERSION = '1.0.0';
+export const APP_VERSION = '1.1.0-beta.1';
 
 export const COLORS = {
   primary: '#667eea',
