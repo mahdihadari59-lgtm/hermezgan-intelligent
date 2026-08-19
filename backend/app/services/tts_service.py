@@ -209,7 +209,8 @@ class LocalTTSProvider(TTSProvider):
     """Local TTS Provider (gTTS or pyttsx3 fallback)"""
     
     def __init__(self):
-        try:\n            from gtts import gTTS
+        try:
+            from gtts import gTTS
             self.gTTS = gTTS
             self.available = True
         except ImportError:
