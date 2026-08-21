@@ -44,7 +44,7 @@ import HeatmapLayer from './HeatmapLayer';
 import { offlineCache } from '../services/offlineCache';
 import { geoService } from '../services/geoService';
 
-import { setMapCenter, setZoom, setMapReady, setLoading, setError } from '../store/slices/mapSlice';
+import { setMapCenter, setZoom, setMapReady, setLoading, setError } from '../features';
 
 import '../assets/styles/map.css';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchQuery, setServiceTypeFilter } from '../store/slices/mapSlice';
+import { setSearchQuery, setServiceTypeFilter } from '../features';
 import mapService from '../services/mapService';
 import useLocation from '../hooks/useLocation';
 import { SERVICE_TYPES } from '../utils/constants';

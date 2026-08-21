@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { toggleSidebar } from "../../store/slices/uiSlice";
+import { toggleSidebar } from "../../features";
 import "./Sidebar.css";
 
 const Sidebar = () => {

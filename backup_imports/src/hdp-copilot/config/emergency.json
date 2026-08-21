@@ -1,0 +1,26 @@
+{
+  "default": {
+    "emergency": "115",
+    "police": "110",
+    "fire": "125",
+    "redcrescent": "112",
+    "roadside": "076-3255-6666",
+    "crisis": "076-3212-0000"
+  },
+  "bandarabbas": {
+    "emergency": "115",
+    "police": "110",
+    "fire": "125",
+    "redcrescent": "112",
+    "roadside": "076-3255-6666",
+    "crisis": "076-3212-1111"
+  },
+  "qeshm": {
+    "emergency": "115",
+    "police": "110",
+    "fire": "125",
+    "redcrescent": "112",
+    "roadside": "076-3525-4444",
+    "crisis": "076-3523-2222"
+  }
+}

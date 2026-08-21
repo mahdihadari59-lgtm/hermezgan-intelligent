@@ -1,25 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isSidebarOpen: true,
-  isDarkMode: false,
-  language: "fa",
+  theme: 'light',
+  isLoading: false,
   notifications: [],
-  loading: false,
-  error: null,
 };
 
 const uiSlice = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState,
   reducers: {
-    toggleSidebar: (state) => { state.isSidebarOpen = !state.isSidebarOpen; },
-    toggleDarkMode: (state) => { state.isDarkMode = !state.isDarkMode; },
-    setLoading: (state, action) => { state.loading = action.payload; },
-    setError: (state, action) => { state.error = action.payload; },
-    clearError: (state) => { state.error = null; },
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    addNotification: (state, action) => {
+      state.notifications.push(action.payload);
+    },
+    removeNotification: (state, action) => {
+      state.notifications = state.notifications.filter(
+        (n) => n.id !== action.payload
+      );
+    },
   },
 });
 
-export const { toggleSidebar, toggleDarkMode, setLoading, setError, clearError } = uiSlice.actions;
+export const {
+  toggleSidebar,
+  setTheme,
+  setLoading,
+  addNotification,
+  removeNotification,
+} = uiSlice.actions;
+
 export default uiSlice.reducer;

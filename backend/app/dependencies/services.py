@@ -4,7 +4,6 @@ import importlib
 from functools import lru_cache
 
 from app.config import HDP_KNOWLEDGE_DB_PATH
-from app.gateway.copilot_gateway import CopilotGateway
 from app.services.chat_service import ChatService
 
 
@@ -15,8 +14,9 @@ def _lazy_service(module_path: str, class_name: str):
 
 
 @lru_cache(maxsize=1)
-def get_copilot_gateway() -> CopilotGateway:
-    return CopilotGateway(db_path=str(HDP_KNOWLEDGE_DB_PATH))
+def get_copilot_gateway():
+    from app.services.chat_service import get_chat_service
+    return get_chat_service()
 
 
 @lru_cache(maxsize=1)

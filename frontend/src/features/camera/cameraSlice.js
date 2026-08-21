@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cameras: [],
   selectedCamera: null,
+  cameraFilter: null,
+  regionFilter: null,
   isLoading: false,
   error: null,
 };
@@ -20,6 +22,15 @@ const cameraSlice = createSlice({
     clearSelection: (state) => {
       state.selectedCamera = null;
     },
+    clearCameraSelection: (state) => {
+      state.selectedCamera = null;
+    },
+    setCameraFilter: (state, action) => {
+      state.cameraFilter = action.payload;
+    },
+    setRegionFilter: (state, action) => {
+      state.regionFilter = action.payload;
+    },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
@@ -32,5 +43,16 @@ const cameraSlice = createSlice({
   },
 });
 
-export const { setCameras, selectCamera, clearSelection, setLoading, setError, clearError } = cameraSlice.actions;
+export const {
+  setCameras,
+  selectCamera,
+  clearSelection,
+  clearCameraSelection,
+  setCameraFilter,
+  setRegionFilter,
+  setLoading,
+  setError,
+  clearError,
+} = cameraSlice.actions;
+
 export default cameraSlice.reducer;
