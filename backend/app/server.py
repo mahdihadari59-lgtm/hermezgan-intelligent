@@ -29,7 +29,7 @@ import re
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
-from spatial_api import SpatialDB
+from app.spatial_api import SpatialDB
 from app.api.copilot import router as copilot_router
 from app.api.orchestrator import router as orchestrator_router
 from app.api.chat import router as chat_router
@@ -38,7 +38,7 @@ from app.api.ws import router as ws_router
 DB_PATH = os.environ.get("HDP_GEO_DB", "geo.db")
 API_KEY = os.environ.get("HDP_API_KEY")  # unset = no auth (dev only — set this in production)
 ALLOWED_ORIGIN = os.environ.get("HDP_ALLOWED_ORIGIN")  # unset = no CORS headers sent
-PORT = int(os.environ.get("HDP_GEO_PORT", "8000"))
+PORT = int(os.environ.get("HDP_GEO_PORT", "8001"))
 
 CAMERA_REPORT_RE = re.compile(r"^/api/v1/map/cameras/(\d+)/report$")
 

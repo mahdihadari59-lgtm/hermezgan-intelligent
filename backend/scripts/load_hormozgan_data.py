@@ -128,7 +128,7 @@ def load_hormozgan_data(reset: bool = False, dry_run: bool = False):
     
     # اتصال به دیتابیس
     print("\n🔗 اتصال به SQLite...")
-    db = SQLiteService("data/hdp_v2.db")
+    db = SQLiteService("data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db")
     
     if not db.connect():
         print("❌ خطا در اتصال به دیتابیس")

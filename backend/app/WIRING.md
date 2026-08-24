@@ -1,7 +1,7 @@
 # HDP Copilot v4 Wiring
 
 ## Source of truth
-- KnowledgeProvider -> `data/hdp_v2.db`
+- KnowledgeProvider -> `data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db`
 - GraphProvider -> `knowledge_nodes` / `knowledge_edges`
 - VectorProvider -> `knowledge_embeddings` / `semantic_relations`
 - CopilotGateway -> Providerها

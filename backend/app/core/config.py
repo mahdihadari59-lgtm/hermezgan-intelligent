@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     # تنظیمات سرور
     # ============================================================
     API_HOST: str = "0.0.0.0"
-    API_PORT: int = 8000
+    API_PORT: int = 8001
     WORKERS: int = 4
     
     # ============================================================
@@ -155,7 +155,7 @@ class Settings(BaseSettings):
     # ============================================================
     # تنظیمات دیتابیس HDP
     # ============================================================
-    HDP_DB_PATH: str = "data/hdp_v2.db"
+    HDP_DB_PATH: str = "data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
     
     class Config:
         """تنظیمات Pydantic"""

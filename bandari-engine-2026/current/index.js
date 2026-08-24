@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
     version: '4.2.0',
     status: 'running',
     endpoints: {
-      health: '/api/health',
+      health: '/api/v1/health',
       dictionary: '/api/dictionary/search?q=سلام',
       multilingual: '/api/multilingual/search?q=سلام',
       rag: '/api/rag/search?q=بندرعباس',

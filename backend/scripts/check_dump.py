@@ -1,7 +1,7 @@
 import sqlite3
 import re
 
-DB = "data/hdp_v2.db"
+DB = "data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 DUMP = "/data/data/com.termux/files/home/hdp_dump.sql"
 
 conn = sqlite3.connect(DB)
