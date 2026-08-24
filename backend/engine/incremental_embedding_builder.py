@@ -359,7 +359,7 @@ def main():
     )
     parser.add_argument(
         '--db',
-        default='data/hdp_v2.db',
+        default='data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db',
         help='Path to SQLite database'
     )
     parser.add_argument(

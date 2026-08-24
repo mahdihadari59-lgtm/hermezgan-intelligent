@@ -126,7 +126,7 @@ class Config:
     """Production configuration for embedding rebuilder"""
     
     # Database
-    DATABASE: str = "data/hdp_v2.db"
+    DATABASE: str = "data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
     
     # Embedding
     EMBEDDING_DIM: int = 384
@@ -873,7 +873,7 @@ def parse_args():
     
     parser.add_argument(
         "--db",
-        default="data/hdp_v2.db",
+        default="data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db",
         help="SQLite database path"
     )
     

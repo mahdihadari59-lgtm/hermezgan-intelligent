@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     # API
     # ============================================================
     API_HOST: str = Field(default="0.0.0.0", description="آدرس میزبانی API")
-    API_PORT: int = Field(default=8000, description="پورت API")
+    API_PORT: int = Field(default=8001, description="پورت API")
     API_PREFIX: str = Field(default="/api/v1", description="پیشوند مسیر API")
     WORKERS: int = Field(default=1, description="تعداد Worker")
 

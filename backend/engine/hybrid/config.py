@@ -11,7 +11,7 @@ import کنند.
 ساختار فرض‌شده پروژه:
     development/
     ├── data/
-    │   └── hdp_v2.db
+    │   └── /data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db
     └── engine/
         └── hybrid/
             └── config.py   ← همین فایل
@@ -34,7 +34,7 @@ _ENV_OVERRIDE = os.environ.get("HDP_DB_PATH")
 
 
 class HybridConfig:
-    DB_PATH: str = _ENV_OVERRIDE or str(PROJECT_ROOT / "data" / "hdp_v2.db")
+    DB_PATH: str = _ENV_OVERRIDE or str(PROJECT_ROOT / "data" / "/data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db")
 
     # اگر پروژه چند دیتابیس مجزا دارد، همین‌جا اضافه شود:
     # DB_GRAPH = str(PROJECT_ROOT / "data" / "graph.db")

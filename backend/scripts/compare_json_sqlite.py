@@ -11,7 +11,7 @@ from typing import Dict, Set, List, Tuple
 
 # مسیرها
 JSON_PATH = "/data/data/com.termux/files/home/hormozgan-driver-pro121/hdp_flask_app/data/hormozgan_knowledge.json"
-SQLITE_PATH = "data/hdp_v2.db"
+SQLITE_PATH = "data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 
 # کلیدهای متادیتا که باید حذف شوند
 METADATA_KEYS = {

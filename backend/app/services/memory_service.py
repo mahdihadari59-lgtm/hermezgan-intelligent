@@ -3,7 +3,7 @@ import json, os, sqlite3
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db"
+DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 
 class MemoryService:
     def __init__(self, db_path: Optional[str] = None, table: str = "hdp_orchestrator_memory") -> None:

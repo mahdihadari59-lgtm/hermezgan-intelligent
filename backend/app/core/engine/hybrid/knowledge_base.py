@@ -26,7 +26,7 @@ class KnowledgeBase:
             return
         
         self._initialized = True
-        self.db_path = Path("/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db")
+        self.db_path = Path("/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db")
         self._conn = None
         self._connect()
         self._table_priority = self._get_table_priority()

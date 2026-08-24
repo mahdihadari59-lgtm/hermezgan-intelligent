@@ -48,8 +48,8 @@ def _normalize_db_path(db_path: Optional[str]) -> str:
 
     Accepts:
       - None -> returns HybridConfig.DB_PATH
-      - local file paths (./data/hdp_v2.db or /absolute/path)
-      - sqlite URLs like sqlite:///./data/hdp_v2.db or sqlite:///absolute/path
+      - local file paths (./data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db or /absolute/path)
+      - sqlite URLs like sqlite:///./data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db or sqlite:///absolute/path
     """
     if not db_path:
         return HybridConfig.DB_PATH

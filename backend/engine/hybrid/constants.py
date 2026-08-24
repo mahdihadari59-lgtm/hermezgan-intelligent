@@ -47,7 +47,7 @@ NODE_TYPES = [
 # نگاشت expert_id -> دامنه‌ها. عمداً خالی گذاشته شده — طبق تصمیم
 # پروژه، این نگاشت دیگر این‌جا هارد-کد نمی‌شود؛ باید در زمان اجرا
 # از دیتابیس واقعی (مثلاً یک جدول expert_domains یا معادلش در
-# hdp_v2.db) خوانده و به HybridEngine/BaseExpertEngine تزریق شود.
+# /data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db) خوانده و به HybridEngine/BaseExpertEngine تزریق شود.
 #
 # نتیجه مهم این خالی‌بودن: اگر HybridEngine بدون expert_domain_map
 # صریح ساخته بشه، دیگه هیچ فیلتر دامنه‌ای اعمال نمی‌شه (هر Expert

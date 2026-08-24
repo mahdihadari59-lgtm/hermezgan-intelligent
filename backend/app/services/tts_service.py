@@ -438,3 +438,41 @@ def get_tts_service() -> TTSService:
     if _tts_service is None:
         _tts_service = TTSService()
     return _tts_service
+
+class ElevenLabsTTSProvider:
+    """ElevenLabs TTS Provider using requests"""
+
+    def __init__(self):
+        self.api_key = os.getenv("ELEVENLABS_API_KEY")
+        self.api_url = os.getenv("ELEVENLABS_API_URL", "https://api.elevenlabs.io").rstrip("/")
+        self.model_id = os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2")
+        self.voice_id = os.getenv("ELEVENLABS_VOICE_ID")
+
+    async def synthesize(self, text: str, language: str = "fa", **kwargs):
+        import requests
+        import base64
+        if not self.api_key:
+            raise RuntimeError("ELEVENLABS_API_KEY not configured")
+        if not self.voice_id:
+            raise RuntimeError("ELEVENLABS_VOICE_ID not configured")
+
+        response = requests.post(
+            f"{self.api_url}/v1/text-to-speech/{self.voice_id}",
+            params={"output_format": "mp3_44100_128"},
+            headers={"xi-api-key": self.api_key, "Content-Type": "application/json"},
+            json={"text": text, "model_id": self.model_id},
+            timeout=30,
+        )
+
+        if response.status_code == 200:
+            return {
+                "success": True,
+                "audio_base64": base64.b64encode(response.content).decode("ascii"),
+                "audio_format": "mp3",
+                "duration_seconds": len(text) / 150,
+                "provider": "elevenlabs",
+            }
+        raise RuntimeError(f"ElevenLabs API error: {response.status_code} - {response.text}")
+
+    async def health_check(self) -> bool:
+        return bool(self.api_key and self.voice_id and self.model_id)

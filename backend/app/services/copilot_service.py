@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 from app.services.db_intelligence_service import DBIntelligenceService
 from app.services.query_planner_service import QueryPlannerService
 
-DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db"
+DEFAULT_DB = "/data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 DEFAULT_LLM_URL = "http://127.0.0.1:8080"
 DEFAULT_LLM_MODEL = "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf"
 
@@ -20,7 +20,7 @@ class CopilotService:
     """
     Stage 6/7:
     - query planner
-    - db intelligence against real hdp_v2.db tables
+    - db intelligence against real /data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db tables
     - prompt assembly over the retrieved sources
     - still supports llama.cpp / fallback generation
     """

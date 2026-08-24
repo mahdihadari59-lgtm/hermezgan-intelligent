@@ -11,7 +11,7 @@ class HybridRAGBridge:
 
     Priority:
     1) engine.search_manager / engine.pipeline / engine.orchestrator / engine.rerank_engine / engine.graph_search_engine_v2
-    2) direct SQLite fallback over backend/data/hdp_v2.db
+    2) direct SQLite fallback over backend/data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db
     """
 
     def __init__(self, db_path: Optional[str] = None) -> None:

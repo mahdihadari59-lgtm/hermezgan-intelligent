@@ -8,7 +8,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
-DEFAULT_DB = "/data/data/com.termux/files/home/hermezgan-intelligent-backup-20260729/backend/hdp_v2.db"
+DEFAULT_DB = "/data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 
 TEXT_COL_HINTS = (
     "title", "name", "question", "heading", "topic", "label",
@@ -19,7 +19,7 @@ TEXT_COL_HINTS = (
 class DBIntelligenceService:
     """
     Stage 7:
-    - uses the real hdp_v2.db
+    - uses the real /data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db
     - introspects tables / columns
     - table-aware retrieval with generic ranking
     """

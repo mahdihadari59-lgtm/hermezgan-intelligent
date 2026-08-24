@@ -50,7 +50,7 @@ except ImportError:
 # Configuration
 # ==========================================================
 
-DB_PATH = "data/hdp_v2.db"
+DB_PATH = "data//data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
 MIN_CONTENT_LENGTH = 20
 BATCH_SIZE = 100
 LOG_FILE = "backend/logs/content_enricher.log"
