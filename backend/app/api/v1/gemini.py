@@ -29,7 +29,7 @@ async def chat(payload: ChatRequest):
         if not GEMINI_API_KEY:
             raise HTTPException(status_code=503, detail="GEMINI_API_KEY تنظیم نشده")
 
-        url = f"{GEMINI_API_URL}/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+        url = f"{GEMINI_API_URL}/models/gemini-flash-latest:generateContent?key={GEMINI_API_KEY}"
         headers = {"Content-Type": "application/json"}
         data = {
             "contents": [{"role": "user", "parts": [{"text": payload.message}]}],
@@ -45,7 +45,7 @@ async def chat(payload: ChatRequest):
                 "success": True,
                 "response": text,
                 "provider": "gemini",
-                "model": "gemini-1.5-flash"
+                "model": "gemini-flash-latest"
             }
 
         return {
@@ -69,5 +69,5 @@ async def ai_status():
         "service": "gemini_ai",
         "provider": "google",
         "api_key_configured": bool(GEMINI_API_KEY),
-        "model": "gemini-1.5-flash"
+        "model": "gemini-flash-latest"
     }
