@@ -2,108 +2,58 @@
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+.venv/
+venv/
+.venv-*/
 
-# SQLite
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/build/
+build/
+
+# Databases
+*.db
 *.db-wal
 *.db-shm
 *.db-journal
-
-# Backup
-*.bak
-*.tar.gz
-*.zip
-
-# Environment
-.env
-.venv/
-venv/
-
-# Logs
-*.log
-
-# OS
-.DS_Store
-Thumbs.db
-
-# =========================
-# Databases
-# =========================
-*.db
 *.sqlite
 *.sqlite3
+*.duplicate_backup
 
-# =========================
-# Python
-# =========================
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# Backups
+*.bak
+*.bak.*
+*.backup
+backups/
+backups_fix/
+_archived_backups/
 
-# =========================
-# Node.js
-# =========================
-node_modules/
-frontend/node_modules/
+# Archives
+*.tar.gz
+*.zip
+*.gz
 
-# =========================
-# Build
-# =========================
-build/
-frontend/build/
-
-# =========================
-# Logs
-# =========================
-*.log
-
-# =========================
-# Environment
-# =========================
-.env
-
-# =========================
-# IDE
-# =========================
-.vscode/
-.idea/
-
-# =========================
-# OS
-# =========================
-.DS_Store
-Thumbs.db
-# Secrets
+# Environment & secrets
 .env
 .env.*
 !.env.example
-
-# Databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Python
-.venv/
-venv/
-__pycache__/
-*.pyc
-
-# Node
-node_modules/
-
-# Logs
-*.log
-
-# Keys
 *.pem
 *.key
 *.p12
 *.pfx
 
-# Backups
-_archived_backups/
-*.bak
-*.backup
-*.gz
-backups/
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large output/audit dirs
+backend/outputs/
