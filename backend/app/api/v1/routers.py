@@ -25,7 +25,6 @@ routers_to_import = [
     ("traffic", "traffic"),
     ("auth", "auth"),
     ("pois", "pois"),
-    ("tts", "tts"),
     ("bandari_voice", "bandari-voice"),
 ]
 
