@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from loguru import logger
 from app.core.location_service import get_location_service
 
-router = APIRouter(prefix="/locations", tags=["locations"])
+router = APIRouter(tags=["locations"])
 
 class LocationQuery(BaseModel):
     """Location Query Request"""

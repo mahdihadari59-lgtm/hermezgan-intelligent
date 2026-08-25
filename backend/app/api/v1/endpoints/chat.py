@@ -6,7 +6,7 @@ from typing import Optional, Dict
 from loguru import logger
 from app.services.chat_service import get_chat_service
 
-router = APIRouter(prefix="/chat", tags=["chat"])
+router = APIRouter(tags=["chat"])
 
 class ChatMessage(BaseModel):
     """Chat Message Request"""

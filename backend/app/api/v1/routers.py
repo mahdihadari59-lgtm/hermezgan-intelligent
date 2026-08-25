@@ -16,7 +16,6 @@ _MODULE_MAP = {
 
 routers_to_import = [
     ("ping", "ping"),
-    ("chat", "chat"),
     ("locations", "locations"),
     ("analytics", "analytics"),
     ("cameras", "cameras"),
@@ -45,6 +44,11 @@ for module_name, prefix in routers_to_import:
                 tags=[prefix.capitalize()]
             )
             logger.info(f"✅ Router {module_name} ثبت شد")
+            if getattr(module.router, "prefix", ""):
+                logger.warning(
+                    f"⚠️ {module_name}: router already has internal prefix "
+                    f"'{module.router.prefix}' — will be double-prefixed"
+                )
         else:
             logger.warning(f"⚠️ Router {module_name} دارای router نیست")
     except ImportError as e:
