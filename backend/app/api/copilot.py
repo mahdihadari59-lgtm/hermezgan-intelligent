@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-from __future__ import annotations
-
-from app.api.chat import router
-=======
 # ============================================================
 # copilot.py - اندپوینت Copilot Gateway
 # پروژه هرمزگان هوشمند - Termux Android
@@ -600,4 +595,3 @@ async def health_check():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Health check failed: {e}")
->>>>>>> Stashed changes

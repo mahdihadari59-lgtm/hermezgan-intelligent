@@ -9,14 +9,9 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 _MODULE_MAP = {
-    "tts": "app.api.v1.endpoints.tts",
+    "tts": "app.api.v1.tts",
     "locations": "app.api.v1.endpoints.locations",
     "bandari_voice": "app.api.v1.endpoints.bandari_voice",
-}
-
-# لیست routerهایی که باید ثبت شوند
-_MODULE_MAP = {
-    "locations": "app.api.v1.endpoints.locations",
 }
 
 routers_to_import = [
@@ -36,7 +31,6 @@ routers_to_import = [
 
 for module_name, prefix in routers_to_import:
     try:
-<<<<<<< Updated upstream
         module_path = _MODULE_MAP.get(
             module_name,
             f"app.api.v1.{module_name}",
@@ -45,9 +39,6 @@ for module_name, prefix in routers_to_import:
             module_path,
             fromlist=["router"],
         )
-=======
-        module = __import__(_MODULE_MAP.get(module_name, f"app.api.v1.{module_name}"), fromlist=["router"])
->>>>>>> Stashed changes
         if hasattr(module, "router"):
             router.include_router(
                 module.router,

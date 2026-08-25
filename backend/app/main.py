@@ -1,4 +1,3 @@
-# ============================================================
 # Hermezgan Intelligent - FIXED main.py (Auto-generated)
 # ============================================================
 
@@ -54,7 +53,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-<<<<<<< Updated upstream
 # ============================================================
 # ثبت Routerها
 # ============================================================
@@ -66,9 +64,8 @@ except Exception as e:
     logger.error(f"❌ خطا در ثبت Router POI: {e}")
 
 # ثبت سایر Routerها
-=======
+
 # V1 Routers (Unified - NO DUPLICATE!)
->>>>>>> Stashed changes
 try:
     from app.api.v1.routers import router as api_router
     app.include_router(api_router, prefix="/api/v1")
@@ -160,7 +157,7 @@ async def health_check():
         conn.close()
     except:
         services["database"] = "error"
-    
+
     return {
         "status": "healthy",
         "version": "2.0.0-fixed",
