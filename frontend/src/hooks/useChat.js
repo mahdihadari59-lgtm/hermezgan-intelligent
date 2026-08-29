@@ -1,48 +1,85 @@
-import { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addMessage, setLoading, setTyping, clearMessages } from '../store/slices/chatSlice';
-import chatService from '../services/chatService';
-import useLocation from './useLocation';
+import { useState, useCallback } from "react";
+import { chatApi } from "@api/chat.api";
+import { useAssistantStore } from "@stores/assistant.store";
 
-const useChat = (sessionId = null) => {
-  const dispatch = useDispatch();
-  const { messages, isLoading, isTyping, error } = useSelector(state => state.chat);
-  const { location } = useLocation();
-  const [currentSessionId, setCurrentSessionId] = useState(sessionId);
-  const messagesEndRef = useRef(null);
+export function useChat(userId = "web_user") {
+  const store = useAssistantStore();
 
-  const sendMessage = async (text) => {
-    if (!text || !text.trim()) return;
-    dispatch(addMessage({ text, sender: 'user', timestamp: Date.now() }));
-    dispatch(setLoading(true));
-    dispatch(setTyping(true));
+  const sendMessage = useCallback(async (message, options = {}) => {
+    const userMessage = {
+      id: Date.now(),
+      role: "user",
+      content: message,
+      timestamp: new Date().toISOString(),
+    };
+
+    store.addMessage(userMessage);
+    store.setIsTyping(true);
+
     try {
-      const response = await chatService.sendMessage(text, 'user123', location?.lat, location?.lng, currentSessionId);
-      if (response.session_id && !currentSessionId) setCurrentSessionId(response.session_id);
-      await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 1200));
-      dispatch(addMessage({ text: response.response || 'متأسفانه نتوانستم پاسخ دهم.', sender: 'bot', timestamp: Date.now(), avatar: '🌊', intent: response.intent, suggestions: response.suggestions }));
+      const response = await chatApi.send(message, userId, options);
+
+      const assistantMessage = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: response.response || response.message || "پاسخ دریافت شد.",
+        timestamp: new Date().toISOString(),
+        metadata: response.metadata || {},
+      };
+
+      store.addMessage(assistantMessage);
+
+      if (response.suggestions) {
+        store.setSuggestions(response.suggestions);
+      }
+
       return response;
     } catch (error) {
-      dispatch(addMessage({ text: '❌ خطایی رخ داد. لطفاً دوباره تلاش کنید.', sender: 'bot', timestamp: Date.now(), avatar: '🌊' }));
+      console.error("Chat error:", error);
+
+      const errorMessage = {
+        id: Date.now() + 1,
+        role: "assistant",
+        content: "متأسفانه خطایی رخ داد. لطفاً دوباره تلاش کنید.",
+        timestamp: new Date().toISOString(),
+        isError: true,
+      };
+
+      store.addMessage(errorMessage);
       throw error;
     } finally {
-      dispatch(setLoading(false));
-      dispatch(setTyping(false));
+      store.setIsTyping(false);
     }
+  }, [store, userId]);
+
+  const loadHistory = useCallback(async () => {
+    try {
+      const history = await chatApi.history(userId);
+      if (Array.isArray(history)) {
+        history.forEach((msg) => store.addMessage(msg));
+      }
+      return history;
+    } catch (error) {
+      console.error("History error:", error);
+      return [];
+    }
+  }, [store, userId]);
+
+  const clearHistory = useCallback(async () => {
+    try {
+      await chatApi.clear(userId);
+      store.clearMessages();
+    } catch (error) {
+      console.error("Clear error:", error);
+    }
+  }, [store, userId]);
+
+  return {
+    messages: store.messages,
+    isTyping: store.isTyping,
+    suggestions: store.suggestions,
+    sendMessage,
+    loadHistory,
+    clearHistory,
   };
-
-  const clearChat = () => dispatch(clearMessages());
-  const scrollToBottom = () => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-
-  useEffect(() => { scrollToBottom(); }, [messages]);
-
-  useEffect(() => {
-    if (messages.length === 0) {
-      dispatch(addMessage({ text: '🌊 سلام! من دستیار هوشمند هرمزگان هستم. چگونه می‌تونم کمکتون کنم؟', sender: 'bot', timestamp: Date.now(), avatar: '🌊', suggestions: ['🏥 نزدیک‌ترین بیمارستان', '🍽️ رستوران‌های خوب', '🚗 تاکسی‌های آنلاین', '📍 خدمات نزدیک من'] }));
-    }
-  }, [dispatch]);
-
-  return { messages, isLoading, isTyping, error, sessionId: currentSessionId, sendMessage, clearChat, scrollToBottom, messagesEndRef };
-};
-
-export default useChat;
+}
