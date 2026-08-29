@@ -1,0 +1,66 @@
+---
+Branch: backup/pr18-before-cleanup
+  Last commit: be5ede8 fix: resolve merge conflict in main.py (11 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 10
+  Commits behind main: 35
+---
+Branch: ci/coverage-security
+  Last commit: fde4042 Resolve merge conflicts (4 weeks ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 3
+  Commits behind main: 35
+---
+Branch: develop-v1.4
+  Last commit: 3fdb59b fix(api): register locations router from endpoints (11 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 7
+  Commits behind main: 35
+---
+Branch: docs/tts-fastapi-validation
+  Last commit: 91118b2 docs+feat: ElevenLabs TTS integration with validation docs (9 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 0
+  Commits behind main: 22
+---
+Branch: feature/integration-speech-gateway
+  Last commit: 260b118 feat: integrate gateway, routers, and speech pipeline (4 weeks ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 0
+  Commits behind main: 60
+---
+Branch: feature/voice-api
+  Last commit: 6b26ccb feat(ai): integrate Copilot v6, Orchestrator, Speech API and frontend panels (4 weeks ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 0
+  Commits behind main: 57
+---
+Branch: fix/complete-integration-v2
+  Last commit: 8ad13c4 fix(integration): align Bandari provider API paths (9 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 12
+  Commits behind main: 23
+---
+Branch: fix/develop-v1.4-scan
+  Last commit: be5ede8 fix: resolve merge conflict in main.py (11 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 10
+  Commits behind main: 35
+---
+Branch: main
+  Last commit: 7a4032e WIP: changes before subtree operation (40 minutes ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 0
+  Commits behind main: 0
+---
+Branch: release/v1.0.0
+  Last commit: 5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final (4 weeks ago)
+  Author: mahdihadari59-lgtm <mahdihadari59@gmail.com>
+  Commits ahead of main: 0
+  Commits behind main: 35
+---
+Branch: repair/pr18-merge
+  Last commit: 8ad13c4 fix(integration): align Bandari provider API paths (9 days ago)
+  Author: mahdihadari59-lgtm <mahdihadari59-lgtm@users.noreply.github.com>
+  Commits ahead of main: 12
+  Commits behind main: 23

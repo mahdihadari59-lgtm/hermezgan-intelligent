@@ -23,8 +23,25 @@ routers_to_import = [
 ]
 
 for module_name, prefix in routers_to_import:
+    module = None
+    # اول از endpoints/ (نسخه‌ی جدید) امتحان کن
     try:
-        module = __import__(f"app.api.v1.{module_name}", fromlist=["router"])
+        module = __import__(f"app.api.v1.endpoints.{module_name}", fromlist=["router"])
+    except ImportError:
+        module = None
+
+    # اگه توی endpoints/ نبود، مسیر قدیمی رو امتحان کن
+    if module is None:
+        try:
+            module = __import__(f"app.api.v1.{module_name}", fromlist=["router"])
+        except ImportError as e:
+            logger.warning(f"⚠️ ماژول {module_name} یافت نشد: {e}")
+            continue
+        except Exception as e:
+            logger.error(f"❌ خطا در ثبت {module_name}: {e}")
+            continue
+
+    try:
         if hasattr(module, "router"):
             router.include_router(
                 module.router,
@@ -34,7 +51,5 @@ for module_name, prefix in routers_to_import:
             logger.info(f"✅ Router {module_name} ثبت شد")
         else:
             logger.warning(f"⚠️ Router {module_name} دارای router نیست")
-    except ImportError as e:
-        logger.warning(f"⚠️ ماژول {module_name} یافت نشد: {e}")
     except Exception as e:
         logger.error(f"❌ خطا در ثبت {module_name}: {e}")

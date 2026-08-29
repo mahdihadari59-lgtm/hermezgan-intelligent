@@ -1,0 +1,251 @@
+
+━━━ backup/pr18-before-cleanup ━━━
+* be5ede8 fix: resolve merge conflict in main.py
+* cafdd20 chore: bump mobile app version to 1.1.0-beta.1
+* 36a909e chore: pin Pydantic to 2.5.3 for reproducibility
+* 1190c8f docs: add changelog entry for 1.1.0-beta.1 and migration notes
+* 7710609 chore: bump frontend app version to 1.1.0-beta.1
+* 44b8d22 chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+* 0253965 chore: align Bandari Engine to v5.2.3
+* 94f01d7 fix: wire FastAPI chat directly to Bandari Engine
+* 852216f chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+* 1f0774a archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+*   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+|\  
+| * e79454e chore: move audio.wav to Git LFS
+| * 135eb34 chore: add .gitattributes for audio.wav LFS
+* |   f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+|\ \  
+| * | 801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+
+━━━ ci/coverage-security ━━━
+*   fde4042 Resolve merge conflicts
+|\  
+| *   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+| |\  
+| | * e79454e chore: move audio.wav to Git LFS
+| | * 135eb34 chore: add .gitattributes for audio.wav LFS
+| * |   f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+| |\ \  
+| | * | 801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+| * | |   203b35a Merge pull request #13 from mahdihadari59-lgtm/ai-engine-v2
+| |\ \ \  
+| | |_|/  
+| |/| |   
+| | * | 5ddc833 ci(ai-engine-v2): add GitHub Actions workflow for backend and frontend tests
+| * | |   10e9820 Merge pull request #10 from mahdihadari59-lgtm/sync-env
+| |\ \ \  
+| | |_|/  
+| |/| |   
+| | * |   d06273e Merge pull request #9 from mahdihadari59-lgtm/main
+| | |\ \  
+| | |/ /  
+| |/| |   
+| * | | 5901534 Update README.md
+| | * | daec3d0 chore(sync-env): unify DB config in docker-compose to DATABASE_URL and add DATABASE_PATH for compatibility
+| |/ /  
+| * | f03502b fix: accept DATABASE_URL sqlite:///... forms and normalize to file path before connecting
+| * | 48563ea fix: prefer DATABASE_URL over DATABASE_PATH; fallback handling and logging
+| * | d6a3bb9 chore: update README with setup instructions, env vars, and maintenance notes
+
+━━━ develop-v1.4 ━━━
+* 3fdb59b fix(api): register locations router from endpoints
+* d5f983b fix(HermezganMobile): configure Expo assets JSC and Android export
+* 5d7b296 fix(HermezganMobile): configure Expo assets and JSC for Termux
+* 0253965 chore: align Bandari Engine to v5.2.3
+* 94f01d7 fix: wire FastAPI chat directly to Bandari Engine
+* 852216f chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+* 1f0774a archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+*   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+|\  
+| * e79454e chore: move audio.wav to Git LFS
+| * 135eb34 chore: add .gitattributes for audio.wav LFS
+* |   f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+|\ \  
+| * | 801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+* | |   203b35a Merge pull request #13 from mahdihadari59-lgtm/ai-engine-v2
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 5ddc833 ci(ai-engine-v2): add GitHub Actions workflow for backend and frontend tests
+* | |   10e9820 Merge pull request #10 from mahdihadari59-lgtm/sync-env
+|\ \ \  
+| |_|/  
+|/| |   
+
+━━━ docs/tts-fastapi-validation ━━━
+* 91118b2 docs+feat: ElevenLabs TTS integration with validation docs
+*   7eb1ab7 fix: resolve merge conflict in main.py and sync with develop branch
+|\  
+| *   104fa98 Merge pull request #16 from mahdihadari59-lgtm/main
+| |\  
+| |/  
+|/|   
+* |   c6dc311 Merge pull request #17 from hdpbnd/feature/critical-deficiencies-completion
+|\ \  
+| * | d592f1e 🔧 P1.1: Backend Integration - MLflow + TTS + Service Contracts in main.py
+| * | 12d0fe8 ✅ P0.5: Fixed Docker Compose with Unified Environment Variables
+| * | 9178656 ✅ P0.4: Complete TTS (Text-to-Speech) Integration Service
+| * | 62bf315 ✅ P0.3: Unified Environment Configuration (.env)
+| * | 0fc4186 🔧 P0.2: Add Service Contracts (Canonical API Schemas)
+| * | 91a0166 🔧 P0.2: Add Event Contracts (Canonical Event Schemas)
+| * | 0e61b26 🚀 P0: Add MLflow Tracking Server & Model Registry
+|/ /  
+* |   e4f3faa Merge pull request #15 from mahdihadari16-stack/main
+|\ \  
+| * \   b2892ad Merge pull request #1 from mahdihadari59-lgtm/main
+| |\ \  
+| |/ /  
+|/| |   
+* | |   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+|\ \ \  
+| * | | e79454e chore: move audio.wav to Git LFS
+
+━━━ feature/integration-speech-gateway ━━━
+* 260b118 feat: integrate gateway, routers, and speech pipeline
+* 006a26b fix(frontend): sync package-lock.json
+* 9ac9490 feat: complete Bandari Engine 2026 structure
+* 9f49f18 Project restructure and updates
+*   ff2aeb8 Merge pull request #3 from hdpbnd/main
+|\  
+| *   34e15af Merge branch 'mahdihadari59-lgtm:main' into main
+| |\  
+| * | 154fe8d Add comprehensive Bandar Abbas atlas data with 4 regions, neighborhoods, and facilities
+* | | 7c42c1a chore: ignore backup directory
+* | | bfd03b5 fix(backend): stabilize backend and pass all 66 tests
+* | | d2d355e chore: update setup and utility scripts
+* | | e284db2 data: add Hormozgan atlas dictionary
+* | | 1150bc7 feat(ai): add independent Bandari dialect engine
+* | | 0a75f83 feat(geo): add standalone spatial database engine
+* | | d72606e refactor(backend): improve core architecture and security
+* | | 22c1193 fix: downgrade hazm to 0.9.3
+
+━━━ feature/voice-api ━━━
+* 6b26ccb feat(ai): integrate Copilot v6, Orchestrator, Speech API and frontend panels
+* a726f3c test: validate voice api with vosk pipeline
+* 3e9afff test: verify backend startup and Vosk integration
+* 260b118 feat: integrate gateway, routers, and speech pipeline
+* 006a26b fix(frontend): sync package-lock.json
+* 9ac9490 feat: complete Bandari Engine 2026 structure
+* 9f49f18 Project restructure and updates
+*   ff2aeb8 Merge pull request #3 from hdpbnd/main
+|\  
+| *   34e15af Merge branch 'mahdihadari59-lgtm:main' into main
+| |\  
+| * | 154fe8d Add comprehensive Bandar Abbas atlas data with 4 regions, neighborhoods, and facilities
+* | | 7c42c1a chore: ignore backup directory
+* | | bfd03b5 fix(backend): stabilize backend and pass all 66 tests
+* | | d2d355e chore: update setup and utility scripts
+* | | e284db2 data: add Hormozgan atlas dictionary
+* | | 1150bc7 feat(ai): add independent Bandari dialect engine
+
+━━━ fix/complete-integration-v2 ━━━
+* 8ad13c4 fix(integration): align Bandari provider API paths
+* 1d09de5 fix(tts): repair malformed local provider import
+* f0ef119 fix: resolve merge conflict in main.py
+* 047a5ca chore: bump mobile app version to 1.1.0-beta.1
+* 7bc58b0 chore: pin Pydantic to 2.5.3 for reproducibility
+* a290276 docs: add changelog entry for 1.1.0-beta.1 and migration notes
+* 955395d chore: bump frontend app version to 1.1.0-beta.1
+* 8dfdc7f chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+* d70d1eb chore: align Bandari Engine to v5.2.3
+* 0d3525a fix: wire FastAPI chat directly to Bandari Engine
+* 244cee5 chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+* 26b0aad archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+*   7eb1ab7 fix: resolve merge conflict in main.py and sync with develop branch
+|\  
+| *   104fa98 Merge pull request #16 from mahdihadari59-lgtm/main
+| |\  
+| |/  
+|/|   
+* |   c6dc311 Merge pull request #17 from hdpbnd/feature/critical-deficiencies-completion
+|\ \  
+
+━━━ fix/develop-v1.4-scan ━━━
+* be5ede8 fix: resolve merge conflict in main.py
+* cafdd20 chore: bump mobile app version to 1.1.0-beta.1
+* 36a909e chore: pin Pydantic to 2.5.3 for reproducibility
+* 1190c8f docs: add changelog entry for 1.1.0-beta.1 and migration notes
+* 7710609 chore: bump frontend app version to 1.1.0-beta.1
+* 44b8d22 chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+* 0253965 chore: align Bandari Engine to v5.2.3
+* 94f01d7 fix: wire FastAPI chat directly to Bandari Engine
+* 852216f chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+* 1f0774a archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+*   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+|\  
+| * e79454e chore: move audio.wav to Git LFS
+| * 135eb34 chore: add .gitattributes for audio.wav LFS
+* |   f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+|\ \  
+| * | 801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+
+━━━ main ━━━
+* 7a4032e WIP: changes before subtree operation
+* e7c21ab fix: unify Vosk STT on tested Node bridge (stt_cli.js), remove broken python-vosk and stale hardcoded paths
+* dadb72c chore: آرشیو main.py قدیمی (جایگزین شده با app/main.py)
+* f00b72e docs: add v2.2.0 release notes
+* 7ed4d8d docs: update comprehensive README with Termux setup, architecture, and API documentation
+* cfb2c99 chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+* 82d14ec test: add Bandari URL composition unit test
+* 130ca2f refactor: update API endpoints and routers structure
+* fe0ecb6 remove: حذف فایل اشتباهی chat.py
+* d6cdc04 test: verify signing after adding key to GitHub
+* 9334f66 test: verify SSH commit signing
+* d5d99be docs: rewrite project README with architecture, setup, and troubleshooting
+* 7dcbc14 chore: also ignore .bak2 and similar backup suffixes
+* f3f8365 chore: untrack audio files, add audio extensions to .gitignore
+*   30b8a56 Merge branch 'main' of https://github.com/mahdihadari59-lgtm/hermezgan-intelligent
+|\  
+
+━━━ release/v1.0.0 ━━━
+*   5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+|\  
+| * e79454e chore: move audio.wav to Git LFS
+| * 135eb34 chore: add .gitattributes for audio.wav LFS
+* |   f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+|\ \  
+| * | 801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+* | |   203b35a Merge pull request #13 from mahdihadari59-lgtm/ai-engine-v2
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 5ddc833 ci(ai-engine-v2): add GitHub Actions workflow for backend and frontend tests
+* | |   10e9820 Merge pull request #10 from mahdihadari59-lgtm/sync-env
+|\ \ \  
+| |_|/  
+|/| |   
+| * |   d06273e Merge pull request #9 from mahdihadari59-lgtm/main
+| |\ \  
+| |/ /  
+|/| |   
+* | | 5901534 Update README.md
+| * | daec3d0 chore(sync-env): unify DB config in docker-compose to DATABASE_URL and add DATABASE_PATH for compatibility
+|/ /  
+* | f03502b fix: accept DATABASE_URL sqlite:///... forms and normalize to file path before connecting
+* | 48563ea fix: prefer DATABASE_URL over DATABASE_PATH; fallback handling and logging
+* | d6a3bb9 chore: update README with setup instructions, env vars, and maintenance notes
+* | 8efb5a9 Merge pull request #8 from mahdihadari59-lgtm/ai-engine-v2
+|\| 
+
+━━━ repair/pr18-merge ━━━
+* 8ad13c4 fix(integration): align Bandari provider API paths
+* 1d09de5 fix(tts): repair malformed local provider import
+* f0ef119 fix: resolve merge conflict in main.py
+* 047a5ca chore: bump mobile app version to 1.1.0-beta.1
+* 7bc58b0 chore: pin Pydantic to 2.5.3 for reproducibility
+* a290276 docs: add changelog entry for 1.1.0-beta.1 and migration notes
+* 955395d chore: bump frontend app version to 1.1.0-beta.1
+* 8dfdc7f chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+* d70d1eb chore: align Bandari Engine to v5.2.3
+* 0d3525a fix: wire FastAPI chat directly to Bandari Engine
+* 244cee5 chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+* 26b0aad archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+*   7eb1ab7 fix: resolve merge conflict in main.py and sync with develop branch
+|\  
+| *   104fa98 Merge pull request #16 from mahdihadari59-lgtm/main
+| |\  
+| |/  
+|/|   
+* |   c6dc311 Merge pull request #17 from hdpbnd/feature/critical-deficiencies-completion
+|\ \  

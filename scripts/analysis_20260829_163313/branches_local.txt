@@ -1,0 +1,11 @@
+  backup/pr18-before-cleanup         be5ede8 fix: resolve merge conflict in main.py
+  ci/coverage-security               fde4042 Resolve merge conflicts
+  develop-v1.4                       3fdb59b [origin/develop-v1.4: ahead 3] fix(api): register locations router from endpoints
+  docs/tts-fastapi-validation        91118b2 [origin/main: behind 20] docs+feat: ElevenLabs TTS integration with validation docs
+  feature/integration-speech-gateway 260b118 [origin/feature/integration-speech-gateway: gone] feat: integrate gateway, routers, and speech pipeline
+  feature/voice-api                  6b26ccb [origin/feature/voice-api: ahead 1, behind 4] feat(ai): integrate Copilot v6, Orchestrator, Speech API and frontend panels
+  fix/complete-integration-v2        8ad13c4 [origin/fix/complete-integration-v2] fix(integration): align Bandari provider API paths
+  fix/develop-v1.4-scan              be5ede8 [origin/fix/develop-v1.4-scan] fix: resolve merge conflict in main.py
+* main                               7a4032e [origin/main: ahead 2] WIP: changes before subtree operation
+  release/v1.0.0                     5e59c46 [origin/release/v1.0.0] Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+  repair/pr18-merge                  8ad13c4 [origin/fix/develop-v1.4-scan: ahead 24, behind 10] fix(integration): align Bandari provider API paths

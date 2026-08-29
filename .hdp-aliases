@@ -1,0 +1,8 @@
+alias hdp-status='cd ~/hermezgan-intelligent && git status'
+alias hdp-analyze='bash ~/hermezgan-intelligent/scripts/analyze_git.sh'
+alias hdp-conflicts='bash ~/hermezgan-intelligent/scripts/check_conflicts.sh'
+alias hdp-integrate='bash ~/hermezgan-intelligent/scripts/integrate.sh'
+alias hdp-subtree='bash ~/hermezgan-intelligent/scripts/subtree.sh'
+alias hdp-rebase='bash ~/hermezgan-intelligent/scripts/rebase.sh'
+alias hdp-quick='bash ~/hermezgan-intelligent/scripts/hdp-quick.sh'
+alias hdp-backup='bash ~/hermezgan-intelligent/scripts/manage_versions.sh'
