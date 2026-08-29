@@ -1,74 +1,76 @@
-"""Chat API Endpoints"""
+from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Query
-from pydantic import BaseModel
-from typing import Optional, Dict
-from loguru import logger
+from typing import Any, Dict
+
+from fastapi import APIRouter
+from pydantic import BaseModel, Field
+
 from app.services.chat_service import get_chat_service
 
-router = APIRouter(tags=["chat"])
-
-class ChatMessage(BaseModel):
-    """Chat Message Request"""
-    message: str
-    user_id: str = "anonymous"
-    language: str = "fa"
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-
-class ChatResponse(BaseModel):
-    """Chat Response"""
-    response: str
-    intent: str
-    confidence: float
-    retrieved_documents: list
-
-async def _handle_message(chat_msg: ChatMessage) -> ChatResponse:
-    logger.info(f"📨 Received chat message from {chat_msg.user_id}")
-    try:
-        chat_service = get_chat_service()
-
-        result = chat_service.process_message(
-            chat_msg.message,
-            chat_msg.user_id,
-            latitude=chat_msg.latitude,
-            longitude=chat_msg.longitude
-        )
-
-        return ChatResponse(
-            response=result["response"],
-            intent=result["intent"],
-            confidence=result["confidence"],
-            retrieved_documents=result["retrieved_documents"]
-        )
-
-    except Exception as e:
-        logger.error(f"Chat error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+router = APIRouter(tags=["Chat"])
 
 
-@router.post("/message", response_model=ChatResponse)
-async def send_message(chat_msg: ChatMessage) -> ChatResponse:
-    """Send a message to chat bot"""
-    return await _handle_message(chat_msg)
+class ChatRequest(BaseModel):
+    query: str | None = None
+    message: str | None = None
+    text: str | None = None
+
+    conversationId: str | None = None
+    conversation_id: str | None = None
+
+    userId: str | None = None
+    user_id: str | None = None
+
+    location: Dict[str, Any] = Field(default_factory=dict)
+    dialect: str | None = None
+    mode: str = "text"
+    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
-@router.post("/send", response_model=ChatResponse)
-async def send_message_alias(chat_msg: ChatMessage) -> ChatResponse:
-    """Alias برای سازگاری با کلاینت‌هایی که /send صدا می‌زنن"""
-    return await _handle_message(chat_msg)
+def _text(req: ChatRequest) -> str:
+    return (req.query or req.message or req.text or "").strip()
 
 
-@router.get("/history")
-async def get_chat_history(user_id: str = Query(...), limit: int = Query(50, le=200)):
-    """Get chat history for a user"""
-    logger.info(f"📖 Fetching chat history for {user_id}")
+@router.get("/health")
+async def health():
+    return {
+        "status": "ok",
+        "service": "ChatService",
+        "provider": "BandariProvider",
+    }
 
-    try:
-        chat_service = get_chat_service()
-        history = chat_service.get_chat_history(user_id, limit)
-        return {"user_id": user_id, "messages": history}
 
-    except Exception as e:
-        logger.error(f"History fetch error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+@router.post("/chat/message")
+async def message(req: ChatRequest):
+    text = _text(req)
+
+    if not text:
+        return {
+            "success": False,
+            "response": "query/message/text required",
+            "intent": "general",
+            "confidence": 0.0,
+            "source": "validation",
+            "dialect": {},
+            "suggestions": [],
+        }
+
+    user_id = req.userId or req.user_id or "anonymous"
+    session_id = req.conversationId or req.conversation_id
+
+    service = get_chat_service()
+
+    result = await service.process_message(
+        text,
+        user_id,
+        session_id=session_id,
+        latitude=req.location.get("latitude") if req.location else None,
+        longitude=req.location.get("longitude") if req.location else None,
+    )
+
+    return result
+
+
+@router.post("/chat/ask")
+async def ask(req: ChatRequest):
+    return await message(req)

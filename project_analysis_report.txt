@@ -1,0 +1,186 @@
+=========================================
+📊  گزارش تحلیل پروژه
+=========================================
+
+تاریخ: Tue Aug  4 22:28:10 +0330 2026
+مسیر: /data/data/com.termux/files/home/hermezgan-intelligent
+
+=========================================
+📊  آمار کلی
+=========================================
+  📄 کل فایل‌ها: 144
+  📝 فایل‌های JS: 101
+  ⚛️  فایل‌های JSX: 17
+  🎨 فایل‌های CSS: 23
+  📋 فایل‌های JSON: 3
+  📊 کل خطوط کد: 6781
+  💾 حجم کل: 838K
+
+=========================================
+📂  پوشه‌های سطح اول
+=========================================
+
+  📁 api/ → 1 فایل | 7.5K | 101 خط
+  📁 components/ → 60 فایل | 284K | 2777 خط
+  📁 features/ → 11 فایل | 88K | 665 خط
+  📁 hdp-copilot/ → 31 فایل | 180K | 1480 خط
+  📁 hooks/ → 4 فایل | 20K | 198 خط
+  📁 pages/ → 10 فایل | 76K | 557 خط
+  📁 reducers/ → 1 فایل | 7.5K | 1 خط
+  📁 services/ → 10 فایل | 44K | 292 خط
+  📁 store/ → 7 فایل | 35K | 203 خط
+  📁 utils/ → 5 فایل | 28K | 483 خط
+
+=========================================
+📂  جزئیات پوشه‌ها (سطح دوم)
+=========================================
+
+  📁 api/ → 1 فایل | 7.5K | 101 خط
+  📁 components/ → 60 فایل | 284K | 2777 خط
+  📁 components/Chat/ → 11 فایل | 48K | 292 خط
+  📁 components/Common/ → 8 فایل | 36K | 150 خط
+  📁 components/Dashboard/ → 7 فایل | 32K | 217 خط
+  📁 components/Hotspots/ → 3 فایل | 16K | 80 خط
+  📁 components/Layout/ → 7 فایل | 32K | 126 خط
+  📁 components/Map/ → 6 فایل | 28K | 315 خط
+  📁 components/layers/ → 10 فایل | 44K | 782 خط
+  📁 components/map/ → 6 فایل | 36K | 627 خط
+  📁 features/ → 11 فایل | 88K | 665 خط
+  📁 features/auth/ → 1 فایل | 7.5K | 38 خط
+  📁 features/camera/ → 1 فایل | 7.5K | 36 خط
+  📁 features/chat/ → 1 فایل | 12K | 154 خط
+  📁 features/dashboard/ → 1 فایل | 7.5K | 34 خط
+  📁 features/hotspot/ → 1 فایل | 7.5K | 36 خط
+  📁 features/map/ → 1 فایل | 7.5K | 64 خط
+  📁 features/ui/ → 1 فایل | 7.5K | 57 خط
+  📁 features/hdpCopilot/ → 3 فایل | 24K | 217 خط
+  📁 hooks/ → 4 فایل | 20K | 198 خط
+  📁 pages/ → 10 فایل | 76K | 557 خط
+  📁 reducers/ → 1 فایل | 7.5K | 1 خط
+  📁 services/ → 10 فایل | 44K | 292 خط
+  📁 store/ → 7 فایل | 35K | 203 خط
+  📁 store/slices/ → 4 فایل | 20K | 136 خط
+  📁 utils/ → 5 فایل | 28K | 483 خط
+  📁 hdp-copilot/ → 28 فایل | 180K | 1480 خط
+  📁 hdp-copilot/core/ → 12 فایل | 72K | 1030 خط
+  📁 hdp-copilot/experts/ → 8 فایل | 36K | 223 خط
+  📁 hdp-copilot/memory/ → 3 فایل | 16K | 101 خط
+  📁 hdp-copilot/middleware/ → 3 فایل | 16K | 59 خط
+  📁 hdp-copilot/utils/ → 1 فایل | 7.5K | 35 خط
+
+=========================================
+🔍  شناسایی پروژه‌های مجزا
+=========================================
+
+📁 1. پروژه HDP Copilot
+-----------------------------------------
+  حجم: 180K
+  تعداد فایل‌ها: 28
+  خطوط کد: 1480
+  مسیر: frontend/src/hdp-copilot/
+
+📁 2. پروژه نقشه (GIS)
+-----------------------------------------
+  حجم: 87.5
+  تعداد فایل‌ها: 17
+  خطوط کد: 1473
+  مسیرها:
+    - frontend/src/components/layers/
+    - frontend/src/components/map/
+    - frontend/src/features/map/
+
+📁 3. پروژه چت
+-----------------------------------------
+  حجم: 60
+  تعداد فایل‌ها: 7
+  خطوط کد: 446
+  مسیرها:
+    - frontend/src/components/Chat/
+    - frontend/src/features/chat/
+
+📁 4. پروژه داشبورد
+-----------------------------------------
+  حجم: 39.5
+  تعداد فایل‌ها: 5
+  خطوط کد: 251
+  مسیرها:
+    - frontend/src/components/Dashboard/
+    - frontend/src/features/dashboard/
+
+📁 5. پروژه احراز هویت
+-----------------------------------------
+  حجم: 15.5
+  تعداد فایل‌ها: 3
+  خطوط کد: 97
+  مسیرها:
+    - frontend/src/features/auth/
+    - frontend/src/services/authService.js
+    - frontend/src/hooks/useAuth.js
+
+
+=========================================
+🔄  فایل‌های تکراری
+=========================================
+
+  📄 authSlice.js
+     → frontend/src/features/auth/authSlice.js (38 خط, 897 بایت)
+     → frontend/src/store/slices/authSlice.js (33 خط, 879 بایت)
+
+  📄 chatSlice.js
+     → frontend/src/features/chat/chatSlice.js (154 خط, 4500 بایت)
+     → frontend/src/store/slices/chatSlice.js (44 خط, 1021 بایت)
+
+  📄 index.js
+     → frontend/src/components/Chat/index.js (6 خط, 349 بایت)
+     → frontend/src/components/Common/index.js (5 خط, 255 بایت)
+     → frontend/src/components/Layout/index.js (4 خط, 211 بایت)
+     → frontend/src/components/index.js (11 خط, 383 بایت)
+     → frontend/src/features/index.js (29 خط, 1324 بایت)
+     → frontend/src/features/hdpCopilot/index.js (1 خط, 58 بایت)
+     → frontend/src/index.js (18 خط, 467 بایت)
+     → frontend/src/reducers/index.js (1 خط, 48 بایت)
+     → frontend/src/store/index.js (32 خط, 795 بایت)
+     → frontend/src/hdp-copilot/index.js (32 خط, 1662 بایت)
+
+  📄 mapSlice.js
+     → frontend/src/features/map/mapSlice.js (64 خط, 1367 بایت)
+     → frontend/src/store/slices/mapSlice.js (34 خط, 1185 بایت)
+
+  📄 uiSlice.js
+     → frontend/src/features/ui/uiSlice.js (57 خط, 1236 بایت)
+     → frontend/src/store/slices/uiSlice.js (25 خط, 753 بایت)
+
+
+=========================================
+📄  فایل‌های بزرگ (بیش از ۱۰۰ خط)
+=========================================
+
+  📄 api/mapApi.js → 101 خط | 2649 بایت
+  📄 components/Chat/MessageInput.js → 106 خط | 3795 بایت
+  📄 components/ChatBox.jsx → 177 خط | 5983 بایت
+  📄 components/Map/HotspotInfo.js → 101 خط | 3991 بایت
+  📄 components/layers/CameraLayer.jsx → 104 خط | 3655 بایت
+  📄 components/layers/GeoTiffLayer.jsx → 107 خط | 3466 بایت
+  📄 components/layers/TrafficLayer.jsx → 109 خط | 3296 بایت
+  📄 components/map/MapEngine.jsx → 235 خط | 8435 بایت
+  📄 features/chat/chatSlice.js → 154 خط | 4500 بایت
+  📄 features/hdpCopilot/CopilotPanel.js → 131 خط | 6153 بایت
+  📄 pages/MapPage.js → 390 خط | 20596 بایت
+  📄 utils/offlineCache.js → 220 خط | 6205 بایت
+  📄 hdp-copilot/core/AICopilot.js → 250 خط | 11493 بایت
+  📄 hdp-copilot/core/EntityParser.js → 106 خط | 4768 بایت
+  📄 hdp-copilot/core/ExpertRouter.js → 107 خط | 3396 بایت
+  📄 hdp-copilot/core/SearchPipeline.js → 135 خط | 5401 بایت
+
+=========================================
+📊  خلاصه نهایی
+=========================================
+
+  📁 تعداد کل پوشه‌ها: 36
+  📄 تعداد کل فایل‌ها: 144
+  📊 کل خطوط کد: 6781
+  💾 حجم کل: 838K
+
+=========================================
+✅  گزارش کامل شد!
+=========================================

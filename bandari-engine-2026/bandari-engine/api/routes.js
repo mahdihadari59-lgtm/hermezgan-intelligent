@@ -1,8 +1,4 @@
 const express = require('express');
-const speech = require('../speech');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
 const logger = require('../utils/logger');
 
 function createRoutes(engines) {
@@ -23,38 +19,6 @@ function createRoutes(engines) {
     const dialectResult = dialect.detect(text);
     const intentResult = intent.analyze(text);
     const history = context.getHistory(sessionId);
-
-    // Exact Dictionary match takes priority over RAG.
-    // This prevents RAG from overriding known Bandari vocabulary.
-    const dictionaryWords = text.split(/\s+/).filter(Boolean);
-    const dictionaryResults = dictionaryWords.map(word => dictionary.translate(word));
-    const dictionaryMatched = dictionaryResults.filter(result => result.found).length;
-    const dictionaryExactMatch =
-      dictionaryWords.length > 0 &&
-      dictionaryMatched === dictionaryWords.length;
-
-    if (dictionaryExactMatch) {
-      const translatedWords = dictionaryResults.map(result => result.translation);
-      const translation = grammar.apply(translatedWords.join(' '));
-
-      context.addTurn(sessionId, {
-        text,
-        translation,
-        source: 'dictionary'
-      });
-
-      return {
-        success: true,
-        translation,
-        original: text,
-        intent: intentResult.intent,
-        dialect: dialectResult.dialect,
-        confidence: 0.95,
-        matchedWords: dictionaryMatched,
-        totalWords: dictionaryWords.length,
-        source: 'dictionary'
-      };
-    }
 
     const ragResult = rag.search(text);
     if (ragResult.found) {
@@ -279,103 +243,6 @@ function createRoutes(engines) {
 
   router.get('/health', (req, res) => {
     res.json({ status: 'online', version: '5.2.3' });
-  });
-
-
-  // ============================================================
-  // VOICE / SPEECH — existing Bandari speech services
-  // ============================================================
-
-  router.post('/speech/stt', async (req, res) => {
-    const chunks = [];
-
-    try {
-      for await (const chunk of req) {
-        chunks.push(chunk);
-      }
-
-      const audioBuffer = Buffer.concat(chunks);
-
-      if (!audioBuffer.length) {
-        return res.status(400).json({
-          success: false,
-          error: 'فایل صوتی ارسال نشده است'
-        });
-      }
-
-      const ext =
-        req.headers['x-audio-format'] === 'mp3'
-          ? '.mp3'
-          : '.wav';
-
-      const tempPath = path.join(
-        os.tmpdir(),
-        `bandari_stt_${Date.now()}${ext}`
-      );
-
-      fs.writeFileSync(tempPath, audioBuffer);
-
-      try {
-        const text = await speech.transcribe(tempPath, {
-          modelPath: process.env.VOSK_MODEL_PATH
-        });
-
-        return res.json({
-          success: true,
-          text,
-          provider: 'vosk',
-          model: process.env.VOSK_MODEL_PATH
-        });
-      } finally {
-        fs.rmSync(tempPath, { force: true });
-      }
-
-    } catch (error) {
-      logger.error('STT error:', error);
-
-      return res.status(500).json({
-        success: false,
-        error: error.message
-      });
-    }
-  });
-
-  router.post('/speech/tts', async (req, res) => {
-    try {
-      const { text, voiceId, modelId } = req.body || {};
-
-      if (!text || typeof text !== 'string') {
-        return res.status(400).json({
-          success: false,
-          error: 'text الزامی است'
-        });
-      }
-
-      const tts = speech.getTTS({
-        voiceId
-      });
-
-      const audio = await tts.synthesize(text, {
-        voiceId,
-        modelId
-      });
-
-      res.set({
-        'Content-Type': 'audio/mpeg',
-        'Content-Length': audio.length,
-        'X-TTS-Provider': 'elevenlabs'
-      });
-
-      return res.send(audio);
-
-    } catch (error) {
-      logger.error('TTS error:', error);
-
-      return res.status(500).json({
-        success: false,
-        error: error.message
-      });
-    }
   });
 
   return router;

@@ -1,56 +1,22 @@
 # 📝 تاریخچه تغییرات
 
-## [2.2.0] - 2026-08-26
+## [1.1.0-beta.1] - 2026-08-18
 
-### ✨ اضافه شده
-- 📖 مستندات جامع README با راهنمای کامل Termux
-- 🏗️ توضیح معماری و پشته فناوری تفصیلی
-- 📂 نمایش ساختار پروژه جامع
-- 📡 فهرست کامل اندپوینت‌های API
-- 🧪 راهنمای تست و اعتبارسنجی
-- 🐛 راه‌حل 10+ مسئله رایج
-- 🐳 راهنمای Docker Compose
-- 🔐 بخش امنیت و بهترین‌های عملی
-- 🎯 نقشه‌راه آینده پروژه
+### ✨ تغییرات اصلی
+- همگام‌سازی ورژن Backend / Frontend / Mobile به `1.1.0-beta.1`.
+- مهاجرت به Pydantic v2 (پین‌شده به `pydantic==2.5.3`) برای سازگاری با APIهای جدید (`model_dump`, `ConfigDict`, `field_validator`).
+- رفع چندین خطا و تکمیل فایل‌های ناقص در مسیرهای `backend/app/api/v1`.
 
-### ✅ بهبودها
-- تمام routers (14 router) کار می‌کنند و تست شده‌اند
-- سرور FastAPI پایدار و با reload خودکار
-- Pydantic v2 integration کامل
-- بکاپ و بازگردانی دیتابیس راحت‌تر
+### ⚠️ نکات مهاجرت
+- Pydantic v2 تغییرات API قابل توجهی دارد؛ قبل از merge حتماً تست‌های smoke و CI اجرا شوند.
+- توصیه می‌شود به‌صورت مرحله‌ای برای ماژول‌های بزرگ مهاجرت کامل انجام شود.
 
-### ⚠�� شناخته‌شده
-- ماژول `pois.py` موقتاً غیرفعال (وابستگی `database_service.py` مفقود)
-  - راه‌حل: جستجوی POI از طریق Copilot Gateway در دسترس است
+### 🧪 کارهای انجام‌شده در این شاخه
+- بامپ ورژن در `frontend/src/utils/constants.js` و `HermezganMobile/app.json`.
+- پین پکیج `pydantic==2.5.3` در فایل‌های requirements.
+- ��ازبینی و اصلاح فایل‌های نیمه‌کامل در `backend/app/api/v1`.
 
-## [2.1.3] - 2026-08-06
-
-### Added
-- Full containerization with Docker
-- CI/CD pipeline with GitHub Actions
-- Complete documentation (ARCHITECTURE.md, INSTALL.md)
-- Release tooling and scripts
-
-### Changed
-- Updated all services to use Docker
-- Improved project structure
-- Enhanced configuration management
-
-### Fixed
-- Various bug fixes
-- Performance improvements
-
-## [1.0.1] - 2026-08-03
-
-### ✨ اضافه شده
-- README: راهنمای راه‌اندازی با Docker و محلی
-- هماهنگ‌سازی env: استفاده از DATABASE_URL
-- پشتیبانی از sqlite:/// paths
-- مدیریت فایل‌های بزرگ با Git LFS
-- CI: workflow پایه برای pytest
-- اطلاعات جامع بندرعباس (۴ منطقه، محله‌ها، امکانات)
-
-## [1.0.0] - 2026-08-03
+## [1.0.0] - 2024-01-01
 
 ### ✨ اضافه شده
 - سیستم احراز هویت JWT
@@ -67,13 +33,5 @@
 - رفع مشکل زمان پاسخ چت‌بات
 
 ### 🔧 تغییرات
-- FastAPI 0.104
-- React 18.2
-
-## [0.9.0] - 2023-12-15
-
-### ✨ اضافه شده
-- نسخه اولیه Backend
-- نسخه اولیه Frontend
-- اتصال به PostgreSQL
-- اتصال به Redis
+- به‌روزرسانی FastAPI به 0.104
+- به‌روزرسانی React به 18.2

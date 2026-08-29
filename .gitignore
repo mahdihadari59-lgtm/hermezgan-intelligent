@@ -1,69 +1,50 @@
-# Python
+# Dependencies
+node_modules/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.venv/
-venv/
-.venv-*/
-
-# Node.js
-node_modules/
-frontend/node_modules/
-frontend/build/
-build/
-
-# Databases
-*.db
-*.db-wal
-*.db-shm
-*.db-journal
-*.sqlite
-*.sqlite3
-*.duplicate_backup
-
-# Backups
-*.bak
-*.bak.*
-*.backup
-backups/
-backups_fix/
-_archived_backups/
-
-# Archives
-*.tar.gz
-*.zip
-*.gz
-
-# Environment & secrets
 .env
-.env.*
-!.env.example
-*.pem
-*.key
-*.p12
-*.pfx
+.venv/
 
-# Logs
-*.log
+# Build outputs
+build/
+dist/
+*.egg-info/
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Large output/audit dirs
-backend/outputs/
+# Logs
+*.log
+logs/
 
-# Audio files
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Audio
 *.wav
 *.mp3
 *.ogg
-*.m4a
-*.flac
-*.aac
-*.webm
+
+# Backup files
 *.bak*
+*.backup*
+*.old*
+*.mangled*
+
+# Version backups
+.version-backups/
+.backup-*/
+
+# Archive
+_archive/
+backup_imports/
+frontend_OLD_*/

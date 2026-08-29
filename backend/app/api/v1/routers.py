@@ -8,14 +8,10 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-_MODULE_MAP = {
-    "tts": "app.api.v1.tts",
-    "locations": "app.api.v1.endpoints.locations",
-    "bandari_voice": "app.api.v1.endpoints.bandari_voice",
-}
-
+# لیست routerهایی که باید ثبت شوند
 routers_to_import = [
     ("ping", "ping"),
+    ("chat", "chat"),
     ("locations", "locations"),
     ("analytics", "analytics"),
     ("cameras", "cameras"),
@@ -24,19 +20,11 @@ routers_to_import = [
     ("traffic", "traffic"),
     ("auth", "auth"),
     ("pois", "pois"),
-    ("bandari_voice", "bandari-voice"),
 ]
 
 for module_name, prefix in routers_to_import:
     try:
-        module_path = _MODULE_MAP.get(
-            module_name,
-            f"app.api.v1.{module_name}",
-        )
-        module = __import__(
-            module_path,
-            fromlist=["router"],
-        )
+        module = __import__(f"app.api.v1.{module_name}", fromlist=["router"])
         if hasattr(module, "router"):
             router.include_router(
                 module.router,
@@ -44,11 +32,6 @@ for module_name, prefix in routers_to_import:
                 tags=[prefix.capitalize()]
             )
             logger.info(f"✅ Router {module_name} ثبت شد")
-            if getattr(module.router, "prefix", ""):
-                logger.warning(
-                    f"⚠️ {module_name}: router already has internal prefix "
-                    f"'{module.router.prefix}' — will be double-prefixed"
-                )
         else:
             logger.warning(f"⚠️ Router {module_name} دارای router نیست")
     except ImportError as e:
