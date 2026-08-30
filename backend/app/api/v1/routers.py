@@ -9,6 +9,10 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 # لیست routerهایی که باید ثبت شوند
+_MODULE_MAP = {
+    "locations": "app.api.v1.endpoints.locations",
+}
+
 routers_to_import = [
     ("ping", "ping"),
     ("chat", "chat"),
@@ -42,6 +46,7 @@ for module_name, prefix in routers_to_import:
             continue
 
     try:
+        module = __import__(_MODULE_MAP.get(module_name, f"app.api.v1.{module_name}"), fromlist=["router"])
         if hasattr(module, "router"):
             router.include_router(
                 module.router,

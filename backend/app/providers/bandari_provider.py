@@ -23,13 +23,13 @@ class BandariProvider(BaseProvider):
             return json.loads(resp.read().decode("utf-8"))
 
     async def intent(self, text: str) -> Dict[str, Any]:
-        return self._post("/api/intent", {"text": text})
+        return self._post("/bandari/v2/intent", {"text": text})
 
     async def detect(self, text: str) -> Dict[str, Any]:
-        return self._post("/api/detect", {"text": text})
+        return self._post("/bandari/v2/detect", {"text": text})
 
     async def translate(self, text: str, session_id: Optional[str] = None) -> Dict[str, Any]:
         payload = {"text": text}
         if session_id:
             payload["sessionId"] = session_id
-        return self._post("/api/translate", payload)
+        return self._post("/bandari/v2/translate", payload)

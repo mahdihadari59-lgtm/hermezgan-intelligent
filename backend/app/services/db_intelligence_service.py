@@ -4,6 +4,7 @@ import math
 import os
 import re
 import sqlite3
+import logging
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
@@ -148,13 +149,31 @@ class DBIntelligenceService:
     def _fts_search(self, conn: sqlite3.Connection, query: str, limit: int) -> List[Dict[str, Any]]:
         if not self._table_exists(conn, "knowledge_fts"):
             return []
+
+        safe_query = query.replace('"', '""').strip()
+        if not safe_query:
+            return []
+        words = safe_query.split()
+        fts_query = " AND ".join(f'"{w}"' for w in words if len(w) > 1)
+        if not fts_query:
+            fts_query = f'"{safe_query}"'
+
         try:
             rows = conn.execute(
                 "SELECT rowid AS id, * FROM knowledge_fts WHERE knowledge_fts MATCH ? LIMIT ?",
-                (query, limit),
+                (fts_query, limit),
             ).fetchall()
-        except sqlite3.Error:
-            return []
+        except sqlite3.Error as e:
+            logging.getLogger("hdp.db_intelligence").warning(f"FTS MATCH error: {e}, falling back to LIKE")
+            try:
+                pattern = f"%{query}%"
+                rows = conn.execute(
+                    "SELECT rowid AS id, * FROM knowledge WHERE title LIKE ? OR content LIKE ? LIMIT ?",
+                    (pattern, pattern, limit),
+                ).fetchall()
+            except sqlite3.Error:
+                return []
+
         results = []
         for row in rows:
             rec = self._row(row)
