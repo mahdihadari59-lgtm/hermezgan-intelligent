@@ -49,7 +49,9 @@ class ChatService:
             }
 
         try:
-            r = self._ai.process(text)
+            lat = kwargs.get("latitude")
+            lon = kwargs.get("longitude")
+            r = self._ai.process(text, user_lat=lat, user_lon=lon)
 
             output = {
                 "response": r.response,

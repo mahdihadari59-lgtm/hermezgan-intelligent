@@ -13,6 +13,24 @@ from typing import Dict, List, Optional, Any
 from datetime import datetime
 from pathlib import Path
 
+import math
+
+
+def _haversine_km(lat1, lon1, lat2, lon2):
+    """محاسبه فاصله بین دو نقطه جغرافیایی به کیلومتر"""
+    if None in (lat1, lon1, lat2, lon2):
+        return None
+    try:
+        lat1, lon1, lat2, lon2 = float(lat1), float(lon1), float(lat2), float(lon2)
+    except (TypeError, ValueError):
+        return None
+    R = 6371
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2) ** 2 +
+         math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2)
+    return R * 2 * math.asin(math.sqrt(a))
+
 # ============================================================
 # تنظیمات مسیر دیتابیس‌ها
 # ============================================================
@@ -85,7 +103,7 @@ class HDPAIV6Dual:
         
         return results
     
-    def process(self, text: str):
+    def process(self, text: str, user_lat=None, user_lon=None):
         """پردازش پیام کاربر"""
         @dataclass
         class Response:
@@ -108,7 +126,7 @@ class HDPAIV6Dual:
         translation = self._translate(text)
         
         # جستجو در دیتابیس هرمزگان
-        results = self._search_hormozgan(text)
+        results = self._search_hormozgan(text, user_lat=user_lat, user_lon=user_lon)
         
         # تولید پاسخ
         response_text = self._generate_response(text, results, translation)
@@ -159,43 +177,106 @@ class HDPAIV6Dual:
         result = ' '.join(translated)
         return result if result != text else None
     
-    def _search_hormozgan(self, text: str) -> List[Dict]:
-        """جستجو در دیتابیس هرمزگان"""
+    STOPWORDS = {
+        'کجاست', 'چطوره', 'میخوام', 'می\u200cخوام', 'خرید', 'کنم',
+        'برای', 'من', 'است', 'هست', 'یک', 'چی', 'کو', 'نزدیک', 'ترین',
+        'خوب', 'معرفی', 'کن', 'بگو', 'میکنم', 'می\u200cکنم', 'رو', 'به',
+        'از', 'با', 'را', 'در', 'که', 'این', 'آن'
+    }
+
+    SEARCH_TABLES = [
+        ("pois", "name", "cat", "city", "district", "address", "lat", "lon"),
+        ("healthcare", "name", "type", "city", "district", "address", "lat", "lon"),
+        ("markets", "name_fa", "shop_type", "city", "district", None, "lat", "lon"),
+        ("restaurants", "name", "cuisine", "city", "district", "address", "lat", "lon"),
+        ("banks", "name", "type", "city", "district", "address", "lat", "lon"),
+        ("pharmacies", "name", "type", "city", "district", "address", "lat", "lon"),
+        ("hotels", "name", "type", "city", "district", "address", "lat", "lon"),
+        ("schools", "name", "type", "city", "district", "address", "lat", "lon"),
+    ]
+
+    def _extract_keywords(self, text: str) -> List[str]:
+        """استخراج کلمات کلیدی معنادار از جمله"""
+        words = [w.strip('؟?!.,،') for w in text.split()]
+        keywords = [w for w in words if w and w not in self.STOPWORDS and len(w) > 1]
+        return keywords or [text]
+
+    def _search_hormozgan(self, text: str, user_lat=None, user_lon=None) -> List[Dict]:
+        """جستجوی چندجدولی، چندکلمه‌ای و مکان‌محور در دیتابیس هرمزگان"""
         results = []
         if not os.path.exists(self.hormozgan_db):
             return results
-        
+
+        keywords = self._extract_keywords(text)
+
         try:
             conn = sqlite3.connect(self.hormozgan_db)
             cursor = conn.cursor()
-            
-            # جستجو در جدول pois
-            try:
-                cursor.execute("""
-                    SELECT name, cat, city, district, address 
-                    FROM pois 
-                    WHERE name LIKE ? OR cat LIKE ? OR city LIKE ?
-                    LIMIT 5
-                """, (f"%{text}%", f"%{text}%", f"%{text}%"))
-                
-                for row in cursor.fetchall():
-                    results.append({
-                        'type': 'poi',
-                        'name': row[0] or 'نامشخص',
-                        'category': row[1] or 'عمومی',
-                        'city': row[2] or 'نامشخص',
-                        'district': row[3] or '',
-                        'address': row[4] or ''
-                    })
-            except:
-                pass
-            
+
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            existing_tables = {row[0] for row in cursor.fetchall()}
+
+            for table, name_col, cat_col, city_col, dist_col, addr_col, lat_col, lon_col in self.SEARCH_TABLES:
+                if table not in existing_tables:
+                    continue
+
+                addr_select = f", {addr_col}" if addr_col else ", NULL"
+                sql = f"""
+                    SELECT {name_col}, {cat_col}, {city_col}, {dist_col}{addr_select}, {lat_col}, {lon_col}
+                    FROM {table}
+                    WHERE ({name_col} IS NOT NULL AND {name_col} != '')
+                """
+                keyword_conditions = " OR ".join(
+                    [f"{name_col} LIKE ? OR {cat_col} LIKE ? OR {city_col} LIKE ?" for _ in keywords]
+                )
+                sql += f" AND ({keyword_conditions}) LIMIT 20"
+
+                params = []
+                for kw in keywords:
+                    params.extend([f"%{kw}%", f"%{kw}%", f"%{kw}%"])
+
+                try:
+                    cursor.execute(sql, params)
+                    for row in cursor.fetchall():
+                        name = row[0]
+                        if not name:
+                            continue
+                        r_lat, r_lon = row[5], row[6]
+                        distance_km = _haversine_km(user_lat, user_lon, r_lat, r_lon)
+
+                        category = (row[1] or '').lower()
+                        category_match = any(kw.lower() in category for kw in keywords)
+
+                        results.append({
+                            'type': table,
+                            'name': name,
+                            'category': row[1] or 'عمومی',
+                            'city': row[2] or '',
+                            'district': row[3] or '',
+                            'address': row[4] or '',
+                            'distance_km': round(distance_km, 2) if distance_km is not None else None,
+                            '_category_match': category_match,
+                        })
+                except Exception:
+                    continue
+
             conn.close()
         except Exception as e:
             print(f"⚠️ خطا در جستجوی هرمزگان: {e}")
-        
-        return results
-    
+
+        # اولویت‌بندی: اول category match، بعد نزدیک‌ترین (اگر مختصات کاربر موجود بود)
+        def sort_key(r):
+            cat_priority = 0 if r['_category_match'] else 1
+            dist = r['distance_km'] if r['distance_km'] is not None else float('inf')
+            return (cat_priority, dist)
+
+        results.sort(key=sort_key)
+
+        for r in results:
+            r.pop('_category_match', None)
+
+        return results[:5]
+
     def _generate_response(self, text: str, results: List[Dict], translation: Optional[str]) -> str:
         """تولید پاسخ"""
         # احوالپرسی

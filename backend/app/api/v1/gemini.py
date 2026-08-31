@@ -36,8 +36,33 @@ async def chat(payload: ChatRequest):
             "generationConfig": {"temperature": payload.temperature}
         }
 
-        response = requests.post(url, headers=headers, json=data, timeout=30)
-        result = response.json()
+        try:
+            response = requests.post(url, headers=headers, json=data, timeout=30)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Gemini connection error: {e}")
+            return {
+                "success": False,
+                "error": "خطا در اتصال به Gemini (مشکل شبکه)",
+                "provider": "gemini"
+            }
+
+        if response.status_code != 200:
+            logger.error(f"Gemini HTTP {response.status_code}: {response.text[:200]}")
+            return {
+                "success": False,
+                "error": f"Gemini API HTTP {response.status_code}",
+                "provider": "gemini"
+            }
+
+        try:
+            result = response.json()
+        except ValueError:
+            logger.error(f"Gemini returned non-JSON response: {response.text[:200]}")
+            return {
+                "success": False,
+                "error": "پاسخ نامعتبر از Gemini (احتمالاً مشکل شبکه/اتصال به Google)",
+                "provider": "gemini"
+            }
 
         if "candidates" in result and result["candidates"]:
             text = result["candidates"][0]["content"]["parts"][0]["text"]

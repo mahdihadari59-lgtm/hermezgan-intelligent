@@ -10,7 +10,7 @@ export const sendMessage = createAsyncThunk(
   'chat/sendMessage',
   async ({ message, user_id, latitude, longitude }, { rejectWithValue }) => {
     try {
-      const response = await api.post('/chat/message', {
+      const response = await api.post('/chat/chat/message', {
         message,
         user_id,
         latitude,
@@ -28,7 +28,7 @@ export const getChatHistory = createAsyncThunk(
   'chat/getHistory',
   async ({ user_id, limit = 50 }, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/chat/history/${user_id}`, {
+      const response = await api.get(`/chat/chat/history/${user_id}`, {
         params: { limit }
       });
       return response.data;
