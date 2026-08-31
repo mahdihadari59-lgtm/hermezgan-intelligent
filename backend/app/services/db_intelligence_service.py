@@ -65,12 +65,21 @@ class DBIntelligenceService:
         cat = next((lower[x] for x in ("category", "type", "section", "group", "kind", "intent") if x in lower), None)
         return title, content, cat
 
+    STOPWORDS = {
+        'در', 'به', 'از', 'با', 'را', 'که', 'این', 'آن', 'است', 'هست',
+        'برای', 'یک', 'چه', 'چی', 'چطور', 'چگونه', 'کجا', 'کجاست',
+        'می', 'شود', 'شوند', 'باید', 'تا', 'یا', 'و', 'هم', 'نیز',
+        'بندرعباس', 'هرمزگان', 'استان', 'شهر', 'موقعیت', 'فعلی',
+        'کاربر', 'اطلاعات', 'مراحل', 'پاسخ', 'دقیق', 'لازم',
+        'پیدا', 'کردن', 'نزدیک', 'ترین', 'خواهد', 'خواهید',
+    }
+
     def _tokens(self, query: str) -> List[str]:
         out: List[str] = []
         seen = set()
-        for raw in re.split(r"[\s،,;:]+", query or ""):
+        for raw in re.split(r"[\s،,;:؟?!.]+", query or ""):
             t = raw.strip().lower()
-            if len(t) >= 2 and t not in seen:
+            if len(t) >= 2 and t not in seen and t not in self.STOPWORDS:
                 out.append(t)
                 seen.add(t)
         return out
@@ -142,7 +151,9 @@ class DBIntelligenceService:
             rec = self._row(row)
             text_blob = f"{rec.get(title_col or 'title', '')} {rec.get(content_col or 'content', '')} {rec.get(cat_col or 'category', '')}"
             overlap = self._token_overlap(query, text_blob)
-            score = 0.42 + (overlap * 0.45)
+            if overlap <= 0:
+                continue
+            score = 0.15 + (overlap * 0.75)
             results.append(self._simplify(table, rec, score))
         return results
 
@@ -197,7 +208,7 @@ class DBIntelligenceService:
             rec = self._row(row)
             text_blob = " ".join(str(rec.get(k, "")) for k in ("title", "name", "content", "text", "chunk_text", "passage", "excerpt", "description", "answer"))
             overlap = self._token_overlap(query, text_blob)
-            score = 0.36 + (overlap * 0.54)
+            score = 0.10 + (overlap * 0.80)
             if tokens:
                 results.append(self._simplify("knowledge_embeddings", rec, score, "semantic"))
         results.sort(key=lambda x: x["score"], reverse=True)
