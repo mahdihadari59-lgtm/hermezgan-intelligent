@@ -30,6 +30,6 @@ RUN mkdir -p logs
 EXPOSE 8001
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-CMD python -c "import requests; requests.get('http://localhost:8001/health')"
+    CMD python -c "import requests; requests.get('http://localhost:8001/health')"
 
 CMD ["uvicorn","app.main:app","--host","0.0.0.0","--port","8001"]
