@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  gateway:
+    build: ./gateway
+    ports: ["8000:8000"]
+    networks: [hdp-network]
+  services:
+    build: ./services
+    ports: ["8001:8001"]
+    networks: [hdp-network]
+  mongodb:
+    image: mongo:6
+    ports: ["27017:27017"]
+    volumes: [mongodb_data:/data/db]
+    networks: [hdp-network]
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: [redis_data:/data]
+    networks: [hdp-network]
+networks:
+  hdp-network: {driver: bridge}
+volumes:
+  mongodb_data: {}
+  redis_data: {}

@@ -1,0 +1,16 @@
+  origin/HEAD                        -> origin/main
+  origin/ai-engine-v2                5ddc833 ci(ai-engine-v2): add GitHub Actions workflow for backend and frontend tests
+  origin/ci-workflows                5901534 Update README.md
+  origin/develop-v1.4                0253965 chore: align Bandari Engine to v5.2.3
+  origin/docs/tts-fastapi-validation 91118b2 docs+feat: ElevenLabs TTS integration with validation docs
+  origin/feature/voice-api           dce3726 Merge pull request #7 from mahdihadari59-lgtm/main
+  origin/fix/complete-integration-v2 8ad13c4 fix(integration): align Bandari provider API paths
+  origin/fix/complete-integration-v4 b287bfe fix: sync frontend lock file with yaml@2.9.0; remove duplicate TTS router registration
+  origin/fix/develop-v1.4-scan       be5ede8 fix: resolve merge conflict in main.py
+  origin/main                        dadb72c chore: آرشیو main.py قدیمی (جایگزین شده با app/main.py)
+  origin/manage-large-files          801b6a0 chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+  origin/manage-lfs-final            e79454e chore: move audio.wav to Git LFS
+  origin/normalize-db                5901534 Update README.md
+  origin/release/v1.0.0              5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+  origin/repair/pr18-merge           8ad13c4 fix(integration): align Bandari provider API paths
+  origin/sync-env                    104fa98 Merge pull request #16 from mahdihadari59-lgtm/main

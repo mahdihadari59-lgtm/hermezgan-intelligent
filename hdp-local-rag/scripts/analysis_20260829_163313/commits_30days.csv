@@ -1,0 +1,91 @@
+7a4032e|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-29|WIP: changes before subtree operation
+e7c21ab|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-27|fix: unify Vosk STT on tested Node bridge (stt_cli.js), remove broken python-vosk and stale hardcoded paths
+dadb72c|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-26|chore: آرشیو main.py قدیمی (جایگزین شده با app/main.py)
+f00b72e|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-26|docs: add v2.2.0 release notes
+7ed4d8d|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-26|docs: update comprehensive README with Termux setup, architecture, and API documentation
+59581bf|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-26|chore: آرشیو main.py قدیمی (جایگزین شده با app/main.py)
+cfb2c99|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-26|chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+82d14ec|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-25|test: add Bandari URL composition unit test
+130ca2f|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|refactor: update API endpoints and routers structure
+fe0ecb6|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|remove: حذف فایل اشتباهی chat.py
+d6cdc04|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|test: verify signing after adding key to GitHub
+9334f66|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|test: verify SSH commit signing
+d5d99be|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|docs: rewrite project README with architecture, setup, and troubleshooting
+7dcbc14|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|chore: also ignore .bak2 and similar backup suffixes
+f3f8365|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|chore: untrack audio files, add audio extensions to .gitignore
+30b8a56|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|Merge branch 'main' of https://github.com/mahdihadari59-lgtm/hermezgan-intelligent
+572ec72|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|chore: clean up .gitignore, untrack backup/bak files
+20de660|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-25|Merge pull request #24 from mahdihadari59-lgtm/fix/complete-integration-v4
+b287bfe|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|fix: sync frontend lock file with yaml@2.9.0; remove duplicate TTS router registration
+20655a7|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|wip: local changes before merging main
+3b1af7d|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-25|Merge pull request #23 from mahdihadari59-lgtm/fix/complete-integration-v4
+45f1a8d|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|fix: integrate copilot, routing, AI, TTS, voice with master_final.db + unify port to 8001
+167f582|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|On fix/complete-integration-v2: temp
+874eea0|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-25|index on fix/complete-integration-v2: 8ad13c4 fix(integration): align Bandari provider API paths
+20af176|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-21|Merge pull request #21 from mahdihadari59-lgtm/docs/tts-fastapi-validation
+91118b2|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-21|docs+feat: ElevenLabs TTS integration with validation docs
+8ad13c4|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-20|fix(integration): align Bandari provider API paths
+1d09de5|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-19|fix(tts): repair malformed local provider import
+f0ef119|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-19|fix: resolve merge conflict in main.py
+047a5ca|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: bump mobile app version to 1.1.0-beta.1
+7bc58b0|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: pin Pydantic to 2.5.3 for reproducibility
+a290276|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|docs: add changelog entry for 1.1.0-beta.1 and migration notes
+955395d|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: bump frontend app version to 1.1.0-beta.1
+8dfdc7f|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+d70d1eb|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|chore: align Bandari Engine to v5.2.3
+0d3525a|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|fix: wire FastAPI chat directly to Bandari Engine
+244cee5|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-16|chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+26b0aad|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-16|archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+7eb1ab7|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|fix: resolve merge conflict in main.py and sync with develop branch
+104fa98|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|Merge pull request #16 from mahdihadari59-lgtm/main
+be5ede8|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-19|fix: resolve merge conflict in main.py
+cafdd20|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: bump mobile app version to 1.1.0-beta.1
+36a909e|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: pin Pydantic to 2.5.3 for reproducibility
+1190c8f|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|docs: add changelog entry for 1.1.0-beta.1 and migration notes
+7710609|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: bump frontend app version to 1.1.0-beta.1
+44b8d22|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-19|chore: require Pydantic v2 (pydantic>=2.0,<3.0) to match code using Pydantic v2 APIs
+3fdb59b|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|fix(api): register locations router from endpoints
+d5f983b|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|fix(HermezganMobile): configure Expo assets JSC and Android export
+5d7b296|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|fix(HermezganMobile): configure Expo assets and JSC for Termux
+0253965|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|chore: align Bandari Engine to v5.2.3
+94f01d7|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-18|fix: wire FastAPI chat directly to Bandari Engine
+c6dc311|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-17|Merge pull request #17 from hdpbnd/feature/critical-deficiencies-completion
+d592f1e|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|🔧 P1.1: Backend Integration - MLflow + TTS + Service Contracts in main.py
+12d0fe8|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|✅ P0.5: Fixed Docker Compose with Unified Environment Variables
+9178656|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|✅ P0.4: Complete TTS (Text-to-Speech) Integration Service
+62bf315|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|✅ P0.3: Unified Environment Configuration (.env)
+0fc4186|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|🔧 P0.2: Add Service Contracts (Canonical API Schemas)
+91a0166|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|🔧 P0.2: Add Event Contracts (Canonical Event Schemas)
+0e61b26|hdpbnd|hormozgamahdi@gmail.com|2026-08-17|🚀 P0: Add MLflow Tracking Server & Model Registry
+852216f|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-16|chore: حذف backup_imports از working tree - آرشیو در commit قبلی محفوظ است
+1f0774a|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-16|archive: نسخه اولیه Node.js از hdp-copilot قبل از migration به Python
+e4f3faa|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-15|Merge pull request #15 from mahdihadari16-stack/main
+b2892ad|mahdihadari16-stack|mahdihadari16@gmail.com|2026-08-06|Merge pull request #1 from mahdihadari59-lgtm/main
+fde4042|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-04|Resolve merge conflicts
+4b7a1ce|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-04|ci: add coverage, security, dependabot and load-test
+4558282|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-04|WIP: تغییرات موقت روی برنچ ci/coverage-security
+5e59c46|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+f912d98|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+5ddc833|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-03|ci(ai-engine-v2): add GitHub Actions workflow for backend and frontend tests
+203b35a|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #13 from mahdihadari59-lgtm/ai-engine-v2
+e79454e|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-03|chore: move audio.wav to Git LFS
+135eb34|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-03|chore: add .gitattributes for audio.wav LFS
+10e9820|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #10 from mahdihadari59-lgtm/sync-env
+d06273e|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #9 from mahdihadari59-lgtm/main
+801b6a0|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|chore(manage-large-files): add .gitattributes to track large assets with Git LFS
+daec3d0|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|chore(sync-env): unify DB config in docker-compose to DATABASE_URL and add DATABASE_PATH for compatibility
+5901534|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Update README.md
+f03502b|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|fix: accept DATABASE_URL sqlite:///... forms and normalize to file path before connecting
+48563ea|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|fix: prefer DATABASE_URL over DATABASE_PATH; fallback handling and logging
+d6a3bb9|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|chore: update README with setup instructions, env vars, and maintenance notes
+8efb5a9|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-03|Merge pull request #8 from mahdihadari59-lgtm/ai-engine-v2
+0fad163|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-02|fix: مسیرهای دیتابیس خراب اصلاح شد و Orchestrator v2 به ChatService/CopilotGateway وصل شد
+16296c2|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-02|Merge remote-tracking branch 'origin/main' into ai-engine-v2
+a8b4041|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-02|fix(chat): اتصال چت به دیتابیس واقعی و رفع باگ‌های ارتباط فرانت‌اند-بک‌اند
+79e4e03|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-01|Merge branch 'feature/voice-api'
+6b26ccb|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-08-01|feat(ai): integrate Copilot v6, Orchestrator, Speech API and frontend panels
+dce3726|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-01|Merge pull request #7 from mahdihadari59-lgtm/main
+4c5edc3|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-01|Merge pull request #6 from mahdihadari59-lgtm/feature/voice-api
+c0cb1e8|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-08-01|Merge pull request #5 from mahdihadari59-lgtm/main
+2095a2c|mahdihadari59-lgtm|mahdihadari59@gmail.com|2026-07-31|Merge pull request #4 from mahdihadari59-lgtm/feature/voice-api
+a726f3c|mahdihadari59-lgtm|mahdihadari59-lgtm@users.noreply.github.com|2026-07-31|test: validate voice api with vosk pipeline

@@ -1,0 +1,15 @@
+# MLflow Model Registry & Tracking
+mlflow==2.10.0
+mlflow[extras]==2.10.0
+
+# Model Framework Support
+scikit-learn>=1.3.0
+torch>=2.0.0
+tensorflow>=2.13.0
+
+# Storage Backend
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+
+# Artifact Storage
+boto3>=1.28.0

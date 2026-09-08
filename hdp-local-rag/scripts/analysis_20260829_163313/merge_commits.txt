@@ -1,0 +1,28 @@
+30b8a56 Merge branch 'main' of https://github.com/mahdihadari59-lgtm/hermezgan-intelligent
+20de660 Merge pull request #24 from mahdihadari59-lgtm/fix/complete-integration-v4
+3b1af7d Merge pull request #23 from mahdihadari59-lgtm/fix/complete-integration-v4
+167f582 On fix/complete-integration-v2: temp
+20af176 Merge pull request #21 from mahdihadari59-lgtm/docs/tts-fastapi-validation
+7eb1ab7 fix: resolve merge conflict in main.py and sync with develop branch
+104fa98 Merge pull request #16 from mahdihadari59-lgtm/main
+c6dc311 Merge pull request #17 from hdpbnd/feature/critical-deficiencies-completion
+e4f3faa Merge pull request #15 from mahdihadari16-stack/main
+b2892ad Merge pull request #1 from mahdihadari59-lgtm/main
+fde4042 Resolve merge conflicts
+5e59c46 Merge pull request #12 from mahdihadari59-lgtm/manage-lfs-final
+f912d98 Merge pull request #11 from mahdihadari59-lgtm/manage-large-files
+203b35a Merge pull request #13 from mahdihadari59-lgtm/ai-engine-v2
+10e9820 Merge pull request #10 from mahdihadari59-lgtm/sync-env
+d06273e Merge pull request #9 from mahdihadari59-lgtm/main
+8efb5a9 Merge pull request #8 from mahdihadari59-lgtm/ai-engine-v2
+16296c2 Merge remote-tracking branch 'origin/main' into ai-engine-v2
+79e4e03 Merge branch 'feature/voice-api'
+dce3726 Merge pull request #7 from mahdihadari59-lgtm/main
+4c5edc3 Merge pull request #6 from mahdihadari59-lgtm/feature/voice-api
+c0cb1e8 Merge pull request #5 from mahdihadari59-lgtm/main
+2095a2c Merge pull request #4 from mahdihadari59-lgtm/feature/voice-api
+ff2aeb8 Merge pull request #3 from hdpbnd/main
+34e15af Merge branch 'mahdihadari59-lgtm:main' into main
+0390187 Merge feature/nlp-rag-pipeline into main and resolve conflicts
+34c584b Merge pull request #1 from hdpbnd/mainMerge pull request #1 from hdpbnd/main
+4aa50f1 Merge branch 'mahdihadari59-lgtm:main' into main

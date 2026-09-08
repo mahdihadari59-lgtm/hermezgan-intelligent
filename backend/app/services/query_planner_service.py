@@ -72,8 +72,9 @@ class QueryPlannerService:
         "medical": {
             "expert": "medical",
             "tables": [
-                "hospitals", "clinics", "pharmacies", "medical_entities",
-                "medical_relations", "knowledge", "knowledge_fts", "unified_search"
+                "medical_centers", "healthcare", "healthcare_geo", "pois",
+                "pharmacies", "therapy_clinics",
+                "knowledge", "knowledge_fts", "unified_search"
             ],
             "modes": ["fts", "sql", "embedding"],
             "priority": 1,
@@ -116,7 +117,7 @@ class QueryPlannerService:
     def detect_intent(self, text: str) -> str:
         t = (text or "").lower()
         rules = {
-            "route": ["راه", "مسیر", "چطور برم", "چگونه بروم", "فاصله", "کجاست", "مسافت"],
+            "route": ["راه", "مسیر", "چطور برم", "چگونه بروم", "فاصله", "مسافت"],
             "traffic": ["ترافیک", "شلوغ", "بسته", "قفل", "ازدحام", "راه بند", "تصادف", "دوربین"],
             "weather": ["هوا", "آب و هوا", "شرجی", "باران", "طوفان", "گرم", "سرد", "دمای"],
             "tourist": ["گردشگری", "جاذبه", "دیدنی", "سفر", "تفریح", "جاهای دیدنی"],
@@ -124,10 +125,14 @@ class QueryPlannerService:
             "emergency": ["امداد", "تصادف", "پنچری", "خرابی", "اورژانس", "آتش", "پلیس", "کمک"],
             "transport": ["اتوبوس", "تاکسی", "شناور", "لندی", "پرواز", "فرودگاه", "بندر", "اسکله"],
         }
+        scores = {}
         for intent, keywords in rules.items():
-            if any(k in t for k in keywords):
-                return intent
-        return "general"
+            matches = sum(1 for k in keywords if k in t)
+            if matches > 0:
+                scores[intent] = matches
+        if not scores:
+            return "general"
+        return max(scores.items(), key=lambda x: x[1])[0]
 
     def plan(self, text: str, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
         context = context or {}

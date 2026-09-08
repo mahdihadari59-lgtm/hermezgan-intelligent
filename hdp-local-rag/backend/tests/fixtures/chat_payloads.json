@@ -1,0 +1,5 @@
+{
+  "greeting": {"message": "سلام", "user_id": "test-user"},
+  "location": {"message": "بندرعباس کجاست؟", "user_id": "test-user"},
+  "service": {"message": "نزدیک‌ترین بیمارستان کجاست؟", "user_id": "test-user", "latitude": 27.2158, "longitude": 56.2808}
+}

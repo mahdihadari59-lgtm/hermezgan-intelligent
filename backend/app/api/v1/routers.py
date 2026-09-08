@@ -1,6 +1,7 @@
 # ============================================================
-# routers.py - ثبت تمام Routerها
+# routers.py - ثبت مرکزی Routerهای API v1
 # ============================================================
+
 from fastapi import APIRouter
 import logging
 
@@ -8,53 +9,49 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-# لیست routerهایی که باید ثبت شوند
-_MODULE_MAP = {
-    "locations": "app.api.v1.endpoints.locations",
-}
 
-routers_to_import = [
-    ("ping", "ping"),
-    ("chat", "chat"),
-    ("locations", "locations"),
-    ("analytics", "analytics"),
-    ("cameras", "cameras"),
-    ("hotspots", "hotspots"),
-    ("health", "health"),
-    ("traffic", "traffic"),
-    ("auth", "auth"),
-    ("pois", "pois"),
-]
-
-for module_name, prefix in routers_to_import:
-    module = None
-    # اول از endpoints/ (نسخه‌ی جدید) امتحان کن
+def _register(module_path: str, name: str) -> None:
     try:
-        module = __import__(f"app.api.v1.endpoints.{module_name}", fromlist=["router"])
-    except ImportError:
-        module = None
+        module = __import__(module_path, fromlist=["router"])
+        child_router = getattr(module, "router", None)
 
-    # اگه توی endpoints/ نبود، مسیر قدیمی رو امتحان کن
-    if module is None:
-        try:
-            module = __import__(f"app.api.v1.{module_name}", fromlist=["router"])
-        except ImportError as e:
-            logger.warning(f"⚠️ ماژول {module_name} یافت نشد: {e}")
-            continue
-        except Exception as e:
-            logger.error(f"❌ خطا در ثبت {module_name}: {e}")
-            continue
+        if child_router is None:
+            logger.warning("Router %s فاقد متغیر router است", name)
+            return
 
-    try:
-        module = __import__(_MODULE_MAP.get(module_name, f"app.api.v1.{module_name}"), fromlist=["router"])
-        if hasattr(module, "router"):
-            router.include_router(
-                module.router,
-                prefix=f"/{prefix}",
-                tags=[prefix.capitalize()]
-            )
-            logger.info(f"✅ Router {module_name} ثبت شد")
-        else:
-            logger.warning(f"⚠️ Router {module_name} دارای router نیست")
-    except Exception as e:
-        logger.error(f"❌ خطا در ثبت {module_name}: {e}")
+        router.include_router(child_router)
+        logger.info("Router %s ثبت شد", name)
+
+    except Exception:
+        logger.exception("خطا در ثبت Router %s از %s", name, module_path)
+
+
+# ------------------------------------------------------------
+# Root v1 routers
+# ------------------------------------------------------------
+
+_register("app.api.v1.ping", "ping")
+_register("app.api.v1.health", "health")
+_register("app.api.v1.auth", "auth")
+_register("app.api.v1.pois", "pois")
+_register("app.api.v1.analytics", "analytics")
+_register("app.api.v1.cameras", "cameras")
+_register("app.api.v1.hotspots", "hotspots")
+_register("app.api.v1.traffic", "traffic")
+
+
+# ------------------------------------------------------------
+# Endpoint routers
+# ------------------------------------------------------------
+
+_register("app.api.v1.endpoints.locations", "locations")
+
+
+# ------------------------------------------------------------
+# نکته:
+# chat از طریق app.main به صورت مستقیم ثبت می‌شود.
+# بنابراین اینجا دوباره ثبت نمی‌شود.
+#
+# routing / weather / gemini / tts نیز در app.main
+# به صورت مستقیم ثبت می‌شوند.
+# ------------------------------------------------------------

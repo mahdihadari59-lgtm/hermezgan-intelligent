@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
+from app.core.orchestrator_v3 import HDPOrchestratorV3
+
+class OrchestratorService:
+    def __init__(self, db_path: Optional[str] = None, llm_url: Optional[str] = None, model: Optional[str] = None) -> None:
+        self._orchestrator = HDPOrchestratorV3(db_path=db_path, llm_url=llm_url, model=model)
+
+    async def chat(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        return await self._orchestrator.handle(payload)
+
+    async def health(self) -> Dict[str, Any]:
+        return await self._orchestrator.health()
+
+    async def stream_chat(self, payload: Dict[str, Any]):
+        async for item in self._orchestrator.stream_chat(payload):
+            yield item

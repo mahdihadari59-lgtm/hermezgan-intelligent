@@ -1,87 +1,143 @@
-# ============================================================
-# routing.py - سرویس مسیریابی
-# ============================================================
+from __future__ import annotations
+
+from typing import Any, Optional
+
 from fastapi import APIRouter, HTTPException, Query
-import sqlite3
-import os
-import logging
-from typing import Optional
 
-logger = logging.getLogger(__name__)
-router = APIRouter()
+from app.services.routing.osrm_service import osrm_service
 
-DB_PATH = os.getenv(
-    "DB_PATH",
-    "/data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db"
-)
+router = APIRouter(tags=["Routing"])
 
 
 @router.get("/directions")
 async def get_directions(
-    origin: str = Query(..., description="مبدا"),
-    destination: str = Query(..., description="مقصد"),
-    mode: str = Query(default="car", description="car, walk, bike")
-):
+    start_lat: float = Query(..., description="عرض جغرافیایی مبدا"),
+    start_lng: float = Query(..., description="طول جغرافیایی مبدا"),
+    end_lat: float = Query(..., description="عرض جغرافیایی مقصد"),
+    end_lng: float = Query(..., description="طول جغرافیایی مقصد"),
+    profile: str = Query(
+        "driving",
+        description="driving, walking, cycling",
+    ),
+) -> dict[str, Any]:
+    """
+    مسیریابی واقعی با سرویس OSRM.
+
+    GET /api/v1/routing/directions
+    """
+
     try:
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
-        like_origin = f"%{origin}%"
-        like_dest = f"%{destination}%"
-        cursor.execute(
-            "SELECT name_fa, lat, lon, road_type FROM roads WHERE name_fa LIKE ? OR name_fa LIKE ? LIMIT 10",
-            (like_origin, like_dest)
+        return await osrm_service.route(
+            start_lat=start_lat,
+            start_lng=start_lng,
+            end_lat=end_lat,
+            end_lng=end_lng,
+            profile=profile,
         )
-        roads = cursor.fetchall()
-        conn.close()
-        return {
-            "origin": origin,
-            "destination": destination,
-            "mode": mode,
-            "route": {
-                "distance_km": 12.5,
-                "estimated_time_min": 25,
-                "roads": [r[0] for r in roads] if roads else ["بلوار امام خمینی", "بزرگراه ساحلی"]
-            },
-            "alternatives": [
-                {"name": "مسیر ساحلی", "distance": 15.2, "time": 30},
-                {"name": "مسیر مرکزی", "distance": 10.8, "time": 22}
-            ],
-            "traffic": "سبک"
-        }
-    except Exception as e:
-        logger.error(f"Routing error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=400,
+            detail=str(exc),
+        ) from exc
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=502,
+            detail=f"OSRM routing service error: {exc}",
+        ) from exc
 
 
 @router.get("/nearby")
 async def find_nearby(
     lat: float = Query(..., description="عرض جغرافیایی"),
     lon: float = Query(..., description="طول جغرافیایی"),
-    radius: float = Query(default=1.0, description="شعاع به کیلومتر"),
-    category: Optional[str] = None
-):
+    radius: float = Query(1.0, gt=0, description="شعاع به کیلومتر"),
+    category: Optional[str] = Query(None),
+) -> dict[str, Any]:
+    """
+    یافتن POIهای نزدیک از دیتابیس محلی.
+    """
+
+    import sqlite3
+    import os
+
+    db_path = os.getenv(
+        "DB_PATH",
+        "/data/data/com.termux/files/home/hormozgan_geo_project/hormozgan_data/hormozgan_master_final.db",
+    )
+
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
-        lat_min, lat_max = lat - 0.01, lat + 0.01
-        lon_min, lon_max = lon - 0.01, lon + 0.01
-        cursor.execute(
-            "SELECT name, lat, lon, cat, subcat FROM poi_unified WHERE lat BETWEEN ? AND ? AND lon BETWEEN ? AND ? AND name IS NOT NULL LIMIT 20",
-            (lat_min, lat_max, lon_min, lon_max)
-        )
+
+        delta = radius / 111.0
+
+        query = """
+            SELECT name, lat, lon, cat, subcat
+            FROM poi_unified
+            WHERE lat BETWEEN ? AND ?
+              AND lon BETWEEN ? AND ?
+              AND name IS NOT NULL
+        """
+
+        params: list[Any] = [
+            lat - delta,
+            lat + delta,
+            lon - delta,
+            lon + delta,
+        ]
+
+        if category:
+            query += " AND cat = ?"
+            params.append(category)
+
+        query += " LIMIT 50"
+
+        cursor.execute(query, params)
         pois = cursor.fetchall()
         conn.close()
+
+        results = []
+
+        for name, poi_lat, poi_lon, cat, subcat in pois:
+            results.append(
+                {
+                    "name": name,
+                    "lat": poi_lat,
+                    "lon": poi_lon,
+                    "category": cat,
+                    "subcategory": subcat,
+                }
+            )
+
         return {
-            "center": {"lat": lat, "lon": lon},
+            "status": "success",
+            "center": {
+                "lat": lat,
+                "lon": lon,
+            },
             "radius_km": radius,
-            "count": len(pois),
-            "results": [{"name": p[0], "lat": p[1], "lon": p[2], "category": p[3], "subcategory": p[4]} for p in pois]
+            "count": len(results),
+            "results": results,
         }
-    except Exception as e:
-        logger.error(f"Nearby error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Nearby search error: {exc}",
+        ) from exc
+
 
 @router.get("/status")
-async def routing_status():
-    """وضعیت سرویس مسیریابی"""
-    return {"status": "active", "service": "routing", "database": DB_PATH}
+async def routing_status() -> dict[str, Any]:
+    """
+    وضعیت سرویس مسیریابی.
+    """
+
+    return {
+        "status": "active",
+        "service": "routing",
+        "provider": "osrm",
+        "base_url": osrm_service.base_url,
+    }

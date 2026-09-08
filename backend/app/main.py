@@ -1,3 +1,4 @@
+from app.api.v1.driver_assistant import router as driver_assistant_router
 # ============================================================
 # Hermezgan Intelligent - FIXED main.py (Auto-generated)
 # ============================================================
@@ -58,7 +59,7 @@ app.add_middleware(
 try:
     from app.api.v1.routers import router as api_router
     app.include_router(api_router, prefix="/api/v1")
-    logger.info("V1 Routers registered")
+
 except Exception as e:
     logger.error(f"V1 Routers: {e}")
 
@@ -82,16 +83,16 @@ try:
     from app.api.orchestrator import router as orchestrator_router
     app.include_router(orchestrator_router, prefix="/api/v1/orchestrator", tags=["Orchestrator"])
     logger.info("Orchestrator Router registered")
-    # Voice Router
-    try:
-        from app.api.v1.voice import router as voice_router
-        app.include_router(voice_router, prefix="/api/v1/voice", tags=["Voice"])
-        logger.info("Voice Router registered")
-    except Exception as e:
-        logger.warning(f"Voice not available: {e}")
 except Exception as e:
     logger.error(f"Orchestrator: {e}")
 
+# Voice Router
+try:
+    from app.api.v1.voice import router as voice_router
+    app.include_router(voice_router, prefix="/api/v1/voice", tags=["Voice"])
+    logger.info("Voice Router registered")
+except Exception as e:
+    logger.warning(f"Voice not available: {e}")
 # Copilot (FIXED: Only ONCE!)
 try:
     from app.api.copilot import router as copilot_router
@@ -116,6 +117,14 @@ try:
 except Exception as e:
     logger.warning(f"Routing not available: {e}")
 
+
+# Driver Assistant Router
+try:
+    from app.api.v1.driver_assistant import router as driver_assistant_router
+    app.include_router(driver_assistant_router, prefix="/api/v1/driver", tags=["Driver Assistant"])
+    logger.info("Driver Assistant Router registered")
+except Exception as e:
+    logger.warning(f"Driver Assistant not available: {e}")
 # NEW: Gemini AI Router
 try:
     from app.api.v1.gemini import router as gemini_router
@@ -146,7 +155,7 @@ async def health_check():
         conn.close()
     except:
         services["database"] = "error"
-    
+
     return {
         "status": "healthy",
         "version": "2.0.0-fixed",

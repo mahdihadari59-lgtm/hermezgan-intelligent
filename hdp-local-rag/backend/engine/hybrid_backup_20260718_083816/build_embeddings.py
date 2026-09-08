@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import sqlite3
+from engine.hybrid.config import HybridConfig
+from engine.hybrid.fallback_engine import fallback_engine
+from engine.hybrid.embedding_storage import EmbeddingStorage
+
+DB_PATH = HybridConfig.DB_PATH
+
+storage = EmbeddingStorage(DB_PATH)
+
+conn = sqlite3.connect(DB_PATH)
+conn.row_factory = sqlite3.Row
+
+cur = conn.cursor()
+
+cur.execute("""
+SELECT
+    id,
+    title,
+    content
+FROM knowledge
+WHERE is_deleted = 0
+""")
+
+rows = cur.fetchall()
+
+print(f"Knowledge rows : {len(rows)}")
+
+count = 0
+
+for row in rows:
+
+    node_id = str(row["id"])
+
+    text = f"{row['title']}\n{row['content']}"
+
+    embedding = fallback_engine.encode(text)
+
+    storage.save(
+        node_id=int(node_id),
+        vector=embedding,
+        model_name="fallback"
+    )
+
+    count += 1
+
+    if count % 100 == 0:
+        print(f"{count} embeddings created...")
+
+conn.close()
+
+print(f"Done : {count}")

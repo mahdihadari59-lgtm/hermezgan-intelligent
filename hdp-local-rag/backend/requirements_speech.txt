@@ -1,0 +1,6 @@
+# Speech Recognition and Text-to-Speech
+speech-recognition==3.10.0
+pyttsx3==2.90
+gtts==2.4.0
+
+# Add to existing requirements.txt

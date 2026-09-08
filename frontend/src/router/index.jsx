@@ -4,22 +4,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
 
 // Layout
-import { AppLayout } from "@components/layout/AppLayout";
-import { PageLoader } from "@components/loading/PageLoader";
+import { AppLayout } from "../components/layout/AppLayout";
+import { PageLoader } from "../components/loading/PageLoader";
 
 // Eager-loaded pages
-import HomePage from "@pages/Home";
+import HomePage from "../pages/Home";
 
 // Lazy-loaded pages
-const MapPage = lazy(() => import("@pages/Map"));
-const TrafficPage = lazy(() => import("@pages/Traffic"));
-const TourismPage = lazy(() => import("@pages/Tourism"));
-const PlacesPage = lazy(() => import("@pages/Places"));
-const ChatPage = lazy(() => import("@pages/Chat"));
-const VoicePage = lazy(() => import("@pages/Voice"));
-const DriverPage = lazy(() => import("@pages/Driver"));
-const AnalyticsPage = lazy(() => import("@pages/Analytics"));
-const NotFoundPage = lazy(() => import("@pages/NotFound"));
+const MapPage = lazy(() => import("../pages/Map"));
+const TrafficPage = lazy(() => import("../pages/Traffic"));
+const TourismPage = lazy(() => import("../pages/Tourism"));
+const PlacesPage = lazy(() => import("../pages/Places"));
+const ChatPage = lazy(() => import("../pages/Chat"));
+const VoicePage = lazy(() => import("../pages/Voice"));
+const DriverPage = lazy(() => import("../pages/Driver"));
+const AnalyticsPage = lazy(() => import("../pages/Analytics"));
+const NotFoundPage = lazy(() => import("../pages/NotFound"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

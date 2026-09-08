@@ -1,0 +1,16 @@
+{
+  "name": "bandari-engine",
+  "version": "4.2.0",
+  "description": "Bandari Dialect Engine - 8-Layer Architecture (Dialect Detection, Dictionary, Morphology, Grammar, Intent, Context, RAG, LLM)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "author": "Mehdi Heydari Poori",
+  "license": "MIT"
+}

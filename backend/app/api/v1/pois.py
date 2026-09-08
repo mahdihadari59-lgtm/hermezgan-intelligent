@@ -74,15 +74,6 @@ async def get_stats():
     return stats
 
 
-@router.get("/{poi_id}")
-async def get_poi(poi_id: int):
-    """دریافت جزئیات یک POI"""
-    poi = db_service.get_poi_by_id(poi_id)
-    if not poi:
-        raise HTTPException(status_code=404, detail=f"POI با شناسه {poi_id} یافت نشد")
-    return poi
-
-
 @router.get("/category/{category}")
 async def get_pois_by_category(
     category: str,
@@ -110,5 +101,10 @@ async def get_pois_by_city(
         "total": len(results)
     }
 
-
-
+@router.get("/{poi_id:int}")
+async def get_poi(poi_id: int):
+    """دریافت جزئیات یک POI"""
+    poi = db_service.get_poi_by_id(poi_id)
+    if not poi:
+        raise HTTPException(status_code=404, detail=f"POI با شناسه {poi_id} یافت نشد")
+    return poi

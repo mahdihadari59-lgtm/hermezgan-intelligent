@@ -1,0 +1,1830 @@
+{
+  "meta": {
+    "version": "4.2.0",
+    "total_entries": 99,
+    "verified_entries": 14,
+    "sourced_entries": 85,
+    "dialect_word_counts": {
+      "ban": 99,
+      "min": 14,
+      "qes": 14,
+      "jas": 14,
+      "lan": 14,
+      "bas": 14,
+      "kha": 14,
+      "rud": 14,
+      "sir": 14
+    },
+    "generated_at": "2026-07-15T23:23:28.306Z"
+  },
+  "entries": [
+    {
+      "id": 1,
+      "word_standard": "سلام",
+      "part_of_speech": "interjection",
+      "category": "greeting",
+      "subcategory": "greeting",
+      "definition": "سلام کردن، احوالپرسی",
+      "dialects": {
+        "ban": "سَلام براری",
+        "min": "سَلام چَکری؟",
+        "qes": "سَلام قِشمی",
+        "jas": "سَلام",
+        "lan": "سَلام چَکری؟",
+        "bas": "سَلام",
+        "kha": "سَلام",
+        "rud": "سَلام چَگُری؟",
+        "sir": "سَلام"
+      },
+      "ipa": {
+        "ban": "sælɒːm bærɒːriː",
+        "min": "sælɒːm tʃækriː"
+      },
+      "examples": {
+        "ban": "سَلام براری چطوری؟",
+        "min": "سَلام چَکری؟"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "عربی",
+      "cultural_note": "رایج‌ترین احوالپرسی",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 2,
+      "word_standard": "چطوری",
+      "part_of_speech": "question",
+      "category": "greeting",
+      "subcategory": "question",
+      "definition": "پرسیدن حال و احوال",
+      "dialects": {
+        "ban": "ابی چش",
+        "min": "چَکری",
+        "qes": "چطوری",
+        "jas": "چطوری",
+        "lan": "چَکری",
+        "bas": "چطوری",
+        "kha": "چطوری",
+        "rud": "چَگُری",
+        "sir": "چطوری"
+      },
+      "ipa": {
+        "ban": "æbiː tʃeʃ",
+        "min": "tʃækriː"
+      },
+      "examples": {
+        "ban": "ابی چش داداش؟",
+        "min": "چَکری رفیق؟"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "پرسش روزمره",
+      "confidence_score": 95,
+      "data_quality": "verified"
+    },
+    {
+      "id": 3,
+      "word_standard": "خداحافظ",
+      "part_of_speech": "interjection",
+      "category": "greeting",
+      "subcategory": "farewell",
+      "definition": "خداحافظی کردن",
+      "dialects": {
+        "ban": "خدا نگهدار",
+        "min": "خدا نگهدار",
+        "qes": "خدا نگهدار",
+        "jas": "خدا نگهدار",
+        "lan": "خدا نگهدار",
+        "bas": "خدا نگهدار",
+        "kha": "خدا نگهدار",
+        "rud": "خدا نِگَهدار",
+        "sir": "خدا نگهدار"
+      },
+      "ipa": {
+        "ban": "xodɒː negæhdɒːr",
+        "min": "xodɒː negæhdɒːr"
+      },
+      "examples": {
+        "ban": "خدا نگهدار بازم سر بزن",
+        "min": "خدا نگهدار"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "خداحافظی محترمانه",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 4,
+      "word_standard": "برادر",
+      "part_of_speech": "noun",
+      "category": "family",
+      "subcategory": "siblings",
+      "definition": "برادر، برادر بزرگتر",
+      "dialects": {
+        "ban": "برار",
+        "min": "برار",
+        "qes": "برار",
+        "jas": "برار",
+        "lan": "برار",
+        "bas": "برار",
+        "kha": "برار",
+        "rud": "بَرار",
+        "sir": "برار"
+      },
+      "ipa": {
+        "ban": "bærɒːr",
+        "min": "bærɒːr"
+      },
+      "examples": {
+        "ban": "برارم از سفر اومده",
+        "min": "برارم اومده"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "خطاب محبت‌آمیز",
+      "confidence_score": 95,
+      "data_quality": "verified"
+    },
+    {
+      "id": 5,
+      "word_standard": "خواهر",
+      "part_of_speech": "noun",
+      "category": "family",
+      "subcategory": "siblings",
+      "definition": "خواهر",
+      "dialects": {
+        "ban": "خاهر",
+        "min": "خاهر",
+        "qes": "خواهر",
+        "jas": "خواهر",
+        "lan": "خواهر",
+        "bas": "خواهر",
+        "kha": "خواهر",
+        "rud": "خواهر",
+        "sir": "خواهر"
+      },
+      "ipa": {
+        "ban": "xɒːher",
+        "min": "xɒːher"
+      },
+      "examples": {
+        "ban": "خاهرم کوچه ست",
+        "min": "خواهرم کوچه‌ست"
+      },
+      "region_usage": "بندرعباس",
+      "etymology": "فارسی",
+      "cultural_note": "واژه قدیمی‌تر",
+      "confidence_score": 85,
+      "data_quality": "verified"
+    },
+    {
+      "id": 6,
+      "word_standard": "مادر",
+      "part_of_speech": "noun",
+      "category": "family",
+      "subcategory": "parents",
+      "definition": "مادر",
+      "dialects": {
+        "ban": "مُم",
+        "min": "مادر",
+        "qes": "مادر",
+        "jas": "مادر",
+        "lan": "مادر",
+        "bas": "مادر",
+        "kha": "مادر",
+        "rud": "مار",
+        "sir": "مادر"
+      },
+      "ipa": {
+        "ban": "mæm",
+        "min": "mɒːdær"
+      },
+      "examples": {
+        "ban": "مم رفته بازار",
+        "min": "مار رفته بازار"
+      },
+      "region_usage": "بندرعباس/رودان",
+      "etymology": "فارسی",
+      "cultural_note": "لفظ محبت‌آمیز",
+      "confidence_score": 85,
+      "data_quality": "verified"
+    },
+    {
+      "id": 7,
+      "word_standard": "آب",
+      "part_of_speech": "noun",
+      "category": "nature",
+      "subcategory": "water",
+      "definition": "آب آشامیدنی، آب دریا",
+      "dialects": {
+        "ban": "هو",
+        "min": "او",
+        "qes": "او",
+        "jas": "او",
+        "lan": "او",
+        "bas": "او",
+        "kha": "او",
+        "rud": "آو",
+        "sir": "او"
+      },
+      "ipa": {
+        "ban": "huː",
+        "min": "uː"
+      },
+      "examples": {
+        "ban": "هو بیار تشنمه",
+        "min": "او بیار"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی باستان",
+      "cultural_note": "واکه شاخص بندری",
+      "confidence_score": 95,
+      "data_quality": "verified"
+    },
+    {
+      "id": 8,
+      "word_standard": "دریا",
+      "part_of_speech": "noun",
+      "category": "nature",
+      "subcategory": "sea",
+      "definition": "دریا و آب‌های آزاد",
+      "dialects": {
+        "ban": "جویی",
+        "min": "دریا",
+        "qes": "دریا",
+        "jas": "دریا",
+        "lan": "دریا",
+        "bas": "دریا",
+        "kha": "دریا",
+        "rud": "دریا",
+        "sir": "دریا"
+      },
+      "ipa": {
+        "ban": "dʒuːjiː",
+        "min": "dæriːjɒː"
+      },
+      "examples": {
+        "ban": "بریم جویی",
+        "min": "بریم دریا"
+      },
+      "region_usage": "بندرعباس",
+      "etymology": "فارسی",
+      "cultural_note": "اصطلاح دریایی",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 9,
+      "word_standard": "نخل خرما",
+      "part_of_speech": "noun",
+      "category": "nature",
+      "subcategory": "tree",
+      "definition": "نخل خرما، درخت خرما",
+      "dialects": {
+        "ban": "نغال",
+        "min": "نخل",
+        "qes": "نخل",
+        "jas": "نخل",
+        "lan": "نخل",
+        "bas": "نخل",
+        "kha": "نخل",
+        "rud": "نَخل",
+        "sir": "نخل"
+      },
+      "ipa": {
+        "ban": "næɣɒːl",
+        "min": "næxl"
+      },
+      "examples": {
+        "ban": "نغال خرما داره",
+        "min": "نخل خرما داره"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "کشاورزی اصلی هرمزگان",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 10,
+      "word_standard": "قلیه ماهی",
+      "part_of_speech": "noun",
+      "category": "food",
+      "subcategory": "dish",
+      "definition": "خورشت ماهی محلی با تمبر هندی",
+      "dialects": {
+        "ban": "قلیه ماهی",
+        "min": "قلیه ماهی",
+        "qes": "قلیه ماهی",
+        "jas": "قلیه ماهی",
+        "lan": "قلیه ماهی",
+        "bas": "قلیه ماهی",
+        "kha": "قلیه ماهی",
+        "rud": "قلیه ماهی",
+        "sir": "قلیه ماهی"
+      },
+      "ipa": {
+        "ban": "ɣæliːje mɒːhiː",
+        "min": "ɣæliːje mɒːhiː"
+      },
+      "examples": {
+        "ban": "قلیه ماهی درست کن",
+        "min": "قلیه ماهی درست کن"
+      },
+      "region_usage": "بندرعباس",
+      "etymology": "فارسی",
+      "cultural_note": "غذای اصیل جنوب",
+      "confidence_score": 95,
+      "data_quality": "verified"
+    },
+    {
+      "id": 11,
+      "word_standard": "خرما",
+      "part_of_speech": "noun",
+      "category": "food",
+      "subcategory": "fruit",
+      "definition": "میوه نخل خرما",
+      "dialects": {
+        "ban": "حرما",
+        "min": "خرما",
+        "qes": "خرما",
+        "jas": "خرما",
+        "lan": "خرما",
+        "bas": "خرما",
+        "kha": "خرما",
+        "rud": "خُرما",
+        "sir": "خرما"
+      },
+      "ipa": {
+        "ban": "hærmɒː",
+        "min": "xormɒː"
+      },
+      "examples": {
+        "ban": "حرما شیرینه",
+        "min": "خرما شیرینه"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "عربی",
+      "cultural_note": "محصول اصلی",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 12,
+      "word_standard": "ترافیک سنگین",
+      "part_of_speech": "noun",
+      "category": "driving",
+      "subcategory": "traffic",
+      "definition": "ترافیک سنگین، راه بندان",
+      "dialects": {
+        "ban": "خون جاده",
+        "min": "ترافیک",
+        "qes": "ترافیک",
+        "jas": "ترافیک",
+        "lan": "ترافیک",
+        "bas": "ترافیک",
+        "kha": "ترافیک",
+        "rud": "جاده خون",
+        "sir": "ترافیک"
+      },
+      "ipa": {
+        "ban": "xuːn dʒɒːde",
+        "min": "dʒɒːde xuːn"
+      },
+      "examples": {
+        "ban": "خون جاده افتادیم",
+        "min": "جاده خون شده"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "اصطلاح رانندگان",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 13,
+      "word_standard": "کامیون",
+      "part_of_speech": "noun",
+      "category": "driving",
+      "subcategory": "vehicle",
+      "definition": "کامیون باربری بزرگ",
+      "dialects": {
+        "ban": "لنج خشکی",
+        "min": "کامیون",
+        "qes": "لنج",
+        "jas": "کامیون",
+        "lan": "کامیون",
+        "bas": "کامیون",
+        "kha": "کامیون",
+        "rud": "کامیون",
+        "sir": "کامیون"
+      },
+      "ipa": {
+        "ban": "lændʒ xoʃkiː",
+        "min": "kɒːmjuːn"
+      },
+      "examples": {
+        "ban": "با لنج خشکی میریم",
+        "min": "کامیون میاد"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "انگلیسی",
+      "cultural_note": "واژه محلی",
+      "confidence_score": 85,
+      "data_quality": "verified"
+    },
+    {
+      "id": 14,
+      "word_standard": "جاده بسته",
+      "part_of_speech": "noun",
+      "category": "driving",
+      "subcategory": "road",
+      "definition": "جاده بسته و مسدود",
+      "dialects": {
+        "ban": "جاده بند",
+        "min": "جاده بسته",
+        "qes": "جاده بسته",
+        "jas": "جاده بسته",
+        "lan": "جاده بسته",
+        "bas": "جاده بسته",
+        "kha": "جاده بسته",
+        "rud": "راه بند",
+        "sir": "جاده بسته"
+      },
+      "ipa": {
+        "ban": "dʒɒːde bænd",
+        "min": "dʒɒːde bæste"
+      },
+      "examples": {
+        "ban": "جاده بنده برنگردیم",
+        "min": "جاده بسته"
+      },
+      "region_usage": "همه مناطق",
+      "etymology": "فارسی",
+      "cultural_note": "هشدار جاده‌ای",
+      "confidence_score": 90,
+      "data_quality": "verified"
+    },
+    {
+      "id": 15,
+      "word_standard": "بندرعباس",
+      "definition": "مرکز استان هرمزگان، شهر بندری و تجاری",
+      "category": "cities",
+      "subcategory": "capital",
+      "dialects": {
+        "ban": "بندرعباس"
+      },
+      "examples": {
+        "ban": "بندرعباس قلب هرمزگانه، پر از رفت و آمد"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 16,
+      "word_standard": "قشم",
+      "definition": "بزرگترین جزیره خلیج فارس، قطب گردشگری",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "قشم"
+      },
+      "examples": {
+        "ban": "قشم بهشت جنوبه، بریم دره ستارگان"
+      },
+      "region_usage": "قشم",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 17,
+      "word_standard": "کیش",
+      "definition": "جزیره زیبا و مدرن، منطقه آزاد تجاری",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "کیش"
+      },
+      "examples": {
+        "ban": "کیش مال و هتلای قشنگ داره"
+      },
+      "region_usage": "کیش",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 18,
+      "word_standard": "میناب",
+      "definition": "شهر نخلستان‌ها و خرماهای معروف",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "میناب"
+      },
+      "examples": {
+        "ban": "میناب خرما رطب خوبی داره"
+      },
+      "region_usage": "میناب",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 19,
+      "word_standard": "رودان",
+      "definition": "شهرستان رودان (دهبارز)، قطب مرکبات",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "رودان"
+      },
+      "examples": {
+        "ban": "رودان پرتقال و نارنگی خوشمزه داره"
+      },
+      "region_usage": "رودان",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 20,
+      "word_standard": "بندر لنگه",
+      "definition": "شهر تاریخی با بادگیرهای معروف",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "بندر لنگه"
+      },
+      "examples": {
+        "ban": "بندر لنگه بادگیرای قدیمی داره"
+      },
+      "region_usage": "بندر لنگه",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 21,
+      "word_standard": "بستک",
+      "definition": "شهر تاریخی با قلعه و برکه‌های قدیمی",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "بستک"
+      },
+      "examples": {
+        "ban": "بستک قلعه قشنگ داره"
+      },
+      "region_usage": "بستک",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 22,
+      "word_standard": "جاسک",
+      "definition": "بندر صیادی شرق هرمزگان، معروف به میگو",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "جاسک"
+      },
+      "examples": {
+        "ban": "جاسک میگوی معروف داره"
+      },
+      "region_usage": "جاسک",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 23,
+      "word_standard": "خمیر",
+      "definition": "بندر صیادی و صنعتی غرب هرمزگان",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "خمیر"
+      },
+      "examples": {
+        "ban": "خمیر اسکله صیادی خوبی داره"
+      },
+      "region_usage": "خمیر",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 24,
+      "word_standard": "سیریک",
+      "definition": "بندر شرقی هرمزگان، معروف به صید ماهی",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "سیریک"
+      },
+      "examples": {
+        "ban": "سیریک ماهیگیرای خوبی داره"
+      },
+      "region_usage": "سیریک",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 25,
+      "word_standard": "پارسیان",
+      "definition": "شهر غربی هرمزگان، معروف به مرکبات",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "پارسیان"
+      },
+      "examples": {
+        "ban": "پارسیان پرتغال و نارنگی خوبی داره"
+      },
+      "region_usage": "پارسیان",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 26,
+      "word_standard": "حاجی‌آباد",
+      "definition": "شهر شمالی هرمزگان، آب و هوای خنک",
+      "category": "cities",
+      "subcategory": "city",
+      "dialects": {
+        "ban": "حاجی‌آباد"
+      },
+      "examples": {
+        "ban": "حاجی‌آباد تابستون خنکه"
+      },
+      "region_usage": "حاجی‌آباد",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 27,
+      "word_standard": "بشاگرد",
+      "definition": "منطقه کوهستانی شرق هرمزگان",
+      "category": "cities",
+      "subcategory": "region",
+      "dialects": {
+        "ban": "بشاگرد"
+      },
+      "examples": {
+        "ban": "بشاگرد فرهنگ خاص خودش داره"
+      },
+      "region_usage": "بشاگرد",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 28,
+      "word_standard": "هرمز",
+      "definition": "جزیره هرمز با خاک سرخ معروف، جزیره تاریخی",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "هرمز"
+      },
+      "examples": {
+        "ban": "هرمز خاک سرخ داره، بریم ببینیم"
+      },
+      "region_usage": "هرمز",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 29,
+      "word_standard": "لارک",
+      "definition": "جزیره کوچک نزدیک بندرعباس، مقصد گردشگری",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "لارک"
+      },
+      "examples": {
+        "ban": "لارک سواحل قشنگ داره"
+      },
+      "region_usage": "لارک",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 30,
+      "word_standard": "هنگام",
+      "definition": "جزیره هنگام در قشم، سواحل مرجانی",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "هنگام"
+      },
+      "examples": {
+        "ban": "هنگام کوسه‌های نهنگی معروف داره"
+      },
+      "region_usage": "قشم",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 31,
+      "word_standard": "ابوموسی",
+      "definition": "جزیره استراتژیک در خلیج فارس",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "ابوموسی"
+      },
+      "examples": {
+        "ban": "ابوموسی جزیره دور افتاده‌ست"
+      },
+      "region_usage": "ابوموسی",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 32,
+      "word_standard": "تنب بزرگ",
+      "definition": "جزیره تنب بزرگ در خلیج فارس",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "تنب بزرگ"
+      },
+      "examples": {
+        "ban": "تنب بزرگ جزیره نظامیه"
+      },
+      "region_usage": "تنب",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 33,
+      "word_standard": "تنب کوچک",
+      "definition": "جزیره تنب کوچک در کنار تنب بزرگ",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "تنب کوچک"
+      },
+      "examples": {
+        "ban": "تنب کوچک خیلی کوچیکه"
+      },
+      "region_usage": "تنب",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 34,
+      "word_standard": "فرور بزرگ",
+      "definition": "جزیره فرور بزرگ، منطقه نظامی",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "فرور بزرگ"
+      },
+      "examples": {
+        "ban": "فرور جزیره نظامیه ورود ممنوع"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 35,
+      "word_standard": "فرور کوچک",
+      "definition": "جزیره فرور کوچک در نزدیکی فرور بزرگ",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "فرور کوچک"
+      },
+      "examples": {
+        "ban": "فرور کوچک پرنده‌های دریایی داره"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 36,
+      "word_standard": "سیری",
+      "definition": "جزیره سیری، جزیره نفت‌خیز",
+      "category": "cities",
+      "subcategory": "island",
+      "dialects": {
+        "ban": "سیری"
+      },
+      "examples": {
+        "ban": "سیری جزیره نفتیه"
+      },
+      "region_usage": "سیری",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 37,
+      "word_standard": "لیوا",
+      "definition": "موسیقی محلی بندری، شاد و پرانرژی",
+      "category": "culture",
+      "subcategory": "music",
+      "dialects": {
+        "ban": "لیوا"
+      },
+      "examples": {
+        "ban": "عروسی که باشه لیوا میزنن خوش میگذره"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 38,
+      "word_standard": "برکه‌زنی",
+      "definition": "مراسم مذهبی و عزاداری محلی",
+      "category": "culture",
+      "subcategory": "ceremony",
+      "dialects": {
+        "ban": "برکه‌زنی"
+      },
+      "examples": {
+        "ban": "محرم برکه‌زنی می‌کنن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 39,
+      "word_standard": "مولودی خوانی",
+      "definition": "مراسم جشن میلاد پیامبر و امامان",
+      "category": "culture",
+      "subcategory": "ceremony",
+      "dialects": {
+        "ban": "مولودی خوانی"
+      },
+      "examples": {
+        "ban": "مولودی خوندن تو مسجد صفا داره"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 40,
+      "word_standard": "حنابندان",
+      "definition": "مراسم حنا بستن شب عروسی",
+      "category": "culture",
+      "subcategory": "wedding",
+      "dialects": {
+        "ban": "حنابندان"
+      },
+      "examples": {
+        "ban": "شب عروسی حنابندان دارن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 41,
+      "word_standard": "پاگشا",
+      "definition": "مراسم پاگشا در عروسی‌های محلی",
+      "category": "culture",
+      "subcategory": "wedding",
+      "dialects": {
+        "ban": "پاگشا"
+      },
+      "examples": {
+        "ban": "پاگشا کردیم عروس به خونه داماد رفت"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 42,
+      "word_standard": "جهیزیه بردن",
+      "definition": "مراسم بردن جهیزیه به خانه داماد",
+      "category": "culture",
+      "subcategory": "wedding",
+      "dialects": {
+        "ban": "جهیزیه بردن"
+      },
+      "examples": {
+        "ban": "فردا جهیزیه می‌بریم خونه داماد"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 43,
+      "word_standard": "قایق‌رانی",
+      "definition": "مسابقات قایق‌رانی محلی در دریا",
+      "category": "culture",
+      "subcategory": "festival",
+      "dialects": {
+        "ban": "قایق‌رانی"
+      },
+      "examples": {
+        "ban": "عید نوروز قایق‌رانی دارن"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 44,
+      "word_standard": "شتر گردانی",
+      "definition": "مراسم گرداندن شتر در جشن‌ها",
+      "category": "culture",
+      "subcategory": "festival",
+      "dialects": {
+        "ban": "شتر گردانی"
+      },
+      "examples": {
+        "ban": "جشن عروسی شتر می‌گردونن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 45,
+      "word_standard": "سیزده بدر در بندرعباس",
+      "definition": "مراسم سیزده بدر در ساحل",
+      "category": "culture",
+      "subcategory": "festival",
+      "dialects": {
+        "ban": "سیزده بدر در بندرعباس"
+      },
+      "examples": {
+        "ban": "سیزده بدر می‌ریم ساحل تفریح"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 46,
+      "word_standard": "دشداشه",
+      "definition": "لباس مردانه محلی بلند و گشاد",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "دشداشه"
+      },
+      "examples": {
+        "ban": "مردا دشداشه سفید می‌پوشن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 47,
+      "word_standard": "عرقچین",
+      "definition": "کلاه محلی مردانه",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "عرقچین"
+      },
+      "examples": {
+        "ban": "عرقچین می‌ذارن روی سرشون"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 48,
+      "word_standard": "چادر رنگی",
+      "definition": "پوشش سنتی زنان بندری، رنگارنگ",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "چادر رنگی"
+      },
+      "examples": {
+        "ban": "خانمای قدیم چادر رنگی می‌پوشیدن"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 49,
+      "word_standard": "نقاب",
+      "definition": "نقاب سنتی زنان بندری",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "نقاب"
+      },
+      "examples": {
+        "ban": "نقاب صورتو از گرما حفظ می‌کنه"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 50,
+      "word_standard": "برقع",
+      "definition": "پوشش سنتی زنان در برخی مناطق",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "برقع"
+      },
+      "examples": {
+        "ban": "برقع صورت رو کامل می‌پوشونه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 51,
+      "word_standard": "کفش سنتی",
+      "definition": "کفش دستباف محلی",
+      "category": "culture",
+      "subcategory": "clothing",
+      "dialects": {
+        "ban": "کفش سنتی"
+      },
+      "examples": {
+        "ban": "کفش سنتی راحت و خنکه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 52,
+      "word_standard": "مهیاوه",
+      "definition": "سس ماهی تخمیری، چاشنی محلی",
+      "category": "food",
+      "subcategory": "condiment",
+      "dialects": {
+        "ban": "مهیاوه"
+      },
+      "examples": {
+        "ban": "مهیاوه با نون خوشمزست"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 53,
+      "word_standard": "سوراغ",
+      "definition": "غذای محلی با ماهی و برنج",
+      "category": "food",
+      "subcategory": "dish",
+      "dialects": {
+        "ban": "سوراغ"
+      },
+      "examples": {
+        "ban": "سوراغ غذای خوشمزه جنوبه"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 54,
+      "word_standard": "نان تومشی",
+      "definition": "نان محلی با خاک سرخ هرمز",
+      "category": "food",
+      "subcategory": "bread",
+      "dialects": {
+        "ban": "نان تومشی"
+      },
+      "examples": {
+        "ban": "نان تومشی با خاک سرخ پخته میشه"
+      },
+      "region_usage": "هرمز",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 55,
+      "word_standard": "کلمپه",
+      "definition": "نان محلی دیگر هرمزگان",
+      "category": "food",
+      "subcategory": "bread",
+      "dialects": {
+        "ban": "کلمپه"
+      },
+      "examples": {
+        "ban": "کلمپه خمیرش نرم و لطیفه"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 56,
+      "word_standard": "چای بندری",
+      "definition": "چای محلی با هل و دارچین",
+      "category": "food",
+      "subcategory": "drink",
+      "dialects": {
+        "ban": "چای بندری"
+      },
+      "examples": {
+        "ban": "چای بندری عطر و بوی خاصی داره"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 57,
+      "word_standard": "کوفته سیرجانی",
+      "definition": "کوفته محلی بندرعباسی",
+      "category": "food",
+      "subcategory": "dish",
+      "dialects": {
+        "ban": "کوفته سیرجانی"
+      },
+      "examples": {
+        "ban": "کوفته سیرجانی با گوشت و برنج"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 58,
+      "word_standard": "هواری",
+      "definition": "برنج دودی محلی",
+      "category": "food",
+      "subcategory": "rice",
+      "dialects": {
+        "ban": "هواری"
+      },
+      "examples": {
+        "ban": "هواری با ماهی خوشمزست"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 59,
+      "word_standard": "حصیربافی",
+      "definition": "بافت حصیر با برگ خرما",
+      "category": "culture",
+      "subcategory": "handicraft",
+      "dialects": {
+        "ban": "حصیربافی"
+      },
+      "examples": {
+        "ban": "حصیربافی صنعت دستی قدیمیه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 60,
+      "word_standard": "گبه بافی",
+      "definition": "بافت گبه و قالیچه محلی",
+      "category": "culture",
+      "subcategory": "handicraft",
+      "dialects": {
+        "ban": "گبه بافی"
+      },
+      "examples": {
+        "ban": "گبه بافی تو روستاها رایجه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 61,
+      "word_standard": "ظروف مسی",
+      "definition": "ساخت ظروف مسی دست‌ساز",
+      "category": "culture",
+      "subcategory": "handicraft",
+      "dialects": {
+        "ban": "ظروف مسی"
+      },
+      "examples": {
+        "ban": "ظروف مسی بازار خوبی داره"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 62,
+      "word_standard": "خرما مضافتی",
+      "definition": "مرغوبترین نوع خرما",
+      "category": "food",
+      "subcategory": "date",
+      "dialects": {
+        "ban": "خرما مضافتی"
+      },
+      "examples": {
+        "ban": "خرما مضافتی شیرین و لذیذه"
+      },
+      "region_usage": "میناب",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 63,
+      "word_standard": "ماهی دودی",
+      "definition": "ماهی دودی شده محلی",
+      "category": "food",
+      "subcategory": "seafood",
+      "dialects": {
+        "ban": "ماهی دودی"
+      },
+      "examples": {
+        "ban": "ماهی دودی عطر و بوی خاص داره"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 64,
+      "word_standard": "حلوای مینابی",
+      "definition": "حلوا سنتی میناب با خرما",
+      "category": "food",
+      "subcategory": "sweet",
+      "dialects": {
+        "ban": "حلوای مینابی"
+      },
+      "examples": {
+        "ban": "حلوای مینابی تو کل ایران معروفه"
+      },
+      "region_usage": "میناب",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 65,
+      "word_standard": "انار رودان",
+      "definition": "انار دانه درشت و شیرین رودان",
+      "category": "food",
+      "subcategory": "fruit",
+      "dialects": {
+        "ban": "انار رودان"
+      },
+      "examples": {
+        "ban": "انار رودون دونه درشتی داره"
+      },
+      "region_usage": "رودان",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 66,
+      "word_standard": "پرتقال رودان",
+      "definition": "پرتغال مرغوب رودان",
+      "category": "food",
+      "subcategory": "fruit",
+      "dialects": {
+        "ban": "پرتقال رودان"
+      },
+      "examples": {
+        "ban": "پرتقال رودون آبدار و شیرینه"
+      },
+      "region_usage": "رودان",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 67,
+      "word_standard": "خون جاده",
+      "definition": "ترافیک بسیار سنگین، راه بندان شدید",
+      "category": "driving",
+      "subcategory": "traffic_heavy",
+      "dialects": {
+        "ban": "خون جاده"
+      },
+      "examples": {
+        "ban": "از صبح افتادیم تو خون جاده، هنوز نرسیدیم"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 68,
+      "word_standard": "پوست گاوی",
+      "definition": "ترافیک بسیار بد و کلافه‌کننده",
+      "category": "driving",
+      "subcategory": "traffic_heavy",
+      "dialects": {
+        "ban": "پوست گاوی"
+      },
+      "examples": {
+        "ban": "چهارراه غزی پوست گاوی شده"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 69,
+      "word_standard": "راه وا شد",
+      "definition": "ترافیک باز شد، راه خلوت شد",
+      "category": "driving",
+      "subcategory": "traffic_light",
+      "dialects": {
+        "ban": "راه وا شد"
+      },
+      "examples": {
+        "ban": "خداروشکر راه وا شد، بریم"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 70,
+      "word_standard": "بستن به تنگ",
+      "definition": "راه بسته شدن کامل، گیر کردن",
+      "category": "driving",
+      "subcategory": "traffic_jam",
+      "dialects": {
+        "ban": "بستن به تنگ"
+      },
+      "examples": {
+        "ban": "کمربندی بست به تنگ، از راه دیگه برو"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 71,
+      "word_standard": "لنج خشکی",
+      "definition": "کامیون بزرگ و قدیمی",
+      "category": "driving",
+      "subcategory": "truck",
+      "dialects": {
+        "ban": "لنج خشکی"
+      },
+      "examples": {
+        "ban": "با اون لنج خشکی نمی‌رسی به وقت"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 72,
+      "word_standard": "خاور بدو",
+      "definition": "کامیون‌های تندرو و مسابقه‌ای در جاده",
+      "category": "driving",
+      "subcategory": "truck",
+      "dialects": {
+        "ban": "خاور بدو"
+      },
+      "examples": {
+        "ban": "خاور بدوها دارن جاده رو قاپ میزنن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 73,
+      "word_standard": "بار داغ",
+      "definition": "باری که زمان تحویل آن کم است",
+      "category": "driving",
+      "subcategory": "cargo_urgent",
+      "dialects": {
+        "ban": "بار داغ"
+      },
+      "examples": {
+        "ban": "بار داغه، نیم ساعت وخت باید برسونم"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 74,
+      "word_standard": "چفت کردن بار",
+      "definition": "محکم بستن بار روی کامیون",
+      "category": "driving",
+      "subcategory": "cargo_secure",
+      "dialects": {
+        "ban": "چفت کردن بار"
+      },
+      "examples": {
+        "ban": "بارو خوب چفت کن، جاده لرزه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 75,
+      "word_standard": "بار دوز",
+      "definition": "باری که حجم زیادی دارد",
+      "category": "driving",
+      "subcategory": "cargo_type",
+      "dialects": {
+        "ban": "بار دوز"
+      },
+      "examples": {
+        "ban": "بار دوزه، دوتا خاور میخواد"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 76,
+      "word_standard": "ته بار",
+      "definition": "آخرین بار سفارش داده شده",
+      "category": "driving",
+      "subcategory": "cargo_order",
+      "dialects": {
+        "ban": "ته بار"
+      },
+      "examples": {
+        "ban": "ته بار رو بردم بندرعباس"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 77,
+      "word_standard": "دوربین شکارچی",
+      "definition": "دوربین مخفی کنترل سرعت",
+      "category": "driving",
+      "subcategory": "radar",
+      "dialects": {
+        "ban": "دوربین شکارچی"
+      },
+      "examples": {
+        "ban": "مواظب باش دوربین شکارچیه اینجا"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 78,
+      "word_standard": "گوشی دستت",
+      "definition": "دست گرفتن موبایل حین رانندگی",
+      "category": "driving",
+      "subcategory": "violation",
+      "dialects": {
+        "ban": "گوشی دستت"
+      },
+      "examples": {
+        "ban": "اونی که گوشی دستش بود عکس انداخت"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 79,
+      "word_standard": "کمربند نزدی",
+      "definition": "نبستن کمربند ایمنی",
+      "category": "driving",
+      "subcategory": "violation",
+      "dialects": {
+        "ban": "کمربند نزدی"
+      },
+      "examples": {
+        "ban": "کمربند نزدی رد شد دوربین ازت عکس گرفت"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 80,
+      "word_standard": "سبقت ممنوع",
+      "definition": "خطای سبقت غیرمجاز",
+      "category": "driving",
+      "subcategory": "violation",
+      "dialects": {
+        "ban": "سبقت ممنوع"
+      },
+      "examples": {
+        "ban": "تو پیچ سبقت ممنوع عکس انداخت"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 81,
+      "word_standard": "جریمه سیار",
+      "definition": "دوربین سیار پلیس",
+      "category": "driving",
+      "subcategory": "radar",
+      "dialects": {
+        "ban": "جریمه سیار"
+      },
+      "examples": {
+        "ban": "جریمه سیار گذاشتن این هفته"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 82,
+      "word_standard": "بزن تو دهنه",
+      "definition": "وارد مسیر اصلی یا خیابان اصلی شو",
+      "category": "driving",
+      "subcategory": "direction",
+      "dialects": {
+        "ban": "بزن تو دهنه"
+      },
+      "examples": {
+        "ban": "برو بزن تو دهنه بلوار"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 83,
+      "word_standard": "برو تندرو",
+      "definition": "از خط تندرو (سمت چپ) حرکت کن",
+      "category": "driving",
+      "subcategory": "direction",
+      "dialects": {
+        "ban": "برو تندرو"
+      },
+      "examples": {
+        "ban": "تندرو برو زودتر میرسی"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 84,
+      "word_standard": "بکش کنار",
+      "definition": "خودرو را به کنار جاده ببر",
+      "category": "driving",
+      "subcategory": "direction",
+      "dialects": {
+        "ban": "بکش کنار"
+      },
+      "examples": {
+        "ban": "بکش کنار بذار رد بشم"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 85,
+      "word_standard": "بزن بیرون",
+      "definition": "از جاده خارج شو یا بپیچ",
+      "category": "driving",
+      "subcategory": "direction",
+      "dialects": {
+        "ban": "بزن بیرون"
+      },
+      "examples": {
+        "ban": "اینجا بزن بیرون میرسی میدان"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 86,
+      "word_standard": "بیا تودست",
+      "definition": "وارد کوچه یا فرعی شو",
+      "category": "driving",
+      "subcategory": "direction",
+      "dialects": {
+        "ban": "بیا تودست"
+      },
+      "examples": {
+        "ban": "بیا تودست زودتر میرسی"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 87,
+      "word_standard": "گربه خواب",
+      "definition": "سرعت گیر دست‌ساز یا غیراستاندارد",
+      "category": "driving",
+      "subcategory": "warning",
+      "dialects": {
+        "ban": "گربه خواب"
+      },
+      "examples": {
+        "ban": "مواظب باش گربه خواس جلوتره"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 88,
+      "word_standard": "چاله چوله",
+      "definition": "جاده ناهموار و پر از دستانداز",
+      "category": "driving",
+      "subcategory": "warning",
+      "dialects": {
+        "ban": "چاله چوله"
+      },
+      "examples": {
+        "ban": "این جاده پر از چاله چوله، آهسته برو"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 89,
+      "word_standard": "روزنه",
+      "definition": "فضای خالی بین دو خودرو",
+      "category": "driving",
+      "subcategory": "warning",
+      "dialects": {
+        "ban": "روزنه"
+      },
+      "examples": {
+        "ban": "روزنه بذار رد بشم"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 90,
+      "word_standard": "لعنت به این جاده",
+      "definition": "ابراز ناراحتی از جاده بد",
+      "category": "driving",
+      "subcategory": "complaint",
+      "dialects": {
+        "ban": "لعنت به این جاده"
+      },
+      "examples": {
+        "ban": "لعنت به این جاده آدم رو میندازه"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 91,
+      "word_standard": "نیم ساعت وخت",
+      "definition": "حدود نیم ساعت دیگر",
+      "category": "driving",
+      "subcategory": "time_estimate",
+      "dialects": {
+        "ban": "نیم ساعت وخت"
+      },
+      "examples": {
+        "ban": "نیم ساعت وخت میرسم ببینمت"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 92,
+      "word_standard": "یک پُشت",
+      "definition": "یک مسیر رفت و برگشت",
+      "category": "driving",
+      "subcategory": "distance",
+      "dialects": {
+        "ban": "یک پُشت"
+      },
+      "examples": {
+        "ban": "یک پُشت رفتم بندرعباس برگشتم"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 93,
+      "word_standard": "سره",
+      "definition": "مقصد یا انتهای مسیر",
+      "category": "driving",
+      "subcategory": "destination",
+      "dialects": {
+        "ban": "سره"
+      },
+      "examples": {
+        "ban": "سره راه کو؟"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 94,
+      "word_standard": "پا پیچ",
+      "definition": "مسیر پیاده یا نزدیک",
+      "category": "driving",
+      "subcategory": "distance",
+      "dialects": {
+        "ban": "پا پیچ"
+      },
+      "examples": {
+        "ban": "از اینجا پا پیچه میرسم"
+      },
+      "region_usage": "بندرعباس",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 95,
+      "word_standard": "تفنگ",
+      "definition": "دستگاه دیاگ خودرو",
+      "category": "driving",
+      "subcategory": "repair",
+      "dialects": {
+        "ban": "تفنگ"
+      },
+      "examples": {
+        "ban": "ببر ماشینو بزن به تفنگ ببین چی شده"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 96,
+      "word_standard": "دور انداختن",
+      "definition": "حداکثر دور موتور گرفتن",
+      "category": "driving",
+      "subcategory": "engine",
+      "dialects": {
+        "ban": "دور انداختن"
+      },
+      "examples": {
+        "ban": "دور انداختم برسم به موقع"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 97,
+      "word_standard": "روغن نریختن",
+      "definition": "عدم تعویض روغن به موقع",
+      "category": "driving",
+      "subcategory": "maintenance",
+      "dialects": {
+        "ban": "روغن نریختن"
+      },
+      "examples": {
+        "ban": "روغن نریختی، موتور صدا میده"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 98,
+      "word_standard": "لنت کشیدن",
+      "definition": "فرسوده شدن لنت ترمز",
+      "category": "driving",
+      "subcategory": "brake",
+      "dialects": {
+        "ban": "لنت کشیدن"
+      },
+      "examples": {
+        "ban": "لنت کشیده، ببر تعویض کن"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    },
+    {
+      "id": 99,
+      "word_standard": "لامپ سوز",
+      "definition": "چراغ سوخته خودرو",
+      "category": "driving",
+      "subcategory": "light",
+      "dialects": {
+        "ban": "لامپ سوز"
+      },
+      "examples": {
+        "ban": "چراغات لامپ سوزه، جریمه میشی"
+      },
+      "region_usage": "همه مناطق",
+      "data_quality": "sourced",
+      "confidence_score": 85
+    }
+  ]
+}

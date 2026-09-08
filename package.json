@@ -3,7 +3,7 @@
   "version": "2.1.1",
   "description": "HDP Intelligent System - Full Stack",
   "scripts": {
-    "start": "node start-all.js",
+    "start": "npm run start:all",
     "start:bandari": "cd bandari-engine-2026/bandari-engine && npm start",
     "start:api": "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
     "start:all": "concurrently \"npm run start:bandari\" \"npm run start:api\" --kill-others",
@@ -17,13 +17,13 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.5",
-    "geotiff": "^2.0.7",
+    "@reduxjs/toolkit": "^1.9.7",
+    "geotiff": "^2.1.3",
     "idb": "^7.1.1",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
-    "proj4": "^2.9.2",
+    "proj4": "^2.22.0",
     "react-leaflet": "^4.2.1",
-    "react-redux": "^8.1.1"
+    "react-redux": "^8.1.3"
   }
 }
