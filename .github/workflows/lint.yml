@@ -1,0 +1,24 @@
+name: Lint & Guard
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  guard-driver-assistant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check driver_assistant router is present
+        run: grep -q "driver_assistant" backend/app/main.py || (echo "❌ driver_assistant removed from backend/app/main.py" && exit 1)
+
+      - name: Check legacy generator not in active path
+        run: |
+          if [ -f backend/fix_hermezgan_v2.py ]; then
+            echo "❌ legacy generator back in backend/"
+            exit 1
+          fi
