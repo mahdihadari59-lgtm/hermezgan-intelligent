@@ -1,5 +1,5 @@
 # ============================================================
-# tts.py - تبدیل متن به گفتار ElevenLabs
+# tts.py - تبدیل متن به گفتار عمومی (provider-agnostic)
 # ============================================================
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
@@ -20,8 +20,8 @@ class TTSRequest(BaseModel):
 async def speak(payload: TTSRequest):
     """تبدیل متن به گفتار"""
     try:
-        from app.services.tts_service import ElevenLabsTTSProvider
-        provider = ElevenLabsTTSProvider()
+        from app.services.tts_service import DefaultTTSProvider
+        provider = DefaultTTSProvider()
         result = await provider.synthesize(payload.text, payload.language)
         return result
     except Exception as e:
@@ -35,22 +35,24 @@ async def list_voices():
     return {
         "success": True,
         "voices": [
-            {"id": "JBFqnCBsd6RMkjVDRZzb", "name": "Bella"},
-            {"id": "AZnzlk1XvdvUeBnXmlld", "name": "Adam"},
-            {"id": "EXAVITQu4vr4xnSDxMaL", "name": "Sam"}
+            {"id": "voice-1", "name": "Default"},
+            {"id": "voice-2", "name": "Neutral"},
+            {"id": "voice-3", "name": "Clear"},
         ]
     }
 
 
 @router.get("/status")
 async def tts_status():
-    """وضعیت سرویس ElevenLabs TTS"""
-    api_key = os.getenv("ELEVENLABS_API_KEY", "")
-    voice_id = os.getenv("ELEVENLABS_VOICE_ID", "")
+    """وضعیت سرویس تبدیل متن به گفتار"""
+    api_key = os.getenv("TTS_API_KEY", "")
+    voice_id = os.getenv("TTS_VOICE_ID", "")
+    provider = os.getenv("TTS_PROVIDER", "generic")
     return {
         "status": "active",
-        "service": "elevenlabs_tts",
+        "service": "tts_service",
+        "provider": provider,
         "api_key_configured": bool(api_key),
         "voice_id_configured": bool(voice_id),
-        "voices_available": bool(api_key and voice_id)
+        "voices_available": bool(api_key and voice_id),
     }
