@@ -1,20 +1,26 @@
 # ============================================================
 # gemini.py - سرویس هوش مصنوعی عمومی (provider-agnostic)
 # ============================================================
-import os
 import logging
+import os
+from typing import List, Optional
+
 import requests
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Optional, List
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-AI_API_KEY = os.getenv("AI_API_KEY", "")
-AI_API_URL = os.getenv("AI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta")
-AI_MODEL = os.getenv("AI_MODEL", "gemini-2.0-flash")
-AI_PROVIDER = os.getenv("AI_PROVIDER", "generic")
+AI_API_KEY = os.getenv("AI_API_KEY") or os.getenv("GEMINI_API_KEY", "")
+AI_API_URL = (
+    os.getenv("AI_BASE_URL")
+    or os.getenv("GEMINI_API_URL", "https://generativelanguage.googleapis.com/v1beta")
+)
+AI_MODEL = os.getenv("AI_MODEL") or os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+AI_PROVIDER = os.getenv("AI_PROVIDER") or (
+    "gemini" if (os.getenv("GEMINI_API_KEY") or os.getenv("AI_API_KEY")) else "generic"
+)
 
 
 class ChatRequest(BaseModel):
@@ -34,7 +40,7 @@ async def chat(payload: ChatRequest):
         headers = {"Content-Type": "application/json"}
         data = {
             "contents": [{"role": "user", "parts": [{"text": payload.message}]}],
-            "generationConfig": {"temperature": payload.temperature}
+            "generationConfig": {"temperature": payload.temperature},
         }
 
         try:

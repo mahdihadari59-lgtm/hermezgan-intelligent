@@ -1,10 +1,11 @@
 # ============================================================
-# tts.py - تبدیل متن به گفتار ElevenLabs
+# tts.py - تبدیل متن به گفتار عمومی (provider-agnostic)
 # ============================================================
+import logging
+import os
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-import os
-import logging
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -18,11 +19,12 @@ class TTSRequest(BaseModel):
 
 @router.post("/speak")
 async def speak(payload: TTSRequest):
-    """تبدیل متن به گفتار"""
+    """تبدیل متن به گفتار با سرویس عمومی"""
     try:
-        from app.services.tts_service import ElevenLabsTTSProvider
-        provider = ElevenLabsTTSProvider()
-        result = await provider.synthesize(payload.text, payload.language)
+        from app.services.tts_service import get_tts_service
+
+        service = get_tts_service()
+        result = await service.synthesize(payload.text, payload.language, speed=payload.speed)
         return result
     except Exception as e:
         logger.error(f"TTS error: {e}")
@@ -35,22 +37,24 @@ async def list_voices():
     return {
         "success": True,
         "voices": [
-            {"id": "JBFqnCBsd6RMkjVDRZzb", "name": "Bella"},
-            {"id": "AZnzlk1XvdvUeBnXmlld", "name": "Adam"},
-            {"id": "EXAVITQu4vr4xnSDxMaL", "name": "Sam"}
-        ]
+            {"id": "default", "name": "Default"},
+            {"id": "neutral", "name": "Neutral"},
+            {"id": "clear", "name": "Clear"},
+        ],
     }
 
 
 @router.get("/status")
 async def tts_status():
-    """وضعیت سرویس ElevenLabs TTS"""
-    api_key = os.getenv("ELEVENLABS_API_KEY", "")
-    voice_id = os.getenv("ELEVENLABS_VOICE_ID", "")
+    """وضعیت سرویس تبدیل متن به گفتار"""
+    api_key = os.getenv("TTS_API_KEY") or os.getenv("ELEVENLABS_API_KEY", "")
+    voice_id = os.getenv("TTS_VOICE_ID") or os.getenv("ELEVENLABS_VOICE_ID", "")
+    provider = os.getenv("TTS_PROVIDER") or os.getenv("ELEVENLABS_PROVIDER", "generic")
     return {
         "status": "active",
-        "service": "elevenlabs_tts",
+        "service": "tts_service",
+        "provider": provider,
         "api_key_configured": bool(api_key),
         "voice_id_configured": bool(voice_id),
-        "voices_available": bool(api_key and voice_id)
+        "voices_available": bool(api_key and voice_id),
     }

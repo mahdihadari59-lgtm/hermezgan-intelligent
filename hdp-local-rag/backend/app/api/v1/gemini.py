@@ -1,19 +1,26 @@
 # ============================================================
-# gemini.py - سرویس Gemini AI
+# gemini.py - سرویس هوش مصنوعی عمومی (provider-agnostic)
 # ============================================================
-import os
-import json
 import logging
+import os
+from typing import List, Optional
+
 import requests
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Optional, List
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_API_URL = os.getenv("GEMINI_API_URL", "https://generativelanguage.googleapis.com/v1beta")
+AI_API_KEY = os.getenv("AI_API_KEY") or os.getenv("GEMINI_API_KEY", "")
+AI_API_URL = (
+    os.getenv("AI_BASE_URL")
+    or os.getenv("GEMINI_API_URL", "https://generativelanguage.googleapis.com/v1beta")
+)
+AI_MODEL = os.getenv("AI_MODEL") or os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+AI_PROVIDER = os.getenv("AI_PROVIDER") or (
+    "gemini" if (os.getenv("GEMINI_API_KEY") or os.getenv("AI_API_KEY")) else "generic"
+)
 
 
 class ChatRequest(BaseModel):
@@ -24,44 +31,47 @@ class ChatRequest(BaseModel):
 
 @router.post("/chat")
 async def chat(payload: ChatRequest):
-    """چت با Gemini AI"""
+    """چت با سرویس هوش مصنوعی عمومی"""
     try:
-        if not GEMINI_API_KEY:
-            raise HTTPException(status_code=503, detail="GEMINI_API_KEY تنظیم نشده")
+        if not AI_API_KEY:
+            raise HTTPException(status_code=503, detail="AI_API_KEY تنظیم نشده")
 
-        url = f"{GEMINI_API_URL}/models/gemini-flash-latest:generateContent?key={GEMINI_API_KEY}"
+        url = f"{AI_API_URL}/models/{AI_MODEL}:generateContent?key={AI_API_KEY}"
         headers = {"Content-Type": "application/json"}
         data = {
             "contents": [{"role": "user", "parts": [{"text": payload.message}]}],
-            "generationConfig": {"temperature": payload.temperature}
+            "generationConfig": {"temperature": payload.temperature},
         }
 
         try:
             response = requests.post(url, headers=headers, json=data, timeout=30)
         except requests.exceptions.RequestException as e:
-            logger.error(f"Gemini connection error: {e}")
+            logger.error(f"AI connection error: {e}")
             return {
                 "success": False,
-                "error": "خطا در اتصال به Gemini (مشکل شبکه)",
-                "provider": "gemini"
+                "error": "خطا در اتصال به سرویس هوش مصنوعی",
+                "provider": AI_PROVIDER,
+                "model": AI_MODEL,
             }
 
         if response.status_code != 200:
-            logger.error(f"Gemini HTTP {response.status_code}: {response.text[:200]}")
+            logger.error(f"AI HTTP {response.status_code}: {response.text[:200]}")
             return {
                 "success": False,
-                "error": f"Gemini API HTTP {response.status_code}",
-                "provider": "gemini"
+                "error": f"AI API HTTP {response.status_code}",
+                "provider": AI_PROVIDER,
+                "model": AI_MODEL,
             }
 
         try:
             result = response.json()
         except ValueError:
-            logger.error(f"Gemini returned non-JSON response: {response.text[:200]}")
+            logger.error(f"AI returned non-JSON response: {response.text[:200]}")
             return {
                 "success": False,
-                "error": "پاسخ نامعتبر از Gemini (احتمالاً مشکل شبکه/اتصال به Google)",
-                "provider": "gemini"
+                "error": "پاسخ نامعتبر از سرویس هوش مصنوعی",
+                "provider": AI_PROVIDER,
+                "model": AI_MODEL,
             }
 
         if "candidates" in result and result["candidates"]:
@@ -69,30 +79,31 @@ async def chat(payload: ChatRequest):
             return {
                 "success": True,
                 "response": text,
-                "provider": "gemini",
-                "model": "gemini-flash-latest"
+                "provider": AI_PROVIDER,
+                "model": AI_MODEL,
             }
 
         return {
             "success": False,
             "error": result.get("error", {}).get("message", "Unknown error"),
-            "provider": "gemini"
+            "provider": AI_PROVIDER,
+            "model": AI_MODEL,
         }
 
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"Gemini error: {e}")
+        logger.error(f"AI error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/status")
 async def ai_status():
-    """وضعیت سرویس Gemini AI"""
+    """وضعیت سرویس هوش مصنوعی"""
     return {
         "status": "active",
-        "service": "gemini_ai",
-        "provider": "google",
-        "api_key_configured": bool(GEMINI_API_KEY),
-        "model": "gemini-flash-latest"
+        "service": "ai_service",
+        "provider": AI_PROVIDER,
+        "api_key_configured": bool(AI_API_KEY),
+        "model": AI_MODEL,
     }
