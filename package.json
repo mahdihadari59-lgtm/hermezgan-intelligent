@@ -1,7 +1,7 @@
 {
   "name": "hermezgan-intelligent",
-  "version": "2.1.1",
-  "description": "HDP Intelligent System - Full Stack",
+  "version": "2.2.0",
+  "description": "HDP Intelligent System - Full Stack (compatibility-safe upgrade)",
   "scripts": {
     "start": "npm run start:all",
     "start:bandari": "cd bandari-engine-2026/bandari-engine && npm start",
